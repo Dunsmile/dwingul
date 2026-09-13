@@ -1,0 +1,76 @@
+{
+  "tool": "image_gen",
+  "reference": "public/assets/pixel/woodland-pets.png",
+  "portraits": [
+    {
+      "id": "hero",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nA little leaf-hooded cream-faced adventurer enthusiastically typing at a small wooden keyboard held in front of its chest, tiny pen sword at belt. Faithful to green leaf ranger reference.",
+      "master": "design/masters/hero-sprite.png",
+      "output": "public/assets/pixel/portraits/hero.webp"
+    },
+    {
+      "id": "slime",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nA cute emerald green slime monster with two tiny twig horns, little gold leaf stuck on head, mischievous grin, translucent but solid readable 3-tone body, side paws and rosy cheeks.",
+      "master": "design/masters/slime-sprite.png",
+      "output": "public/assets/pixel/portraits/slime.webp"
+    },
+    {
+      "id": "goblin",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nA small sage green forest goblin wearing a mushroom cap, brown vest and tiny acorn necklace, holding a twig club. Friendly mischievous opponent.",
+      "master": "design/masters/goblin-sprite.png",
+      "output": "public/assets/pixel/portraits/goblin.webp"
+    },
+    {
+      "id": "jellyfish",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nA small floating sky-blue jellyfish ghost woodland monster with a blue mushroom umbrella head, three stubby dangling tentacles and sleepy square eyes, little sparkles made of pixels.",
+      "master": "design/masters/jellyfish-sprite.png",
+      "output": "public/assets/pixel/portraits/jellyfish.webp"
+    },
+    {
+      "id": "golem",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nA small squat moss-covered ochre stone golem with pale glowing eyes, leaf sprout on its square head and chunky rocky arms. Cute, soft expression, shaded stone material.",
+      "master": "design/masters/golem-sprite.png",
+      "output": "public/assets/pixel/portraits/golem.webp"
+    },
+    {
+      "id": "dragon",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nA little purple woodland dragon with tiny folded wings, cream belly, gold horns and a heart-shaped spade tail, brave mischievous expression, fully visible compact body.",
+      "master": "design/masters/dragon-sprite.png",
+      "output": "public/assets/pixel/portraits/dragon.webp"
+    },
+    {
+      "id": "runner",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nThe reference brown raccoon-hooded woodland adventurer in a dynamic side-view running pose facing right, one leg lifted and both arms moving, hood with ears, little backpack and banded tail, full body visible.",
+      "master": "design/masters/runner-sprite.png",
+      "output": "public/assets/pixel/portraits/runner.webp"
+    },
+    {
+      "id": "runner-slide",
+      "prompt": "Use case: precise-object-edit. Edit this exact raccoon adventurer into a new game animation pose: crouching very low in a horizontal feet-first sliding pose towards the right, leaning back, legs stretched to right and backpack low, smiling face fully visible, height only about half of width, keep the entire compact body visible in the middle of a square transparent canvas. Preserve same brown woodland hood, cream face, banded tail, pixel size, rich 3-tone shaded pixel art, colors and identity. Actual transparent alpha background, no floor, no shadows, no text, no border. One single full-body sprite only, centered with generous margin. 1024x1024 square.",
+      "reference": "design/masters/runner-sprite.png",
+      "master": "design/masters/runner-slide-sprite.png",
+      "output": "public/assets/pixel/portraits/runner-slide.webp"
+    },
+    {
+      "id": "runner-dead",
+      "prompt": "Use case: precise-object-edit. Edit this exact raccoon adventurer into a new game animation pose: sitting flopped down in a comically exhausted game-over pose with exactly two dark X-shaped eyes replacing the open black eyes, body safely resting on bottom, small crooked mouth, no pain or gore. Tail and feet visible.. Preserve same brown woodland hood, cream face, banded tail, pixel size, rich 3-tone shaded pixel art, colors and identity. Actual transparent alpha background, no floor, no shadows, no text, no border. One single full-body sprite only, centered with generous margin. 1024x1024 square.",
+      "reference": "design/masters/runner-sprite.png",
+      "master": "design/masters/runner-dead-sprite.png",
+      "output": "public/assets/pixel/portraits/runner-dead.webp"
+    },
+    {
+      "id": "runner-jump",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nThe brown raccoon-hooded woodland adventurer in an airborne jumping pose, BOTH knees tightly tucked beneath the belly and both arms raised, banded tail curling behind, cream face and delighted tiny dark eyes.\nTransparent cutout only. Do not paint any checker pattern anywhere. No background pixels outside the subject.",
+      "reference": "public/assets/pixel/woodland-pets.png",
+      "master": "design/masters/runner-jump-sprite.png",
+      "output": "public/assets/pixel/portraits/runner-jump.webp"
+    },
+    {
+      "id": "runner-run-b",
+      "prompt": "Create one production transparent-background game character sprite in the EXACT charming shaded pixel art style of the attached woodland pets. Tiny square dark eyes, rosy cheeks, thick cocoa staircase outlines, carefully shaded 3-tone materials, visible medium-sized pixels, cozy warm woodland RPG. Single character full body centered filling 85% of a square canvas, 1024x1024. Transparent background with real alpha, no backdrop, no floor, no ground shadow, no borders, no text, no logo, no UI. Keep a clear compact silhouette readable at 100px displayed size. One single sprite, not a sprite sheet. \nThe brown raccoon-hooded woodland adventurer in a running stride towards the right, both legs apart, LEFT foot reaching forward, RIGHT foot trailing behind, backpack and banded tail. Cream face and tiny dark eyes.\nTransparent cutout only. Do not paint any checker pattern anywhere. No background pixels outside the subject.",
+      "reference": "public/assets/pixel/woodland-pets.png",
+      "master": "design/masters/runner-run-b-sprite.png",
+      "output": "public/assets/pixel/portraits/runner-run-b.webp"
+    }
+  ]
+}

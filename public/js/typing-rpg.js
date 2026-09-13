@@ -63,6 +63,12 @@ export function typingRpgPalette(stage) {
   return RPG_PALETTE_25[(normalizedStage(stage) - 1) % RPG_PALETTE_25.length];
 }
 
+export function typingRpgArtPath(stage,boss=false){
+  const current=normalizedStage(stage);
+  const index=boss?((Math.floor(current/10)-1)%RPG_PALETTE_25.length+RPG_PALETTE_25.length)%RPG_PALETTE_25.length:(current-1)%RPG_PALETTE_25.length;
+  return `/assets/pixel/rpg/${boss?'boss':'monster'}-${String(index+1).padStart(2,'0')}.svg`;
+}
+
 export function typingRpgDamage(combo, gear = {}) {
   const equipment = typeof gear === "number" ? { attack: gear } : gear;
   const bonus = combo >= 20 ? Math.min(20, Math.floor(combo / 5)) : 0;
@@ -302,6 +308,10 @@ function node(tag, className, text) {
   return element;
 }
 
+function pixelArt(src,className,width,height){
+  const image=node('img',className);image.src=src;image.alt='';image.width=width;image.height=height;image.draggable=false;image.decoding='async';return image;
+}
+
 const MONSTER_NAMES = ["쉼표 슬라임", "괄호 도깨비", "물음표 해파리", "띄어쓰기 골렘", "마침표 용"];
 const BOSS_NAMES = ["문장왕 그라모", "황금 오타룡", "대괄호 군주", "천 글자 마왕", "무한서고 지기"];
 
@@ -310,7 +320,7 @@ export function createTypingRpg(ctx) {
   const gameRoot = ctx.stage.closest?.(".dg-game");
   gameRoot?.classList.add("dg-game--typing-rpg");
 
-  const root = node("section", "typing-rpg");
+  const root = node("section", "typing-rpg typing-rpg--pixel");
   const hud = node("div", "typing-rpg__hud");
   const hpCard = node("div", "typing-rpg__meter-card typing-rpg__meter-card--hp");
   const hpLabel = node("span", "typing-rpg__meter-label", "내 HP");
@@ -335,10 +345,12 @@ export function createTypingRpg(ctx) {
   const enemyMeter = node("meter", "typing-rpg__enemy-meter"); enemyMeter.min = 0;
   const scene = node("div", "typing-rpg__scene");
   const hero = node("div", "typing-rpg__hero"); hero.setAttribute("aria-hidden", "true");
-  hero.append(node("i", "typing-rpg__hero-hair"), node("i", "typing-rpg__hero-face"), node("i", "typing-rpg__hero-board"));
-  const bolt = node("div", "typing-rpg__bolt", "가"); bolt.setAttribute("aria-hidden", "true");
+  const heroArt=pixelArt('/assets/pixel/rpg/hero.svg','typing-rpg__hero-art',96,96),heroFallback=node('span','typing-rpg__art-fallback','⌨');hero.append(heroFallback,heroArt);
+  heroArt.addEventListener('error',()=>hero.classList.add('is-art-missing'));heroArt.addEventListener('load',()=>hero.classList.remove('is-art-missing'));
+  const bolt = pixelArt('/assets/pixel/rpg/spell-attack.svg','typing-rpg__bolt',48,48); bolt.setAttribute("aria-hidden", "true");
   const creature = node("div", "typing-rpg__monster"); creature.setAttribute("aria-hidden", "true");
-  creature.append(node("i", "typing-rpg__crown", "♛"), node("i", "typing-rpg__monster-eye typing-rpg__monster-eye--left"), node("i", "typing-rpg__monster-eye typing-rpg__monster-eye--right"), node("i", "typing-rpg__monster-mouth"));
+  const creatureArt=pixelArt('/assets/pixel/rpg/monster-01.svg','typing-rpg__monster-art',96,96),creatureFallback=node('span','typing-rpg__art-fallback','◆');creature.append(creatureFallback,creatureArt);
+  creatureArt.addEventListener('error',()=>creature.classList.add('is-art-missing'));creatureArt.addEventListener('load',()=>creature.classList.remove('is-art-missing'));
   scene.append(hero, bolt, creature);
   const counter = node("div", "typing-rpg__counter");
   const counterText = node("span", "typing-rpg__counter-text");
@@ -404,6 +416,8 @@ export function createTypingRpg(ctx) {
     const state = model.getState();
     root.style.setProperty("--rpg-stage-color", state.palette);
     root.classList.toggle("is-boss", state.boss);
+    const artPath=typingRpgArtPath(state.stage,state.boss);
+    if(creatureArt.dataset.asset!==artPath){creatureArt.dataset.asset=artPath;creatureArt.src=artPath;}
     hpMeter.value = state.hp; hpValue.textContent = `${state.hp} / ${state.maxHp}`;
     mpMeter.value = state.mp; mpValue.textContent = `${state.mp} / ${state.maxMp}`;
     comboValue.textContent = `${Math.floor(state.combo)}`; progressValue.textContent = `${state.stage}`;

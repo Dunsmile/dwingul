@@ -1,9 +1,9 @@
 import { createRhythmEndlessEngine } from "./rhythm-engine.js";
 
 const PHASE_COPY = Object.freeze({
-  idle: ["리듬 출발 준비", "시작을 누르면 네 박자를 세고 초록 친구가 먼저 연주해요."],
+  idle: ["리듬 출발 준비", "시작을 누르면 네 박자를 세고 숲속 친구가 먼저 연주해요."],
   countin: ["하나, 둘, 셋, 넷!", "박자를 몸에 익혀요."],
-  listen: ["먼저 들어요", "초록 친구의 리듬을 기억해요."],
+  listen: ["먼저 들어요", "숲속 친구의 리듬을 기억해요."],
   prepare: ["내 차례 준비", "셋, 둘, 하나 뒤에 리듬을 이어 쳐요."],
   respond: ["이제 따라쳐요", "같은 순간에 큰 버튼을 눌러요."],
   between: ["좋아요, 다음 리듬!", "잠깐 숨을 고르고 이어가요."],
@@ -62,13 +62,13 @@ export function createRhythm(ctx) {
       <header class="rhythm-game__phase">
         <span data-ui="phase-kicker">ENDLESS RHYTHM</span>
         <strong data-ui="phase-title">리듬 출발 준비</strong>
-        <small data-ui="phase-help">시작을 누르면 네 박자를 세고 초록 친구가 먼저 연주해요.</small>
+        <small data-ui="phase-help">시작을 누르면 네 박자를 세고 숲속 친구가 먼저 연주해요.</small>
       </header>
       <div class="rhythm-game__count" aria-live="polite" data-ui="count">♪</div>
       <div class="rhythm-game__track rhythm-game__track--listen" data-ui="listen-track">
         <div class="rhythm-game__character rhythm-game__character--guide" aria-hidden="true"><i></i></div>
         <div class="rhythm-game__track-body">
-          <b>먼저 듣기</b><span>초록 친구</span>
+          <b>먼저 듣기</b><span>숲속 친구</span>
           <div class="rhythm-game__rail" role="img" aria-label="먼저 들을 네 박자 리듬"><i class="rhythm-game__needle" data-ui="listen-needle"></i><div data-ui="listen-notes"></div></div>
         </div>
       </div>
@@ -88,7 +88,7 @@ export function createRhythm(ctx) {
         <div class="rhythm-game__start-card">
           <div class="rhythm-game__start-icon" aria-hidden="true">♩ ♪</div>
           <strong>100가지 리듬을<br>끝없이 이어 쳐요</strong>
-          <p>초록 친구의 리듬을 듣고, 내 차례의 3·2·1 뒤에 큰 버튼을 눌러 주세요.</p>
+          <p>숲속 친구의 리듬을 듣고, 내 차례의 3·2·1 뒤에 큰 버튼을 눌러 주세요.</p>
           <button type="button" class="rhythm-game__start" data-ui="start">무한 리듬 시작</button>
         </div>
       </div>

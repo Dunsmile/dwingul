@@ -14,3 +14,6 @@ output/
 dist/
 .playwright-cli/
 *.log
+
+# Local lossless image masters; deployment uses reviewed responsive WebP assets.
+design/masters/

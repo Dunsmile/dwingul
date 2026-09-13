@@ -1,3 +1,4 @@
+import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
 import { jumpPatterns100, shuffledJumpPatterns } from "./jump-patterns.js";
 
 export const JUMP_FLOOR = 390;
@@ -52,11 +53,17 @@ function rounded(pen, x, y, width, height, radius, color) {
 }
 
 export function createJump(ctx) {
+  preloadWorld(['runner-run-a','runner-run-b','runner-jump','runner-slide','runner-dead']);
+  ['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].forEach(portraitImage);
   const canvas = document.createElement("canvas");
   canvas.width = CANVAS_WIDTH; canvas.height = CANVAS_HEIGHT; canvas.className = "dg-game__canvas jump--v4";
   canvas.setAttribute("role", "img");
   canvas.setAttribute("aria-label", "장애물을 뛰거나 숙여 피하며 거리를 늘리는 멀리 뛰기 게임");
   const pen = canvas.getContext("2d");
+  // A closer camera on phones preserves the world-space collision boxes while
+  // making the runner readable. Obstacles continue to approach from the same world.
+  const fitCamera = () => { const width = window.innerWidth < 680 ? 640 : CANVAS_WIDTH; if(canvas.width !== width)canvas.width=width; };
+  fitCamera();
   const controls = document.createElement("div"); controls.className = "dg-game__split-controls";
   const duckButton = document.createElement("button"), jumpButton = document.createElement("button");
   duckButton.textContent = "↓ 꾹 눌러 숙이기"; jumpButton.textContent = "↑ 점프 · 두 번 가능";
@@ -115,7 +122,7 @@ export function createJump(ctx) {
 
   function drawGroundObstacle(obstacle) {
     const color = obstacle.kind === "double" ? "#996854" : obstacle.kind === "wide" ? "#a96f54" : "#b98068";
-    rounded(pen, obstacle.x, obstacle.y, obstacle.w, obstacle.h, 12, color);
+    pen.fillStyle="#49382d"; pen.fillRect(obstacle.x,obstacle.y,obstacle.w,obstacle.h); pen.fillStyle=color; pen.fillRect(obstacle.x+3,obstacle.y+3,obstacle.w-6,obstacle.h-3); pen.fillStyle="#92a86b"; pen.fillRect(obstacle.x,obstacle.y,obstacle.w,7); pen.fillStyle="#bed09b"; for(let x=obstacle.x+4;x<obstacle.x+obstacle.w-4;x+=12)pen.fillRect(x,obstacle.y+2,5,2);
     if (obstacle.kind === "wide") {
       pen.strokeStyle = "#784d3b"; pen.lineWidth = 4; pen.beginPath();
       pen.moveTo(obstacle.x + obstacle.w / 2, obstacle.y + 7); pen.lineTo(obstacle.x + obstacle.w / 2, obstacle.y + obstacle.h - 7); pen.stroke();
@@ -128,29 +135,34 @@ export function createJump(ctx) {
     }
   }
   function drawSlideObstacle(obstacle) {
-    pen.fillStyle = "#71828b"; pen.fillRect(obstacle.x, 0, obstacle.w, obstacle.h - 18);
-    rounded(pen, obstacle.x - 7, obstacle.h - 32, obstacle.w + 14, 32, 12, "#657680");
+    pen.fillStyle = "#937a58"; pen.fillRect(obstacle.x, 0, obstacle.w, obstacle.h - 18);
+    pen.fillStyle="#49382d";pen.fillRect(obstacle.x-7,obstacle.h-32,obstacle.w+14,32);pen.fillStyle="#647f52";pen.fillRect(obstacle.x-4,obstacle.h-29,obstacle.w+8,25);
     pen.fillStyle = "#eef4ed"; pen.textAlign = "center"; pen.font = "800 17px sans-serif";
     pen.fillText("↓ 숙이기", obstacle.x + obstacle.w / 2, obstacle.h - 10);
   }
   function draw() {
+    fitCamera();
+    const viewWidth = canvas.width;
     pen.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT); pen.fillStyle = "#e9f0e8"; pen.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    pen.fillStyle = "#f6df94"; pen.beginPath(); pen.arc(CANVAS_WIDTH - 116, 83, 40, 0, Math.PI * 2); pen.fill();
+    pen.fillStyle = "#f6df94"; pen.fillRect(viewWidth-148,51,64,64);pen.fillRect(viewWidth-140,43,48,80);
     pen.fillStyle = "#d2e1d0";
-    for (let index = 0; index < 8; index += 1) { const x = index * 180 - (scroll * .18 % 180); pen.beginPath(); pen.ellipse(x, 356, 135, 58 + index % 2 * 17, 0, 0, Math.PI * 2); pen.fill(); }
+    for (let index = 0; index < 8; index += 1) { const x = index * 180 - (scroll * .18 % 180); pen.fillRect(x,272,100,138);pen.fillRect(x+12,244,76,42);pen.fillRect(x+25,216,52,38); }
     pen.fillStyle = "#afc7a9"; pen.fillRect(0, JUMP_FLOOR, CANVAS_WIDTH, 60); pen.fillStyle = "#8fab89";
     for (let x = -(scroll % 90); x < CANVAS_WIDTH + 30; x += 90) pen.fillRect(x, 419, 38, 4);
     for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; if (obstacle.kind === "slide") drawSlideObstacle(obstacle); else drawGroundObstacle(obstacle); }
     pen.globalAlpha = 1;
     const duck = player.duck && player.y >= JUMP_FLOOR - .01, height = duck ? 34 : 72;
     if (!invincibleMs || Math.floor(invincibleMs / 95) % 2 === 0) {
-      rounded(pen, PLAYER_DRAW_X, player.y - height, 64, height, duck ? 17 : 26, "#f7f4e8"); pen.fillStyle = "#284e3d";
-      for (const x of [129, 151]) { const y=player.y-height+(duck?12:27);pen.beginPath(); if(ending&&player.y>=JUMP_FLOOR-.01){pen.strokeStyle="#284e3d";pen.lineWidth=3;pen.moveTo(x-5,y-5);pen.lineTo(x+5,y+5);pen.moveTo(x+5,y-5);pen.lineTo(x-5,y+5);pen.stroke();}else{pen.ellipse(x,y,3,4,0,0,Math.PI*2);pen.fill();} }
-      pen.strokeStyle = "#284e3d"; pen.lineWidth = 2; pen.beginPath(); pen.arc(140, player.y - height + (duck ? 19 : 39), 8, 0, Math.PI); pen.stroke();
+      const pose=ending&&player.y>=JUMP_FLOOR-.01?'dead':duck?'slide':player.y<JUMP_FLOOR-.01?'jump':Math.floor(elapsed/140)%2?'run-a':'run-b';
+      const portrait=pose==='run-a'?'runner':'runner-'+pose;
+      const drawnHeight=pose==='dead'?62:height;
+      const bob=pose.startsWith('run')?Math.floor(elapsed/140)%2*2:0;
+      if(!drawPortraitSprite(pen,portrait,PLAYER_DRAW_X,player.y-drawnHeight-bob,64,drawnHeight)&&!drawWorldSprite(pen,'runner-'+pose,PLAYER_DRAW_X,player.y-height,64,height)){pen.fillStyle='#92714e';pen.fillRect(PLAYER_DRAW_X+7,player.y-height,50,height);}
+
     }
-    pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.font = "800 32px sans-serif"; pen.fillText(`${jumpDistanceMeters(distancePixels).toFixed(1)} m`, 26, 48);
-    pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "28px sans-serif"; pen.fillText(lives === 2 ? "♥ ♥" : lives === 1 ? "♥ ♡" : "♡ ♡", CANVAS_WIDTH - 28, 48);
-    if (elapsed < 2300) { pen.textAlign = "center"; pen.fillStyle = "#4c6859"; pen.font = "700 22px sans-serif"; pen.fillText("짧게 점프 · 높으면 두 번 · 천장은 숙이기", CANVAS_WIDTH / 2, 168); }
+    pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.font = "800 32px Galmuri11, sans-serif"; pen.fillText(`${jumpDistanceMeters(distancePixels).toFixed(1)} m`, 26, 48);
+    pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "28px sans-serif"; pen.fillText(lives === 2 ? "♥ ♥" : lives === 1 ? "♥ ♡" : "♡ ♡", viewWidth - 28, 48);
+    if (elapsed < 2300) { pen.textAlign = "center"; pen.fillStyle = "#4c6859"; pen.font = "700 22px Galmuri11, sans-serif"; pen.fillText("짧게 점프 · 높으면 두 번 · 천장은 숙이기", viewWidth / 2, 168); }
   }
   function finishRun() {
     const distance = jumpDistanceMeters(distancePixels); draw();

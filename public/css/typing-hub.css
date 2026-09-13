@@ -11,29 +11,33 @@ body.draw-open{overflow:hidden}
 .draw-kicker{font-size:12px;font-weight:850;letter-spacing:.1em;color:#748266}
 .draw-body h2{font-size:24px;line-height:1.4;margin:0;word-break:keep-all}
 .draw-body p{font-size:14px;line-height:1.7;color:#6b7666;margin:0}
-.draw-chest{position:relative;display:block;width:124px;height:100px;margin:24px auto 15px;border:3px solid #86662d;border-radius:13px;background:linear-gradient(100deg,#efd898,#dcb762);box-shadow:0 16px 24px #947b4425}
-.draw-chest i{position:absolute;inset:-18px -6px auto;height:39px;border:3px solid #86662d;border-radius:14px 14px 5px 5px;background:#f5df9e;transform-origin:50% 100%}
-.draw-chest b{position:absolute;left:44px;top:16px;width:32px;height:37px;border-radius:8px;background:#7a6536;color:#fff3ba;display:grid;place-items:center;font-size:20px}
-.draw-chest.is-opening{animation:chest-wiggle .48s ease-in-out infinite}
-.draw-chest.is-ready{box-shadow:0 0 40px #e9ce7999;animation:chest-float 1.5s ease-in-out infinite}
+.draw-chest{display:block;width:144px;height:120px;margin:5px auto;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 10px 0 #49382d22)}
+.draw-chest-fallback{place-items:center;border:3px solid #49382d;background:#dfb665;color:#49382d;font-size:44px;box-shadow:inset 0 0 0 5px #fff8e8}
+.draw-chest.is-opening{animation:chest-wiggle .48s steps(4,end) infinite}
+.draw-chest.is-ready{filter:drop-shadow(0 0 15px #dfb665) drop-shadow(0 9px 0 #49382d22);animation:chest-float 1.2s steps(4,end) infinite}
 .draw-reveal{border:0;background:transparent;width:100%;color:#355b40;cursor:pointer;border-radius:16px;padding:8px 12px 14px}
 .draw-reveal strong{display:block;margin-top:30px;font-size:18px}
 .draw-footer{font-size:12px;color:#7b866f;min-height:24px}
-.rpg-draw-dialog.is-revealed{border-color:var(--rarity);box-shadow:0 0 0 5px color-mix(in srgb,var(--rarity),transparent 65%),0 28px 100px #152c4255}
-.draw-item-icon{display:grid;place-items:center;width:108px;height:108px;border-radius:28px;border:2px solid var(--rarity);background:color-mix(in srgb,var(--rarity),white 74%);font-size:56px;animation:draw-appear .3s ease-out}
-.draw-effect{background:#edf0e3;border-radius:99px;padding:8px 18px;font-weight:800;font-size:14px}
+.rpg-draw-dialog.is-revealed{border-color:var(--rarity);background:linear-gradient(180deg,color-mix(in srgb,var(--rarity),#fff8e8 88%),#fff8e8 48%);box-shadow:0 0 0 5px color-mix(in srgb,var(--rarity),transparent 65%),0 28px 100px #152c4255}
+.draw-reward-art{position:relative;width:172px;height:152px}.draw-open-chest{position:absolute;left:14px;bottom:0;width:144px;height:120px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 8px 0 #49382d22);animation:chest-open .35s steps(4,end)}
+.draw-item-icon{position:absolute;z-index:2;left:32px;top:-5px;width:108px;height:108px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 5px 0 #49382d33);animation:draw-appear .3s steps(4,end)}
+.draw-item-fallback{display:none;position:absolute;z-index:2;left:50%;top:18px;transform:translateX(-50%);width:74px;height:74px;border:3px solid var(--rarity);background:#fff8e8;place-items:center;font-size:38px}.draw-reward-art.is-item-missing .draw-item-icon{display:none}.draw-reward-art.is-item-missing .draw-item-fallback{display:grid}
+.draw-effect{border:2px solid color-mix(in srgb,var(--rarity),#49382d 35%);border-radius:2px;background:#fff8e8;padding:8px 18px;font-weight:800;font-size:14px;box-shadow:3px 3px 0 color-mix(in srgb,var(--rarity),transparent 65%)}
 .draw-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
 .draw-actions .button{padding:13px 8px;font-size:14px;min-height:48px}
 .draw-error:empty{display:none}.draw-body .draw-error{color:#b1523f}
-@keyframes chest-wiggle{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-5px)}}
-@keyframes chest-float{50%{transform:translateY(-8px)}}
-@keyframes draw-appear{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
-@media(prefers-reduced-motion:reduce){.draw-chest,.draw-item-icon{animation:none!important}}
+@keyframes chest-wiggle{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-5px)}}
+@keyframes chest-float{50%{transform:translateY(-7px)}}
+@keyframes chest-open{from{transform:scaleY(.75);opacity:.4}to{transform:scaleY(1);opacity:1}}
+@keyframes draw-appear{from{transform:translateY(25px) scale(.7);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.draw-chest,.draw-open-chest,.draw-item-icon,.draw-reward-art::before,.draw-reward-art::after{animation:none!important}}
 @media(max-width:360px){.rpg-draw-dialog{padding:26px 16px 20px}.draw-body h2{font-size:21px}.draw-actions .button{font-size:12px}}
 
 /* v9 quantity inventory, filters and collection */
-.rarity-common{--rarity:#f8f8f4}
+.rarity-common{--rarity:#c8d1c0}
 .rarity-divine{--rarity:#db5b52}
+.rpg-draw-dialog.rarity-uncommon .draw-reward-art::before,.rpg-draw-dialog.rarity-rare .draw-reward-art::before,.rpg-draw-dialog.rarity-legend .draw-reward-art::before,.rpg-draw-dialog.rarity-divine .draw-reward-art::before{content:"";position:absolute;inset:18px;border:5px dotted var(--rarity);opacity:.42;animation:rarity-orbit 2s steps(12,end) infinite}.rpg-draw-dialog.rarity-rare .draw-reward-art::after,.rpg-draw-dialog.rarity-legend .draw-reward-art::after,.rpg-draw-dialog.rarity-divine .draw-reward-art::after{content:"✦  ✧  ✦";position:absolute;z-index:3;inset:4px 0 auto;color:var(--rarity);font-size:17px;letter-spacing:8px;text-shadow:2px 2px #fff8e8}.rpg-draw-dialog.rarity-divine .draw-reward-art{filter:drop-shadow(0 0 9px #db5b5288)}
+@keyframes rarity-orbit{to{transform:rotate(360deg)}}
 .rpg-draw-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .rpg-draw-options .button{min-height:50px}
 .rpg-inventory-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-top:8px}
@@ -52,7 +56,6 @@ body.draw-open{overflow:hidden}
 .rpg-item-actions{display:flex;align-items:center;gap:5px}.rpg-item-actions .button{padding:8px 10px;min-height:34px;font-size:11px}.rpg-item-actions .danger{color:#a0443a;padding:6px;font-size:11px}
 .rpg-pagination{display:flex;justify-content:center;gap:5px;flex-wrap:wrap}.rpg-pagination a{display:grid;place-items:center;min-width:34px;height:34px;border:1px solid #d4d9ce;border-radius:8px;font-size:12px}.rpg-pagination .active{background:#355b40;color:#fff;border-color:#355b40}
 .rpg-codex{border-top:1px solid #dce1d4;padding-top:14px}.rpg-codex summary{cursor:pointer;font-weight:800;font-size:13px}.rpg-codex-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:10px;max-height:360px;overflow:auto;padding-right:4px}.rpg-codex-item{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:4px;border-left:4px solid var(--rarity);background:#eee;color:#999;border-radius:5px;padding:4px;font-size:9px;white-space:nowrap;overflow:hidden;filter:grayscale(1)}.rpg-codex-item>img{width:24px;height:24px;object-fit:contain;image-rendering:pixelated}.rpg-codex-item>span{overflow:hidden;text-overflow:ellipsis}.rpg-codex-item.is-owned{background:#fffaf0;color:#3c5144;filter:none}
-.draw-item-icon{object-fit:contain;image-rendering:pixelated;padding:10px}
 .rpg-draw-dialog.has-extra-shake .draw-item-icon{animation:draw-appear .3s ease-out,rare-shake .28s ease-in-out .34s 2}
 @keyframes rare-shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-5px) rotate(-2deg)}75%{transform:translateX(5px) rotate(2deg)}}
 @media(max-width:560px){.rpg-hub.stack-sm{gap:8px}.rpg-hub{padding:13px}.rpg-hub-summary{line-height:1.35}.rpg-hub-summary b{display:inline;margin:0 0 0 5px}.rpg-hub-tabs{padding:3px}.rpg-hub-tabs a{padding:8px 3px}.rpg-hub-intro{padding:3px 0}.rpg-hub-intro h2{font-size:18px;line-height:1.35}.rpg-hub-intro p{font-size:12px;line-height:1.45;margin-top:4px}.rpg-book{font-size:32px;line-height:1.05;margin-bottom:3px}.rpg-gear-stats{font-size:11px;padding:8px;gap:5px}.rpg-hub .field{gap:4px;font-size:12px}.rpg-hub .field select{min-height:42px;padding:8px 10px}.rpg-hub>.small{line-height:1.4}.rpg-start-control{display:grid;margin-top:1px}.rpg-start-control .button{min-height:46px}.rpg-inventory-heading{display:block}.rpg-inventory-heading p{text-align:left;margin-top:5px}.rpg-inventory article{grid-template-columns:40px minmax(0,1fr);padding:9px}.rpg-inventory article>img{width:40px;height:40px}.rpg-item-actions{grid-column:1/-1;justify-content:flex-end}.rpg-codex-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-height:310px}}

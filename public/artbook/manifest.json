@@ -1,0 +1,4853 @@
+{
+  "version": "pixel-v10",
+  "palette": [
+    "#fff8e8",
+    "#49382d",
+    "#405c3e",
+    "#91a877",
+    "#dfb665"
+  ],
+  "assets": [
+    {
+      "id": "sort",
+      "name": "좌우로 쏙쏙",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/sort.webp",
+      "preview": "/assets/pixel/thumbnails/sort-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "timing",
+      "name": "랜덤 초 맞추기",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/timing.webp",
+      "preview": "/assets/pixel/thumbnails/timing-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "color",
+      "name": "다른 색 한 칸",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/color.webp",
+      "preview": "/assets/pixel/thumbnails/color-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "reaction",
+      "name": "초록불 반응",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/reaction.webp",
+      "preview": "/assets/pixel/thumbnails/reaction-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "typing",
+      "name": "타이핑 마스터",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/typing.webp",
+      "preview": "/assets/pixel/thumbnails/typing-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "racing",
+      "name": "도심 질주",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/racing.webp",
+      "preview": "/assets/pixel/thumbnails/racing-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "memory",
+      "name": "반짝 기억판",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/memory.webp",
+      "preview": "/assets/pixel/thumbnails/memory-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "numbers",
+      "name": "1부터 25까지",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/numbers.webp",
+      "preview": "/assets/pixel/thumbnails/numbers-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "sequence",
+      "name": "따라해 뒹굴",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/sequence.webp",
+      "preview": "/assets/pixel/thumbnails/sequence-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "jump",
+      "name": "뒹굴 멀리 뛰기",
+      "group": "썸네일",
+      "kind": "game",
+      "src": "/assets/pixel/thumbnails/jump.webp",
+      "preview": "/assets/pixel/thumbnails/jump-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "knowledge",
+      "name": "오늘의 상식 10문제",
+      "group": "썸네일",
+      "kind": "quiz",
+      "src": "/assets/pixel/thumbnails/knowledge.webp",
+      "preview": "/assets/pixel/thumbnails/knowledge-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "guess",
+      "name": "이거 누구게?",
+      "group": "썸네일",
+      "kind": "quiz",
+      "src": "/assets/pixel/thumbnails/guess.webp",
+      "preview": "/assets/pixel/thumbnails/guess-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "iq",
+      "name": "IQ 추리 챌린지",
+      "group": "썸네일",
+      "kind": "quiz",
+      "src": "/assets/pixel/thumbnails/iq.webp",
+      "preview": "/assets/pixel/thumbnails/iq-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "shop",
+      "name": "사업가 유형 테스트",
+      "group": "썸네일",
+      "kind": "test",
+      "src": "/assets/pixel/thumbnails/shop.webp",
+      "preview": "/assets/pixel/thumbnails/shop-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "energy",
+      "name": "나의 테토·에겐 모드",
+      "group": "썸네일",
+      "kind": "test",
+      "src": "/assets/pixel/thumbnails/energy.webp",
+      "preview": "/assets/pixel/thumbnails/energy-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "chat",
+      "name": "단톡방 속 내 역할",
+      "group": "썸네일",
+      "kind": "test",
+      "src": "/assets/pixel/thumbnails/chat.webp",
+      "preview": "/assets/pixel/thumbnails/chat-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "taste",
+      "name": "우리 취향 싱크율",
+      "group": "썸네일",
+      "kind": "test",
+      "src": "/assets/pixel/thumbnails/taste.webp",
+      "preview": "/assets/pixel/thumbnails/taste-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "tarot",
+      "name": "오늘의 한 장 타로",
+      "group": "썸네일",
+      "kind": "fortune",
+      "src": "/assets/pixel/thumbnails/tarot.webp",
+      "preview": "/assets/pixel/thumbnails/tarot-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "daily",
+      "name": "오늘의 운세",
+      "group": "썸네일",
+      "kind": "fortune",
+      "src": "/assets/pixel/thumbnails/daily.webp",
+      "preview": "/assets/pixel/thumbnails/daily-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "character",
+      "name": "나의 사주 캐릭터",
+      "group": "썸네일",
+      "kind": "fortune",
+      "src": "/assets/pixel/thumbnails/character.webp",
+      "preview": "/assets/pixel/thumbnails/character-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "chemistry",
+      "name": "우리의 사주 케미",
+      "group": "썸네일",
+      "kind": "fortune",
+      "src": "/assets/pixel/thumbnails/chemistry.webp",
+      "preview": "/assets/pixel/thumbnails/chemistry-small.webp",
+      "width": 960,
+      "height": 640,
+      "searchAliases": ""
+    },
+    {
+      "id": "portraits/dragon.webp",
+      "name": "dragon",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/dragon.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": ""
+    },
+    {
+      "id": "portraits/goblin.webp",
+      "name": "goblin",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/goblin.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": ""
+    },
+    {
+      "id": "portraits/golem.webp",
+      "name": "golem",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/golem.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": ""
+    },
+    {
+      "id": "portraits/hero.webp",
+      "name": "hero",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/hero.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "영웅 용사"
+    },
+    {
+      "id": "portraits/jellyfish.webp",
+      "name": "jellyfish",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/jellyfish.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": ""
+    },
+    {
+      "id": "portraits/runner-dead.webp",
+      "name": "runner-dead",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/runner-dead.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "portraits/runner-jump.webp",
+      "name": "runner-jump",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/runner-jump.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "portraits/runner-run-b.webp",
+      "name": "runner-run-b",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/runner-run-b.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "portraits/runner-slide.webp",
+      "name": "runner-slide",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/runner-slide.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "portraits/runner.webp",
+      "name": "runner",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/runner.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "portraits/slime.webp",
+      "name": "slime",
+      "group": "캐릭터 원화",
+      "kind": "portraits",
+      "src": "/assets/pixel/portraits/slime.webp",
+      "width": 384,
+      "height": 384,
+      "searchAliases": ""
+    },
+    {
+      "id": "world/book.svg",
+      "name": "book",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/book.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "책 마법책"
+    },
+    {
+      "id": "world/boost.svg",
+      "name": "boost",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/boost.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "부스트"
+    },
+    {
+      "id": "world/coin.svg",
+      "name": "coin",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/coin.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "동전 코인"
+    },
+    {
+      "id": "world/element-earth.svg",
+      "name": "element-earth",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/element-earth.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "오행 원소 흙 토"
+    },
+    {
+      "id": "world/element-fire.svg",
+      "name": "element-fire",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/element-fire.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "오행 원소 불 화"
+    },
+    {
+      "id": "world/element-metal.svg",
+      "name": "element-metal",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/element-metal.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "오행 원소 쇠 금"
+    },
+    {
+      "id": "world/element-water.svg",
+      "name": "element-water",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/element-water.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "오행 원소 물 수"
+    },
+    {
+      "id": "world/element-wood.svg",
+      "name": "element-wood",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/element-wood.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "오행 원소 나무 목"
+    },
+    {
+      "id": "world/fuel.svg",
+      "name": "fuel",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/fuel.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "연료"
+    },
+    {
+      "id": "world/heart.svg",
+      "name": "heart",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/heart.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "하트 체력"
+    },
+    {
+      "id": "world/lantern.svg",
+      "name": "lantern",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/lantern.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "등불 랜턴"
+    },
+    {
+      "id": "world/runner-dead.svg",
+      "name": "runner-dead",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/runner-dead.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "world/runner-jump.svg",
+      "name": "runner-jump",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/runner-jump.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "world/runner-run-a.svg",
+      "name": "runner-run-a",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/runner-run-a.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "world/runner-run-b.svg",
+      "name": "runner-run-b",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/runner-run-b.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "world/runner-slide.svg",
+      "name": "runner-slide",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/runner-slide.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "러너 달리기"
+    },
+    {
+      "id": "world/sort-blue-cry.svg",
+      "name": "sort-blue-cry",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-blue-cry.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-blue-normal.svg",
+      "name": "sort-blue-normal",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-blue-normal.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-blue-smile.svg",
+      "name": "sort-blue-smile",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-blue-smile.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-purple-cry.svg",
+      "name": "sort-purple-cry",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-purple-cry.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-purple-normal.svg",
+      "name": "sort-purple-normal",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-purple-normal.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-purple-smile.svg",
+      "name": "sort-purple-smile",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-purple-smile.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-white-cry.svg",
+      "name": "sort-white-cry",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-white-cry.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-white-normal.svg",
+      "name": "sort-white-normal",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-white-normal.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/sort-white-smile.svg",
+      "name": "sort-white-smile",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/sort-white-smile.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "분류 정리"
+    },
+    {
+      "id": "world/star.svg",
+      "name": "star",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/star.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "별"
+    },
+    {
+      "id": "world/tarot-0.svg",
+      "name": "tarot-0",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-0.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-1.svg",
+      "name": "tarot-1",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-1.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-10.svg",
+      "name": "tarot-10",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-10.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-11.svg",
+      "name": "tarot-11",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-11.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-12.svg",
+      "name": "tarot-12",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-12.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-13.svg",
+      "name": "tarot-13",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-13.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-14.svg",
+      "name": "tarot-14",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-14.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-15.svg",
+      "name": "tarot-15",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-15.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-16.svg",
+      "name": "tarot-16",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-16.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-17.svg",
+      "name": "tarot-17",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-17.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-18.svg",
+      "name": "tarot-18",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-18.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-19.svg",
+      "name": "tarot-19",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-19.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-2.svg",
+      "name": "tarot-2",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-2.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-20.svg",
+      "name": "tarot-20",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-20.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-21.svg",
+      "name": "tarot-21",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-21.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-3.svg",
+      "name": "tarot-3",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-3.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-4.svg",
+      "name": "tarot-4",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-4.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-5.svg",
+      "name": "tarot-5",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-5.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-6.svg",
+      "name": "tarot-6",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-6.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-7.svg",
+      "name": "tarot-7",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-7.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-8.svg",
+      "name": "tarot-8",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-8.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-9.svg",
+      "name": "tarot-9",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-9.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/tarot-back.svg",
+      "name": "tarot-back",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/tarot-back.svg",
+      "width": 64,
+      "height": 104,
+      "searchAliases": "타로"
+    },
+    {
+      "id": "world/trophy.svg",
+      "name": "trophy",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/trophy.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "트로피 우승"
+    },
+    {
+      "id": "world/vehicle-basic.svg",
+      "name": "vehicle-basic",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-basic.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "world/vehicle-bus.svg",
+      "name": "vehicle-bus",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-bus.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "world/vehicle-car.svg",
+      "name": "vehicle-car",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-car.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "world/vehicle-sport.svg",
+      "name": "vehicle-sport",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-sport.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "world/vehicle-touring.svg",
+      "name": "vehicle-touring",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-touring.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "world/vehicle-truck.svg",
+      "name": "vehicle-truck",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-truck.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "world/vehicle-van.svg",
+      "name": "vehicle-van",
+      "group": "게임·타로·오행",
+      "kind": "world",
+      "src": "/assets/pixel/world/vehicle-van.svg",
+      "width": 32,
+      "height": 32,
+      "searchAliases": "차량 자동차"
+    },
+    {
+      "id": "rpg/battlefield.svg",
+      "name": "battlefield",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/battlefield.svg",
+      "width": 192,
+      "height": 112,
+      "searchAliases": "전장"
+    },
+    {
+      "id": "rpg/boss-01.svg",
+      "name": "boss-01",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-01.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-02.svg",
+      "name": "boss-02",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-02.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-03.svg",
+      "name": "boss-03",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-03.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-04.svg",
+      "name": "boss-04",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-04.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-05.svg",
+      "name": "boss-05",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-05.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-06.svg",
+      "name": "boss-06",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-06.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-07.svg",
+      "name": "boss-07",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-07.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-08.svg",
+      "name": "boss-08",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-08.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-09.svg",
+      "name": "boss-09",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-09.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-10.svg",
+      "name": "boss-10",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-10.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-11.svg",
+      "name": "boss-11",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-11.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-12.svg",
+      "name": "boss-12",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-12.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-13.svg",
+      "name": "boss-13",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-13.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-14.svg",
+      "name": "boss-14",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-14.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-15.svg",
+      "name": "boss-15",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-15.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-16.svg",
+      "name": "boss-16",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-16.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-17.svg",
+      "name": "boss-17",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-17.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-18.svg",
+      "name": "boss-18",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-18.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-19.svg",
+      "name": "boss-19",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-19.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-20.svg",
+      "name": "boss-20",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-20.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-21.svg",
+      "name": "boss-21",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-21.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-22.svg",
+      "name": "boss-22",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-22.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-23.svg",
+      "name": "boss-23",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-23.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-24.svg",
+      "name": "boss-24",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-24.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/boss-25.svg",
+      "name": "boss-25",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/boss-25.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "보스"
+    },
+    {
+      "id": "rpg/chest-common-closed.svg",
+      "name": "chest-common-closed",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-common-closed.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 일반 닫힘"
+    },
+    {
+      "id": "rpg/chest-common-open.svg",
+      "name": "chest-common-open",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-common-open.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 일반 열림"
+    },
+    {
+      "id": "rpg/chest-divine-closed.svg",
+      "name": "chest-divine-closed",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-divine-closed.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 신화 닫힘"
+    },
+    {
+      "id": "rpg/chest-divine-open.svg",
+      "name": "chest-divine-open",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-divine-open.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 신화 열림"
+    },
+    {
+      "id": "rpg/chest-legend-closed.svg",
+      "name": "chest-legend-closed",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-legend-closed.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 전설 닫힘"
+    },
+    {
+      "id": "rpg/chest-legend-open.svg",
+      "name": "chest-legend-open",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-legend-open.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 전설 열림"
+    },
+    {
+      "id": "rpg/chest-rare-closed.svg",
+      "name": "chest-rare-closed",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-rare-closed.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 희귀 닫힘"
+    },
+    {
+      "id": "rpg/chest-rare-open.svg",
+      "name": "chest-rare-open",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-rare-open.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 희귀 열림"
+    },
+    {
+      "id": "rpg/chest-sealed.svg",
+      "name": "chest-sealed",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-sealed.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 봉인"
+    },
+    {
+      "id": "rpg/chest-uncommon-closed.svg",
+      "name": "chest-uncommon-closed",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-uncommon-closed.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 고급 닫힘"
+    },
+    {
+      "id": "rpg/chest-uncommon-open.svg",
+      "name": "chest-uncommon-open",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/chest-uncommon-open.svg",
+      "width": 96,
+      "height": 80,
+      "searchAliases": "상자 보물상자 고급 열림"
+    },
+    {
+      "id": "rpg/hero.svg",
+      "name": "hero",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/hero.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "영웅 용사"
+    },
+    {
+      "id": "rpg/monster-01.svg",
+      "name": "monster-01",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-01.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-02.svg",
+      "name": "monster-02",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-02.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-03.svg",
+      "name": "monster-03",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-03.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-04.svg",
+      "name": "monster-04",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-04.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-05.svg",
+      "name": "monster-05",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-05.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-06.svg",
+      "name": "monster-06",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-06.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-07.svg",
+      "name": "monster-07",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-07.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-08.svg",
+      "name": "monster-08",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-08.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-09.svg",
+      "name": "monster-09",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-09.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-10.svg",
+      "name": "monster-10",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-10.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-11.svg",
+      "name": "monster-11",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-11.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-12.svg",
+      "name": "monster-12",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-12.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-13.svg",
+      "name": "monster-13",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-13.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-14.svg",
+      "name": "monster-14",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-14.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-15.svg",
+      "name": "monster-15",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-15.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-16.svg",
+      "name": "monster-16",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-16.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-17.svg",
+      "name": "monster-17",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-17.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-18.svg",
+      "name": "monster-18",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-18.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-19.svg",
+      "name": "monster-19",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-19.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-20.svg",
+      "name": "monster-20",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-20.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-21.svg",
+      "name": "monster-21",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-21.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-22.svg",
+      "name": "monster-22",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-22.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-23.svg",
+      "name": "monster-23",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-23.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-24.svg",
+      "name": "monster-24",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-24.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/monster-25.svg",
+      "name": "monster-25",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/monster-25.svg",
+      "width": 96,
+      "height": 96,
+      "searchAliases": "몬스터"
+    },
+    {
+      "id": "rpg/spell-attack.svg",
+      "name": "spell-attack",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/spell-attack.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": "마법 주문 공격"
+    },
+    {
+      "id": "rpg/spell-heal.svg",
+      "name": "spell-heal",
+      "group": "타이핑 전투·상자",
+      "kind": "rpg",
+      "src": "/assets/pixel/rpg/spell-heal.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": "마법 주문 회복"
+    },
+    {
+      "id": "personas/0.svg",
+      "name": "0",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/0.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/1.svg",
+      "name": "1",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/1.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/10.svg",
+      "name": "10",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/10.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/11.svg",
+      "name": "11",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/11.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/12.svg",
+      "name": "12",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/12.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/13.svg",
+      "name": "13",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/13.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/14.svg",
+      "name": "14",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/14.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/15.svg",
+      "name": "15",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/15.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/2.svg",
+      "name": "2",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/2.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/3.svg",
+      "name": "3",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/3.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/4.svg",
+      "name": "4",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/4.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/5.svg",
+      "name": "5",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/5.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/6.svg",
+      "name": "6",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/6.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/7.svg",
+      "name": "7",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/7.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/8.svg",
+      "name": "8",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/8.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "personas/9.svg",
+      "name": "9",
+      "group": "성향 결과",
+      "kind": "personas",
+      "src": "/assets/pixel/personas/9.svg",
+      "width": 48,
+      "height": 48,
+      "searchAliases": ""
+    },
+    {
+      "id": "attack-common",
+      "name": "나무 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-02",
+      "name": "종이 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-03",
+      "name": "풀잎 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-04",
+      "name": "햇살 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-05",
+      "name": "구름 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-06",
+      "name": "바람 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-07",
+      "name": "모래 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-08",
+      "name": "조약돌 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-09",
+      "name": "이끼 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-10",
+      "name": "새싹 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-11",
+      "name": "나무 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-12",
+      "name": "종이 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-13",
+      "name": "풀잎 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-14",
+      "name": "햇살 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-15",
+      "name": "구름 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-16",
+      "name": "바람 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-17",
+      "name": "모래 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-18",
+      "name": "조약돌 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-19",
+      "name": "이끼 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-20",
+      "name": "새싹 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-21",
+      "name": "나무 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-21.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-22",
+      "name": "종이 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-22.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-23",
+      "name": "풀잎 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-23.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-24",
+      "name": "햇살 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-24.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-25",
+      "name": "구름 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-25.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-26",
+      "name": "바람 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-26.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-27",
+      "name": "모래 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-27.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-28",
+      "name": "조약돌 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-28.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-29",
+      "name": "이끼 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-29.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-30",
+      "name": "새싹 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-30.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-31",
+      "name": "나무 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-31.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-32",
+      "name": "종이 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-32.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-33",
+      "name": "풀잎 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-33.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-34",
+      "name": "햇살 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-34.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-35",
+      "name": "구름 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-35.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-36",
+      "name": "바람 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-36.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-37",
+      "name": "모래 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-37.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-38",
+      "name": "조약돌 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-38.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-39",
+      "name": "이끼 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-39.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-40",
+      "name": "새싹 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-40.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-41",
+      "name": "나무 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-41.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-42",
+      "name": "종이 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-42.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-43",
+      "name": "풀잎 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-43.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-44",
+      "name": "햇살 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-44.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-45",
+      "name": "구름 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-45.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-46",
+      "name": "바람 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-46.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-47",
+      "name": "모래 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-47.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-48",
+      "name": "조약돌 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-48.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-49",
+      "name": "이끼 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-49.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-common-50",
+      "name": "새싹 문장검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/attack-common-50.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon",
+      "name": "은빛 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-02",
+      "name": "푸른 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-03",
+      "name": "맑은 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-04",
+      "name": "산들 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-05",
+      "name": "파도 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-06",
+      "name": "숲길 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-07",
+      "name": "여울 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-08",
+      "name": "비취 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-09",
+      "name": "서리 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-10",
+      "name": "청명 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-11",
+      "name": "은빛 펜촉검 2식",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-12",
+      "name": "푸른 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-13",
+      "name": "맑은 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-14",
+      "name": "산들 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-15",
+      "name": "파도 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-16",
+      "name": "숲길 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-17",
+      "name": "여울 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-18",
+      "name": "비취 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-19",
+      "name": "서리 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-20",
+      "name": "청명 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-21",
+      "name": "은빛 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-21.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-22",
+      "name": "푸른 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-22.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-23",
+      "name": "맑은 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-23.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-24",
+      "name": "산들 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-24.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-uncommon-25",
+      "name": "파도 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/attack-uncommon-25.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare",
+      "name": "유성 키보드",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-02",
+      "name": "달빛 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-03",
+      "name": "수호자의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-04",
+      "name": "보랏빛 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-05",
+      "name": "황혼 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-06",
+      "name": "신비한 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-07",
+      "name": "별무리 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-08",
+      "name": "몽환의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-09",
+      "name": "은하 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-10",
+      "name": "예언의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-11",
+      "name": "유성 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-12",
+      "name": "달빛 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-13",
+      "name": "수호자의 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-14",
+      "name": "보랏빛 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-15",
+      "name": "황혼 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-16",
+      "name": "신비한 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-17",
+      "name": "별무리 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-18",
+      "name": "몽환의 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-19",
+      "name": "은하 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-rare-20",
+      "name": "예언의 펜촉검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/attack-rare-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-legend",
+      "name": "새벽의 만년필",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/attack-legend.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-legend-02",
+      "name": "별빛 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/attack-legend-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-legend-03",
+      "name": "태양의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/attack-legend-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-legend-04",
+      "name": "영원의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/attack-legend-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-legend-05",
+      "name": "황금빛 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/attack-legend-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-legend-06",
+      "name": "고대의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/attack-legend-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-divine-01",
+      "name": "천상의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "신",
+      "src": "/assets/pixel/items/attack-divine-01.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-divine-02",
+      "name": "신화의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "신",
+      "src": "/assets/pixel/items/attack-divine-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "attack-divine-03",
+      "name": "창세의 연필검",
+      "group": "장비 312종",
+      "kind": "무기",
+      "rarity": "신",
+      "src": "/assets/pixel/items/attack-divine-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common",
+      "name": "종이 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-02",
+      "name": "종이 망토 2식",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-03",
+      "name": "풀잎 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-04",
+      "name": "햇살 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-05",
+      "name": "구름 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-06",
+      "name": "바람 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-07",
+      "name": "모래 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-08",
+      "name": "조약돌 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-09",
+      "name": "이끼 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-10",
+      "name": "새싹 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-11",
+      "name": "나무 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-12",
+      "name": "종이 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-13",
+      "name": "풀잎 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-14",
+      "name": "햇살 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-15",
+      "name": "구름 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-16",
+      "name": "바람 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-17",
+      "name": "모래 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-18",
+      "name": "조약돌 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-19",
+      "name": "이끼 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-20",
+      "name": "새싹 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-21",
+      "name": "나무 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-21.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-22",
+      "name": "종이 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-22.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-23",
+      "name": "풀잎 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-23.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-24",
+      "name": "햇살 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-24.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-25",
+      "name": "구름 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-25.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-26",
+      "name": "바람 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-26.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-27",
+      "name": "모래 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-27.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-28",
+      "name": "조약돌 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-28.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-29",
+      "name": "이끼 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-29.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-30",
+      "name": "새싹 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-30.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-31",
+      "name": "나무 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-31.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-32",
+      "name": "종이 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-32.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-33",
+      "name": "풀잎 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-33.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-34",
+      "name": "햇살 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-34.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-35",
+      "name": "구름 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-35.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-36",
+      "name": "바람 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-36.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-37",
+      "name": "모래 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-37.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-38",
+      "name": "조약돌 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-38.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-39",
+      "name": "이끼 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-39.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-40",
+      "name": "새싹 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-40.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-41",
+      "name": "나무 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-41.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-42",
+      "name": "종이 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-42.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-43",
+      "name": "풀잎 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-43.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-44",
+      "name": "햇살 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-44.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-45",
+      "name": "구름 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-45.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-46",
+      "name": "바람 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-46.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-47",
+      "name": "모래 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-47.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-48",
+      "name": "조약돌 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-48.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-49",
+      "name": "이끼 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-49.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-common-50",
+      "name": "새싹 수호패",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/defense-common-50.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon",
+      "name": "단단한 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-02",
+      "name": "푸른 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-03",
+      "name": "맑은 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-04",
+      "name": "산들 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-05",
+      "name": "파도 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-06",
+      "name": "숲길 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-07",
+      "name": "여울 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-08",
+      "name": "비취 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-09",
+      "name": "서리 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-10",
+      "name": "청명 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-11",
+      "name": "은빛 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-12",
+      "name": "푸른 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-13",
+      "name": "맑은 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-14",
+      "name": "산들 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-15",
+      "name": "파도 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-16",
+      "name": "숲길 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-17",
+      "name": "여울 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-18",
+      "name": "비취 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-19",
+      "name": "서리 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-20",
+      "name": "청명 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-21",
+      "name": "은빛 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-21.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-22",
+      "name": "푸른 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-22.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-23",
+      "name": "맑은 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-23.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-24",
+      "name": "산들 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-24.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-uncommon-25",
+      "name": "파도 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/defense-uncommon-25.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare",
+      "name": "수호자의 사전",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-02",
+      "name": "달빛 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-03",
+      "name": "수호자의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-04",
+      "name": "보랏빛 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-05",
+      "name": "황혼 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-06",
+      "name": "신비한 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-07",
+      "name": "별무리 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-08",
+      "name": "몽환의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-09",
+      "name": "은하 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-10",
+      "name": "예언의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-11",
+      "name": "유성 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-12",
+      "name": "달빛 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-13",
+      "name": "수호자의 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-14",
+      "name": "보랏빛 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-15",
+      "name": "황혼 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-16",
+      "name": "신비한 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-17",
+      "name": "별무리 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-18",
+      "name": "몽환의 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-19",
+      "name": "은하 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-rare-20",
+      "name": "예언의 책 표지",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/defense-rare-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-legend",
+      "name": "별빛 문장 갑옷",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/defense-legend.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-legend-02",
+      "name": "별빛 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/defense-legend-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-legend-03",
+      "name": "태양의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/defense-legend-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-legend-04",
+      "name": "영원의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/defense-legend-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-legend-05",
+      "name": "황금빛 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/defense-legend-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-legend-06",
+      "name": "고대의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/defense-legend-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-divine-01",
+      "name": "천상의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "신",
+      "src": "/assets/pixel/items/defense-divine-01.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-divine-02",
+      "name": "신화의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "신",
+      "src": "/assets/pixel/items/defense-divine-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "defense-divine-03",
+      "name": "창세의 망토",
+      "group": "장비 312종",
+      "kind": "방어구",
+      "rarity": "신",
+      "src": "/assets/pixel/items/defense-divine-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common",
+      "name": "풀잎 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-02",
+      "name": "종이 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-03",
+      "name": "풀잎 책갈피 2식",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-04",
+      "name": "햇살 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-05",
+      "name": "구름 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-06",
+      "name": "바람 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-07",
+      "name": "모래 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-08",
+      "name": "조약돌 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-09",
+      "name": "이끼 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-10",
+      "name": "새싹 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-11",
+      "name": "나무 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-12",
+      "name": "종이 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-13",
+      "name": "풀잎 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-14",
+      "name": "햇살 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-15",
+      "name": "구름 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-16",
+      "name": "바람 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-17",
+      "name": "모래 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-18",
+      "name": "조약돌 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-19",
+      "name": "이끼 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-20",
+      "name": "새싹 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-21",
+      "name": "나무 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-21.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-22",
+      "name": "종이 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-22.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-23",
+      "name": "풀잎 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-23.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-24",
+      "name": "햇살 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-24.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-25",
+      "name": "구름 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-25.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-26",
+      "name": "바람 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-26.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-27",
+      "name": "모래 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-27.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-28",
+      "name": "조약돌 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-28.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-29",
+      "name": "이끼 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-29.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-30",
+      "name": "새싹 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-30.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-31",
+      "name": "나무 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-31.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-32",
+      "name": "종이 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-32.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-33",
+      "name": "풀잎 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-33.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-34",
+      "name": "햇살 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-34.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-35",
+      "name": "구름 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-35.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-36",
+      "name": "바람 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-36.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-37",
+      "name": "모래 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-37.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-38",
+      "name": "조약돌 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-38.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-39",
+      "name": "이끼 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-39.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-40",
+      "name": "새싹 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-40.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-41",
+      "name": "나무 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-41.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-42",
+      "name": "종이 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-42.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-43",
+      "name": "풀잎 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-43.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-44",
+      "name": "햇살 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-44.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-45",
+      "name": "구름 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-45.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-46",
+      "name": "바람 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-46.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-47",
+      "name": "모래 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-47.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-48",
+      "name": "조약돌 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-48.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-49",
+      "name": "이끼 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-49.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-common-50",
+      "name": "새싹 부적",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "일반",
+      "src": "/assets/pixel/items/heal-common-50.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon",
+      "name": "이슬 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-02",
+      "name": "푸른 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-03",
+      "name": "맑은 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-04",
+      "name": "산들 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-05",
+      "name": "파도 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-06",
+      "name": "숲길 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-07",
+      "name": "여울 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-08",
+      "name": "비취 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-09",
+      "name": "서리 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-10",
+      "name": "청명 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-11",
+      "name": "은빛 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-12",
+      "name": "푸른 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-13",
+      "name": "맑은 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-14",
+      "name": "산들 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-15",
+      "name": "파도 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-16",
+      "name": "숲길 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-17",
+      "name": "여울 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-18",
+      "name": "비취 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-19",
+      "name": "서리 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-20",
+      "name": "청명 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-21",
+      "name": "은빛 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-21.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-22",
+      "name": "푸른 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-22.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-23",
+      "name": "맑은 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-23.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-24",
+      "name": "산들 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-24.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-uncommon-25",
+      "name": "파도 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "고급",
+      "src": "/assets/pixel/items/heal-uncommon-25.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare",
+      "name": "달빛 잉크병",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-02",
+      "name": "달빛 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-03",
+      "name": "수호자의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-04",
+      "name": "보랏빛 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-05",
+      "name": "황혼 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-06",
+      "name": "신비한 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-07",
+      "name": "별무리 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-07.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-08",
+      "name": "몽환의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-08.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-09",
+      "name": "은하 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-09.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-10",
+      "name": "예언의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-10.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-11",
+      "name": "유성 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-11.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-12",
+      "name": "달빛 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-12.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-13",
+      "name": "수호자의 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-13.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-14",
+      "name": "보랏빛 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-14.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-15",
+      "name": "황혼 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-15.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-16",
+      "name": "신비한 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-16.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-17",
+      "name": "별무리 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-17.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-18",
+      "name": "몽환의 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-18.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-19",
+      "name": "은하 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-19.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-rare-20",
+      "name": "예언의 찻잔",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "희귀",
+      "src": "/assets/pixel/items/heal-rare-20.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-legend",
+      "name": "생명의 문장석",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/heal-legend.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-legend-02",
+      "name": "별빛 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/heal-legend-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-legend-03",
+      "name": "태양의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/heal-legend-03.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-legend-04",
+      "name": "영원의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/heal-legend-04.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-legend-05",
+      "name": "황금빛 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/heal-legend-05.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-legend-06",
+      "name": "고대의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "전설",
+      "src": "/assets/pixel/items/heal-legend-06.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-divine-01",
+      "name": "천상의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "신",
+      "src": "/assets/pixel/items/heal-divine-01.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-divine-02",
+      "name": "신화의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "신",
+      "src": "/assets/pixel/items/heal-divine-02.svg",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "id": "heal-divine-03",
+      "name": "창세의 책갈피",
+      "group": "장비 312종",
+      "kind": "회복 장신구",
+      "rarity": "신",
+      "src": "/assets/pixel/items/heal-divine-03.svg",
+      "width": 48,
+      "height": 48
+    }
+  ]
+}

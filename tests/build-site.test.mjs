@@ -20,6 +20,8 @@ test('publication build creates crawlable pages and excludes server stores',asyn
   assert.match(home,/<main class="seo-home"/);
   assert.match(home,/<link rel="canonical" href="https:\/\/dwingul\.com\/">/);
   assert.match(home,/name="google-adsense-account" content="ca-pub-7301223136166743"/);
+  assert.match(home,/class="guide-thumb static-art-fallback"/);
+  assert.match(home,/property="og:image" content="https:\/\/dwingul\.com\/assets\/pixel\/thumbnails\/sort\.webp"/);
 
   const index=await readFile(path.join(dist,'content/index.html'),'utf8');
   assert.ok(index.includes('<h1>놀거리 가이드</h1>'));
@@ -30,6 +32,8 @@ test('publication build creates crawlable pages and excludes server stores',asyn
     assert.ok(html.includes(`<h1>${item.title}</h1>`));
     assert.match(html,new RegExp(`href="/#/detail/${item.id}"`));
     assert.match(html,/type="module" src="\/js\/telemetry\.js"/);
+    assert.match(html,/class="guide-cover static-art-fallback"/);
+    assert.match(html,new RegExp(`property="og:image" content="https://dwingul\\.com/assets/pixel/thumbnails/${item.id}\\.webp"`));
     assert.match(html,/<h2>기록과 결과 읽기<\/h2>/);
     assert.equal((html.match(/<article><h3>/g)||[]).length,3);
     intros.add(guides[item.id].intro);
