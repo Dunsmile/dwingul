@@ -11,7 +11,7 @@ const dist=path.join(root,'dist');
 
 test('publication build creates crawlable pages and excludes server stores',async()=>{
   const result=await buildSite();
-  assert.deepEqual({pages:result.pages,contents:result.contents},{pages:26,contents:21});
+  assert.deepEqual({pages:result.pages,contents:result.contents},{pages:27,contents:21});
 
   await assert.rejects(stat(path.join(dist,'js/rpg-store.js')),{code:'ENOENT'});
   await assert.rejects(stat(path.join(dist,'js/garage-store.js')),{code:'ENOENT'});
@@ -21,6 +21,9 @@ test('publication build creates crawlable pages and excludes server stores',asyn
   assert.match(home,/<link rel="canonical" href="https:\/\/dwingul\.com\/">/);
   assert.match(home,/name="google-adsense-account" content="ca-pub-7301223136166743"/);
 
+  const index=await readFile(path.join(dist,'content/index.html'),'utf8');
+  assert.ok(index.includes('<h1>놀거리 가이드</h1>'));
+  for(const item of catalog)assert.ok(index.includes('href="/content/'+item.id+'/"'));
   const intros=new Set();
   for (const item of catalog) {
     const html=await readFile(path.join(dist,'content',item.id,'index.html'),'utf8');
@@ -35,7 +38,7 @@ test('publication build creates crawlable pages and excludes server stores',asyn
 
   assert.equal(await readFile(path.join(dist,'ads.txt'),'utf8'),'google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0\n');
   const sitemap=await readFile(path.join(dist,'sitemap.xml'),'utf8');
-  assert.equal((sitemap.match(/<url>/g)||[]).length,26);
+  assert.equal((sitemap.match(/<url>/g)||[]).length,27);
   for (const page of ['about','privacy','terms','contact']) {
     const html=await readFile(path.join(dist,page,'index.html'),'utf8');
     assert.match(html,/type="module" src="\/js\/telemetry\.js"/);

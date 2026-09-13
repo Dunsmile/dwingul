@@ -130,11 +130,11 @@ const guideCss = `
 
 function commonHead({title,description,pathname,type='website'}) {
   const canonical=absolute(pathname);
-  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f6eedb"><title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="뒹굴"><meta property="og:type" content="${type}"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}"><meta name="twitter:card" content="summary"><meta name="google-adsense-account" content="ca-pub-7301223136166743"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/pixel.css"><style>${guideCss}</style><script type="module" src="/js/telemetry.js"></script>`;
+  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f6eedb"><title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="뒹굴"><meta property="og:type" content="${type}"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}"><meta name="twitter:card" content="summary"><meta name="google-adsense-account" content="ca-pub-7301223136166743"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/pixel.css"><link rel="stylesheet" href="/css/consent.css"><style>${guideCss}</style><script type="module" src="/js/telemetry.js"></script>`;
 }
 
 function footer() {
-  return `<footer class="guide-footer"><span>© ${new Date().getFullYear()} ${owner}</span><nav aria-label="정책과 연락"><a href="/about/">소개</a> <a href="/privacy/">개인정보처리방침</a> <a href="/terms/">이용약관</a> <a href="/contact/">연락</a></nav></footer>`;
+  return `<footer class="guide-footer"><span>© ${new Date().getFullYear()} ${owner}</span><nav aria-label="정책과 연락"><a href="/about/">소개</a> <a href="/privacy/">개인정보처리방침</a> <a href="/terms/">이용약관</a> <a href="/contact/">연락</a> <button type="button" data-analytics-settings>방문 분석 설정</button></nav></footer>`;
 }
 
 function pageDocument({head,body}) {
@@ -145,6 +145,12 @@ function relatedItems(item) {
   const same=catalog.filter(candidate=>candidate.cat===item.cat&&candidate.id!==item.id);
   const fallback=catalog.filter(candidate=>candidate.cat!==item.cat);
   return [...same,...fallback].slice(0,3);
+}
+
+function contentIndexPage() {
+  const description='21가지 놀거리의 조작법, 기록 기준과 시작 팁을 한곳에서 찾아보세요.';
+  const sections=Object.entries(categories).map(([category,name])=>`<section class="guide-section"><h2>${escapeHtml(name)}</h2><div class="guide-related">${catalog.filter(item=>item.cat===category).map(item=>`<a href="/content/${item.id}/"><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.desc)}</p></a>`).join('')}</div></section>`).join('');
+  return pageDocument({head:commonHead({title:'놀거리 가이드 | 뒹굴',description,pathname:'/content/'}),body:`<div class="guide-shell"><nav class="guide-nav"><a class="guide-brand" href="/">뒹굴</a><a href="/#/explore">놀거리 시작하기 →</a></nav><main><header class="guide-hero"><span class="guide-kicker">PLAY GUIDE</span><h1>놀거리 가이드</h1><p>${description}</p></header>${sections}</main>${footer()}</div>`});
 }
 
 function guidePage(item) {
@@ -226,17 +232,18 @@ async function validateBuild() {
   assert.equal(await readFile(path.join(outputDirectory,'ads.txt'),'utf8'),'google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0\n');
   assert.match(await readFile(path.join(outputDirectory,'robots.txt'),'utf8'),/Sitemap: https:\/\/dwingul\.com\/sitemap\.xml/);
   const sitemap=await readFile(path.join(outputDirectory,'sitemap.xml'),'utf8');
-  assert.equal((sitemap.match(/<url>/g)||[]).length,26,'사이트맵에는 홈, 콘텐츠 21개, 안내 4개가 있어야 합니다.');
+  assert.equal((sitemap.match(/<url>/g)||[]).length,27,'사이트맵에는 홈, 가이드 목록, 콘텐츠 21개, 안내 4개가 있어야 합니다.');
 }
 
 export async function buildSite() {
   await copyPublic();
   const sourceIndex=await readFile(path.join(publicDirectory,'index.html'),'utf8');
   await writeFile(path.join(outputDirectory,'index.html'),injectHomeSeo(sourceIndex),'utf8');
+  await writePage('content',contentIndexPage());
   for (const item of catalog) await writePage(path.join('content',item.id),guidePage(item));
   for (const [id,page] of Object.entries(legalPages)) await writePage(id,legalPage(id,page));
 
-  const urls=['/',...catalog.map(item=>`/content/${item.id}/`),...Object.keys(legalPages).map(id=>`/${id}/`)];
+  const urls=['/','/content/',...catalog.map(item=>`/content/${item.id}/`),...Object.keys(legalPages).map(id=>`/${id}/`)];
   const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(pathname=>`  <url><loc>${absolute(pathname)}</loc><lastmod>${buildDate}</lastmod></url>`).join('\n')}\n</urlset>\n`;
   await writeFile(path.join(outputDirectory,'sitemap.xml'),sitemap,'utf8');
   await writeFile(path.join(outputDirectory,'robots.txt'),`User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${siteOrigin}/sitemap.xml\n`,'utf8');

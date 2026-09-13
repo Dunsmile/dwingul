@@ -20,7 +20,7 @@ node scripts/generate-pixel-assets.mjs
 node scripts/build-site.mjs
 ```
 
-두 번째 명령은 `public/`을 바탕으로 `dist/`를 새로 만든다. 브라우저에서 사용하면 안 되는 `public/js/rpg-store.js`와 `public/js/garage-store.js`는 복사하지 않는다. 홈, 콘텐츠 안내 21개, 소개·개인정보처리방침·이용약관·연락 페이지를 만들고 `sitemap.xml`, `robots.txt`, `ads.txt`도 생성한 뒤 자체 검증한다. 성공 시 `site built: 26 crawlable pages`가 표시된다.
+두 번째 명령은 `public/`을 바탕으로 `dist/`를 새로 만든다. 브라우저에서 사용하면 안 되는 `public/js/rpg-store.js`와 `public/js/garage-store.js`는 복사하지 않는다. 홈, 가이드 목록, 콘텐츠 안내 21개, 소개·개인정보처리방침·이용약관·연락 페이지를 만들고 `sitemap.xml`, `robots.txt`, `ads.txt`도 생성한 뒤 자체 검증한다. 성공 시 `site built: 27 crawlable pages`가 표시된다.
 
 배포 전에는 적어도 다음 항목을 확인한다.
 
@@ -28,7 +28,7 @@ node scripts/build-site.mjs
 - `dist/content/<콘텐츠 ID>/index.html`에서 이용 안내를 읽을 수 있고, 시작 버튼이 `/#/detail/<콘텐츠 ID>`로 이동하는지 확인한다.
 - `dist/js/rpg-store.js`와 `dist/js/garage-store.js`가 없는지 확인한다.
 - `dist/ads.txt` 내용이 `google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0`인지 확인한다.
-- `dist/sitemap.xml`에 홈 1개, 콘텐츠 21개, 안내 4개로 총 26개 URL이 있는지 확인한다.
+- `dist/sitemap.xml`에 홈 1개, 가이드 목록 1개, 콘텐츠 21개, 안내 4개로 총 27개 URL이 있는지 확인한다.
 - 모바일과 데스크톱에서 홈, 게임 1개, 퀴즈 1개, 성향 테스트 1개, 운세 1개, 개인정보처리방침을 직접 연다.
 
 `dist/`는 매번 지우고 다시 만드는 결과물이다. `wrangler.jsonc`의 정적 자산 디렉터리는 `./dist`를 가리키며, 모든 요청이 먼저 Worker를 통과하도록 설정되어 있다. 정적 자산 설정은 Cloudflare 공식 [Workers Static Assets 시작 안내](https://developers.cloudflare.com/workers/static-assets/get-started/)와 실제 설정을 함께 확인한다. 계정 로그인과 아래 외부 확인을 마친 뒤의 배포 명령은 다음과 같다.
