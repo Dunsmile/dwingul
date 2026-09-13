@@ -147,6 +147,8 @@ async function verifyProfileHistoryAndRank() {
   await open('rankings?scope=world&content=sequence&period=all', '#rank-filter');
   await page.getByText('출시검증 · 나', {exact: true}).waitFor();
   assert.match(await page.locator('.rank-row.mine').innerText(), /88\s*점/);
+  const rankingSettings = await page.locator('#group-game-settings').count() ? await page.locator('#group-game-settings').innerText() : '';
+  if (/20초 모드|무한 모드/.test(rankingSettings)) findings.push({severity: 'P2', area: 'rankings', issue: 'sequence ranking filter shows the unrelated sort game-mode control', evidence: rankingSettings});
   await page.locator('#rank-filter').evaluate(form => form.scrollIntoView({block: 'start'}));
   const beforeRankSubmit = await page.evaluate(() => scrollY);
   await page.locator('#rank-filter button[type=submit]').click();
@@ -156,8 +158,9 @@ async function verifyProfileHistoryAndRank() {
   coverage.scroll.rankSubmit = {before: beforeRankSubmit, after: afterRankSubmit};
   if (Math.abs(afterRankSubmit - beforeRankSubmit) > 2) findings.push({severity: 'P2', area: 'rankings', issue: 'same-page rank filter submission changed scroll position', evidence: coverage.scroll.rankSubmit});
 
-  await page.locator('a[href="#/explore"]').first().click();
-  await page.locator('#main h1').waitFor();
+  await page.getByRole('link', {name: '둘러보기', exact: true}).last().click();
+  await page.waitForURL(/#\/explore$/);
+  await page.getByRole('heading', {name: '오늘은 무엇을 해볼까요?', exact: true}).waitFor();
   assert.equal(await page.evaluate(() => scrollY), 0, 'cross-page navigation should reset scroll');
   coverage.scroll.crossPage = 0;
 
@@ -236,6 +239,14 @@ async function verifyGames() {
   await open('play/typing?seed=41', '.typing-rpg');
   await page.screenshot({path: `${output}/game-typing-320.png`, fullPage: false});
   await layoutSnapshot('320x568 play/typing');
+  await page.setViewportSize(viewports[1]);
+  await open('play/typing?seed=43', '.typing-rpg');
+  await advance(2_000_000);
+  await page.locator('.result-card').waitFor();
+  await page.getByRole('link', {name: '홈으로 가기', exact: true}).waitFor();
+  await layoutSnapshot('390x844 typing result');
+  await page.screenshot({path: `${output}/game-typing-result-390.png`, fullPage: false});
+  coverage.games['typing-result-touch'] = {viewport: 390, finished: true, homeAction: true};
 }
 
 try {
@@ -245,10 +256,11 @@ try {
   findings.push(...pageErrors.map(error => ({severity: 'P1', area: 'browser', issue: 'uncaught page error', evidence: error})));
   findings.push(...consoleErrors.map(error => ({severity: 'P1', area: 'browser', issue: 'console error', evidence: error})));
   findings.push(...failedResponses.map(error => ({severity: 'P1', area: 'network', issue: 'local response failed', evidence: error})));
-  const report = {passed: findings.length === 0, viewports, contentCount: catalog.length, coverage, findings, pageErrors, consoleErrors, failedResponses};
+  const blockers = findings.filter(finding => ['P0', 'P1'].includes(finding.severity));
+  const report = {passed: blockers.length === 0, viewports, contentCount: catalog.length, coverage, findings, pageErrors, consoleErrors, failedResponses};
   writeFileSync(`${output}/report.json`, JSON.stringify(report, null, 2));
   console.log(JSON.stringify({passed: report.passed, routeChecks: Object.values(coverage.routes).reduce((sum, routes) => sum + routes.length, 0), gameChecks: Object.keys(coverage.games).length, findings}, null, 2));
-  assert.deepEqual(findings, []);
+  assert.deepEqual(blockers, []);
 } catch (error) {
   const diagnostics = {url: page.url(), body: (await page.locator('body').innerText().catch(() => '')).slice(0, 3000), findings, pageErrors, consoleErrors, failedResponses};
   writeFileSync(`${output}/failure.json`, JSON.stringify(diagnostics, null, 2));

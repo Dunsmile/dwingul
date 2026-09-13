@@ -64,4 +64,4 @@ Pull Request 설명에는 다음을 포함합니다.
 - 실행한 검증 명령과 결과
 - 화면이 바뀌었다면 필요한 최소 비교 자료
 
-CI는 Node.js 24에서 의존성을 새로 설치한 뒤 테스트, 공개 빌드와 문법 검사를 수행합니다. CI에는 배포 토큰이 없으며 자동 배포하지 않습니다. 실제 배포 절차는 [docs/deployment.md](docs/deployment.md)를 따릅니다.
+`.github/templates/ci.yml`은 Node.js 24에서 의존성을 새로 설치한 뒤 테스트, 공개 빌드와 문법 검사를 수행하는 CI 템플릿입니다. 현재 GitHub 연결의 workflow 권한이 없어 자동 실행 등록은 하지 않았습니다. 저장소 관리자가 템플릿을 `.github/workflows/ci.yml`로 옮기면 활성화됩니다. 템플릿에는 배포 토큰이 없으며 자동 배포하지 않습니다. 실제 배포 절차는 [docs/deployment.md](docs/deployment.md)를 따릅니다.

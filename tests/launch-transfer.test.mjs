@@ -42,6 +42,8 @@ test('snapshot seeding covers every existing user and local links require a mapp
   const rows=db.prepare('SELECT user_id,token_hash,expires,used FROM launch_transfers ORDER BY user_id').all();
   assert.equal(rows.length,3);assert.ok(rows.every(row=>row.expires===now+LAUNCH_TRANSFER_TTL_MS&&row.used===0));
   assert.ok(rows.every(row=>row.token_hash===hash(localTickets[row.user_id])));
+  assert.throws(()=>seedLaunchTransfers(db,{now,randomBytes:deterministicBytes()}),/already been seeded/);
+  assert.deepEqual(db.prepare('SELECT user_id,token_hash FROM launch_transfers ORDER BY user_id').all().map(row=>({...row})),rows.map(({user_id,token_hash})=>({user_id,token_hash})));
   const transfer=createLaunchTransfer(db,{localTickets});
   assert.deepEqual(transfer.localTicket('guest-rpg'),{url:`https://dwingul.com/#/transfer/${localTickets['guest-rpg']}`});
   assert.equal(transfer.localTicket('guest-other'),null);assert.equal(transfer.localTicket(),null);

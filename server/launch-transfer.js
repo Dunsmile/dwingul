@@ -62,13 +62,13 @@ export function seedLaunchTransfers(db,{now=Date.now(),randomBytes=cryptoRandomB
  if(!Number.isSafeInteger(now)||now<0)throw Error('Launch transfer time must be a non-negative integer.');
  if(typeof randomBytes!=='function')throw Error('Launch transfer random source is required.');
  ensureSchema(db);
- const users=db.prepare('SELECT id FROM users ORDER BY id').all(),tickets={};
+ const tickets={};
  return atomic(db,()=>{
-  const upsert=db.prepare(`INSERT INTO launch_transfers(user_id,token_hash,expires,used) VALUES(?,?,?,0)
-   ON CONFLICT(user_id) DO UPDATE SET token_hash=excluded.token_hash,expires=excluded.expires,used=0`);
+  if(Number(db.prepare('SELECT COUNT(*) AS count FROM launch_transfers').get().count)>0)throw Error('Launch transfer tickets have already been seeded.');
+  const users=db.prepare('SELECT id FROM users ORDER BY id').all(),insert=db.prepare('INSERT INTO launch_transfers(user_id,token_hash,expires,used) VALUES(?,?,?,0)');
   for(const {id} of users){
    const ticket=ticketFrom(randomBytes);
-   upsert.run(id,digest(ticket),now+LAUNCH_TRANSFER_TTL_MS);
+   insert.run(id,digest(ticket),now+LAUNCH_TRANSFER_TTL_MS);
    tickets[id]=ticket;
   }
   return tickets;

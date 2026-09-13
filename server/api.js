@@ -1,3 +1,4 @@
+import {createLaunchTransfer} from './launch-transfer.js';
 import {makePersonalityResult} from '../public/js/personality-tests.js';
 import {randomBytes,createHash,scryptSync,timingSafeEqual} from 'node:crypto';
 import {getQuestions,topics,questionVersion,questionMode,supportedQuestionVersions} from '../public/js/quizzes.js';
@@ -11,7 +12,7 @@ const hash=x=>createHash('sha256').update(x).digest('hex');
 const token=(n=24)=>randomBytes(n).toString('hex');
 const eq=(a,b)=>{const x=Buffer.from(a),y=Buffer.from(b);return x.length===y.length&&timingSafeEqual(x,y);};
 const pinHash=(pin,salt)=>scryptSync(pin,salt,32).toString('hex');
-export function createApiHandler(db,{localOnly=false,staticHandler=(_req,res)=>{res.writeHead(404);res.end('Not found');}}={}){
+export function createApiHandler(db,{localOnly=false,localTickets={},staticHandler=(_req,res)=>{res.writeHead(404);res.end('Not found');}}={}){
  db.exec(`PRAGMA foreign_keys=ON;PRAGMA journal_mode=WAL;
  CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,token_hash TEXT UNIQUE,nickname TEXT DEFAULT '뒹굴러',pin_hash TEXT,salt TEXT,recovery_hash TEXT);
  CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,user_id TEXT REFERENCES users(id),content TEXT,seed INTEGER,started INTEGER,finished INTEGER DEFAULT 0);
@@ -28,6 +29,7 @@ export function createApiHandler(db,{localOnly=false,staticHandler=(_req,res)=>{
  const get=(sql,...a)=>db.prepare(sql).get(...a),all=(sql,...a)=>db.prepare(sql).all(...a),run=(sql,...a)=>db.prepare(sql).run(...a);
  const fail=(m,status=400)=>{throw Object.assign(new Error(m),{status});};
  const garage=createGarageStore(db,fail),rpg=createRpgStore(db,fail),profiles=createProfileStore(db,fail);
+ const launch=createLaunchTransfer(db,{localTickets});
  const limits=new Map();
  function limited(key,max){const now=Date.now(),entry=limits.get(key)||{n:0,until:now+60000};if(entry.until<now){entry.n=0;entry.until=now+60000;}entry.n++;limits.set(key,entry);if(entry.n>max)fail('요청이 많아요. 잠시 후 다시 시도해주세요.',429);if(limits.size>2000)for(const[k,v]of limits)if(v.until<now)limits.delete(k);}
  function member(groupId,userId){const g=get('SELECT * FROM groups WHERE id=?',groupId);if(!g)fail('종료되었거나 없는 친구방이에요.',404);const m=get('SELECT * FROM members WHERE group_id=? AND user_id=? AND excluded=0',groupId,userId);if(!m)fail('초대 코드로 먼저 참여해주세요.',403);return {...g,joined:m.joined};}
@@ -46,9 +48,11 @@ export function createApiHandler(db,{localOnly=false,staticHandler=(_req,res)=>{
  if(localOnly&&!['127.0.0.1','localhost','[::1]'].includes(url.hostname))fail('로컬 주소로 접속해주세요.',403);
  if(!p.startsWith('/api/')){await staticHandler(req,res);return;}
  if(!['GET','HEAD'].includes(method)&&(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)))fail('요청 출처가 일치하지 않아요.',403);
+ if(p==='/api/launch-transfer/claim'&&method==='POST'){limited('transfer:'+req.socket.remoteAddress,10);const transferData=await body(req);const claimed=launch.claim(transferData.ticket);headers['Set-Cookie']=`dw_session=${claimed.secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=31536000${origin.startsWith('https:')?'; Secure':''}`;send({user:claimed.user});return;}
  const cookie=/(?:^|;\s*)dw_session=([a-f0-9]{48})/.exec(req.headers.cookie||'')?.[1];let u=cookie?get('SELECT * FROM users WHERE token_hash=?',hash(cookie)):null;
  if(!u){limited('new:'+req.socket.remoteAddress,30);const secret=token(),id=token(12);run('INSERT INTO users(id,token_hash) VALUES(?,?)',id,hash(secret));u=get('SELECT * FROM users WHERE id=?',id);headers['Set-Cookie']=`dw_session=${secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=31536000${origin.startsWith('https:')?'; Secure':''}`;}
  limited('requests:'+u.id,240);const data=['POST','PUT','DELETE'].includes(method)?await body(req):{};
+ if(p==='/api/launch-transfer'&&localOnly){const ticket=launch.localTicket(u.id);send(method==='POST'?ticket||{available:false}:{available:!!ticket});return;}
  if(p==='/api/session'&&method==='GET'){send({user:publicUser(u)});return;}
  if(p==='/api/profile'&&method==='POST'){const nickname=String(data.nickname||'').trim();if(nickname.length<1||nickname.length>12)fail('닉네임은 1~12자로 입력해주세요.');let recovery=null;if(!u.pin_hash){if(!/^\d{4}$/.test(data.pin||''))fail('숫자 4자리 관리 PIN을 입력해주세요.');const salt=token(16);recovery=token(16);run('UPDATE users SET nickname=?,pin_hash=?,salt=?,recovery_hash=? WHERE id=?',nickname,pinHash(data.pin,salt),salt,hash(recovery),u.id);}else{checkPin(u,data.pin);run('UPDATE users SET nickname=? WHERE id=?',nickname,u.id);}send({user:publicUser(get('SELECT * FROM users WHERE id=?',u.id)),recovery});return;}
  if(p==='/api/recover'&&method==='POST'){limited('recover:'+req.socket.remoteAddress,10);const existing=get('SELECT * FROM users WHERE recovery_hash=?',hash(String(data.recovery||'')));if(!existing)fail('복구 코드와 PIN을 확인해주세요.',403);checkPin(existing,data.pin);const secret=token();run('UPDATE users SET token_hash=? WHERE id=?',hash(secret),existing.id);headers['Set-Cookie']=`dw_session=${secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=31536000${origin.startsWith('https:')?'; Secure':''}`;send({user:publicUser(existing)});return;}

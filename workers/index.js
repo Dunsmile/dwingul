@@ -1,4 +1,3 @@
-import {importSnapshot} from './import-snapshot.js';
 import {DurableObject} from 'cloudflare:workers';
 import {createApiHandler} from '../server/api.js';
 import {durableSqlite} from './sqlite-adapter.js';
@@ -7,7 +6,6 @@ export class DwingulDatabase extends DurableObject {
  constructor(ctx,env){super(ctx,env);this.env=env;this.db=durableSqlite(ctx.storage);this.handler=createApiHandler(this.db);}
  async fetch(request){
   const url=new URL(request.url);
-  if(url.pathname==='/api/admin/import')return importSnapshot(request,this.env,this.db);
   const req={url:url.pathname+url.search,origin:url.origin,method:request.method,headers:Object.fromEntries(request.headers),socket:{remoteAddress:request.headers.get('CF-Connecting-IP')||'unknown',encrypted:url.protocol==='https:'},async *[Symbol.asyncIterator](){yield await request.text();}};
   let status=200,headers={},result;
   const res={writeHead(s,h={}){status=s;headers=h;},end(body){result=new Response(body,{status,headers});}};

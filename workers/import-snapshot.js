@@ -1,6 +1,6 @@
 // One-use, secret-protected release migration. Disabled unless MIGRATION_KEY exists.
 import {timingSafeEqual,createHash} from 'node:crypto';
-const tableOrder=['users','runs','records','groups','members','group_records','shares','racing_wallet','run_rewards','rpg_profiles','rpg_inventory','rpg_draws','rpg_draw_batches','rpg_progress','profile_details','private_history','personal_bests'];
+const tableOrder=['users','launch_transfers','runs','records','groups','members','group_records','shares','racing_wallet','run_rewards','rpg_profiles','rpg_inventory','rpg_draws','rpg_draw_batches','rpg_progress','profile_details','private_history','personal_bests'];
 const digest=s=>createHash('sha256').update(s).digest();
 export async function importSnapshot(request,env,db){
  if(!env.MIGRATION_KEY||request.method!=='POST'||!timingSafeEqual(digest(request.headers.get('authorization')||''),digest('Bearer '+env.MIGRATION_KEY)))return new Response('Not found',{status:404});
