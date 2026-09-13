@@ -1,0 +1,141 @@
+.dg-game--rhythm { width: min(100%, 920px); }
+.dg-game--rhythm .dg-game__stage { overflow: visible; }
+.rhythm-game,
+.rhythm-game *,
+.rhythm-game *::before,
+.rhythm-game *::after { box-sizing: border-box; }
+.rhythm-game { --rhythm-ink: #223d31; --rhythm-green: #245c45; --rhythm-mint: #75bd91; --rhythm-yellow: #f0c665; --rhythm-red: #cf675e; position: relative; width: 100%; padding: 12px; color: var(--rhythm-ink); background: radial-gradient(circle at 84% 9%, rgba(240,198,101,.22), transparent 23%), linear-gradient(145deg, #f9f7ef, #edf4ed); border: 1px solid #d9dfd7; border-radius: 20px; user-select: none; }
+.rhythm-game__hud { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.rhythm-game__hud > span { min-width: 0; min-height: 48px; display: grid; place-items: center; align-content: center; padding: 5px 8px; border: 1px solid rgba(36,92,69,.13); border-radius: 12px; background: rgba(255,255,255,.8); box-shadow: 0 3px 0 rgba(34,61,49,.06); }
+.rhythm-game__hud small { color: #718078; font-size: 10px; font-weight: 800; letter-spacing: .05em; }
+.rhythm-game__hud b { overflow: hidden; max-width: 100%; font-size: 18px; line-height: 1.1; font-variant-numeric: tabular-nums; text-overflow: ellipsis; }
+.rhythm-game__energy { margin: 8px 2px 9px; }
+.rhythm-game__energy > div:first-child { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 11px; }
+.rhythm-game__energy output { font-weight: 900; font-variant-numeric: tabular-nums; }
+.rhythm-game__energy-rail { overflow: hidden; height: 9px; border-radius: 99px; background: #d8ddd7; box-shadow: inset 0 1px 2px rgba(34,61,49,.14); }
+.rhythm-game__energy-rail i { display: block; width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #63a982, #8bc978); transition: width .15s ease, background .2s ease; }
+.rhythm-game.is-low-energy .rhythm-game__energy-rail i { background: var(--rhythm-red); }
+.rhythm-game__relay { position: relative; overflow: hidden; padding: 11px; border: 1px solid rgba(36,92,69,.15); border-radius: 17px; background: rgba(255,255,255,.75); }
+.rhythm-game__phase { display: grid; justify-items: center; min-height: 54px; text-align: center; }
+.rhythm-game__phase > span { color: #8b987f; font-size: 9px; font-weight: 950; letter-spacing: .16em; }
+.rhythm-game__phase strong { font-size: clamp(18px, 2.8vw, 24px); line-height: 1.15; }
+.rhythm-game__phase small { min-height: 16px; color: #68786f; font-size: 11px; line-height: 1.3; }
+.rhythm-game__count { position: absolute; z-index: 4; top: 63px; left: 50%; width: 45px; height: 45px; display: grid; place-items: center; border: 3px solid #fff; border-radius: 50%; color: #fff; background: var(--rhythm-green); box-shadow: 0 5px 12px rgba(34,61,49,.2); font-size: 20px; font-weight: 950; transform: translateX(-50%); }
+.rhythm-game__track { position: relative; display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 10px; min-height: 84px; padding: 9px 11px; border: 2px solid transparent; border-radius: 14px; background: #f2f2e9; opacity: .72; transition: border-color .15s ease, background .15s ease, opacity .15s ease, transform .15s ease; }
+.rhythm-game__track + .rhythm-game__track { margin-top: 7px; }
+.rhythm-game__track.is-active { z-index: 2; border-color: var(--rhythm-green); background: #f7fff8; opacity: 1; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(36,92,69,.11); }
+.rhythm-game__track--respond.is-active { border-color: #b68129; background: #fffbec; }
+.rhythm-game__character { position: relative; width: 54px; height: 58px; border: 3px solid #315743; border-radius: 45% 48% 42% 44%; background: var(--rhythm-mint); box-shadow: inset -6px -6px rgba(31,86,58,.12), 0 4px rgba(49,87,67,.12); }
+.rhythm-game__character::before { content: "•  •"; position: absolute; inset: 13px 0 auto; text-align: center; letter-spacing: 8px; font-size: 14px; font-weight: 950; }
+.rhythm-game__character::after { content: "⌣"; position: absolute; inset: 29px 0 auto; text-align: center; font-size: 17px; font-weight: 950; }
+.rhythm-game__character > i { position: absolute; top: -8px; right: -8px; width: 23px; height: 23px; border: 2px solid #315743; border-radius: 50%; background: var(--rhythm-yellow); }
+.rhythm-game__character > i::before { content: "♪"; position: absolute; inset: -4px 0 0; text-align: center; font-style: normal; font-size: 18px; font-weight: 900; }
+.rhythm-game__character--player { border-color: #7c642b; background: var(--rhythm-yellow); }
+.rhythm-game__character--player > i { border-color: #7c642b; background: #fff9e8; }
+.rhythm-game__track.is-hit .rhythm-game__character{transform:translateY(-5px) rotate(-4deg)}
+.rhythm-game__character{transition:transform .07s ease-out}
+.rhythm-game__count.is-pulse{background:#d7a849;box-shadow:0 0 0 6px #eac97833}
+.rhythm-game.is-preparing .rhythm-game__count { color: #5d4518; background: var(--rhythm-yellow); }
+.rhythm-game.is-preparing .rhythm-game__track--respond { border-color: #d3b052; background: #fff9df; opacity: 1; }
+.rhythm-game.is-gameover .rhythm-game__relay::after { content: "기록을 멈췄어요"; position: absolute; z-index: 7; inset: 0; display: grid; place-items: center; color: #fff; background: rgba(34,61,49,.76); font-size: clamp(19px, 4vw, 28px); font-weight: 950; letter-spacing: -.02em; }
+.rhythm-game.is-gameover .rhythm-game__count { z-index: 9; color: #fff; background: var(--rhythm-red); }
+.rhythm-game.is-gameover .rhythm-game__tap { transform: none; box-shadow: inset 0 -5px rgba(0,0,0,.12); }
+.rhythm-game__track-body { min-width: 0; display: grid; grid-template-columns: auto 1fr; gap: 1px 7px; align-items: baseline; }
+.rhythm-game__track-body > b { font-size: 13px; }
+.rhythm-game__track-body > span { color: #79877f; font-size: 10px; }
+.rhythm-game__rail { position: relative; grid-column: 1 / -1; overflow: hidden; height: 34px; margin-top: 4px; border: 1px solid #cad4cb; border-radius: 8px; background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), rgba(72,101,84,.18) calc(25% - 1px) 25%), #fff; }
+.rhythm-game__rail::after { content: ""; position: absolute; z-index: 0; left: 0; right: 0; top: 50%; height: 2px; background: #d7ddd8; transform: translateY(-50%); }
+.rhythm-game__note { position: absolute; z-index: 2; top: 50%; width: 14px; height: 14px; border: 2px solid var(--rhythm-green); border-radius: 50%; background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,.08); transform: translate(-50%, -50%); }
+.rhythm-game__note.is-played, .rhythm-game__note.is-hit { background: var(--rhythm-green); }
+.rhythm-game__track--respond .rhythm-game__note { border-color: #a57322; }
+.rhythm-game__track--respond .rhythm-game__note.is-pending,
+.rhythm-game__track--respond .rhythm-game__note.is-waiting { opacity: 0; }
+.rhythm-game__track--respond .rhythm-game__note.is-hit { border-color: #548251; background: #70ad6c; }
+.rhythm-game__note.is-miss { border-color: var(--rhythm-red); background: var(--rhythm-red); }
+.rhythm-game__needle { position: absolute; z-index: 3; top: 0; bottom: 0; left: 0; width: 3px; border-radius: 3px; background: #df665d; box-shadow: 0 0 0 2px rgba(255,255,255,.75); transform: translateX(-1px); }
+.rhythm-game__judgment { min-height: 34px; display: grid; place-items: center; margin: 6px 0 3px; color: #4f6559; font-size: 12px; font-weight: 850; text-align: center; }
+.rhythm-game__actions { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: stretch; }
+.rhythm-game__tap, .rhythm-game__start, .rhythm-game__mute { font-family: inherit; cursor: pointer; }
+.rhythm-game__tap { min-height: 72px; display: grid; place-items: center; align-content: center; border: 0; border-radius: 18px; color: #fff; background: linear-gradient(#347b5a, #245c45); box-shadow: inset 0 -5px rgba(0,0,0,.2), 0 5px 0 #173d2c; touch-action: manipulation; }
+.rhythm-game__tap span { font-size: 28px; font-weight: 950; line-height: 1; }
+.rhythm-game__tap small { margin-top: 4px; color: rgba(255,255,255,.75); font-size: 10px; font-weight: 800; }
+.rhythm-game__tap:active:not(:disabled) { transform: translateY(4px); box-shadow: inset 0 -2px rgba(0,0,0,.16), 0 1px 0 #173d2c; }
+.rhythm-game__tap:focus-visible, .rhythm-game__start:focus-visible, .rhythm-game__mute:focus-visible { outline: 3px solid rgba(36,92,69,.3); outline-offset: 2px; }
+.rhythm-game__tap:disabled { cursor: default; opacity: .5; }
+.rhythm-game__mute { min-width: 104px; min-height: 72px; padding: 8px 10px; border: 2px solid #c7d1c9; border-radius: 15px; color: var(--rhythm-ink); background: #fff; font-size: 12px; font-weight: 850; }
+.rhythm-game__start-panel { position: absolute; z-index: 8; inset: 0; display: grid; place-items: center; padding: 14px; background: rgba(239,244,235,.93); backdrop-filter: blur(4px); }
+.rhythm-game__start-panel[hidden] { display: none; }
+.rhythm-game__start-card { width: min(100%, 410px); padding: 24px; border: 1px solid #cbd7cd; border-radius: 20px; background: #fffdf6; box-shadow: 0 16px 35px rgba(38,69,51,.17); text-align: center; }
+.rhythm-game__start-icon { margin-bottom: 8px; color: var(--rhythm-green); font-size: 35px; font-weight: 950; letter-spacing: .1em; }
+.rhythm-game__start-card strong { display: block; font-size: 22px; line-height: 1.3; }
+.rhythm-game__start-card p { margin: 9px auto 15px; color: #65756c; font-size: 13px; line-height: 1.5; }
+.rhythm-game__start { width: 100%; min-height: 54px; border: 0; border-radius: 14px; color: #fff; background: var(--rhythm-green); box-shadow: inset 0 -4px rgba(0,0,0,.18); font-size: 18px; font-weight: 900; }
+.dg-game--rhythm.is-paused .rhythm-game::after { content: "잠깐 멈춤"; position: absolute; z-index: 20; inset: 0; display: grid; place-items: center; border-radius: inherit; color: #fff; background: rgba(34,61,49,.75); font-size: 25px; font-weight: 950; }
+
+@keyframes rhythm-bob { to { transform: translateY(-4px) rotate(2deg); } }
+
+@media (min-width: 760px) {
+  .rhythm-game { display: grid; grid-template-columns: 190px 1fr; gap: 0 12px; padding: 13px; }
+  .rhythm-game__hud { grid-template-columns: 1fr 1fr; align-content: start; }
+  .rhythm-game__energy { grid-column: 1; margin: 10px 2px; }
+  .rhythm-game__relay { grid-column: 2; grid-row: 1 / span 3; }
+}
+
+@media (max-width: 420px) {
+  .rhythm-game { padding: 8px; border-radius: 15px; }
+  .rhythm-game__hud { gap: 4px; }
+  .rhythm-game__hud > span { min-height: 39px; padding: 3px; border-radius: 9px; }
+  .rhythm-game__hud small { font-size: 8px; }
+  .rhythm-game__hud b { font-size: 15px; }
+  .rhythm-game__energy { margin: 5px 2px 6px; }
+  .rhythm-game__relay { padding: 7px; border-radius: 13px; }
+  .rhythm-game__phase { min-height: 47px; }
+  .rhythm-game__phase strong { font-size: 18px; }
+  .rhythm-game__phase small { font-size: 9px; }
+  .rhythm-game__count { top: 54px; width: 38px; height: 38px; font-size: 17px; }
+  .rhythm-game__track { grid-template-columns: 44px 1fr; gap: 7px; min-height: 68px; padding: 6px 7px; }
+  .rhythm-game__track + .rhythm-game__track { margin-top: 5px; }
+  .rhythm-game__character { width: 42px; height: 45px; border-width: 2px; }
+  .rhythm-game__character::before { inset-block-start: 9px; font-size: 11px; letter-spacing: 6px; }
+  .rhythm-game__character::after { inset-block-start: 22px; font-size: 14px; }
+  .rhythm-game__character > i { top: -6px; right: -6px; width: 19px; height: 19px; }
+  .rhythm-game__character > i::before { font-size: 15px; }
+  .rhythm-game__rail { height: 29px; margin-top: 2px; }
+  .rhythm-game__judgment { min-height: 28px; margin: 3px 0 2px; font-size: 10px; }
+  .rhythm-game__tap, .rhythm-game__mute { min-height: 60px; }
+  .rhythm-game__tap span { font-size: 25px; }
+  .rhythm-game__mute { min-width: 82px; padding-inline: 7px; font-size: 10px; }
+  .rhythm-game__start-card { padding: 18px 15px; }
+  .rhythm-game__start-card strong { font-size: 19px; }
+}
+
+@media (max-width: 350px) and (max-height: 650px) {
+  .rhythm-game { padding: 5px; }
+  .rhythm-game__hud > span { min-height: 34px; }
+  .rhythm-game__energy > div:first-child { display: none; }
+  .rhythm-game__energy-rail { height: 6px; }
+  .rhythm-game__relay { padding: 5px; }
+  .rhythm-game__phase { min-height: 39px; }
+  .rhythm-game__phase small { display: none; }
+  .rhythm-game__count { top: 42px; width: 32px; height: 32px; border-width: 2px; font-size: 15px; }
+  .rhythm-game__track { min-height: 57px; }
+  .rhythm-game__character { width: 37px; height: 39px; }
+  .rhythm-game__rail { height: 24px; }
+  .rhythm-game__judgment { min-height: 22px; }
+  .rhythm-game__tap, .rhythm-game__mute { min-height: 52px; }
+  .rhythm-game__tap span { font-size: 22px; }
+  .rhythm-game__start-card { padding: 13px; }
+  .rhythm-game__start-icon { margin: 0; font-size: 25px; }
+  .rhythm-game__start-card p { margin: 6px auto 9px; font-size: 11px; }
+  .rhythm-game__start { min-height: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rhythm-game *, .rhythm-game *::before, .rhythm-game *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+.dg-game--rhythm .dg-game__toolbar{height:64px;min-height:64px;box-sizing:border-box}.dg-game--rhythm .dg-game__status{min-width:0;max-height:40px;line-height:20px;overflow:hidden;font-size:13px}.dg-game--rhythm .dg-game__pause{flex:none;white-space:nowrap}.rhythm-game__phase{height:62px;min-height:62px}.rhythm-game__phase small{max-height:28px;overflow:hidden}.rhythm-game__judgment{height:34px;min-height:34px;line-height:16px;overflow:hidden}
+@media(max-width:420px){.rhythm-game__phase{height:50px;min-height:50px}.rhythm-game__judgment{height:28px;min-height:28px;line-height:14px}}
+@media(max-width:350px) and (max-height:650px){.rhythm-game__phase{height:39px;min-height:39px}.rhythm-game__judgment{height:26px;min-height:26px}.dg-game--rhythm .dg-game__toolbar{height:55px;min-height:55px;font-size:11px;padding:7px;gap:6px}.dg-game--rhythm .dg-game__status{font-size:11px;line-height:16px;max-height:32px}.rhythm-game__tap,.rhythm-game__mute{min-height:48px}.rhythm-game__track{min-height:51px;padding:4px 6px}.rhythm-game__relay{padding:4px}}
+
+.rhythm-result-stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:16px 0}.rhythm-result-stats span{font-size:12px}.rhythm-result-stats b{display:block;font-size:22px;margin-top:5px}

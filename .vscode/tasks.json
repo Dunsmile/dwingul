@@ -1,0 +1,4 @@
+{
+  "version": "2.0.0",
+  "tasks": [{"label": "뒹굴 로컬 실행", "type": "shell", "command": "npm start", "options": {"cwd": "${workspaceFolder}"}, "isBackground": true, "problemMatcher": [], "presentation": {"reveal": "always"}}]
+}

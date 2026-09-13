@@ -1,0 +1,86 @@
+name: 오류 제보
+description: 뒹굴에서 다시 확인할 수 있는 문제를 알려주세요.
+title: "[오류] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        제보해주셔서 감사합니다. 이 이슈는 공개될 수 있습니다. 생년월일, 태어난 시간, PIN, 복구 코드, 세션 쿠키, 공유 토큰과 실제 사용자 기록은 적거나 첨부하지 마세요.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 문제 영역
+      options:
+        - 게임
+        - 퀴즈
+        - 성향 테스트
+        - 운세·사주
+        - 프로필·기록·친구방
+        - 화면·접근성
+        - 정적 안내·정책 페이지
+        - 기타
+    validations:
+      required: true
+
+  - type: input
+    id: content
+    attributes:
+      label: 콘텐츠 또는 페이지
+      description: 예) 따라해 뒹굴, 프로필, /privacy/
+      placeholder: 문제가 생긴 화면 이름을 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 순서
+      description: 새로 연 브라우저에서도 따라 할 수 있도록 순서대로 적어주세요.
+      placeholder: |
+        1. 홈에서 …을 누릅니다.
+        2. …을 선택합니다.
+        3. …이 나타납니다.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 동작
+      placeholder: 어떤 결과를 기대했는지 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 동작
+      placeholder: 실제로 본 결과와 오류 문구를 적어주세요.
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 사용 환경
+      description: 기기, 운영체제, 브라우저와 대략적인 버전을 적어주세요.
+      placeholder: 예) iPhone / iOS 19 / Safari
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 참고 자료
+      description: 필요한 경우 개인정보를 가린 화면이나 추가 설명을 붙여주세요.
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 공개 정보 확인
+      options:
+        - label: 개인정보, PIN, 복구 코드, 세션 값, 비밀키와 실제 사용자 기록을 포함하지 않았습니다.
+          required: true

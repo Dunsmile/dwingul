@@ -1,0 +1,44 @@
+import {rng,esc} from './catalog.js';
+import {businessQuestions,businessResult} from './business-test.js';
+import {birthFields,nicknameOnly,normalizeBirth} from './profile-fields.js';
+import {testQuestions as personalityQuestions,makePersonalityResult,compareTasteResults} from './personality-tests.js';
+export const testQuestions={
+shop:businessQuestions,
+...personalityQuestions,
+};
+const elements={
+목:{symbol:'木',name:'새싹 탐험가',animal:'새싹',color:'green',short:'조금씩 자라는 호기심',strength:'새로운 가능성을 발견하고 작은 시작을 만드는 모습',balance:'시작한 일 중 하나를 끝내는 시간을 정해보세요.',relationship:'함께 해볼 작은 계획이 대화의 출발점이 될 수 있어요.',action:'미뤄둔 작은 일 하나를 10분만 시작해보세요.'},
+화:{symbol:'火',name:'햇살 응원단',animal:'햇살',color:'pink',short:'주변을 밝히는 따뜻한 에너지',strength:'좋아하는 마음을 표현하고 분위기를 따뜻하게 만드는 모습',balance:'들뜬 날일수록 잠깐 쉬며 내 속도를 살펴보세요.',relationship:'솔직한 칭찬 한마디가 서로를 가깝게 할 수 있어요.',action:'고마웠던 사람 한 명에게 짧은 말을 건네보세요.'},
+토:{symbol:'土',name:'포근한 쉼터',animal:'산',color:'yellow',short:'곁에 있으면 편안한 든든함',strength:'익숙한 일상을 가꾸고 사람 사이의 중심을 잡는 모습',balance:'모두를 챙기기 전에 내게 필요한 것도 적어보세요.',relationship:'서로 편안하게 느끼는 약속부터 만들어보세요.',action:'지금 머무는 공간 한 곳을 작게 정리해보세요.'},
+금:{symbol:'金',name:'반짝 설계자',animal:'별',color:'blue',short:'복잡한 것을 정돈하는 선명함',strength:'기준을 세우고 필요한 것을 고르는 모습',balance:'완벽하게 준비하기보다 한 번 시험해봐도 괜찮아요.',relationship:'다른 사람의 방식에 어떤 이유가 있는지 물어보세요.',action:'오늘 할 일을 세 가지만 골라 우선순위를 정해보세요.'},
+수:{symbol:'水',name:'잔잔한 관찰자',animal:'물결',color:'purple',short:'조용히 깊어지는 생각',strength:'작은 변화를 발견하고 다양한 생각을 연결하는 모습',balance:'생각이 많아지면 종이에 한 줄씩 꺼내보세요.',relationship:'말없이 추측하기보다 편안한 질문 하나를 건네보세요.',action:'새로운 생각이 들면 잊기 전에 한 줄 메모해보세요.'}
+};
+export function hashText(text){let h=2166136261;for(const ch of text){h^=ch.codePointAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+const stemElement={'甲':'목','乙':'목','丙':'화','丁':'화','戊':'토','己':'토','庚':'금','辛':'금','壬':'수','癸':'수'};
+const branchElement={'子':'수','丑':'토','寅':'목','卯':'목','辰':'토','巳':'화','午':'화','未':'토','申':'금','酉':'금','戌':'토','亥':'수'};
+export function birthProfile(profile){
+ profile=normalizeBirth(profile);
+ const [year,month,day]=String(profile.birthday).split('-').map(Number),[hour,minute]=(profile.time||'12:00').split(':').map(Number);
+ if(!profile.name?.trim()||year<1900||year>new Date().getFullYear()||month<1||month>12||day<1||day>31||!Number.isFinite(year)||!Number.isFinite(month)||!Number.isFinite(day)||hour<0||hour>23||minute<0||minute>59)throw Error('이름과 생년월일·시간을 확인해주세요.');
+ let solar;if(profile.calendar&&profile.calendar!=='solar'){try{solar=globalThis.Lunar.fromYmdHms(year,profile.calendar==='leap'?-month:month,day,hour,minute,0).getSolar();}catch{throw Error('음력 생일과 윤달 여부를 확인해주세요.');}}else{const check=new Date(Date.UTC(year,month-1,day));if(check.getUTCFullYear()!==year||check.getUTCMonth()!==month-1||check.getUTCDate()!==day)throw Error('실제 생년월일을 입력해주세요.');solar=globalThis.Solar.fromYmdHms(year,month,day,hour,minute,0);}
+ if(solar.toYmd()>new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Seoul'}))throw Error('미래의 생일은 입력할 수 없어요.');
+ const eight=solar.getLunar().getEightChar();eight.setSect(2);
+ const pillars=[['년주',eight.getYear()],['월주',eight.getMonth()],['일주',eight.getDay()]];if(profile.time)pillars.push(['시주',eight.getTime()]);
+ const counts={목:0,화:0,토:0,금:0,수:0};for(const [,pillar] of pillars){counts[stemElement[pillar[0]]]++;counts[branchElement[pillar[1]]]++;}const element=stemElement[eight.getDay()[0]],info=elements[element];
+ return {element,...info,pillars,counts,timeKnown:!!profile.time};
+}
+export const tarotCards=[['바보','새로운 시작','완벽한 준비보다 작은 첫걸음이 필요한 순간이에요.'],['마법사','내 안의 도구','이미 가진 경험을 새로운 방식으로 연결해보세요.'],['여사제','조용한 직감','답을 급히 내기 전에 마음이 머무는 곳을 살펴보세요.'],['여황제','돌봄과 풍요','잘 자라고 있는 일에 관심을 조금 더 기울여보세요.'],['황제','기준과 질서','내가 지키고 싶은 기준을 한 문장으로 정해보세요.'],['교황','배움과 연결','먼저 경험한 사람의 이야기를 들어보세요.'],['연인','마음의 선택','무엇이 나에게 중요한지 솔직하게 골라보세요.'],['전차','한 방향으로','여러 목표 중 오늘 집중할 하나를 정해보세요.'],['힘','부드러운 용기','세게 밀기보다 꾸준하게 다가가도 괜찮아요.'],['은둔자','나만의 시간','주변 소리를 줄이고 내 생각을 정리해보세요.'],['운명의 수레바퀴','작은 변화','예상과 다른 일이 생겨도 새 선택지가 될 수 있어요.'],['정의','균형 잡힌 시선','한쪽 이야기만 듣지 않고 상황을 살펴보세요.'],['매달린 사람','다르게 보기','잠깐 멈추면 익숙한 일도 새롭게 보일 수 있어요.'],['죽음','마무리와 전환','끝낼 일을 정하면 다음 일을 위한 자리가 생겨요.'],['절제','나만의 속도','빠르게 끝내기보다 지속할 수 있는 리듬을 찾아요.'],['악마','익숙한 반복','습관처럼 하는 일 중 잠깐 쉬어도 될 것을 골라봐요.'],['탑','틀을 점검하기','잘 맞지 않는 계획은 고쳐도 괜찮아요.'],['별','작은 희망','멀리 있는 목표도 오늘 한 걸음부터 시작돼요.'],['달','아직 모르는 것','추측과 확인된 사실을 나누어 생각해보세요.'],['태양','기쁨을 나누기','잘된 일 하나를 충분히 기뻐해보세요.'],['심판','다시 바라보기','예전의 선택에서 지금 쓸 수 있는 배움을 찾아요.'],['세계','한 바퀴의 완성','여기까지 해낸 일을 돌아보고 다음을 준비해보세요.']];
+export function makeResult(id,profile,answers=[],card=0,theme='오늘 하루'){
+ const name=profile.name?.trim()||'뒹굴러';if(id==='shop')return businessResult(name,answers);
+ if(personalityQuestions[id])return makePersonalityResult(id,name,answers);
+ const birth=nicknameOnly(id)?null:birthProfile(profile);let title=birth?.name,subtitle=birth?.short,sections=[],scores=[];
+ if(testQuestions[id]){scores=[0,0,0,0];answers.forEach((v,i)=>scores[i%4]+=v===0?1:0);const active=answers.filter(x=>x===0).length;
+ const titles={shop:['차근차근 만드는 장인형','단골의 마음을 잇는 연결형','새로운 판을 여는 개척형'],energy:['섬세하게 살피는 에겐 모드','상황에 맞추는 균형 모드','먼저 움직이는 테토 모드'],chat:['조용히 챙기는 지킴이','대화를 잇는 연결자','분위기를 여는 시작자'],taste:['편안함을 찾는 수집가','새로움과 익숙함의 균형가','호기심 많은 탐험가']};title=titles[id][active<=2?0:active>=6?2:1];subtitle=`${name}님의 8가지 선택에서 발견한 모습`;
+ sections=[['나의 선택',active>=5?'새로운 상황에서 먼저 움직이는 선택이 많았어요. 작은 시도를 통해 방향을 발견하는 편일 수 있어요.':'익숙한 기반을 다지고 살펴보는 선택이 많았어요. 충분히 이해한 뒤 내 속도로 움직이는 편일 수 있어요.'],['잘 어울리는 한 걸음',id==='shop'?(active>=5?'작은 팝업이나 하루 체험처럼 반응을 바로 볼 수 있는 실험부터 해보세요.':'한 가지 대표 메뉴와 운영 루틴을 정하고 작은 규모로 시험해보세요.'):'친구에게 이 결과와 다른 모습을 본 적이 있는지 물어보세요. 서로를 알아가는 이야깃거리가 될 수 있어요.'],...(birth?[['생일로 만난 별도의 캐릭터',`${birth.name} · ${birth.short}. ${birth.balance}`]]:[])];
+ }else if(id==='tarot'){const t=tarotCards[card%22];title=t[0];subtitle=`${name}님의 한 장 · ${theme}`;sections=[['카드가 건네는 이야기',t[2]],['주제에 비춰보면',theme==='관계'?'상대의 생각을 단정하기보다 궁금한 점을 직접 물어보세요.':theme==='일·공부'?'할 일을 작게 나누고 가장 쉬운 첫 단계부터 시작해보세요.':'오늘 내 마음이 편안해지는 선택 하나를 챙겨보세요.'],['나의 캐릭터와 함께',`${birth.name}의 힌트: ${birth.action}`]];
+ }else if(id==='daily'){const date=new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Seoul'}),r=rng(hashText(`${profile.birthday}|${profile.time}|${date}`));const headlines=['작은 시작이 반가운 날','익숙한 일에서 여유를 찾는 날','좋은 대화를 기다리는 날','내 속도를 지켜도 좋은 날','생각을 한 칸 넓히는 날'];title=headlines[Math.floor(r()*headlines.length)];subtitle=`${name}님에게 보내는 ${date}의 이야기`;sections=[['오늘의 리듬',birth.balance],['사람 사이',birth.relationship],['오늘 해볼 일',birth.action]];
+ }else{subtitle=`${name}님의 ${birth.pillars.length===4?'네 기둥':'세 기둥'}에서 만난 이야기`;sections=[['캐릭터의 분위기',`${birth.short}. 전통의 오행을 이야기로 풀면 ${birth.strength}으로 표현할 수 있어요.`],['균형을 위한 힌트',birth.balance],['함께 이야기하기',birth.relationship]];}
+ return {content:id,name,title,subtitle,sections,element:birth?.element,birth,scores,answers,theme,display:title,unit:''};
+}
+export function compareResults(a,b){if(a.content==='taste')return compareTasteResults(a,b);const relation=a.element===b.element?'닮은 리듬을 가진 두 사람':'서로 다른 리듬을 가진 두 사람';return {title:relation,text:`${a.element||'나'}과 ${b.element||'친구'}의 만남. 편안한 속도와 대화 방식을 서로 물어보세요. 궁합의 좋고 나쁨을 확정하는 점수는 아니에요.`};}
+export function profileForm(saved={}){const only=nicknameOnly(saved.content);return `<form id="birth-form" class="fields"><div class="profile-form-tools">${saved.available?'<button class="button" type="button" data-act="load-birth">저장한 프로필 불러오기</button>':''}<button class="text-link" type="button" data-act="other-person">다른 사람으로 해보기</button></div><label>닉네임<input name="name" maxlength="12" required autocomplete="nickname" placeholder="어떻게 불러드릴까요?" value="${esc(saved.name||'')}"></label>${only?'':birthFields(saved)+`<label class="check"><input type="checkbox" name="remember"><span>${saved.configured?'뒹굴 프로필에 기억해두기':'이 기기에 기억해두기'}</span></label><p class="muted small">${saved.configured?'선택하면 생일과 시간을 내 프로필에 저장해 다음 콘텐츠에서 불러올 수 있어요.':'프로필 없이도 이 기기에 기억할 수 있어요. 프로필을 만들면 다른 접속 환경에서도 불러올 수 있어요.'} 선택하지 않으면 입력 정보만으로 계산해요. 생일·시간은 공유 카드와 랭킹에 표시하지 않아요.</p>`}<p class="form-error" role="alert"></p><button class="button primary" type="submit">${testQuestions[saved.content]?'질문 시작하기':'내 이야기 만나기'} →</button></form>`;}

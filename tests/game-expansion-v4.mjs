@@ -1,0 +1,33 @@
+import { chromium } from 'playwright';
+import { createApp } from '../server.mjs';
+import { mkdirSync,writeFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const out='output/game-v4';mkdirSync(out,{recursive:true});
+const app=createApp({dbPath:':memory:'});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));
+const base=`http://127.0.0.1:${app.server.address().port}`,browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],report=[];
+page.on('pageerror',e=>errors.push(e.message));
+const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text())),advance=ms=>page.evaluate(ms=>window.advanceTime(ms),ms);
+const visit=async(hash,selector='.dg-game')=>{await page.goto(base+'/#/'+hash);await page.locator(selector).first().waitFor();if(selector==='.dg-game')await advance(0);};
+try{
+ await visit('detail/sort','#game-setup');await page.locator('[name=game-mode][value=endless]').check();await page.locator('[data-act=start]').click();await page.locator('.dg-game').waitFor();await advance(0);assert.equal((await state()).mode,'endless');
+ for(let i=0;i<3;i++){const s=await state();await page.keyboard.press(s.queue[0].side==='left'?'ArrowRight':'ArrowLeft');if(i<2){assert.equal((await state()).mistakes,i+1);await advance(220);}}
+ await page.locator('.result-number').waitFor();assert.equal(await page.locator('.result-number').innerText(),'0명');report.push('sort: third mistake ends immediately');
+ for(const mode of ['sprint','endless']){
+  await visit(`play/sort?seed=2&mode=${mode}`);
+  const s=await page.evaluate(mode=>{let last;for(let t=0;t<(mode==='sprint'?10020:60000);t+=20){const st=JSON.parse(window.render_game_to_text());if(!st.queue)break;last=st;const front=st.queue[0];if(front&&front.progress>=0)document.dispatchEvent(new KeyboardEvent('keydown',{key:front.side==='left'?'ArrowLeft':'ArrowRight',bubbles:true}));window.advanceTime(20);}return last;},mode);
+  if(mode==='sprint'){await page.locator('.result-number').waitFor();assert.ok(s.elapsedMs>=9980);}else{const current=await state();assert.ok(current.elapsedMs>=60000);assert.ok(current.speed>=800);assert.equal(current.mistakes,0);const ys=current.queue.map(x=>x.y);for(let i=1;i<ys.length;i++)assert.ok(ys[i-1]-ys[i]>115);await page.screenshot({path:out+'/sort-endless-desktop.png'});}
+ }
+ report.push('sort: 10-second completion and 60-second accelerating single line');
+ await visit('detail/racing?seed=12','#game-setup');assert.match(await page.locator('.garage-spec').innerText(),/30칸/);await page.locator('[data-act=car-next]').click();assert.match(await page.locator('.garage-spec').innerText(),/25칸/);assert.equal(await page.locator('[data-act=start]').isDisabled(),true);await page.locator('[data-act=car-prev]').click();await page.locator('[data-act=start]').click();await page.locator('.city-canvas').waitFor();await advance(0);
+ await advance(1800);assert.equal((await state()).lanes,5);await page.screenshot({path:out+'/city-desktop.png'});
+ await page.locator('.dg-game__pause').click();const paused=(await state()).fuel;await advance(2000);assert.equal((await state()).fuel,paused);await page.locator('.dg-game__pause').click();
+ // Drive through actual controls. Choose an open lane containing the next collectible.
+ const driven=await page.evaluate(()=>{let last;for(let t=0;t<180000;t+=20){const s=JSON.parse(window.render_game_to_text());if(!s.vehicles)break;last=s;const ahead=s.vehicles.filter(v=>v.z>-10).sort((a,b)=>a.z-b.z),front=ahead[0],row=front?ahead.filter(v=>Math.abs(v.z-front.z)<22):[];const safe=[0,1,2,3,4].filter(l=>!row.some(v=>v.lane===l));const pickups=s.pickups.filter(p=>p.z>0&&safe.includes(p.lane)&&(!front||Math.abs(p.z-front.z)<24)).sort((a,b)=>(s.fuel<22&&a.type==='fuel'?-1:s.fuel<22&&b.type==='fuel'?1:a.z-b.z));const target=pickups[0]?.lane??safe.sort((a,b)=>Math.abs(a-s.x)-Math.abs(b-s.x))[0];if(target!==undefined&&target!==s.lane)window.dispatchEvent(new KeyboardEvent('keydown',{key:target<s.lane?'ArrowLeft':'ArrowRight',bubbles:true}));if(s.boost>=10&&!s.boosting)window.dispatchEvent(new KeyboardEvent('keydown',{key:' ',bubbles:true}));window.advanceTime(20);}return last;});
+ await page.locator('.result-number').waitFor();assert.equal(await page.locator('[data-act=retry-reward]').count(),0,'valid browser replay must settle');assert.ok(driven.coins>0);assert.ok(driven.boosts>0,'near misses should enable an actual booster activation');assert.match(await page.locator('.token-result').innerText(),/적립/);report.push({racing:'five-lane actual drive and verified automatic token settlement',coins:driven.coins,distance:Math.floor(driven.distance),nearMisses:driven.nearMisses,boosts:driven.boosts});
+ const session=await page.evaluate(()=>fetch('/api/session').then(r=>r.json()));app.db.prepare('UPDATE racing_wallet SET tokens=100 WHERE user_id=?').run(session.user.id);
+ await visit('detail/racing','#game-setup');await page.locator('[data-act=car-next]').click();await page.locator('[data-act=unlock-car]').click();await page.waitForFunction(()=>document.querySelector('.token-balance')?.textContent.includes('50'));assert.equal(await page.locator('[data-act=start]').isDisabled(),false);await page.reload();await page.locator('[data-act=car-next]').click();assert.match(await page.locator('.garage-spec').innerText(),/사용 가능/);await page.locator('[data-act=car-next]').click();await page.locator('[data-act=unlock-car]').click();await page.waitForFunction(()=>document.querySelector('.token-balance')?.textContent.includes('0 '));await page.locator('[data-act=car-next]').click();assert.match(await page.locator('.garage-car').innerText(),/Coming soon/);assert.equal(await page.locator('[data-act=start]').isDisabled(),true);report.push('garage: both 50-token unlocks, persisted reload, coming soon disabled');
+ for(const size of [{width:320,height:740},{width:390,height:844},{width:1440,height:1000}]){
+  await page.setViewportSize(size);for(const path of ['detail/sort','detail/typing','detail/racing','play/racing?car=touring&seed=27','play/jump?seed=21']){await visit(path,path.startsWith('detail')?'#game-setup':'.dg-game');if(path.startsWith('play'))await advance(500);const width=await page.evaluate(()=>document.documentElement.scrollWidth);assert.ok(width<=size.width,`${path} overflow at ${size.width}`);await page.screenshot({path:out+'/'+path.split('?')[0].replace('/','-')+'-'+size.width+'.png'});}report.push({viewport:size.width,overflow:false});
+ }
+ assert.deepEqual(errors,[]);writeFileSync(out+'/browser-report.json',JSON.stringify({passed:true,report,errors},null,2));console.log(JSON.stringify(report,null,2));
+}finally{await browser.close();await app.close();}

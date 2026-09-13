@@ -1,0 +1,13 @@
+
+/* v8 shared identity, keyboard-friendly birth fields and business result. */
+.profile-chip{display:inline-flex;align-items:center;justify-content:center;max-width:180px;padding:9px 15px;border:1px solid var(--line,#dedfd4);border-radius:24px;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#fff;color:#244d3d;text-decoration:none;flex-shrink:0}
+.profile-form-tools{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:4px}
+.birth-time,.optional-birth{border:0;padding:0;margin:0;min-width:0}
+.birth-time legend{margin-bottom:10px;font-size:14px;font-weight:650}.birth-time .check{margin-bottom:10px}
+.optional-birth:disabled{display:none}.profile-progress-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.profile-progress{display:flex;flex-direction:column;gap:10px;background:#f3f5ed;border-radius:18px;padding:20px;color:inherit;text-decoration:none;min-width:0}
+.profile-progress span{font-size:14px}.profile-progress small{color:#637366}.profile-save-card{border-left:4px solid #436f57}
+.business-bar progress{display:block;width:100%;height:14px;accent-color:#527b59;margin-top:10px;border:0;border-radius:12px;overflow:hidden}
+.business-bar progress::-webkit-progress-bar{background:#edf0e6}.business-bar progress::-webkit-progress-value{background:#527b59;border-radius:12px}
+.business-bar .between{gap:12px;flex-wrap:wrap}.business-bar span{font-size:13px;color:#657263}
+@media(max-width:620px){.profile-chip{max-width:145px;padding:8px 12px}.profile-progress-grid{grid-template-columns:1fr}.profile-form-tools .button{width:100%}.birth-time .field-row{grid-template-columns:repeat(2,minmax(0,1fr))}.profile-progress{padding:16px}}
