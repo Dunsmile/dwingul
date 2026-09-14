@@ -1,5 +1,5 @@
 import { typingPhrases } from "./typing-phrases.js";
-import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterName} from './rpg-characters.js';
+import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterIndex,rpgMonsterName} from './rpg-characters.js';
 
 export const RPG_RULES = Object.freeze({
   maxHp: 100,
@@ -68,6 +68,14 @@ export function typingRpgArtPath(stage,boss=false){
   const current=normalizedStage(stage);
   const index=boss?((Math.floor(current/10)-1)%RPG_PALETTE_25.length+RPG_PALETTE_25.length)%RPG_PALETTE_25.length:(current-1)%RPG_PALETTE_25.length;
   return `/assets/pixel/rpg/${boss?'boss':'monster'}-${String(index+1).padStart(2,'0')}.svg`;
+}
+
+export function typingRpgHeroDuelArtPath(characterId){
+  return `/assets/pixel/scenes/duel-hero-${rpgCharacter(characterId).index}.png`;
+}
+
+export function typingRpgMonsterDuelArtPath(stage){
+  return `/assets/pixel/scenes/duel-monster-${String(rpgMonsterIndex(stage)+1).padStart(2,'0')}.png`;
 }
 
 export function typingRpgDamage(combo, gear = {}) {
@@ -325,6 +333,8 @@ function setPixelArt(image,container,primary,fallback){
   if(image.dataset.asset===primary)return;
   image.dataset.asset=primary;
   image.dataset.fallback=fallback;
+  image.dataset.decorativeImage='';
+  image.dataset.fallbackSrc=fallback;
   delete image.dataset.usingFallback;
   container.classList.remove('is-art-missing');
   image.src=primary;
@@ -362,7 +372,7 @@ export function createTypingRpg(ctx) {
   const scene = node("div", "typing-rpg__scene");
   const hero = node("div", "typing-rpg__hero"); hero.setAttribute("aria-hidden", "true");
   const heroArt=pixelArt('','typing-rpg__hero-art',112,112),heroFallback=node('span','typing-rpg__art-fallback','⌨');hero.append(heroFallback,heroArt);
-  wirePixelArt(heroArt,hero);setPixelArt(heroArt,hero,rpgCharacterArtPath(selectedCharacter.id),'/assets/pixel/rpg/hero.svg');
+  wirePixelArt(heroArt,hero);setPixelArt(heroArt,hero,typingRpgHeroDuelArtPath(selectedCharacter.id),rpgCharacterArtPath(selectedCharacter.id));
   const bolt = pixelArt('/assets/pixel/illustrated/rpg/spell-attack.png','typing-rpg__bolt',48,48); bolt.setAttribute("aria-hidden", "true");
   const creature = node("div", "typing-rpg__monster"); creature.setAttribute("aria-hidden", "true");
   const creatureArt=pixelArt('','typing-rpg__monster-art',128,128),creatureFallback=node('span','typing-rpg__art-fallback','◆'),crown=node('span','typing-rpg__crown','♛');creature.append(crown,creatureFallback,creatureArt);
@@ -433,7 +443,7 @@ export function createTypingRpg(ctx) {
     const state = model.getState();
     root.style.setProperty("--rpg-stage-color", state.palette);
     root.classList.toggle("is-boss", state.boss);
-    setPixelArt(creatureArt,creature,rpgMonsterArtPath(state.stage),typingRpgArtPath(state.stage,state.boss));
+    setPixelArt(creatureArt,creature,typingRpgMonsterDuelArtPath(state.stage),rpgMonsterArtPath(state.stage));
     hpMeter.value = state.hp; hpValue.textContent = `${state.hp} / ${state.maxHp}`;
     mpMeter.value = state.mp; mpValue.textContent = `${state.mp} / ${state.maxMp}`;
     progressValue.textContent = `${state.stage}`;goldValue.textContent=`${state.gold}`;

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "jump-forest",
+    "prompt": "Use case: stylized-concept. Production raster background for a side-scrolling woodland runner game DWINGUL. Wide 1536x1024 landscape. Rich hand-crafted pixel illustration, crisp small pixel clusters and warm brown outlines matching a cozy Korean woodland RPG, sage greens, honey cream light, muted earth. Flat side-on orthographic camera, distant forest trunks and soft hills receding, dappled golden sky in upper third. Decorative tiny mushrooms only far in the background. Lower 42 percent of image is open very pale quiet meadow with no rocks, no foreground obstacles, no characters; playable objects will be overlaid by code. No ground cliff, no road receding in perspective, no HUD, no borders, no lettering. Both left and right edges have similar greenery/brightness, usable as repeating scenic panorama. Detailed illustration, not vector polygons, not simple CSS geometry.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-71c40cdd-a45b-42bd-a2bd-0a52bdd274ed.png",
+    "path": "design/scenes-v12/jump-forest.png"
+  },
+  {
+    "id": "sort-lodge",
+    "prompt": "Use case: stylized-concept. Production raster background for a cozy pixel RPG character sorting game DWINGUL. Wide landscape 1536x1024. An empty woodland post office lodge interior made of mossy wood, warm cream and sage palette, crisp hand-crafted pixel clusters, dark warm brown outlines, storybook RPG. Centered view down a wooden plank walkway receding to a small doorway at center x50 percent y12 percent. The center walkway broadens to cover x15 to85 percent at bottom. Tiny mail shelves, lanterns, plants only in far left and right margins. The full central path must be empty and visibly quiet for a vertical queue of characters added in code. No figures, no icons, no signs, no legible words, no UI. Soft warm daylight, enough contrast for white, blue, purple characters. Scene reads as coherent painted room rather than assembled HTML.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-3d1b20f3-e4ff-43f4-acea-e4bac44c87d2.png",
+    "path": "design/scenes-v12/sort-lodge.png"
+  },
+  {
+    "id": "city-village",
+    "prompt": "Use case: stylized-concept. Production raster gameplay backdrop for DWINGUL cozy woodland arcade driving game. Landscape1536x1024, raised rear chase camera, centered straight road vanishing near x50 percent y12 percent, not a horizon at mid height. Rich crisp pixel storybook illustration consistent with sage-green cream warm-brown woodland RPG characters. Roadside tiny timber cottages, tiled roofs, mossy stone walls, leaf trees, warm street lamps clustered at left/right outside road. Center is an entirely empty wide straight muted grey-green road without lane markings, cars, pedestrians, barriers or collectibles (game renders those). Road occupies bottom entire width, narrows to x45-55 percent at y15 percent. No bend/no intersection. Restrained distant detail, bright legible daytime, not realistic 3D or vector, no text or interface. Road surface may be simple textured asphalt but edges and village must be illustrated.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-575a7fdc-2ed9-4a8a-9172-d75fe8731c02.png",
+    "path": "design/scenes-v12/city-village.png"
+  },
+  {
+    "id": "tabletops",
+    "prompt": "Use case: stylized-concept. A production sprite atlas of FOUR square background plates in an EXACT even 2x2 grid, no gutters, each plate occupies one quadrant edge-to-edge, overall square 1536x1536. Handcrafted pixel art woodland storybook RPG, cream sage honey brown with pixel texture, painterly richness matching cozy forest pets. Each square has decorative edges only and an absolutely empty calm central 80 percent, no glyphs or text, no drawn grid, no cards or characters. Top-left: warm mossy wooden tabletop with tiny star crystals and fern leaves tucked into corners, center muted pale green wood. Top-right: a forest artist workbench with tiny paint pigment jars and autumn leaves tucked into corners, center neutral pale ivory parchment. Bottom-left: carved brass and wood pocket-clock inspired tabletop surround, small gears at outer corners, center large plain ivory area empty for digital timer (DO NOT draw numbers, clock hands or a clock face). Bottom-right: a forest stage with tiny lanterns only at corners and muted sage velvet center for rhythm lanes. Clear straight quadrant boundaries, four independent finished background illustrations, no labels or UI.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-4a1d1487-f359-4f09-93d5-79df641fd19a.png",
+    "path": "design/scenes-v12/tabletops.png"
+  },
+  {
+    "id": "jump-obstacles",
+    "prompt": "Use case: stylized-concept. Production game sprite sheet for DWINGUL cozy woodland side-scrolling platform runner. FOUR separate obstacle objects on a genuinely transparent alpha background, exact even 2x2 grid, wide clear transparent gutters, no checker pattern baked into image, no text no labels no ground planes no cast shadows outside the objects. Rich crisp pixel storybook illustration, warm brown dark outlines, sage moss, ochre wood, matching friendly woodland RPG pets. Straight front/side orthographic view with no receding floor. Top-left short solid mossy tree stump, nearly square solid rectangular silhouette. Top-right wide two adjoining solid moss-covered stone blocks, a low solid rectangular wall twice as wide as tall; no gaps between blocks. Bottom-left a tall solid stack of logs bound by rope, vertically rectangular about twice as tall as wide, this obstacle requires double jump. Bottom-right long dense hanging tree-root column with leaves near top and a thick solid horizontal root at bottom, narrow tall rectangle about3times tall as wide; no supports rising from bottom/no arch hole because player slides BELOW the bottom edge. All objects have full coherent material detail, solid hit silhouettes, fit fully inside their quadrant with generous margin. Real transparency outside isolated sprites.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-ba3f933d-3063-4dc2-a99f-7478cdeff606.png",
+    "path": "design/scenes-v12/jump-obstacles.png"
+  },
+  {
+    "id": "ground-strip",
+    "prompt": "Use case: stylized-concept. A seamless horizontally repeating ground texture tile for a cozy woodland pixel platform runner, wide landscape 1536x1024. Orthographic FRONT cross-section view. Top edge is perfectly straight and level: very thin mossy sage grass lip occupies top 10 percent. Below it warm ochre compact earth with faint roots and tiny stones, progressively darker towards bottom, rich detailed pixel clusters, dark warm brown edge accents, matching hand-crafted woodland RPG illustration. Solid opaque texture completely fills rectangle. No sky, trees, tall grass, plants above top, characters, platforms, UI, text, borders or decorative frame. Left and right edges seamlessly repeat with similar earth and grass values. Actual raster texture not vectors or simplistic flat blocks.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-2b136d3f-d650-492e-8111-c6bbc54bd194.png",
+    "path": "design/scenes-v12/ground-strip.png"
+  },
+  {
+    "id": "analysis-reader",
+    "prompt": "Use case: stylized-concept. Production transparent character animation key art for DWINGUL fortune analysis dialog. One adorable chibi cat wizard in deep muted purple floppy pointed hat with a gold crescent moon, cream face tiny dark eyes blush cheeks, brown warm outlines, purple robe, sitting behind a small open aged book studying it with a brass magnifying glass. A tiny pale gold star floats next to the book, no text. Rich crisp pixel clusters and soft pixel shading, cozy woodland RPG pet illustration, cute calm thoughtful expression. Centered full subject, square composition, all ears hat book paws within frame with comfortable margins. Genuinely transparent alpha background, no checker pattern, no scenery, no labels, no letters, no frame. The book pages are blank with faint abstract tiny marks, never legible.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-de004786-29ce-4dc9-b08b-0452f64ce56a.png",
+    "path": "design/scenes-v12/analysis-reader.png"
+  },
+  {
+    "id": "road-props",
+    "prompt": "Use case: stylized-concept. Four isolated roadside scenery sprites in an exact even 2x2 atlas on a genuinely transparent alpha background. For a cozy woodland pixel-art driving game, rich crisp pixel clusters, sage green honey cream brown outlines, same warm storybook RPG style as cute forest pets. Raised three-quarter front view, full object within quadrant with clear gutters, no ground rectangles, no surrounding backgrounds, no checker pattern, no labels/text. Top left broad leafy woodland tree with exposed trunk and tiny moss base. Top right small charming timber village cottage with terracotta tile roof, windows and tiny flowerbox; opaque solid building. Bottom left tall slender wooden streetlamp with warm hanging lantern and a few ivy leaves at base. Bottom right low flower shrub beside a small mossy rock. Each sprite anchored on a small natural base with no long cast shadows. Separate all four, no overlap. These are non-colliding scenery outside the road.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-83e3cc4a-a964-433c-9206-e7db19ee3912.png",
+    "path": "design/scenes-v12/road-props.png"
+  }
+]

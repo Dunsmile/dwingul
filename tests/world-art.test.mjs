@@ -35,8 +35,8 @@ test('every activity ships a distinct full and compact thumbnail',async()=>{
 test('artbook contains complete, local, nonempty production artwork',async()=>{
  const manifest=JSON.parse(await readFile(new URL('artbook/manifest.json',root),'utf8')),assets=manifest.assets;
  const illustratedSceneCount=(await Promise.all(['world','rpg'].map(async group=>(await readdir(new URL(`assets/pixel/illustrated/${group}/`,root))).filter(file=>file.endsWith('.png')).length))).reduce((sum,count)=>sum+count,0);
- const expected=21+(await readdir(new URL('assets/pixel/portraits/',root))).filter(file=>file.endsWith('.webp')).length+illustratedSceneCount+RPG_CHARACTERS.length+312+RPG_MONSTER_NAMES_25.length+cityCars.length+4;
- assert.equal(manifest.version,'pixel-v11');
+ const expected=21+(await readdir(new URL('assets/pixel/portraits/',root))).filter(file=>file.endsWith('.webp')).length+illustratedSceneCount+RPG_CHARACTERS.length+312+RPG_MONSTER_NAMES_25.length+cityCars.length+4+(await readdir(new URL('assets/pixel/scenes/',root))).filter(file=>file.endsWith('.png')).length;
+ assert.equal(manifest.version,'pixel-v12');
  assert.equal(manifest.copyright,'© 2026 DWINGUL');
  assert.equal(manifest.contact.email,'poilkjmnb122@gmail.com');
  assert.equal(manifest.provenance.equipmentBaseIllustrations,75);

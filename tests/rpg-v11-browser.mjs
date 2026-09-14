@@ -32,8 +32,8 @@ await page.evaluate(async()=>{
 });
 await page.waitForSelector('.typing-rpg--pixel .typing-rpg__monster-art');
 await page.waitForFunction(()=>document.querySelector('.typing-rpg__monster-art')?.complete&&document.querySelector('.typing-rpg__monster-art')?.naturalWidth>0);
-assert.equal(await page.getAttribute('.typing-rpg__hero-art','data-asset'),'/assets/pixel/illustrated/personas/15.png');
-assert.equal(await page.getAttribute('.typing-rpg__monster-art','data-asset'),'/assets/pixel/illustrated/monsters/25.png');
+assert.equal(await page.getAttribute('.typing-rpg__hero-art','data-asset'),'/assets/pixel/scenes/duel-hero-15.png');
+assert.equal(await page.getAttribute('.typing-rpg__monster-art','data-asset'),'/assets/pixel/scenes/duel-monster-25.png');
 assert.equal(await page.locator('.typing-rpg__details').evaluate(node=>node.open),false);
 assert.match(await page.locator('.typing-rpg__hud').innerText(),/스테이지[\s\S]*25/);
 assert.match(await page.locator('.typing-rpg__hud').innerText(),/골드[\s\S]*0/);

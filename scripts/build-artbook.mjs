@@ -49,8 +49,11 @@ for(const [index,name] of RPG_MONSTER_NAMES_25.entries()){const number=String(in
 for(const car of cityCars)await addPng({id:`vehicles/${car.id}`,name:car.name,group:'플레이 차량 8종',kind:'vehicle',src:car.art,aliases:`차량 자동차 ${car.design}`});
 for(const [id,name] of Object.entries({car:'도심 승용차',van:'도심 밴',truck:'도심 트럭',bus:'도심 버스'}))await addPng({id:`traffic/${id}`,name,group:'교통 차량 4종',kind:'traffic',src:`/assets/pixel/illustrated/traffic/${id}.png`,aliases:'교통 차량 자동차'});
 
+const sceneAssets=JSON.parse(await readFile(new URL('../design/scene-assets-v12.json',import.meta.url),'utf8'));
+for(const scene of sceneAssets){const isVehicle=/^(traffic-|player-)/.test(scene.id),isDuel=scene.id.startsWith('duel-');await addPng({id:'scenes/'+scene.id,name:scene.name,group:isVehicle?'차량 방향 28종':isDuel?'전투 자세 41종':'플레이 배경·장애물',kind:'scenes',src:scene.src,aliases:(isVehicle?'차량 자동차 방향 ':isDuel?'캐릭터 몬스터 전투 ':'배경 장애물 숲 원화 ')+scene.name});}
+
 const manifest={
- version:'pixel-v11',
+ version:'pixel-v12',
  copyright:'© 2026 DWINGUL',
  contact:{email:'poilkjmnb122@gmail.com',partnership:'mailto:poilkjmnb122@gmail.com?subject=%5BDWINGUL%5D%20%EC%A0%9C%ED%9C%B4%20%EB%AC%B8%EC%9D%98'},
  provenance:{rasterArtwork:'DWINGUL을 위해 만든 오리지널 생성 래스터 일러스트',equipmentVariants:'75개의 기본 일러스트에서 파생한 장비 변형 312종',equipmentBaseIllustrations:75,derivedEquipmentVariants:312},
