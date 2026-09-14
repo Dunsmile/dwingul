@@ -28,7 +28,7 @@
 ## 4. Review and release — root
 - [x] Independent spec/privacy/code review, fix material issues; existing regression tests plus meaningful dialog/privacy/layout tests.
 - [x] Build, in-memory test server only (do not restart user4173), browser gameplay and fortune screenshots.
-- [ ] GitHub merge, Cloudflare deploy, read-only production assets/guides verification and release notes.
+- [x] GitHub merge, Cloudflare deploy, read-only production assets/guides verification and release notes.
 
 Reference: User supplied HOXY daily fortune screenshot and accessibility text provide section order, compact score header and bottom CTA. Direct web open of daily-fortune and tarot-reading was blocked by web safety, so do not retry via another route. Do not copy medical/supplement advice or claim scientific fortune accuracy.
 
