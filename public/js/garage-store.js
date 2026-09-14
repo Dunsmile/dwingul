@@ -3,6 +3,7 @@ import { cityCars, gameSettings } from './game-options.js';
 import { createCityEngine as createCityV4 } from './legacy/city-engine-v4.js';
 import { createCityEngine as createCityV5 } from './legacy/city-engine-v5.js';
 import { createCityEngine as createCityV6 } from './legacy/city-engine-v6.js';
+import { createCityEngine as createCityV7 } from './legacy/city-engine-v7.js';
 import { createCityEngine } from './city-engine.js';
 import { seededRandom } from './game-random.js';
 export function createGarageStore(db, fail) {
@@ -34,13 +35,13 @@ export function createGarageStore(db, fail) {
     const previous = get('SELECT coins FROM run_rewards WHERE run_id=?',attempt.id);
     if (previous) return { earned: previous.coins, alreadyPaid: true, ...wallet(userId) };
     const rawSettings=JSON.parse(attempt.game_settings),version=rawSettings.version;
-    if(!['v4','v5','v6','v7'].includes(version))fail('이전 주행은 차고에서 새로 시작해주세요.');
-    if(version!=='v7'&&!['basic','sport','touring'].includes(rawSettings.car))fail('이 차량은 새 주행에서 다시 시작해주세요.');
+    if(!['v4','v5','v6','v7','v16'].includes(version))fail('이전 주행은 차고에서 새로 시작해주세요.');
+    if(!['v7','v16'].includes(version)&&!['basic','sport','touring'].includes(rawSettings.car))fail('이 차량은 새 주행에서 다시 시작해주세요.');
     const settings = gameSettings('racing',rawSettings), spec = cityCars.find(c=>c.id===settings.car);if(!spec)fail('주행 차량을 확인해주세요.');
     requireCar(userId,spec.id);
     const coins=Number(data.coins), elapsed=Number(data.elapsedMs)/1000, distance=Number(data.distance);
     if (!Number.isInteger(coins)||coins<0||!Number.isFinite(elapsed)||elapsed<=0||elapsed>1800||!Number.isFinite(distance)||distance<0||!Array.isArray(data.inputs)||data.inputs.length>1800) fail('주행 결과를 확인해주세요.');
-    const engineForVersion={v4:createCityV4,v5:createCityV5,v6:createCityV6,v7:createCityEngine}[version];
+    const engineForVersion={v4:createCityV4,v5:createCityV5,v6:createCityV6,v7:createCityV7,v16:createCityEngine}[version];
     const replay=engineForVersion({car:spec.id,random:seededRandom(`racing:${attempt.seed}`)});
     let time=0;
     for(const input of data.inputs){

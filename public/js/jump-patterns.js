@@ -13,6 +13,64 @@ export const JUMP_V13_RULES = Object.freeze({
   minimumGapByType:JUMP_V11_RULES.minimumGapByType,
 });
 
+export const JUMP_V16_STAGES = Object.freeze([
+  Object.freeze({ id: 'easy', label: '쉬움', fromMeters: 0, frequencyScale: 1, sky: '#dff3ed', ridge: '#b9d8bf', ground: '#6f986d', obstacle: '#a96f54' }),
+  Object.freeze({ id: 'less-easy', label: '조금 쉬움', fromMeters: 1000, frequencyScale: 1.2, sky: '#f8edc9', ridge: '#c8d69c', ground: '#708d55', obstacle: '#9d7047' }),
+  Object.freeze({ id: 'normal', label: '보통', fromMeters: 2000, frequencyScale: 1.44, sky: '#dce9f7', ridge: '#9db5ca', ground: '#5f7c67', obstacle: '#88654d' }),
+  Object.freeze({ id: 'hard', label: '어려움', fromMeters: 3000, frequencyScale: 1.728, sky: '#eadce8', ridge: '#aa91ad', ground: '#586c63', obstacle: '#79536b' }),
+  Object.freeze({ id: 'expert', label: '전문가', fromMeters: 4000, frequencyScale: 2.0736, sky: '#f0d7bd', ridge: '#b98b70', ground: '#665d50', obstacle: '#74483e' }),
+  Object.freeze({ id: 'master', label: '마스터', fromMeters: 5000, frequencyScale: 2.48832, sky: '#d9d5ef', ridge: '#7d769f', ground: '#49475f', obstacle: '#5f466e' }),
+]);
+
+export const JUMP_V16_STAGE_PATTERN_TYPES = Object.freeze([
+  Object.freeze(['basic','basic','basic','wide']),
+  Object.freeze(['basic','basic','wide','wide','double']),
+  Object.freeze(['basic','wide','wide','double','slide']),
+  Object.freeze(['basic','wide','double','double','slide']),
+  Object.freeze(['wide','double','double','slide','slide']),
+  Object.freeze(['basic','wide','double','double','slide','slide']),
+]);
+
+export function jumpPatternTypeForStage(stageIndex, random = Math.random) {
+  const choices=JUMP_V16_STAGE_PATTERN_TYPES[Math.max(0,Math.min(5,Number(stageIndex)||0))];
+  return choices[Math.floor(Math.max(0,Math.min(.999999,Number(random())||0))*choices.length)];
+}
+
+export const JUMP_V16_RULES = Object.freeze({
+  ...JUMP_V13_RULES,
+  maxLives: 3,
+  stageMeters: 1000,
+  heartFirstMinMeters: 900,
+  heartFirstMaxMeters: 1100,
+  heartRepeatMinMeters: 900,
+  heartRepeatMaxMeters: 1100,
+  jumpBufferMs: 150,
+});
+
+export function jumpStageIndex(distanceMeters) {
+  return Math.min(JUMP_V16_STAGES.length - 1, Math.floor(Math.max(0, Number(distanceMeters) || 0) / JUMP_V16_RULES.stageMeters));
+}
+
+export function jumpStage(distanceMeters) { return JUMP_V16_STAGES[jumpStageIndex(distanceMeters)]; }
+
+export function jumpV16TargetObstaclesPer10s(elapsedMs, distanceMeters) {
+  return jumpTargetObstaclesPer10s(elapsedMs) * jumpStage(distanceMeters).frequencyScale;
+}
+
+export function jumpV16NextPatternDistance(pattern, elapsedMs, distanceMeters) {
+  const speed = jumpWorldSpeedV13(elapsedMs);
+  const target = jumpV16TargetObstaclesPer10s(elapsedMs, distanceMeters);
+  const last = Math.max(0, ...pattern.events.map(({ atDistance }) => atDistance));
+  const desiredCycle = speed * 10 / target * pattern.events.length;
+  return last + Math.max(JUMP_V13_RULES.minimumGapByType[pattern.type], desiredCycle - last);
+}
+
+export function nextHeartMeters(currentMeters, random = Math.random, first = false) {
+  const min = first ? JUMP_V16_RULES.heartFirstMinMeters : JUMP_V16_RULES.heartRepeatMinMeters;
+  const max = first ? JUMP_V16_RULES.heartFirstMaxMeters : JUMP_V16_RULES.heartRepeatMaxMeters;
+  return currentMeters + min + Math.max(0, Math.min(.999999, Number(random()) || 0)) * (max - min);
+}
+
 export function jumpDifficultyLevel(elapsedMs){return Math.floor(Math.max(0,Number(elapsedMs)||0)/JUMP_V13_RULES.stepMs);}
 export function jumpTargetObstaclesPer10s(elapsedMs){return JUMP_V13_RULES.initialObstaclesPer10s+jumpDifficultyLevel(elapsedMs);}
 export function jumpWorldSpeedV11(elapsedMs){return Math.min(JUMP_V11_RULES.maxSpeed,JUMP_V11_RULES.initialSpeed+Math.max(0,Number(elapsedMs)||0)*JUMP_V11_RULES.accelerationPerMs);}

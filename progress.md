@@ -165,3 +165,19 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - Replaced native meters with common accessible 11px square gauges. Fixed narrow-mobile HP text overlap and small-PC internal overflow when opening help; cleared stale menu toast when starting combat.
 - Verified 250 unit/API tests, 12 Chromium/WebKit menu+combat views, 2 engine shop/draw/equip/enhance/delete flows, old Korean composition/correction/heal and 6 short-mode layouts. Official game client captured long-mode drafts at HP100; screenshots visually inspected. Full build succeeds with 615 artwork entries and 30 crawlable pages. Test data only isolated memory DB; production/user4173 untouched.
 - Released through PR#5 implementation03e1907/main88037e3. Cloudflaredc4536b1-5517-4b50-a6ec-23fe24634249; 11production JS/CSS hashes match tested build, home/typing guide200 and www308 verified read-only without API requests. User4173 PID95174 preserved; isolated root4176 stopped. See docs/releases/2026-09-15-v15.md. No remaining requested work.
+
+## 2026-09-15 — v16 jump implementation handoff
+
+- Jump-owned modules now implement 3 health, ~1000m healing hearts capped at 3, six 1000m stages, per-stage 1.2x cadence, retained 10-second speed/density growth, safe pattern gaps, 150ms landing input buffer and explicit Space/Up/W held-key tracking.
+- Stage 2 is warmed at start; each new stage warms only its successor. Runtime expects root-provided `jump-stage-2..6` backgrounds and four obstacle assets per stage in scene-art sources.
+- Review follow-up guarantees hearts only appear after a pattern clears and reserves a pickup corridor before the next pattern. Every stage now tiles its own ground; easy favors 75% basic patterns, then double and slide unlock progressively. A 120-second-per-stage scheduler check confirms actual cadence rises without breaking safe clamps.
+- Jump-focused unit/physics regression tests pass 21/21, including maximum-speed avoidability. Shared v16 routing then allowed Chromium QA to pass Space/Up/W buffer, pause, 6000m all stages, heart cap, three-hit ending and paused ending. Screenshot inspected; new stage art was not registered yet, so final art rerun remains with root. Exact requirements and evidence: `docs/plans/v16-jump-report.md`.
+
+## 2026-09-15 — v16 racing implementation unit
+
+- Froze the prior current engine as `legacy/city-engine-v7.js`; reward settlement routes V7 and V16 to their matching deterministic engines.
+- V16 uses 1.1 fuel/sec, +8 recovery, first fuel 220–280 m, later fuel 650–850 m, and a longer 18→48 m/s elapsed-time acceleration curve.
+- Roadside scenery now shares road world distance, sorts by depth, and has projected contact shadows. Game over holds the stopped road scene for 650 ms before the V16 result.
+- Focused engine/legacy/traffic/art checks 25/25 and memory-only browser freeze/visual run passed. Official game client run and screenshots inspected. User4173 and persistent DB untouched.
+- Root must switch shared racing defaults/mode names/catalog/rules to V16. Full detail: `docs/plans/v16-racing-report.md`.
+- Follow-up: `city-racing.js` now routes visible V4–V7 playback through frozen engines and emits matching versioned result modes/details; V7 keeps immediate historical ending while V16 alone pauses 650ms. Direct browser mounts proved V7/V16 one-second balance and modes independently. Prop footpoint/shadow screenshots at 120m, 300m, and 500m were visually inspected and remain grounded.

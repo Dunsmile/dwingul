@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {createApp} from '../server.mjs';
 import {createCityEngine} from '../public/js/city-engine.js';
 import {createCityEngine as createCityV6} from '../public/js/legacy/city-engine-v6.js';
+import {createCityEngine as createCityV7} from '../public/js/legacy/city-engine-v7.js';
 import {cityCars} from '../public/js/game-options.js';
 import {seededRandom} from '../public/js/game-random.js';
 
@@ -24,12 +25,15 @@ test('all seven purchases use their exact price atomically and remain idempotent
  }finally{await f.app.close();}
 });
 
-test('v7 settlement replays new car rules while an existing v6 run keeps its engine',async()=>{
+test('v16 settlement replays current car rules while existing v7 and v6 runs keep their engines',async()=>{
  const f=await fixture();try{
   const session=await f.req('session');await f.req('garage');f.app.db.prepare('UPDATE racing_wallet SET tokens=1000, unlocked=? WHERE user_id=?').run(JSON.stringify(cityCars.map(car=>car.id)),session.user.id);
-  const run=await f.req('runs',{content:'racing',seed:19,gameSettings:{car:'roadster'}});assert.equal(run.gameSettings.version,'v7');
+  const run=await f.req('runs',{content:'racing',seed:19,gameSettings:{car:'roadster'}});assert.equal(run.gameSettings.version,'v16');
   const current=createCityEngine({car:'roadster',random:seededRandom(`racing:${run.seed}`)}),result=finish(current);const paid=await f.req('garage/settle',{run:run.id,...result});
   assert.equal(paid.status,200);assert.equal(paid.earned,result.coins);assert.equal((await f.req('garage/settle',{run:run.id,...result})).alreadyPaid,true);
+
+  const v7Run=await f.req('runs',{content:'racing',seed:7,gameSettings:{car:'basic'}});f.app.db.prepare('UPDATE runs SET game_settings=? WHERE id=?').run(JSON.stringify({version:'v7',car:'basic'}),v7Run.id);
+  const v7=createCityV7({car:'basic',random:seededRandom(`racing:${v7Run.seed}`)}),v7Result=finish(v7);const v7Paid=await f.req('garage/settle',{run:v7Run.id,...v7Result});assert.equal(v7Paid.status,200);assert.equal(v7Paid.earned,v7Result.coins);
 
   const oldRun=await f.req('runs',{content:'racing',seed:4,gameSettings:{car:'basic'}});f.app.db.prepare('UPDATE runs SET game_settings=? WHERE id=?').run(JSON.stringify({version:'v6',car:'basic'}),oldRun.id);
   const legacy=createCityV6({car:'basic',random:seededRandom(`racing:${oldRun.seed}`)}),legacyResult=finish(legacy);const oldPaid=await f.req('garage/settle',{run:oldRun.id,...legacyResult});

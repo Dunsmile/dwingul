@@ -30,10 +30,12 @@ test('publication build creates crawlable pages and excludes server stores',asyn
   await assert.rejects(stat(path.join(dist,'js/garage-store.js')),{code:'ENOENT'});
 
   const home=await readFile(path.join(dist,'index.html'),'utf8');
-  assert.match(home,/<main class="seo-home"/);
+  assert.match(home,/<main id="main" class="seo-home"/);
   assert.match(home,/<link rel="canonical" href="https:\/\/dwingul\.com\/">/);
   assert.match(home,/name="google-adsense-account" content="ca-pub-7301223136166743"/);
   assert.match(home,/class="guide-thumb static-art-fallback"/);
+  assert.match(home,/9가지 게임/);
+  assert.doesNotMatch(home,/21개 이용 안내|10가지 게임/);
   assert.match(home,/property="og:image" content="https:\/\/dwingul\.com\/assets\/pixel\/thumbnails\/sort\.webp"/);
 
   const index=await readFile(path.join(dist,'content/index.html'),'utf8');
@@ -49,6 +51,9 @@ test('publication build creates crawlable pages and excludes server stores',asyn
     assert.match(html,/class="guide-cover static-art-fallback"/);
     assert.match(html,new RegExp(`property="og:image" content="https://dwingul\\.com/assets/pixel/thumbnails/${item.id}\\.webp"`));
     assert.match(html,/<h2>기록과 결과 읽기<\/h2>/);
+    assert.match(html,/<h2>한 판을 시작하는 예시<\/h2>/);
+    assert.match(html,/<h2>입력 방법<\/h2>/);
+    assert.match(html,/<time datetime="2026-09-15">/);
     assert.equal((html.match(/<article><h3>/g)||[]).length,3);
     assert.ok(html.includes(`href="/content/category/${item.cat}/"`));
     const data=structuredData(html);
@@ -60,7 +65,7 @@ test('publication build creates crawlable pages and excludes server stores',asyn
   }
   assert.equal(intros.size,20,'각 콘텐츠는 고유한 안내문을 가져야 한다.');
 
-  assert.match(guides.racing.faq.flat().join(' '),/초당 0\.5칸/);
+  assert.match(guides.racing.faq.flat().join(' '),/초당 1\.1칸/);
   assert.match(guides.racing.scoring,/충돌[^.]*연료/);
   assert.match(guides.racing.faq.flat().join(' '),/차량마다 50~200토큰/);
   assert.match(guides.jump.rules,/같은 이동 거리 축/);
@@ -72,7 +77,7 @@ test('publication build creates crawlable pages and excludes server stores',asyn
   assert.match(guides.shop.scoring,/16가지.*주·보조/);
   assert.equal(Object.keys(searchMetadata).length,20);
   const currentGuides=Object.fromEntries(await Promise.all(['racing','jump','typing','shop'].map(async id=>[id,await readFile(path.join(dist,'content',id,'index.html'),'utf8')])));
-  assert.match(currentGuides.racing,/초당 0\.5칸/);
+  assert.match(currentGuides.racing,/초당 1\.1칸/);
   assert.match(currentGuides.racing,/0\.9초 동안 보호/);
   assert.match(currentGuides.racing,/8종 차량/);
   assert.doesNotMatch(currentGuides.racing,/초당 2칸|모든 차량.{0,8}50토큰/);
@@ -109,6 +114,12 @@ test('publication build creates crawlable pages and excludes server stores',asyn
   assert.equal(await readFile(path.join(dist,'ads.txt'),'utf8'),'google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0\n');
   const sitemap=await readFile(path.join(dist,'sitemap.xml'),'utf8');
   assert.equal((sitemap.match(/<url>/g)||[]).length,30);
+  assert.match(sitemap,/<loc>https:\/\/dwingul.com\/content\/typing\/<\/loc><lastmod>2026-09-15<\/lastmod>/);
+  assert.match(sitemap,/<loc>https:\/\/dwingul.com\/privacy\/<\/loc><lastmod>2026-09-14<\/lastmod>/);
+  const rss=await readFile(path.join(dist,'rss.xml'),'utf8');
+  assert.equal((rss.match(/<item>/g)||[]).length,20);
+  assert.match(rss,/application\/rss\+xml/);
+  assert.doesNotMatch(rss,/#\/|undefined|sequence/);
   for (const page of ['about','privacy','terms','contact']) {
     const html=await readFile(path.join(dist,page,'index.html'),'utf8');
     assert.match(html,/type="module" src="\/js\/telemetry\.js"/);

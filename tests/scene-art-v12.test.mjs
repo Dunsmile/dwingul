@@ -62,7 +62,7 @@ test('game renderers keep functional geometry above optional scene art', async (
     readFile(new URL('../public/js/sort-game.js', import.meta.url), 'utf8'),
     readFile(new URL('../public/js/city-racing.js', import.meta.url), 'utf8'),
   ]);
-  assert.match(jump, /drawSceneTileX\(pen,sceneArt\['jump-ground'\],JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth\)/);
+  assert.match(jump, /drawSceneTileX\(pen,groundImage,JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth\)/);
   assert.match(jump, /pen\.drawImage\(image,obstacle\.x,obstacle\.kind==='slide'\?0:obstacle\.y,obstacle\.w/);
   assert.match(sort, /drawSceneCover\(g,lodge,0,0,W,H/);
   assert.match(city, /project\(side<0\?-1\.35:5\.35,z\)/);

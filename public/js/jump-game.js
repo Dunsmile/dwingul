@@ -1,5 +1,5 @@
 import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
-import { jumpDifficultyLevel,jumpPatterns100,jumpTargetObstaclesPer10s,jumpV13NextPatternDistance,jumpWorldDelta,jumpWorldSpeedV11,jumpWorldSpeedV13,shuffledJumpPatterns } from "./jump-patterns.js";
+import { JUMP_V16_RULES,jumpDifficultyLevel,jumpPatterns100,jumpPatternTypeForStage,jumpStage,jumpStageIndex,jumpTargetObstaclesPer10s,jumpV13NextPatternDistance,jumpV16NextPatternDistance,jumpV16TargetObstaclesPer10s,jumpWorldDelta,jumpWorldSpeedV11,jumpWorldSpeedV13,nextHeartMeters,shuffledJumpPatterns } from "./jump-patterns.js";
 import {drawSceneCover,drawSceneTileX,preloadSceneArt,sceneImage,sceneImageReady} from './scene-art.js';
 
 export const JUMP_FLOOR = 390;
@@ -48,17 +48,39 @@ export function jumpRunAfterHit(lives) {
   return { lives: remaining, finished: remaining === 0 };
 }
 
+export function jumpHeal(lives, amount = 1) {
+  return Math.min(JUMP_V16_RULES.maxLives, Math.max(0, lives) + Math.max(0, amount));
+}
+
+export function canSpawnJumpHeart(obstacles, pendingCount, player) {
+  const playerX=jumpPlayerBox(player).x;
+  return pendingCount===0&&obstacles.every(obstacle=>obstacle.hit||obstacle.passed||obstacle.x+obstacle.w<playerX);
+}
+
 function rounded(pen, x, y, width, height, radius, color) {
   pen.fillStyle = color; pen.beginPath();
   if (pen.roundRect) pen.roundRect(x, y, width, height, radius); else pen.rect(x, y, width, height);
   pen.fill();
 }
 
-export function createJump(ctx,{version='v13'}={}) {
-  preloadWorld(['runner-run-a','runner-run-b','runner-jump','runner-slide','runner-dead']);
+export function createJump(ctx,{version='v16'}={}) {
+  preloadWorld(['heart','runner-run-a','runner-run-b','runner-jump','runner-slide','runner-dead']);
   ['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].forEach(portraitImage);
   const sceneNames=['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide'];
   preloadSceneArt(sceneNames);const sceneArt=Object.fromEntries(sceneNames.map(name=>[name,sceneImage(name)]));
+  const stageAssetNames = index => index === 0 ? [] : [
+    `jump-stage-${index+1}`,
+    `jump-stage-${index+1}-ground`,
+    ...['short','wide','double','slide'].map(kind=>`jump-stage-${index+1}-${kind}`),
+  ];
+  const warmedStages = new Set([0]);
+  function warmStage(index) {
+    if (index < 1 || index > 5 || warmedStages.has(index)) return;
+    const names=stageAssetNames(index); preloadSceneArt(names);
+    for(const name of names) sceneArt[name]=sceneImage(name);
+    warmedStages.add(index);
+  }
+  if(version==='v16') warmStage(1);
   const canvas = document.createElement("canvas");
   canvas.width = CANVAS_WIDTH; canvas.height = CANVAS_HEIGHT; canvas.className = "dg-game__canvas jump--v4";
   canvas.setAttribute("role", "img");
@@ -78,10 +100,13 @@ export function createJump(ctx,{version='v13'}={}) {
   ctx.stage.append(canvas, controls, hint);
 
   const player = { y: JUMP_FLOOR, vy: 0, jumps: 0, duck: false };
-  const obstacles = [], pendingEvents = [];
+  const obstacles = [], pendingEvents = [], hearts = [];
   let deck = [], currentPattern = null, previousPatternId = null, patternsSeen = 0, nextPatternDistance = 0;
-  let elapsed = 0, distancePixels = 0, avoided = 0, lives = 2, invincibleMs = 0, nextObstacleId = 1, scroll = 0;
+  let elapsed = 0, distancePixels = 0, avoided = 0, lives = version === 'v16' ? 3 : 2, invincibleMs = 0, nextObstacleId = 1, scroll = 0;
   let pointerDuck = false, keyboardDuck = false, ending = null;
+  let jumpBufferMs = 0, nextHeartAt = version === 'v16' ? nextHeartMeters(0, ctx.random, true) : Infinity, heartsCollected = 0;
+  const heldJumpKeys = new Set();
+  ctx.root?.classList.add('dg-game--jump-v16');
 
   function refillDeck() {
     deck = shuffledJumpPatterns(ctx.random);
@@ -89,10 +114,20 @@ export function createJump(ctx,{version='v13'}={}) {
   }
   function takePattern() {
     if (!deck.length) refillDeck();
+    if(version==='v16') {
+      const stageIndex=jumpStageIndex(jumpDistanceMeters(distancePixels));
+      const wanted=jumpPatternTypeForStage(stageIndex,ctx.random);
+      let match=deck.findIndex(pattern=>pattern.type===wanted&&(stageIndex<3||pattern.events.length===1));
+      if(match<0&&stageIndex>=3) {
+        refillDeck();
+        match=deck.findIndex(pattern=>pattern.type===wanted&&pattern.events.length===1);
+      }
+      if(match>0) [deck[0],deck[match]]=[deck[match],deck[0]];
+    }
     const pattern = deck.shift(); previousPatternId = pattern.id; return pattern;
   }
   function addObstacle(pattern, event, eventIndex) {
-    obstacles.push({ ...event, id: nextObstacleId++, patternId: pattern.id, eventIndex, x: CANVAS_WIDTH + 28, hit: false, passed: false });
+    obstacles.push({ ...event, id: nextObstacleId++, patternId: pattern.id, eventIndex, stageIndex: version==='v16'?jumpStageIndex(jumpDistanceMeters(distancePixels)):0, x: CANVAS_WIDTH + 28, hit: false, passed: false });
   }
   function beginPattern() {
     currentPattern = takePattern(); patternsSeen += 1;
@@ -100,12 +135,13 @@ export function createJump(ctx,{version='v13'}={}) {
       if (event.atDistance === 0) addObstacle(currentPattern, event, eventIndex);
       else pendingEvents.push({ pattern: currentPattern, event, eventIndex, remainingDistance: event.atDistance });
     });
-    nextPatternDistance = version==='v11'?Math.max(...currentPattern.events.map(({ atDistance }) => atDistance))+currentPattern.gapAfterDistance:jumpV13NextPatternDistance(currentPattern,elapsed);
+    const meters = jumpDistanceMeters(distancePixels);
+    nextPatternDistance = version==='v11'?Math.max(...currentPattern.events.map(({ atDistance }) => atDistance))+currentPattern.gapAfterDistance:version==='v16'?jumpV16NextPatternDistance(currentPattern,elapsed,meters):jumpV13NextPatternDistance(currentPattern,elapsed);
   }
 
-  const jump = () => { if (!ctx.isFinished() && !ending) { tryJump(player); draw(); } };
+  const jump = () => { if (!ctx.isFinished() && !ending) { if (!tryJump(player)) jumpBufferMs = JUMP_V16_RULES.jumpBufferMs; draw(); } };
   const stopDuck = () => { pointerDuck = false; player.duck = keyboardDuck; };
-  const clearHeld = () => { pointerDuck = false; keyboardDuck = false; player.duck = false; };
+  const clearHeld = () => { pointerDuck = false; keyboardDuck = false; player.duck = false; jumpBufferMs = 0; heldJumpKeys.clear(); };
   ctx.listen(jumpButton, "pointerdown", (event) => { event.preventDefault(); jump(); });
   ctx.listen(jumpButton, "click", (event) => { if (event.detail === 0) jump(); });
   ctx.listen(canvas, "pointerdown", (event) => { event.preventDefault(); jump(); });
@@ -118,10 +154,10 @@ export function createJump(ctx,{version='v13'}={}) {
   ctx.listen(document, "keydown", (event) => {
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName || "") || event.target?.isContentEditable) return;
     if(ending)return;
-    if (["Space", "ArrowUp"].includes(event.code)) { event.preventDefault(); if (!event.repeat) jump(); }
+    if (["Space", "ArrowUp", "KeyW"].includes(event.code)) { event.preventDefault(); if (!heldJumpKeys.has(event.code)) { heldJumpKeys.add(event.code); jump(); } }
     if (event.code === "ArrowDown") { event.preventDefault(); keyboardDuck = true; player.duck = true; draw(); }
   });
-  ctx.listen(document, "keyup", (event) => { if (event.code === "ArrowDown") { keyboardDuck = false; player.duck = pointerDuck; draw(); } });
+  ctx.listen(document, "keyup", (event) => { heldJumpKeys.delete(event.code); if (event.code === "ArrowDown") { keyboardDuck = false; player.duck = pointerDuck; draw(); } });
   ctx.listen(window, "blur", clearHeld);
 
   function drawGroundObstacle(obstacle) {
@@ -141,16 +177,17 @@ export function createJump(ctx,{version='v13'}={}) {
     pen.fillStyle="#49382d";pen.fillRect(obstacle.x-7,obstacle.h-32,obstacle.w+14,32);pen.fillStyle="#647f52";pen.fillRect(obstacle.x-4,obstacle.h-29,obstacle.w+8,25);
   }
   function drawObstacle(obstacle){
-    const image=sceneArt[JUMP_OBSTACLE_ART[obstacle.kind]||JUMP_OBSTACLE_ART.basic];
+    const suffix=JUMP_OBSTACLE_ART[obstacle.kind]?.replace('jump-obstacle-','')||'short';
+    const image=sceneArt[obstacle.stageIndex ? `jump-stage-${obstacle.stageIndex+1}-${suffix}` : JUMP_OBSTACLE_ART[obstacle.kind]||JUMP_OBSTACLE_ART.basic];
     if(sceneImageReady(image))pen.drawImage(image,obstacle.x,obstacle.kind==='slide'?0:obstacle.y,obstacle.w,obstacle.kind==='slide'?obstacle.h:obstacle.h);
     else if(obstacle.kind==='slide')drawSlideObstacle(obstacle);else drawGroundObstacle(obstacle);
     if(obstacle.kind==='double'){pen.fillStyle='#fff8e8';pen.strokeStyle='#49382d';pen.lineWidth=4;pen.textAlign='center';pen.font='800 18px sans-serif';pen.strokeText('2단!',obstacle.x+obstacle.w/2,obstacle.y+27);pen.fillText('2단!',obstacle.x+obstacle.w/2,obstacle.y+27);}
     if(obstacle.kind==='slide'){pen.fillStyle='#eef4ed';pen.strokeStyle='#49382d';pen.lineWidth=4;pen.textAlign='center';pen.font='800 17px sans-serif';pen.strokeText('↓ 숙이기',obstacle.x+obstacle.w/2,obstacle.h-10);pen.fillText('↓ 숙이기',obstacle.x+obstacle.w/2,obstacle.h-10);}
   }
-  function drawWoodland(viewWidth) {
-    pen.fillStyle = "#e9f0e8"; pen.fillRect(0, 0, viewWidth, CANVAS_HEIGHT);
+  function drawWoodland(viewWidth, stage) {
+    pen.fillStyle = stage.sky; pen.fillRect(0, 0, viewWidth, CANVAS_HEIGHT);
     pen.fillStyle = "#f6df94"; pen.fillRect(viewWidth - 148, 51, 64, 64); pen.fillRect(viewWidth - 140, 43, 48, 80);
-    pen.fillStyle = "#d7e5d4";
+    pen.fillStyle = stage.ridge;
     for (let index = -1; index < 7; index += 1) {
       const x = index * 190 - (scroll * .08 % 190);
       pen.beginPath(); pen.moveTo(x, JUMP_FLOOR); pen.lineTo(x + 90, 224); pen.lineTo(x + 180, JUMP_FLOOR); pen.fill();
@@ -161,8 +198,8 @@ export function createJump(ctx,{version='v13'}={}) {
       pen.fillRect(x + 66, 276, 22, 114);
       pen.fillRect(x + 12, 263, 130, 34); pen.fillRect(x + 30, 232, 92, 42); pen.fillRect(x + 51, 207, 52, 38);
     }
-    pen.fillStyle = "#afc7a9"; pen.fillRect(0, JUMP_FLOOR, viewWidth, 60);
-    pen.fillStyle = "#6f986d";
+    pen.fillStyle = stage.ridge; pen.fillRect(0, JUMP_FLOOR, viewWidth, 60);
+    pen.fillStyle = stage.ground;
     for (let x = -(scroll % 90); x < viewWidth + 30; x += 90) {
       pen.fillRect(x, 419, 38, 4); pen.fillRect(x + 12, 397, 4, 9); pen.fillRect(x + 7, 400, 14, 3);
     }
@@ -172,10 +209,15 @@ export function createJump(ctx,{version='v13'}={}) {
   function draw() {
     fitCamera();
     const viewWidth = canvas.width;
-    pen.clearRect(0, 0, viewWidth, CANVAS_HEIGHT); drawWoodland(viewWidth);
-    drawSceneCover(pen,sceneArt['jump-forest'],0,0,viewWidth,CANVAS_HEIGHT,.5,.46);
-    drawSceneTileX(pen,sceneArt['jump-ground'],JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth);
+    const stage = jumpStage(jumpDistanceMeters(distancePixels));
+    pen.clearRect(0, 0, viewWidth, CANVAS_HEIGHT); drawWoodland(viewWidth, stage);
+    const stageBackground=stage.id==='easy'?sceneArt['jump-forest']:sceneArt[`jump-stage-${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}`];
+    if(sceneImageReady(stageBackground)) drawSceneCover(pen,stageBackground,0,0,viewWidth,CANVAS_HEIGHT,.5,.46);
+    const groundImage=stage.id==='easy'?sceneArt['jump-ground']:sceneArt[`jump-stage-${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}-ground`];
+    drawSceneTileX(pen,groundImage,JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth);
     for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; drawObstacle(obstacle); }
+    pen.globalAlpha = 1;
+    for (const heart of hearts) drawWorldSprite(pen,'heart',heart.x,heart.y,heart.w,heart.h);
     pen.globalAlpha = 1;
     const duck = player.duck && player.y >= JUMP_FLOOR - .01, height = duck ? 34 : 72;
     if (!invincibleMs || Math.floor(invincibleMs / 95) % 2 === 0) {
@@ -189,9 +231,10 @@ export function createJump(ctx,{version='v13'}={}) {
     pen.font = "800 32px Galmuri11, sans-serif";
     const distanceLabel = `${jumpDistanceMeters(distancePixels).toFixed(1)} m`;
     rounded(pen,14,14,Math.max(158,pen.measureText(distanceLabel).width+24),47,4,'#fff8e8ef');
-    rounded(pen,viewWidth-122,14,108,47,4,'#fff8e8ef');
+    rounded(pen,viewWidth-152,14,138,47,4,'#fff8e8ef');
     pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.fillText(distanceLabel, 26, 48);
-    pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "28px sans-serif"; pen.fillText(lives === 2 ? "♥ ♥" : lives === 1 ? "♥ ♡" : "♡ ♡", viewWidth - 28, 48);
+    pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "26px sans-serif"; pen.fillText(Array.from({length: version==='v16'?3:2},(_,i)=>i<lives?'♥':'♡').join(' '), viewWidth - 26, 47);
+    if (version === 'v16') { rounded(pen,14,69,132,32,4,'#fff8e8dd'); pen.fillStyle='#284e3d'; pen.textAlign='left'; pen.font='700 17px Galmuri11, sans-serif'; pen.fillText(stage.label,25,92); }
     if (elapsed < 2300) { const hintWidth=Math.min(570,viewWidth-28);rounded(pen,(viewWidth-hintWidth)/2,136,hintWidth,43,10,'#fff9dddc');pen.textAlign = "center"; pen.fillStyle = "#345445"; pen.font = "700 22px Galmuri11, sans-serif"; pen.fillText("짧게 점프 · 높으면 두 번 · 천장은 숙이기", viewWidth / 2, 166); }
   }
   function finishRun() {
@@ -199,18 +242,32 @@ export function createJump(ctx,{version='v13'}={}) {
     ctx.finish({ value: distance, display: distance.toFixed(1), unit: "m", higherBetter: true, mode: `jump-distance-${version}`, details: { distance, avoided, survivedSeconds: Number((elapsed / 1000).toFixed(1)) } });
   }
 
-  beginPattern(); draw(); ctx.setStatus("0.0 m · 기회 2번");
+  beginPattern(); draw(); ctx.setStatus(version === 'v16' ? '' : "0.0 m · 기회 2번");
   return {
     tick(ms) {
       if(ending){stepJumpPlayer(player,ms/1000);if(player.y>=JUMP_FLOOR-.01)ending.groundedMs+=ms;draw();ctx.setStatus("조금 쉬었다가, 다시 뛰어요.");if(ending.groundedMs>=650)finishRun();return;}
       const seconds = ms / 1000, speed = version==='v11'?jumpWorldSpeedV11(elapsed):jumpWorldSpeedV13(elapsed), worldDelta = jumpWorldDelta(speed, ms);
       elapsed += ms; distancePixels += worldDelta; scroll += worldDelta; invincibleMs = Math.max(0, invincibleMs - ms); nextPatternDistance -= worldDelta;
+      if(version==='v16') warmStage(jumpStageIndex(jumpDistanceMeters(distancePixels))+1);
+      const wasAirborne = player.y < JUMP_FLOOR - .01;
       stepJumpPlayer(player, seconds); player.duck = pointerDuck || keyboardDuck;
+      if (jumpBufferMs > 0) {
+        jumpBufferMs = Math.max(0, jumpBufferMs - ms);
+        if (wasAirborne && player.y >= JUMP_FLOOR - .01) { tryJump(player); jumpBufferMs = 0; }
+      }
       for (let index = pendingEvents.length - 1; index >= 0; index -= 1) {
         const pending = pendingEvents[index]; pending.remainingDistance -= worldDelta;
         if (pending.remainingDistance <= 0) { addObstacle(pending.pattern, pending.event, pending.eventIndex); pendingEvents.splice(index, 1); }
       }
-      if (nextPatternDistance <= 0) beginPattern();
+      const distanceNow = jumpDistanceMeters(distancePixels);
+      const heartDue=version==='v16'&&distanceNow>=nextHeartAt;
+      const pickupLaneClear=canSpawnJumpHeart(obstacles,pendingEvents.length,player);
+      if (heartDue && pickupLaneClear && hearts.length===0) {
+        hearts.push({ x: canvas.width + 42, y: JUMP_FLOOR - 35, w: 28, h: 32 });
+        nextHeartAt = nextHeartMeters(nextHeartAt, ctx.random);
+        nextPatternDistance=Math.max(nextPatternDistance,canvas.width-PLAYER_DRAW_X+360);
+      }
+      if (nextPatternDistance <= 0 && !heartDue) beginPattern();
       for (const obstacle of obstacles) {
         obstacle.x -= worldDelta;
         if (!obstacle.hit && !obstacle.passed && !invincibleMs && jumpCollides(player, obstacle)) {
@@ -219,18 +276,28 @@ export function createJump(ctx,{version='v13'}={}) {
         }
         if (!obstacle.passed && obstacle.x + obstacle.w < jumpPlayerBox(player).x) { obstacle.passed = true; if (!obstacle.hit) avoided += 1; }
       }
+      for (let index=hearts.length-1;index>=0;index-=1) {
+        const heart=hearts[index]; heart.x-=worldDelta;
+        const box=jumpPlayerBox(player);
+        if (box.x < heart.x+heart.w && box.x+box.w > heart.x && box.y < heart.y+heart.h && box.y+box.h > heart.y) {
+          lives=jumpHeal(lives); heartsCollected+=1; hearts.splice(index,1);
+        } else if (heart.x+heart.w < -30) hearts.splice(index,1);
+      }
       while (obstacles[0]?.x + obstacles[0]?.w < -30) obstacles.shift();
       const distance = jumpDistanceMeters(distancePixels);
-      const tuning=version==='v11'?'':` · 난도 ${jumpDifficultyLevel(elapsed)+1} · 목표 ${jumpTargetObstaclesPer10s(elapsed)}개/10초`;
-      ctx.setStatus(`${distance.toFixed(1)} m · ${avoided}개 회피 · 기회 ${lives}번${tuning}`); draw();
+      const target=version==='v16'?jumpV16TargetObstaclesPer10s(elapsed,distance):jumpTargetObstaclesPer10s(elapsed);
+      const tuning=version==='v11'?'':` · 난도 ${jumpDifficultyLevel(elapsed)+1} · 목표 ${target.toFixed(version==='v16'?1:0)}개/10초`;
+      ctx.setStatus(version === 'v16' ? '' : `${distance.toFixed(1)} m · ${avoided}개 회피 · 기회 ${lives}번${tuning}`); draw();
     },
     onPause(paused) { if (paused) clearHeld(); },
     getState: () => ({
       player: { ...player }, playerBox: jumpPlayerBox(player), obstacles: obstacles.map((obstacle) => ({ ...obstacle })),
       pendingEvents: pendingEvents.map(({ pattern, eventIndex, remainingDistance }) => ({ patternId: pattern.id, eventIndex, remainingDistance })),
-      phase: ending ? "ending" : "playing", ending: ending ? {...ending} : null, elapsedMs: elapsed, worldDistance: distancePixels, distance: jumpDistanceMeters(distancePixels), avoided, score: jumpDistanceMeters(distancePixels), lives, invincibleMs,
-      speed: version==='v11'?jumpWorldSpeedV11(elapsed):jumpWorldSpeedV13(elapsed),difficultyLevel:version==='v11'?null:jumpDifficultyLevel(elapsed),targetObstaclesPer10s:version==='v11'?null:jumpTargetObstaclesPer10s(elapsed),rulesVersion:version,currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
+      phase: ending ? "ending" : "playing", ending: ending ? {...ending} : null, elapsedMs: elapsed, worldDistance: distancePixels, distance: jumpDistanceMeters(distancePixels), avoided, score: jumpDistanceMeters(distancePixels), lives, maxLives:version==='v16'?3:2, invincibleMs,
+      speed: version==='v11'?jumpWorldSpeedV11(elapsed):jumpWorldSpeedV13(elapsed),difficultyLevel:version==='v11'?null:jumpDifficultyLevel(elapsed),targetObstaclesPer10s:version==='v11'?null:version==='v16'?jumpV16TargetObstaclesPer10s(elapsed,jumpDistanceMeters(distancePixels)):jumpTargetObstaclesPer10s(elapsed),rulesVersion:version,currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
       patternsSeen, deckRemaining: deck.length, patternCount: jumpPatterns100.length, nextPatternDistance,
+      stageIndex: version==='v16'?jumpStageIndex(jumpDistanceMeters(distancePixels)):null,stage:version==='v16'?jumpStage(jumpDistanceMeters(distancePixels)):null,
+      hearts:hearts.map(heart=>({...heart})),heartsCollected,nextHeartAt,jumpBufferMs,
     }),
   };
 }

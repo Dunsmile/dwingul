@@ -17,12 +17,13 @@ test('eight stable vehicles expose complete balanced simulation and purchase spe
 
 function CITY_DAMAGE(car){return 10-car.armor;}
 
-test('new starts use v7 while historical modes keep their version identity',()=>{
- assert.deepEqual(gameSettings('racing',{car:'roadster'}),{version:'v7',car:'roadster'});
- assert.deepEqual(gameSettings('racing',{car:'unknown'}),{version:'v7',car:'basic'});
- assert.equal(gameMode('racing',{car:'roadster'}),'city-roadster-v7');
+test('new starts use v16 while historical modes keep their version identity',()=>{
+ assert.deepEqual(gameSettings('racing',{car:'roadster'}),{version:'v16',car:'roadster'});
+ assert.deepEqual(gameSettings('racing',{car:'unknown'}),{version:'v16',car:'basic'});
+ assert.equal(gameMode('racing',{car:'roadster'}),'city-roadster-v16');
+ assert.equal(gameMode('racing',{version:'v7',car:'roadster'}),'city-roadster-v7');
  assert.equal(gameMode('racing',{version:'v6',car:'basic'}),'city-basic-v6');
- for(const car of cityCars)assert.equal(gameModeNames[`city-${car.id}-v7`],`도심 질주 · ${car.name}`);
+ for(const car of cityCars){assert.equal(gameModeNames[`city-${car.id}-v16`],`도심 질주 · ${car.name} · 연료 도전`);assert.equal(gameModeNames[`city-${car.id}-v7`],`도심 질주 · ${car.name}`);}
 });
 
 test('garage markup explains every material stat and exact price before purchase',()=>{

@@ -5,8 +5,8 @@ import {createCityEngine as createCityV6} from '../public/js/legacy/city-engine-
 import {seededRandom} from '../public/js/game-random.js';
 
 const currentGames=[
-  ['jump',{version:'v13'}],
-  ['racing',{version:'v7',car:'basic'}],
+  ['jump',{version:'v16'}],
+  ['racing',{version:'v16',car:'basic'}],
 ];
 const legacyGames=[
   ['jump',{version:'v6'}],
@@ -121,7 +121,7 @@ test('new challenges reject explicit old rules and stored old invitations cannot
 test('a stored v6 city run settles only through its original deterministic engine',async()=>{
   const {app,client}=await fixture();
   try{
-    const user=client(),attempt=await user('runs',{content:'racing',seed:44,gameSettings:{version:'v7',car:'basic'}});
+    const user=client(),attempt=await user('runs',{content:'racing',seed:44,gameSettings:{version:'v16',car:'basic'}});
     assert.equal(attempt.status,200);
     app.db.prepare('UPDATE runs SET game_settings=? WHERE id=?').run(JSON.stringify({version:'v6',car:'basic'}),attempt.id);
     const legacy=createCityV6({car:'basic',random:seededRandom(`racing:${attempt.seed}`)});

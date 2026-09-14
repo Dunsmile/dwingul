@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {JUMP_V13_RULES,jumpDifficultyLevel,jumpTargetObstaclesPer10s,jumpWorldSpeed,jumpWorldSpeedV11,jumpWorldSpeedV13,jumpV13NextPatternDistance,jumpPatterns100} from '../public/js/jump-patterns.js';
+import {JUMP_V13_RULES,jumpDifficultyLevel,jumpTargetObstaclesPer10s,jumpWorldSpeed,jumpWorldSpeedV11,jumpWorldSpeedV13,jumpV13NextPatternDistance,jumpPatterns100} from '../public/js/legacy/jump-patterns-v13.js';
 
 test('v13 difficulty and target cadence step forever while speed has a fair cap',()=>{
  assert.deepEqual([0,9999,10000,19999,20000,60000,90000].map(jumpDifficultyLevel),[0,0,1,1,2,6,9]);
@@ -27,8 +27,8 @@ test('v13 scheduling raises cadence without violating each pattern safe gap',()=
  }
 });
 
-test('current jump publishes v13 while legacy wrapper pins v11',async()=>{
- const [current,legacy]=await Promise.all([readFile(new URL('../public/js/jump-game.js',import.meta.url),'utf8'),readFile(new URL('../public/js/legacy/jump-game-v11.js',import.meta.url),'utf8')]);
+test('frozen v13 jump publishes v13 while legacy wrapper pins v11',async()=>{
+ const [current,legacy]=await Promise.all([readFile(new URL('../public/js/legacy/jump-game-v13.js',import.meta.url),'utf8'),readFile(new URL('../public/js/legacy/jump-game-v11.js',import.meta.url),'utf8')]);
  assert.match(current,/mode: `jump-distance-\$\{version\}`/);
  assert.match(current,/version='v13'/);
  assert.match(legacy,/createJumpV11/);

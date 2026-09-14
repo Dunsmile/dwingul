@@ -2,3 +2,6 @@
   opacity: 1;
   filter: none;
 }
+
+/* Distance and hearts are already drawn inside the runner scene. */
+.dg-game--jump-v16 .dg-game__status{display:none}.dg-game--jump-v16 .dg-game__toolbar{justify-content:flex-end;min-height:48px;padding:6px 10px}

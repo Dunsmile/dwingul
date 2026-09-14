@@ -1,5 +1,7 @@
 import {assetUrl,readyImage} from './asset-delivery.js';
 export const SCENE_ART_SOURCES = Object.freeze({
+  ...Object.fromEntries(Array.from({length:5},(_,i)=>i+2).flatMap(n=>['','-ground','-short','-wide','-double','-slide'].map(s=>{const id=`jump-stage-${n}${s}`;return [id,`/assets/pixel/scenes/${id}.png`];}))),
+  ...Object.fromEntries(['blue','white'].flatMap(c=>['normal','smile','cry'].map(f=>{const id=`sort-v16-${c}-${f}`;return [id,`/assets/pixel/scenes/${id}.png`];}))),
   'jump-forest': '/assets/pixel/scenes/jump-forest.png',
   'jump-ground': '/assets/pixel/scenes/jump-ground.png',
   'jump-obstacle-short': '/assets/pixel/scenes/jump-obstacle-short.png',
