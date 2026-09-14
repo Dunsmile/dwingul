@@ -11,7 +11,7 @@ export function setupMarkup(id, raw, garage={tokens:0,unlocked:['basic']}, index
 }
 export function groupSettingsMarkup(id,garage) {
   if(choices[id])return `<label>게임 모드<select name="gameMode">${choices[id].map(([v,n])=>`<option value="${v}">${n}</option>`).join('')}</select></label>`;
-  if(id==='typing')return '<p class="small muted">친구 도전은 기본 장비·1스테이지로 같은 조건에서 시작해요.</p>';
+  if(id==='typing')return '<label>문장 모드<select name="sentenceMode"><option value="short">짧은 문장 · 공격 ×1</option><option value="long">긴 문장 · 공격 ×2</option></select></label><p class="small muted">친구 도전은 기본 장비·1스테이지로 같은 조건에서 시작해요.</p>';
   if(id==='racing')return `<label>같이 탈 차량<select name="gameCar">${cityCars.map(c=>`<option value="${c.id}" ${garage&&!garage.unlocked.includes(c.id)?'disabled':''}>${c.name} · 속도 ×${c.speed} / 연료 ${c.fuel} / 충돌 -${10-c.armor}</option>`).join('')}</select></label><p class="small muted">친구도 이 차량이 열려 있어야 참여할 수 있어요. 차량별 부스터 시간과 충전 행운은 차고에서 확인할 수 있어요.</p>`;
   return '';
 }

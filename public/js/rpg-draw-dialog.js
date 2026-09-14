@@ -64,7 +64,7 @@ export async function openRpgDraw({draw,equip,onResult,onReveal=()=>{},stored=fa
   const equipButton=body.querySelector('[data-draw-equip]');equipButton.focus({preventScroll:true});
   body.querySelector('[data-draw-next]')?.addEventListener('click',showReady);
   body.querySelector('[data-draw-done]')?.addEventListener('click',()=>modal.close());
-  body.querySelector('[data-draw-home]')?.addEventListener('click',()=>{modal.close();location.hash='#/detail/typing';});
+  body.querySelector('[data-draw-home]')?.addEventListener('click',()=>{modal.close();const params=new URLSearchParams(origin.route.split('?')[1]||'');params.set('panel','menu');location.hash='#/detail/typing?'+params;});
   equipButton.addEventListener('click',async()=>{
    equipButton.disabled=true;equipButton.textContent='장착 중…';
    try{pendingEquip=equip(item);await pendingEquip;if(closed)return;equipButton.textContent='✓ 장착 완료';}

@@ -12,13 +12,13 @@ export function gameSettings(id, raw = {}) {
   raw = raw && typeof raw === 'object' ? raw : {};
   if (id === 'sequence') return { version: ['v9','v7'].includes(raw.version) ? raw.version : 'v11', mode: 'rhythm' };
   if (id === 'sort') return { version: 'v5', mode: raw.mode === 'endless' ? 'endless' : 'sprint' };
-  if (id === 'typing') return { version:'v5', mode:'rpg', startStage:Number.isInteger(Number(raw.startStage))&&Number(raw.startStage)>=1&&(Number(raw.startStage)-1)%10===0?Number(raw.startStage):1 };
+  if (id === 'typing') return { version:'v5', mode:'rpg', sentenceMode:raw.sentenceMode==='long'?'long':'short', startStage:Number.isInteger(Number(raw.startStage))&&Number(raw.startStage)>=1&&(Number(raw.startStage)-1)%10===0?Number(raw.startStage):1 };
   if (id === 'racing') return { version: ['v4','v5','v6'].includes(raw.version) ? raw.version : 'v7', car: cityCars.some(c => c.id === raw.car) ? raw.car : 'basic' };
   return id === 'jump' ? { version: ['v4','v5','v6','v11'].includes(raw.version) ? raw.version : 'v13' } : {};
 }
 export function gameMode(id, raw={}) {
   const s=gameSettings(id,raw),v=['v4','v5','v6'].includes(raw?.version)?raw.version:s.version;
-  return id==='sequence'?(s.version==='v11'?'rhythm-three-lane-v11':s.version==='v9'?'rhythm-endless-v9':s.version==='v7'?'rhythm-relay-v7':'nine-pad'):id==='sort'?`sort-${s.mode}-${v}`:id==='typing'?(v==='v4'?`typing-${raw.mode==='rpg'?'rpg':'rain'}-v4`:`typing-rpg-v5-s${s.startStage}`):id==='racing'?`city-${s.car}-${s.version}`:id==='jump'?`jump-distance-${s.version}`:null;
+  return id==='sequence'?(s.version==='v11'?'rhythm-three-lane-v11':s.version==='v9'?'rhythm-endless-v9':s.version==='v7'?'rhythm-relay-v7':'nine-pad'):id==='sort'?`sort-${s.mode}-${v}`:id==='typing'?(v==='v4'?`typing-${raw.mode==='rpg'?'rpg':'rain'}-v4`:`typing-rpg-v5-${s.sentenceMode==='long'?'long-':''}s${s.startStage}`):id==='racing'?`city-${s.car}-${s.version}`:id==='jump'?`jump-distance-${s.version}`:null;
 }
 export const gameModeNames = {
   'rhythm-three-lane-v11':'세 갈래 리듬 · 무한 모드', 'rhythm-endless-v9':'무한 리듬 · 100가지 패턴', 'rhythm-relay-v7':'리듬 릴레이 · 8라운드', 'nine-pad':'기억 순서 · 이전 규칙',

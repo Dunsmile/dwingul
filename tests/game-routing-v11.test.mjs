@@ -38,6 +38,7 @@ test('mount context normalization keeps server-selected character and gear', () 
   assert.deepEqual(settings, {
     version: 'v5',
     mode: 'rpg',
+    sentenceMode: 'short',
     startStage: 21,
     characterId: 'owl-aviator',
     gear: { attack: 7, defense: 3, heal: 5 },

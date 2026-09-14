@@ -22,23 +22,30 @@ function lastDrawState(lastDraw){
 }
 
 export function typingHub(profile,params,lastDraw,profileFields='',startControl=''){
- const panel=['play','shop','gear','characters'].includes(params.get('panel'))?params.get('panel'):'play',requested=Number(params.get('startStage')),start=profile.checkpoints.includes(requested)?requested:(profile.recommendedStartStage||profile.checkpoints.at(-1)||1);
- const nav=`<nav class="rpg-hub-tabs" aria-label="타이핑 마스터 메뉴">${[['play','게임 시작'],['shop','뽑기 상점'],['gear','내 장비'],['characters','캐릭터']].map(([id,name])=>`<a class="${id===panel?'active':''}" href="#/detail/typing?panel=${id}&startStage=${start}">${name}</a>`).join('')}</nav>`;
- const header=`<div class="rpg-hub-summary"><span>최고 클리어 <b>${profile.bestCleared} 스테이지</b></span><strong>● ${profile.gold} 골드</strong></div>`;
+ params=new URLSearchParams(params);
+ const selected=rpgCharacter(profile.selectedCharacter||RPG_DEFAULT_CHARACTER_ID);
+ const panel=['settings','shop','gear','characters','profile'].includes(params.get('panel'))?params.get('panel'):'menu';
+ const requested=Number(params.get('startStage')),start=profile.checkpoints.includes(requested)?requested:(profile.recommendedStartStage||profile.checkpoints.at(-1)||1);
+ const sentenceMode=params.get('sentenceMode')==='long'?'long':'short',modeName=sentenceMode==='long'?'긴 문장 · 공격 ×2':'짧은 문장 · 공격 ×1';
+ params.set('startStage',String(start));params.set('sentenceMode',sentenceMode);
+ const names={menu:'타이핑 마스터',settings:'모험 설정',shop:'뽑기 상점',gear:'내 장비',characters:'캐릭터',profile:'프로필 · 저장'};
+ const header=`<header class="rpg-menu-top"><span>최고 클리어 <b>${profile.bestCleared} 스테이지</b></span><strong>● ${profile.gold} 골드</strong></header>`;
  const gearStat=`<div class="rpg-gear-stats"><span>공격 +${profile.gear.attack}</span><span>방어 +${profile.gear.defense}</span><span>회복 +${profile.gear.heal}</span></div>`;
+ const startInput=`<input type="hidden" name="rpg-stage" value="${start}">`;
+ const startButton=startControl||`<button type="button" class="button primary full rpg-start" data-act="start" data-id="typing" data-context="${esc(params.toString())}">모험 시작하기 →</button>`;
+ const links=[['settings','모험 설정'],['shop','뽑기 상점'],['gear','내 장비'],['characters','캐릭터'],['profile','프로필 · 저장']];
  let body='';
- if(panel==='play'){
-  const selected=rpgCharacter(profile.selectedCharacter||RPG_DEFAULT_CHARACTER_ID);
-  body=`<div class="rpg-hub-intro"><span class="rpg-book" aria-hidden="true">⌨</span><h2>한 문장씩, 더 높은 스테이지로.</h2><p>10스테이지마다 보스가 기다려요.<br>장비를 챙기고 나만의 기록에 도전하세요.</p></div><div class="rpg-selected-character"><span>함께할 캐릭터</span><strong>${esc(selected.name)}</strong><a class="text-link" href="#/detail/typing?panel=characters&startStage=${start}">바꾸기</a></div>${gearStat}<label class="field">어디서 시작할까요?<select name="rpg-stage">${(profile.earnedCheckpoints||profile.checkpoints).map(n=>`<option value="${n}" ${profile.checkpoints.includes(n)?'':'disabled'} ${n===start?'selected':''}>${Math.floor((n-1)/10)+1}탄 · ${n}스테이지부터${profile.checkpoints.includes(n)?'':' · 프로필 저장 후 열림'}</option>`).join('')}</select></label><p class="small muted">어디서 시작해도 10점부터. 처치마다 10점이 더해져요.</p>`;
- }
+ if(panel==='menu')body=`<div class="rpg-title-screen"><div class="rpg-title-copy"><span>DWINGUL · FOREST ADVENTURE</span><h1>타이핑 마스터</h1><p>한 문장으로 시작하는 숲속 모험</p></div><nav class="rpg-title-buttons" aria-label="타이핑 마스터 메뉴">${startInput}${startButton}${links.map(([id,name])=>`<a class="button rpg-menu-button" href="${route(params,{panel:id})}">${name}</a>`).join('')}</nav><div class="rpg-title-current"><strong>${modeName}</strong><span>${start}스테이지부터 · ${esc(selected.name)}</span></div></div>`;
+ if(panel==='settings')body=`<fieldset class="rpg-sentence-options"><legend>어떤 문장으로 모험할까요?</legend>${[['short','짧은 문장','가볍게 한 문장씩 · 기본 공격 ×1'],['long','긴 문장','20–30자 속담·지혜 문장 250개 · 공격 ×2']].map(([value,label,description])=>`<label class="rpg-sentence-option"><input type="radio" name="rpg-sentence-mode" data-rpg-setting value="${value}" ${sentenceMode===value?'checked':''}><span><strong>${label}</strong><small>${description}</small></span></label>`).join('')}</fieldset><label class="field">시작 스테이지<select name="rpg-stage" data-rpg-setting>${(profile.earnedCheckpoints||profile.checkpoints).map(n=>`<option value="${n}" ${profile.checkpoints.includes(n)?'':'disabled'} ${n===start?'selected':''}>${Math.floor((n-1)/10)+1}탄 · ${n}스테이지부터${profile.checkpoints.includes(n)?'':' · 프로필 저장 후 열림'}</option>`).join('')}</select></label><p class="small">어디서 시작해도 10점부터. 처치마다 10점이 더해져요.</p>${gearStat}<details class="rpg-mode-help"><summary>모드별 규칙과 문장 안내</summary><p>긴 문장은 장비와 콤보를 합한 공격력이 2배예요. 몬스터 반격과 회복량은 같아요. 순위는 문장 모드·시작 스테이지별로 비교하고, 골드·장비·열린 스테이지는 함께 사용해요.</p><p>긴 문장 길이는 공백을 포함해 20–30자예요. 전통 속담을 다듬은 문장과 뒹굴이 쓴 지혜 문장을 사용하며, 현대 인물의 명언을 인용하지 않아요.</p></details>`;
  if(panel==='shop'){
   const saved=lastDrawState(lastDraw),pending=saved&&saved.revealedCount<saved.items.length,last=saved?.items[Math.max(0,saved.items.length-1)]?.item;
-  body=`<div class="rpg-hub-intro"><span class="rpg-book" aria-hidden="true">✦</span><h2>다음 모험을 위한 장비 상자</h2><p>같은 장비도 여분으로 쌓여요.<br>여분 두 개로 대표 장비를 강화할 수 있어요.</p></div><div class="rpg-draw-options"><button type="button" class="button primary" data-act="rpg-draw" data-count="1" ${profile.gold<50||pending?'disabled':''}>1회 · 50골드</button><button type="button" class="button" data-act="rpg-draw" data-count="10" ${profile.gold<500||pending?'disabled':''}>10회 · 500골드</button></div>${pending?`<button type="button" class="button full" data-act="rpg-reveal">보관한 상자 이어 열기 · ${saved.items.length-saved.revealedCount}개 남음 · 추가 골드 없음</button>`:last&&saved.revealedCount>=saved.items.length?`<div class="rpg-drop rarity-${last.rarity}" role="status"><span>${rarityById.get(last.rarity).name} · ${RPG_SLOTS[last.slot]}</span><h2>${esc(last.name)}</h2><b>${RPG_SLOTS[last.slot]} 효과 +${last.value}</b><p>장비가 내 장비함에 수량으로 추가됐어요.</p><a class="text-link" href="#/detail/typing?panel=gear">장비 확인하기 →</a></div>`:''}<p class="small muted">${RPG_RARITIES.map(r=>`${r.name} ${r.chance}%`).join(' · ')}<br>각 등급 안의 모든 장비는 같은 확률로 나와요.</p>`;
+  body=`<div class="rpg-hub-intro"><span class="rpg-book" aria-hidden="true">✦</span><h2>다음 모험을 위한 장비 상자</h2><p>같은 장비도 여분으로 쌓여요.<br>여분 두 개로 대표 장비를 강화할 수 있어요.</p></div><div class="rpg-draw-options"><button type="button" class="button primary" data-act="rpg-draw" data-count="1" ${profile.gold<50||pending?'disabled':''}>1회 · 50골드</button><button type="button" class="button" data-act="rpg-draw" data-count="10" ${profile.gold<500||pending?'disabled':''}>10회 · 500골드</button></div>${pending?`<button type="button" class="button full" data-act="rpg-reveal">보관한 상자 이어 열기 · ${saved.items.length-saved.revealedCount}개 남음 · 추가 골드 없음</button>`:last&&saved.revealedCount>=saved.items.length?`<div class="rpg-drop rarity-${last.rarity}" role="status"><span>${rarityById.get(last.rarity).name} · ${RPG_SLOTS[last.slot]}</span><h2>${esc(last.name)}</h2><b>${RPG_SLOTS[last.slot]} 효과 +${last.value}</b><p>장비가 내 장비함에 수량으로 추가됐어요.</p><a class="text-link" href="${route(params,{panel:'gear'})}">장비 확인하기 →</a></div>`:''}<p class="small muted">${RPG_RARITIES.map(r=>`${r.name} ${r.chance}%`).join(' · ')}<br>각 등급 안의 모든 장비는 같은 확률로 나와요.</p>`;
  }
  if(panel==='gear')body=gearPanel(profile,params,gearStat);
  if(panel==='characters')body=characterPanel(profile);
- const playStart=panel==='play'&&startControl?`<div class="rpg-start-control">${startControl}</div>`:'';
- return `<section class="rpg-hub panel stack-sm">${header}${nav}${body}${playStart}${rpgProfileCard(profile,profileFields)}</section>`;
+ if(panel==='profile')body=rpgProfileCard(profile,profileFields,params);
+ const content=panel==='menu'?body:`<div class="rpg-menu-panel"><div class="rpg-panel-heading"><a class="button rpg-menu-back" href="${route(params,{panel:'menu'})}" aria-label="타이핑 마스터 메뉴로">← 메뉴</a><h1>${names[panel]}</h1></div><div class="rpg-panel-scroll stack-sm" tabindex="0" aria-label="${names[panel]} 내용">${body}</div><div class="rpg-panel-footer"><span>${modeName} · ${start}스테이지</span>${panel==='settings'?startButton:''}</div></div>`;
+ return `<section class="rpg-hub rpg-menu-scene" data-rpg-panel="${panel}">${header}${content}</section>`;
 }
 
 function artWithFallback(primary,fallback,alt,size=96){
@@ -70,9 +77,9 @@ function gearPanel(profile,params,gearStat){
  return `${gearStat}${equipped}<div class="rpg-inventory-heading"><h3>보유 장비 · ${inventory.length}종 · 총 ${total}개</h3><p>같은 기본 장비 여분 2개로 +1 강화해요. 최대 +10.</p></div>${filters}${rows}${pagination}${codex}`;
 }
 
-export function rpgProfileCard(profile,fields=''){
+export function rpgProfileCard(profile,fields='',params=new URLSearchParams()){
  if(!profile)return '';
  const next=(profile.earnedCheckpoints||profile.checkpoints||[1]).at(-1),chapter=Math.floor((next-1)/10)+1;
- if(profile.configured)return `<section class="rpg-save-card is-saved"><strong>✓ 프로필에 기록·골드·장비가 저장되어 있어요</strong><p>몬스터를 클리어할 때마다 자동 저장해요.</p>${next>1?`<a class="text-link" href="#/detail/typing?startStage=${next}">${chapter}탄 · ${next}스테이지부터 이어하기 →</a>`:''}<a class="text-link" href="#/settings">복구 코드 확인·보관 →</a></section>`;
+ if(profile.configured)return `<section class="rpg-save-card is-saved"><strong>✓ 프로필에 기록·골드·장비가 저장되어 있어요</strong><p>몬스터를 클리어할 때마다 자동 저장해요.</p>${next>1?`<a class="text-link" href="${route(params,{panel:'menu',startStage:next})}">${chapter}탄 · ${next}스테이지부터 이어하기 →</a>`:''}<a class="text-link" href="#/settings">복구 코드 확인·보관 →</a></section>`;
  return `<details class="rpg-save-card"><summary>현재 기록과 장비를 프로필에 저장</summary><p>최고 ${profile.bestCleared}스테이지 클리어 · ${profile.gold}골드 · 장비 ${profile.owned?.length||0}종</p>${next>1?`<p class="rpg-unlock-note">1탄 보스 이후의 기록이 있어요. 저장하면 ${chapter}탄(${next}스테이지)부터 시작할 수 있어요.</p>`:'<p>지금은 이 브라우저에 임시로 연결돼 있어요. 프로필을 만들면 현재 진행과 아이템을 그대로 이어받아요.</p>'}<form id="rpg-profile-form" class="fields">${fields}<p class="form-error" role="alert"></p><button type="submit" class="button primary full">프로필 만들고 현재 정보 저장</button></form><a href="#/recover" class="text-link">기존 프로필 복구하기 →</a></details>`;
 }

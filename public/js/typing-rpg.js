@@ -1,3 +1,4 @@
+import {typingLongPhrases} from './typing-long-phrases.js';
 import { typingPhrases } from "./typing-phrases.js";
 import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterIndex,rpgMonsterName} from './rpg-characters.js';
 import {assetUrl,warmImage} from './asset-delivery.js';
@@ -80,10 +81,10 @@ export function typingRpgMonsterDuelArtPath(stage){
   return `/assets/pixel/scenes/duel-monster-${String(rpgMonsterIndex(stage)+1).padStart(2,'0')}.png`;
 }
 
-export function typingRpgDamage(combo, gear = {}) {
+export function typingRpgDamage(combo, gear = {}, sentenceMode = 'short') {
   const equipment = typeof gear === "number" ? { attack: gear } : gear;
   const bonus = combo >= 20 ? Math.min(20, Math.floor(combo / 5)) : 0;
-  return RPG_RULES.baseAttack + bonus + normalizedGear(equipment).attack;
+  return (RPG_RULES.baseAttack + bonus + normalizedGear(equipment).attack) * (sentenceMode === 'long' ? 2 : 1);
 }
 
 export function typingRpgMonster(stage, gear = {}) {
@@ -101,7 +102,9 @@ export function typingRpgMonster(stage, gear = {}) {
   };
 }
 
-export function createTypingRpgModel({ random = Math.random, phrases = typingPhrases, startStage = 1, gear = {} } = {}) {
+export function createTypingRpgModel({ random = Math.random, phrases, startStage = 1, gear = {}, sentenceMode = 'short' } = {}) {
+  sentenceMode = sentenceMode === 'long' ? 'long' : 'short';
+  phrases ??= sentenceMode === 'long' ? typingLongPhrases : typingPhrases;
   if (!Array.isArray(phrases) || !phrases.length) throw new TypeError("타이포 RPG에는 한 개 이상의 문장이 필요합니다.");
   const equipment = normalizedGear(gear);
   const firstStage = normalizedStage(startStage);
@@ -235,7 +238,7 @@ export function createTypingRpgModel({ random = Math.random, phrases = typingPhr
     }
     if (input !== target()) return action(input ? "incomplete" : "empty");
 
-    const damage = typingRpgDamage(combo(), equipment);
+    const damage = typingRpgDamage(combo(), equipment, sentenceMode);
     monsterHp -= damage;
     completed += 1;
     previousPhrase = target();
@@ -280,7 +283,7 @@ export function createTypingRpgModel({ random = Math.random, phrases = typingPhr
 
   function getState() {
     return {
-      hp, maxHp: RPG_RULES.maxHp, mp, maxMp: RPG_RULES.maxMp, combo: Math.round(combo() * 10) / 10,
+      sentenceMode, attackMultiplier: sentenceMode === 'long' ? 2 : 1, hp, maxHp: RPG_RULES.maxHp, mp, maxMp: RPG_RULES.maxMp, combo: Math.round(combo() * 10) / 10,
       stage, startStage: firstStage, boss: monster.boss, palette: typingRpgPalette(stage), gear: { ...equipment },
       monsterHp, monsterMaxHp: monster.maxHp, counterDamage: monster.counterDamage, rawCounterDamage: monster.rawCounterDamage, counterEveryMs: monster.counterEveryMs, counterMs,
       defeated, completed, phraseCount: phrases.length, phraseCycle: cycle, deckRemaining: deck.length - phraseCursor, target: target(), input, healDraft,
@@ -295,7 +298,7 @@ export function createTypingRpgModel({ random = Math.random, phrases = typingPhr
   function getProgress() {
     return {
       value: score(), display: String(score()), unit: "점", higherBetter: true,
-      mode: `typing-rpg-v5-s${firstStage}`,
+      mode: `typing-rpg-v5-${sentenceMode === 'long' ? 'long-' : ''}s${firstStage}`,
       finished,
       details: {
         stage, currentStage: stage, bestClearedStage, defeated, completed, accuracy: accuracy(), typed,
@@ -317,6 +320,19 @@ function node(tag, className, text) {
   if (className) element.className = className;
   if (text !== undefined) element.textContent = text;
   return element;
+}
+
+function pixelMeter(className, label) {
+  const meter = node('div', `typing-rpg__gauge ${className}`);
+  meter.setAttribute('role', 'meter'); meter.setAttribute('aria-label', label);
+  meter.setAttribute('aria-valuemin', '0');
+  const fill = node('span', 'typing-rpg__gauge-fill'); fill.setAttribute('aria-hidden', 'true');
+  meter.append(fill); return meter;
+}
+function updatePixelMeter(meter, value, max) {
+  const bounded = Math.max(0, Math.min(max, value));
+  meter.setAttribute('aria-valuemax', String(max)); meter.setAttribute('aria-valuenow', String(bounded));
+  meter.firstElementChild.style.width = `${bounded / max * 100}%`;
 }
 
 function pixelArt(src,className,width,height){
@@ -343,20 +359,21 @@ function setPixelArt(image,container,primary,fallback){
 }
 
 export function createTypingRpg(ctx) {
-  const model = createTypingRpgModel({ random: ctx.random, startStage: ctx.settings?.startStage, gear: ctx.settings?.gear });
+  const model = createTypingRpgModel({ random: ctx.random, startStage: ctx.settings?.startStage, gear: ctx.settings?.gear, sentenceMode: ctx.settings?.sentenceMode });
   const selectedCharacter=rpgCharacter(ctx.settings?.characterId);
   const gameRoot = ctx.stage.closest?.(".dg-game");
   gameRoot?.classList.add("dg-game--typing-rpg");
 
   const root = node("section", "typing-rpg typing-rpg--pixel");
+  root.classList.toggle("typing-rpg--long", model.getState().sentenceMode === "long");
   const hud = node("div", "typing-rpg__hud");
   const hpCard = node("div", "typing-rpg__meter-card typing-rpg__meter-card--hp");
   const hpLabel = node("span", "typing-rpg__meter-label", "내 HP");
-  const hpMeter = node("meter", "typing-rpg__meter"); hpMeter.min = 0; hpMeter.max = RPG_RULES.maxHp;
+  const hpMeter = pixelMeter("typing-rpg__meter", "내 HP");
   const hpValue = node("b", "typing-rpg__meter-value"); hpCard.append(hpLabel, hpMeter, hpValue);
   const mpCard = node("div", "typing-rpg__meter-card typing-rpg__meter-card--mp");
   const mpLabel = node("span", "typing-rpg__meter-label", "회복 MP");
-  const mpMeter = node("meter", "typing-rpg__meter"); mpMeter.min = 0; mpMeter.max = RPG_RULES.maxMp;
+  const mpMeter = pixelMeter("typing-rpg__meter typing-rpg__gauge--mp", "회복 MP");
   const mpValue = node("b", "typing-rpg__meter-value"); mpCard.append(mpLabel, mpMeter, mpValue);
   const progressCard = node("div", "typing-rpg__stat-card");
   const progressLabel = node("span", "typing-rpg__stat-label", "스테이지"); const progressValue = node("b", "typing-rpg__stat-value"); progressCard.append(progressLabel, progressValue);
@@ -371,7 +388,7 @@ export function createTypingRpg(ctx) {
   const stageBadge = node("span", "typing-rpg__stage-badge");
   const enemyName = node("strong", "typing-rpg__enemy-name");
   const enemyHpText = node("span", "typing-rpg__enemy-hp-text"); enemyHead.append(stageBadge, enemyName, enemyHpText);
-  const enemyMeter = node("meter", "typing-rpg__enemy-meter"); enemyMeter.min = 0;
+  const enemyMeter = pixelMeter("typing-rpg__enemy-meter", "몬스터 HP");
   const scene = node("div", "typing-rpg__scene");
   const hero = node("div", "typing-rpg__hero"); hero.setAttribute("aria-hidden", "true");
   const heroArt=pixelArt('','typing-rpg__hero-art',112,112),heroFallback=node('span','typing-rpg__art-fallback','⌨');hero.append(heroFallback,heroArt);
@@ -455,15 +472,16 @@ export function createTypingRpg(ctx) {
     root.classList.toggle("is-boss", state.boss);
     setPixelArt(creatureArt,creature,typingRpgMonsterDuelArtPath(state.stage),rpgMonsterArtPath(state.stage));
     if(warmedAfterStage!==state.stage){warmedAfterStage=state.stage;void warmImage(typingRpgMonsterDuelArtPath(state.stage+1)).catch(()=>{});}
-    hpMeter.value = state.hp; hpValue.textContent = `${state.hp} / ${state.maxHp}`;
-    mpMeter.value = state.mp; mpValue.textContent = `${state.mp} / ${state.maxMp}`;
+    updatePixelMeter(hpMeter, state.hp, state.maxHp); hpValue.textContent = `${state.hp} / ${state.maxHp}`;
+    updatePixelMeter(mpMeter, state.mp, state.maxMp); mpValue.textContent = `${state.mp} / ${state.maxMp}`;
     progressValue.textContent = `${state.stage}`;goldValue.textContent=`${state.gold}`;
     stageBadge.textContent = state.boss ? `STAGE ${state.stage} · BOSS` : `STAGE ${state.stage}`;
     enemyName.textContent = rpgMonsterName(state.stage,state.boss);
-    enemyMeter.max = state.monsterMaxHp; enemyMeter.value = state.monsterHp; enemyHpText.textContent = `${Math.max(0, state.monsterHp)} / ${state.monsterMaxHp}`;
+    updatePixelMeter(enemyMeter, state.monsterHp, state.monsterMaxHp); enemyHpText.textContent = `${Math.max(0, state.monsterHp)} / ${state.monsterMaxHp}`;
     counterText.textContent = `반격까지 ${(state.counterMs / 1000).toFixed(1)}초`;
     counterText.title = `반격 피해 ${state.counterDamage}`;
     counterFill.style.width = `${state.counterMs / state.counterEveryMs * 100}%`;
+    targetLabel.textContent = state.sentenceMode === "long" ? "긴 문장 · 공격 ×2" : "이번 공격 주문";
     targetText.textContent = state.healDraft ? "회복 주문: 힐" : state.target;
     renderLetters({...state,input:typingInput.draft});
     comboText.textContent=`콤보 ${Math.floor(state.combo)}`;speedText.textContent = `속도 ${state.speed}글자/분`; accuracyText.textContent = `정확도 ${state.accuracy.toFixed(1)}%`; defeatedText.textContent = `처치 ${state.defeated}`; completedText.textContent = `문장 ${state.completed}`;
