@@ -210,9 +210,10 @@ export function createJump(ctx,{version='v16'}={}) {
     fitCamera();
     const viewWidth = canvas.width;
     const stage = jumpStage(jumpDistanceMeters(distancePixels));
-    pen.clearRect(0, 0, viewWidth, CANVAS_HEIGHT); drawWoodland(viewWidth, stage);
+    pen.clearRect(0, 0, viewWidth, CANVAS_HEIGHT);
     const stageBackground=stage.id==='easy'?sceneArt['jump-forest']:sceneArt[`jump-stage-${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}`];
     if(sceneImageReady(stageBackground)) drawSceneCover(pen,stageBackground,0,0,viewWidth,CANVAS_HEIGHT,.5,.46);
+    else drawWoodland(viewWidth, stage);
     const groundImage=stage.id==='easy'?sceneArt['jump-ground']:sceneArt[`jump-stage-${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}-ground`];
     drawSceneTileX(pen,groundImage,JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth);
     for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; drawObstacle(obstacle); }
