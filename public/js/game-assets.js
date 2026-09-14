@@ -4,8 +4,8 @@ import {cityPlayerArtSource,cityTrafficRearSource} from './city-vehicle-art.js';
 const scene=name=>`/assets/pixel/scenes/${name}.png`,world=name=>`/assets/pixel/illustrated/world/${name}.png`;
 export function gameAssetSources(id,settings={}){
  let sources=[scene('paper-texture')];
- if(id==='sort')sources.push(scene('sort-lodge'),...['blue','white','purple'].flatMap(c=>['normal','smile','cry'].map(f=>world(`sort-${c}-${f}`))));
- if(id==='jump')sources.push(...['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide'].map(scene),...['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].map(n=>`/assets/pixel/portraits/${n}.webp`));
+ if(id==='sort')sources.push(scene('sort-lodge'),...['blue','white'].flatMap(c=>['normal','smile','cry'].map(f=>scene(`sort-v16-${c}-${f}`))),...['normal','smile','cry'].map(f=>world(`sort-purple-${f}`)));
+ if(id==='jump')sources.push(world('heart'),...['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide'].map(scene),...['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].map(n=>`/assets/pixel/portraits/${n}.webp`));
  if(id==='racing')sources.push(...['city-village','road-texture','city-prop-tree','city-prop-cottage','city-prop-lamp','city-prop-shrub'].map(scene),...['coin','fuel','boost'].map(world),cityPlayerArtSource(settings.car||'basic'),...['car','van','truck','bus'].map(type=>cityTrafficRearSource(type)));
  if(['memory','numbers'].includes(id))sources.push(scene('memory-table'),scene('wood-token'),world('star'));
  if(id==='color')sources.push(scene('color-table'));

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {CITY,createCityEngine,vehicleLength} from '../public/js/city-engine.js';
+import {CITY,createCityEngine,vehicleLength} from '../public/js/legacy/city-engine-v7.js';
 import {cityProjection,vehicleFootprint,vehicleSpriteBox} from '../public/js/city-projection.js';
 import {cityCars} from '../public/js/game-options.js';
 import {seededRandom} from '../public/js/game-random.js';

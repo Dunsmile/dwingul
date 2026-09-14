@@ -1,0 +1,51 @@
+[
+  {
+    "id": "jump-stage-2",
+    "name": "fern woodland",
+    "prompt": "Use case: stylized-concept. Production background image for Korean cozy pixel RPG side-scrolling runner DWINGUL, landscape1536x1024. Dense tall ancient fern woodland, layered trunks, hanging leaves and golden shafts of light; muted deep sage green. Rich hand-crafted pixel clusters, warm brown outlines, refined storybook pixel art. Flat side-on orthographic view, no perspective road. The lower42percent must be a quiet pale open plain matching this biome, no foreground obstacle or tree; runtime runner, obstacles and ground strip will overlay this. All decorative large objects stand only in distant background upper58percent. Horizontally balanced scenery, no central subject, similar brightness at left/right edges for repeating scroll. No characters, letters, words, border, logo or UI. This is a new unique level background, not a website screenshot.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-7dbb5af4-b1df-419b-88d6-423ba79b3370.png",
+    "path": "design/scenes-v16/jump-stage-2.png"
+  },
+  {
+    "id": "jump-stage-3",
+    "name": "mushroom grove",
+    "prompt": "Use case: stylized-concept. Production background image for Korean cozy pixel RPG side-scrolling runner DWINGUL, landscape1536x1024. A whimsical mushroom grove with large red-capped mushrooms far behind the play area, cream spotted caps, amber afternoon. Rich hand-crafted pixel clusters, warm brown outlines, refined storybook pixel art. Flat side-on orthographic view, no perspective road. The lower42percent must be a quiet pale open plain matching this biome, no foreground obstacle or tree; runtime runner, obstacles and ground strip will overlay this. All decorative large objects stand only in distant background upper58percent. Horizontally balanced scenery, no central subject, similar brightness at left/right edges for repeating scroll. No characters, letters, words, border, logo or UI. This is a new unique level background, not a website screenshot.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-35ded15a-ccda-4a8a-9836-e938ac7ad702.png",
+    "path": "design/scenes-v16/jump-stage-3.png"
+  },
+  {
+    "id": "jump-stage-4",
+    "name": "ancient ruins",
+    "prompt": "Use case: stylized-concept. Production background image for Korean cozy pixel RPG side-scrolling runner DWINGUL, landscape1536x1024. Overgrown ancient stone arches and fallen temple columns in the distant background, warm sandstone and sage ivy, sunset sky. Rich hand-crafted pixel clusters, warm brown outlines, refined storybook pixel art. Flat side-on orthographic view, no perspective road. The lower42percent must be a quiet pale open plain matching this biome, no foreground obstacle or tree; runtime runner, obstacles and ground strip will overlay this. All decorative large objects stand only in distant background upper58percent. Horizontally balanced scenery, no central subject, similar brightness at left/right edges for repeating scroll. No characters, letters, words, border, logo or UI. This is a new unique level background, not a website screenshot.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-e41003ab-86bd-4fe2-aafa-08316349d580.png",
+    "path": "design/scenes-v16/jump-stage-4.png"
+  },
+  {
+    "id": "jump-stage-5",
+    "name": "crystal cavern",
+    "prompt": "Use case: stylized-concept. Production background image for Korean cozy pixel RPG side-scrolling runner DWINGUL, landscape1536x1024. An open magical crystal cavern with distant luminous cyan and violet crystals, dusky blue stone; enough soft warm light for clear gameplay. Rich hand-crafted pixel clusters, warm brown outlines, refined storybook pixel art. Flat side-on orthographic view, no perspective road. The lower42percent must be a quiet pale open plain matching this biome, no foreground obstacle or tree; runtime runner, obstacles and ground strip will overlay this. All decorative large objects stand only in distant background upper58percent. Horizontally balanced scenery, no central subject, similar brightness at left/right edges for repeating scroll. No characters, letters, words, border, logo or UI. This is a new unique level background, not a website screenshot.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-6dd11cd2-3bf1-4250-b7cb-fc1117850839.png",
+    "path": "design/scenes-v16/jump-stage-5.png"
+  },
+  {
+    "id": "jump-stage-6",
+    "name": "mountain summit",
+    "prompt": "Use case: stylized-concept. Production background image for Korean cozy pixel RPG side-scrolling runner DWINGUL, landscape1536x1024. High mountain meadow with snowcapped peaks, pale dawn sky, distant stone lanterns and windswept pine trees, restrained pale gold and blue palette. Rich hand-crafted pixel clusters, warm brown outlines, refined storybook pixel art. Flat side-on orthographic view, no perspective road. The lower42percent must be a quiet pale open plain matching this biome, no foreground obstacle or tree; runtime runner, obstacles and ground strip will overlay this. All decorative large objects stand only in distant background upper58percent. Horizontally balanced scenery, no central subject, similar brightness at left/right edges for repeating scroll. No characters, letters, words, border, logo or UI. This is a new unique level background, not a website screenshot.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-20676685-fbef-479e-b407-a9440e7c70f2.png",
+    "path": "design/scenes-v16/jump-stage-6.png"
+  },
+  {
+    "id": "jump-obstacles-v16",
+    "name": "다섯 구간 장애물 원화",
+    "prompt": "Use case: stylized-concept. One production sprite atlas for DWINGUL cozy pixel side-scrolling runner: exactly FOUR columns and FIVE rows,20isolated obstacle sprites on perfectly flat pure magenta #ff00ff background, no shadows cast into background,no text,no separators. Strongly align each cell equal size with generous margin: all objects fully isolated and entirely contained. Detailed crisp pixel illustration, warm brown outlines, cream and sage woodland RPG style. Each row is a different biome: row1mossy forest;row2red spotted mushroom grove;row3ancient sandstone ruins;row4cyan crystal cavern;row5pale snowy mountain. Columns have specific solid collision silhouettes: col1short square jumpable stump/stone/mushroom;col2low wide double-width log or stone wall;col3tall narrow double-jump column;col4a hanging root/stone/crystal formation that descends from TOP and has a horizontal solid low arch underside (for sliding under),NO freestanding side support. Flat exact SIDE view, not isometric. Unique 20pixel sprites suitable for slicing into equal4x5grid. No feet,floors,ground tiles,creatures,icons,arrows,letters. Request1536wide x1920high ifavailable. Every sprite base and full contour clearly bounded with magenta gap.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-2a810ea9-2a38-421f-8e4d-34c252210479.png",
+    "path": "design/scenes-v16/jump-obstacles.png"
+  },
+  {
+    "id": "sort-mascots-v16",
+    "name": "파란 여우와 하얀 구름 원화",
+    "prompt": "Use case: stylized-concept. Single sprite sheet for cozy Korean pixel game DWINGUL, six character sprites in exact TWO columns THREE rows on solid flat pure magenta #ff00ff key background; allsprites fully isolated generousgaps. Crisp polished pixel illustration, warm dark brown outlines, cream highlights, friendly tinyfaces. Leftcolumn: BLUE angular diamond-shaped little crystal-fox mascot with TWO clearly pointed ears, faceted pointed body and short stubby feet; unmistakably angular silhouette. Rightcolumn: WHITE soft perfectly ROUND cloud-bun mascot, NO ears and NO pointed features, two tinyfeet; silhouette much more circular. These two MUST be obviously different in shape notmerelydifferentcolor. Row1normal neutralcute eyes;row2happysmile crescenteyes;row3cryingeyes teardrops. Same size and silhouette across threeexpressionsforeachcharacter. Front-facing game tokens,no accessories,nobackgroundshadows,noUI,noletters,noicons,noheart. Colorblueandcream unmistakable even small. Pixel blocks detailed likerefined handheld RPG, not flat vector. Square1024x1536sheet.",
+    "source": "/Users/steve/.codex/generated_images/01a0990d-ae52-7c20-9bbc-bdb53108960e/exec-e3af01ab-f4c3-4702-8eaf-434272a5b4b5.png",
+    "path": "design/scenes-v16/sort-mascots.png"
+  }
+]

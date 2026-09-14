@@ -2,12 +2,12 @@ import {cityCars} from './game-options.js';
 import {trafficLength,trafficCandidate,hasTrafficPath} from './city-traffic.js';
 
 export const CITY=Object.freeze({
- horizon:240,acceleration:1.08,baseSpeed:18,maxSpeed:42,
+ horizon:240,acceleration:.72,baseSpeed:18,maxSpeed:48,
  playerHalfWidth:.27,playerHalfLength:1.8,carHalfWidth:.32,busHalfWidth:.36,
  laneSeconds:.012,evadeMin:1,evadeMax:6,
- fuelDrain:.5,fuelPickup:15,collisionDamage:10,collisionImmunity:.9,boostCharge:10,
- coinStartMin:100,coinStartRange:140/3,fuelStartMin:280/3,fuelStartRange:80/3,
- coinGapMin:100,coinGapRange:160/3,fuelGapMin:1100/3,fuelGapRange:100,
+ fuelDrain:1.1,fuelPickup:8,collisionDamage:10,collisionImmunity:.9,boostCharge:10,
+ coinStartMin:100,coinStartRange:140/3,fuelStartMin:220,fuelStartRange:60,
+ coinGapMin:100,coinGapRange:160/3,fuelGapMin:650,fuelGapRange:200,
 });
 export const vehicleLength=trafficLength;
 export const lateralGap=(x,v)=>Math.abs(x-v.lane)-CITY.playerHalfWidth-(v.type==='bus'?.36:.32);

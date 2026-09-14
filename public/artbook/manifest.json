@@ -6500,6 +6500,366 @@
       "width": 256,
       "height": 304,
       "searchAliases": "차량 자동차 방향 숲마을 버스 · 후면"
+    },
+    {
+      "id": "scenes/jump-stage-2",
+      "name": "깊은 숲 · 배경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-2.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 깊은 숲 · 배경"
+    },
+    {
+      "id": "scenes/jump-stage-2-ground",
+      "name": "깊은 숲 · 바닥",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-2-ground.png",
+      "width": 384,
+      "height": 96,
+      "searchAliases": "배경 장애물 숲 원화 깊은 숲 · 바닥"
+    },
+    {
+      "id": "scenes/jump-stage-3",
+      "name": "버섯 마을 · 배경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-3.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 버섯 마을 · 배경"
+    },
+    {
+      "id": "scenes/jump-stage-3-ground",
+      "name": "버섯 마을 · 바닥",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-3-ground.png",
+      "width": 384,
+      "height": 96,
+      "searchAliases": "배경 장애물 숲 원화 버섯 마을 · 바닥"
+    },
+    {
+      "id": "scenes/jump-stage-4",
+      "name": "고대 유적 · 배경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-4.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 고대 유적 · 배경"
+    },
+    {
+      "id": "scenes/jump-stage-4-ground",
+      "name": "고대 유적 · 바닥",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-4-ground.png",
+      "width": 384,
+      "height": 96,
+      "searchAliases": "배경 장애물 숲 원화 고대 유적 · 바닥"
+    },
+    {
+      "id": "scenes/jump-stage-5",
+      "name": "수정 동굴 · 배경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-5.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 수정 동굴 · 배경"
+    },
+    {
+      "id": "scenes/jump-stage-5-ground",
+      "name": "수정 동굴 · 바닥",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-5-ground.png",
+      "width": 384,
+      "height": 96,
+      "searchAliases": "배경 장애물 숲 원화 수정 동굴 · 바닥"
+    },
+    {
+      "id": "scenes/jump-stage-6",
+      "name": "설산 정상 · 배경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-6.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 설산 정상 · 배경"
+    },
+    {
+      "id": "scenes/jump-stage-6-ground",
+      "name": "설산 정상 · 바닥",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-6-ground.png",
+      "width": 384,
+      "height": 96,
+      "searchAliases": "배경 장애물 숲 원화 설산 정상 · 바닥"
+    },
+    {
+      "id": "scenes/jump-stage-2-short",
+      "name": "깊은 숲 · 낮은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-2-short.png",
+      "width": 256,
+      "height": 190,
+      "searchAliases": "배경 장애물 숲 원화 깊은 숲 · 낮은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-2-wide",
+      "name": "깊은 숲 · 넓은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-2-wide.png",
+      "width": 256,
+      "height": 94,
+      "searchAliases": "배경 장애물 숲 원화 깊은 숲 · 넓은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-2-double",
+      "name": "깊은 숲 · 높은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-2-double.png",
+      "width": 256,
+      "height": 422,
+      "searchAliases": "배경 장애물 숲 원화 깊은 숲 · 높은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-2-slide",
+      "name": "깊은 숲 · 슬라이딩 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-2-slide.png",
+      "width": 256,
+      "height": 230,
+      "searchAliases": "배경 장애물 숲 원화 깊은 숲 · 슬라이딩 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-3-short",
+      "name": "버섯 마을 · 낮은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-3-short.png",
+      "width": 256,
+      "height": 196,
+      "searchAliases": "배경 장애물 숲 원화 버섯 마을 · 낮은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-3-wide",
+      "name": "버섯 마을 · 넓은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-3-wide.png",
+      "width": 256,
+      "height": 103,
+      "searchAliases": "배경 장애물 숲 원화 버섯 마을 · 넓은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-3-double",
+      "name": "버섯 마을 · 높은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-3-double.png",
+      "width": 256,
+      "height": 424,
+      "searchAliases": "배경 장애물 숲 원화 버섯 마을 · 높은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-3-slide",
+      "name": "버섯 마을 · 슬라이딩 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-3-slide.png",
+      "width": 256,
+      "height": 193,
+      "searchAliases": "배경 장애물 숲 원화 버섯 마을 · 슬라이딩 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-4-short",
+      "name": "고대 유적 · 낮은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-4-short.png",
+      "width": 256,
+      "height": 208,
+      "searchAliases": "배경 장애물 숲 원화 고대 유적 · 낮은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-4-wide",
+      "name": "고대 유적 · 넓은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-4-wide.png",
+      "width": 256,
+      "height": 101,
+      "searchAliases": "배경 장애물 숲 원화 고대 유적 · 넓은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-4-double",
+      "name": "고대 유적 · 높은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-4-double.png",
+      "width": 256,
+      "height": 450,
+      "searchAliases": "배경 장애물 숲 원화 고대 유적 · 높은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-4-slide",
+      "name": "고대 유적 · 슬라이딩 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-4-slide.png",
+      "width": 256,
+      "height": 211,
+      "searchAliases": "배경 장애물 숲 원화 고대 유적 · 슬라이딩 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-5-short",
+      "name": "수정 동굴 · 낮은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-5-short.png",
+      "width": 256,
+      "height": 278,
+      "searchAliases": "배경 장애물 숲 원화 수정 동굴 · 낮은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-5-wide",
+      "name": "수정 동굴 · 넓은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-5-wide.png",
+      "width": 256,
+      "height": 115,
+      "searchAliases": "배경 장애물 숲 원화 수정 동굴 · 넓은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-5-double",
+      "name": "수정 동굴 · 높은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-5-double.png",
+      "width": 256,
+      "height": 448,
+      "searchAliases": "배경 장애물 숲 원화 수정 동굴 · 높은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-5-slide",
+      "name": "수정 동굴 · 슬라이딩 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-5-slide.png",
+      "width": 256,
+      "height": 206,
+      "searchAliases": "배경 장애물 숲 원화 수정 동굴 · 슬라이딩 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-6-short",
+      "name": "설산 정상 · 낮은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-6-short.png",
+      "width": 256,
+      "height": 237,
+      "searchAliases": "배경 장애물 숲 원화 설산 정상 · 낮은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-6-wide",
+      "name": "설산 정상 · 넓은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-6-wide.png",
+      "width": 256,
+      "height": 104,
+      "searchAliases": "배경 장애물 숲 원화 설산 정상 · 넓은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-6-double",
+      "name": "설산 정상 · 높은 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-6-double.png",
+      "width": 256,
+      "height": 460,
+      "searchAliases": "배경 장애물 숲 원화 설산 정상 · 높은 장애물"
+    },
+    {
+      "id": "scenes/jump-stage-6-slide",
+      "name": "설산 정상 · 슬라이딩 장애물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-stage-6-slide.png",
+      "width": 256,
+      "height": 224,
+      "searchAliases": "배경 장애물 숲 원화 설산 정상 · 슬라이딩 장애물"
+    },
+    {
+      "id": "scenes/sort-v16-blue-normal",
+      "name": "파란 여우 · 기본",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-v16-blue-normal.png",
+      "width": 256,
+      "height": 277,
+      "searchAliases": "배경 장애물 숲 원화 파란 여우 · 기본"
+    },
+    {
+      "id": "scenes/sort-v16-white-normal",
+      "name": "하얀 구름 · 기본",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-v16-white-normal.png",
+      "width": 256,
+      "height": 241,
+      "searchAliases": "배경 장애물 숲 원화 하얀 구름 · 기본"
+    },
+    {
+      "id": "scenes/sort-v16-blue-smile",
+      "name": "파란 여우 · 웃음",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-v16-blue-smile.png",
+      "width": 256,
+      "height": 275,
+      "searchAliases": "배경 장애물 숲 원화 파란 여우 · 웃음"
+    },
+    {
+      "id": "scenes/sort-v16-white-smile",
+      "name": "하얀 구름 · 웃음",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-v16-white-smile.png",
+      "width": 256,
+      "height": 241,
+      "searchAliases": "배경 장애물 숲 원화 하얀 구름 · 웃음"
+    },
+    {
+      "id": "scenes/sort-v16-blue-cry",
+      "name": "파란 여우 · 눈물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-v16-blue-cry.png",
+      "width": 256,
+      "height": 277,
+      "searchAliases": "배경 장애물 숲 원화 파란 여우 · 눈물"
+    },
+    {
+      "id": "scenes/sort-v16-white-cry",
+      "name": "하얀 구름 · 눈물",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-v16-white-cry.png",
+      "width": 256,
+      "height": 241,
+      "searchAliases": "배경 장애물 숲 원화 하얀 구름 · 눈물"
     }
   ]
 }

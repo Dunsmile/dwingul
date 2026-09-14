@@ -3837,6 +3837,216 @@
       "bytes": 43568,
       "originalBytes": 45733
     },
+    "/assets/pixel/scenes/jump-stage-2-double.png": {
+      "url": "/assets/delivery/jump-stage-2-double-be903d502e63.webp",
+      "width": 256,
+      "height": 422,
+      "bytes": 46774,
+      "originalBytes": 54905
+    },
+    "/assets/pixel/scenes/jump-stage-2-ground.png": {
+      "url": "/assets/delivery/jump-stage-2-ground-902d6321928a.webp",
+      "width": 384,
+      "height": 96,
+      "bytes": 31154,
+      "originalBytes": 32873
+    },
+    "/assets/pixel/scenes/jump-stage-2-short.png": {
+      "url": "/assets/delivery/jump-stage-2-short-cfc66b6c1908.webp",
+      "width": 256,
+      "height": 190,
+      "bytes": 24784,
+      "originalBytes": 28624
+    },
+    "/assets/pixel/scenes/jump-stage-2-slide.png": {
+      "url": "/assets/delivery/jump-stage-2-slide-e130cdef654a.webp",
+      "width": 256,
+      "height": 230,
+      "bytes": 30388,
+      "originalBytes": 33009
+    },
+    "/assets/pixel/scenes/jump-stage-2-wide.png": {
+      "url": "/assets/delivery/jump-stage-2-wide-4699ee708841.webp",
+      "width": 256,
+      "height": 94,
+      "bytes": 15476,
+      "originalBytes": 16779
+    },
+    "/assets/pixel/scenes/jump-stage-2.png": {
+      "url": "/assets/delivery/jump-stage-2-16b9bf1c1a04.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 226974,
+      "originalBytes": 551263
+    },
+    "/assets/pixel/scenes/jump-stage-3-double.png": {
+      "url": "/assets/delivery/jump-stage-3-double-9c24fd21c972.webp",
+      "width": 256,
+      "height": 424,
+      "bytes": 40498,
+      "originalBytes": 46969
+    },
+    "/assets/pixel/scenes/jump-stage-3-ground.png": {
+      "url": "/assets/delivery/jump-stage-3-ground-3d72b287ccca.webp",
+      "width": 384,
+      "height": 96,
+      "bytes": 27656,
+      "originalBytes": 29025
+    },
+    "/assets/pixel/scenes/jump-stage-3-short.png": {
+      "url": "/assets/delivery/jump-stage-3-short-4bff88a141b7.webp",
+      "width": 256,
+      "height": 196,
+      "bytes": 22348,
+      "originalBytes": 25793
+    },
+    "/assets/pixel/scenes/jump-stage-3-slide.png": {
+      "url": "/assets/delivery/jump-stage-3-slide-7c0f2f703a0e.webp",
+      "width": 256,
+      "height": 193,
+      "bytes": 21476,
+      "originalBytes": 23544
+    },
+    "/assets/pixel/scenes/jump-stage-3-wide.png": {
+      "url": "/assets/delivery/jump-stage-3-wide-c88a279274cb.webp",
+      "width": 256,
+      "height": 103,
+      "bytes": 16924,
+      "originalBytes": 18695
+    },
+    "/assets/pixel/scenes/jump-stage-3.png": {
+      "url": "/assets/delivery/jump-stage-3-6e3f2a057d2f.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 170310,
+      "originalBytes": 442694
+    },
+    "/assets/pixel/scenes/jump-stage-4-double.png": {
+      "url": "/assets/delivery/jump-stage-4-double-3a1d14f99a4a.webp",
+      "width": 256,
+      "height": 450,
+      "bytes": 48862,
+      "originalBytes": 56248
+    },
+    "/assets/pixel/scenes/jump-stage-4-ground.png": {
+      "url": "/assets/delivery/jump-stage-4-ground-b949f85b15c2.webp",
+      "width": 384,
+      "height": 96,
+      "bytes": 32280,
+      "originalBytes": 33512
+    },
+    "/assets/pixel/scenes/jump-stage-4-short.png": {
+      "url": "/assets/delivery/jump-stage-4-short-b38bb634c8b4.webp",
+      "width": 256,
+      "height": 208,
+      "bytes": 28660,
+      "originalBytes": 32330
+    },
+    "/assets/pixel/scenes/jump-stage-4-slide.png": {
+      "url": "/assets/delivery/jump-stage-4-slide-57fd5fb75aef.webp",
+      "width": 256,
+      "height": 211,
+      "bytes": 25974,
+      "originalBytes": 28177
+    },
+    "/assets/pixel/scenes/jump-stage-4-wide.png": {
+      "url": "/assets/delivery/jump-stage-4-wide-87fe135e5352.webp",
+      "width": 256,
+      "height": 101,
+      "bytes": 18464,
+      "originalBytes": 19838
+    },
+    "/assets/pixel/scenes/jump-stage-4.png": {
+      "url": "/assets/delivery/jump-stage-4-2c5081505d95.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 176034,
+      "originalBytes": 454789
+    },
+    "/assets/pixel/scenes/jump-stage-5-double.png": {
+      "url": "/assets/delivery/jump-stage-5-double-66e27117fad8.webp",
+      "width": 256,
+      "height": 448,
+      "bytes": 44030,
+      "originalBytes": 51867
+    },
+    "/assets/pixel/scenes/jump-stage-5-ground.png": {
+      "url": "/assets/delivery/jump-stage-5-ground-6bbc504e0430.webp",
+      "width": 384,
+      "height": 96,
+      "bytes": 32460,
+      "originalBytes": 33458
+    },
+    "/assets/pixel/scenes/jump-stage-5-short.png": {
+      "url": "/assets/delivery/jump-stage-5-short-bff2685e99c3.webp",
+      "width": 256,
+      "height": 278,
+      "bytes": 26186,
+      "originalBytes": 31118
+    },
+    "/assets/pixel/scenes/jump-stage-5-slide.png": {
+      "url": "/assets/delivery/jump-stage-5-slide-f1340fe0ae9c.webp",
+      "width": 256,
+      "height": 206,
+      "bytes": 24700,
+      "originalBytes": 27700
+    },
+    "/assets/pixel/scenes/jump-stage-5-wide.png": {
+      "url": "/assets/delivery/jump-stage-5-wide-fd7a9bbe6ace.webp",
+      "width": 256,
+      "height": 115,
+      "bytes": 18550,
+      "originalBytes": 20255
+    },
+    "/assets/pixel/scenes/jump-stage-5.png": {
+      "url": "/assets/delivery/jump-stage-5-1215775f9e75.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 205188,
+      "originalBytes": 475173
+    },
+    "/assets/pixel/scenes/jump-stage-6-double.png": {
+      "url": "/assets/delivery/jump-stage-6-double-9d27fd0dc18d.webp",
+      "width": 256,
+      "height": 460,
+      "bytes": 52542,
+      "originalBytes": 60988
+    },
+    "/assets/pixel/scenes/jump-stage-6-ground.png": {
+      "url": "/assets/delivery/jump-stage-6-ground-c23a85fd5763.webp",
+      "width": 384,
+      "height": 96,
+      "bytes": 31542,
+      "originalBytes": 33245
+    },
+    "/assets/pixel/scenes/jump-stage-6-short.png": {
+      "url": "/assets/delivery/jump-stage-6-short-9d4d4e0f833a.webp",
+      "width": 256,
+      "height": 237,
+      "bytes": 29146,
+      "originalBytes": 33416
+    },
+    "/assets/pixel/scenes/jump-stage-6-slide.png": {
+      "url": "/assets/delivery/jump-stage-6-slide-5be8c805a01b.webp",
+      "width": 256,
+      "height": 224,
+      "bytes": 25756,
+      "originalBytes": 28080
+    },
+    "/assets/pixel/scenes/jump-stage-6-wide.png": {
+      "url": "/assets/delivery/jump-stage-6-wide-eabb1bb92160.webp",
+      "width": 256,
+      "height": 104,
+      "bytes": 17468,
+      "originalBytes": 19110
+    },
+    "/assets/pixel/scenes/jump-stage-6.png": {
+      "url": "/assets/delivery/jump-stage-6-caa7d77d5c68.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 209116,
+      "originalBytes": 526231
+    },
     "/assets/pixel/scenes/memory-table.png": {
       "url": "/assets/delivery/memory-table-050cbc060cbb.webp",
       "width": 640,
@@ -3927,6 +4137,48 @@
       "height": 768,
       "bytes": 194078,
       "originalBytes": 469145
+    },
+    "/assets/pixel/scenes/sort-v16-blue-cry.png": {
+      "url": "/assets/delivery/sort-v16-blue-cry-80e506e68ceb.webp",
+      "width": 256,
+      "height": 277,
+      "bytes": 27230,
+      "originalBytes": 31545
+    },
+    "/assets/pixel/scenes/sort-v16-blue-normal.png": {
+      "url": "/assets/delivery/sort-v16-blue-normal-6860b83eb7d7.webp",
+      "width": 256,
+      "height": 277,
+      "bytes": 27214,
+      "originalBytes": 31791
+    },
+    "/assets/pixel/scenes/sort-v16-blue-smile.png": {
+      "url": "/assets/delivery/sort-v16-blue-smile-3047be7111bd.webp",
+      "width": 256,
+      "height": 275,
+      "bytes": 26828,
+      "originalBytes": 31166
+    },
+    "/assets/pixel/scenes/sort-v16-white-cry.png": {
+      "url": "/assets/delivery/sort-v16-white-cry-f8629d0130b4.webp",
+      "width": 256,
+      "height": 241,
+      "bytes": 31012,
+      "originalBytes": 33380
+    },
+    "/assets/pixel/scenes/sort-v16-white-normal.png": {
+      "url": "/assets/delivery/sort-v16-white-normal-2566f77daccb.webp",
+      "width": 256,
+      "height": 241,
+      "bytes": 31506,
+      "originalBytes": 33796
+    },
+    "/assets/pixel/scenes/sort-v16-white-smile.png": {
+      "url": "/assets/delivery/sort-v16-white-smile-041a8fc0980e.webp",
+      "width": 256,
+      "height": 241,
+      "bytes": 31988,
+      "originalBytes": 34118
     },
     "/assets/pixel/scenes/timing-desk.png": {
       "url": "/assets/delivery/timing-desk-f5d9dd755b03.webp",
@@ -4097,6 +4349,6 @@
       "originalBytes": 1656545
     }
   },
-  "originalBytes": 20972447,
-  "deliveryBytes": 17018776
+  "originalBytes": 24437951,
+  "deliveryBytes": 18916274
 }

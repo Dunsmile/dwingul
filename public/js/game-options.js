@@ -13,8 +13,8 @@ export function gameSettings(id, raw = {}) {
   if (id === 'sequence') return { version: ['v9','v7'].includes(raw.version) ? raw.version : 'v11', mode: 'rhythm' };
   if (id === 'sort') return { version: 'v5', mode: raw.mode === 'endless' ? 'endless' : 'sprint' };
   if (id === 'typing') return { version:'v5', mode:'rpg', sentenceMode:raw.sentenceMode==='long'?'long':'short', startStage:Number.isInteger(Number(raw.startStage))&&Number(raw.startStage)>=1&&(Number(raw.startStage)-1)%10===0?Number(raw.startStage):1 };
-  if (id === 'racing') return { version: ['v4','v5','v6'].includes(raw.version) ? raw.version : 'v7', car: cityCars.some(c => c.id === raw.car) ? raw.car : 'basic' };
-  return id === 'jump' ? { version: ['v4','v5','v6','v11'].includes(raw.version) ? raw.version : 'v13' } : {};
+  if (id === 'racing') return { version: ['v4','v5','v6','v7'].includes(raw.version) ? raw.version : 'v16', car: cityCars.some(c => c.id === raw.car) ? raw.car : 'basic' };
+  return id === 'jump' ? { version: ['v4','v5','v6','v11','v13'].includes(raw.version) ? raw.version : 'v16' } : {};
 }
 export function gameMode(id, raw={}) {
   const s=gameSettings(id,raw),v=['v4','v5','v6'].includes(raw?.version)?raw.version:s.version;
@@ -22,6 +22,8 @@ export function gameMode(id, raw={}) {
 }
 export const gameModeNames = {
   'rhythm-three-lane-v11':'세 갈래 리듬 · 무한 모드', 'rhythm-endless-v9':'무한 리듬 · 100가지 패턴', 'rhythm-relay-v7':'리듬 릴레이 · 8라운드', 'nine-pad':'기억 순서 · 이전 규칙',
+  'jump-distance-v16':'멀리 뛰기 · 여섯 구간',
+  ...Object.fromEntries(cityCars.map(car=>[`city-${car.id}-v16`,`도심 질주 · ${car.name} · 연료 도전`])),
   ...Object.fromEntries(cityCars.map(car=>[`city-${car.id}-v7`,`도심 질주 · ${car.name}`])),
   'city-basic-v6':'도심 질주 · 시티 원', 'city-sport-v6':'도심 질주 · 스프린터', 'city-touring-v6':'도심 질주 · 롱런', 'jump-distance-v13':'멀리 뛰기 · 10초 성장', 'jump-distance-v11':'멀리 뛰기 · 숲길 거리', 'jump-distance-v6':'멀리 뛰기 · 여유로운 2단 점프',
   'sort-sprint-v5':'좌우 · 20초 피버', 'sort-endless-v5':'좌우 · 무한 피버', 'city-basic-v5':'도심 질주 · 시티 원', 'city-sport-v5':'도심 질주 · 스프린터', 'city-touring-v5':'도심 질주 · 롱런', 'jump-distance-v5':'멀리 뛰기 · 거리', 'typing-rpg-v5-s1':'타이핑 RPG · 1스테이지 시작',

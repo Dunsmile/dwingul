@@ -1,0 +1,254 @@
+[
+  {
+    "id": "jump-stage-2",
+    "name": "깊은 숲 · 배경",
+    "src": "/assets/pixel/scenes/jump-stage-2.png",
+    "width": 1152,
+    "height": 768
+  },
+  {
+    "id": "jump-stage-2-ground",
+    "name": "깊은 숲 · 바닥",
+    "src": "/assets/pixel/scenes/jump-stage-2-ground.png",
+    "width": 384,
+    "height": 96
+  },
+  {
+    "id": "jump-stage-3",
+    "name": "버섯 마을 · 배경",
+    "src": "/assets/pixel/scenes/jump-stage-3.png",
+    "width": 1152,
+    "height": 768
+  },
+  {
+    "id": "jump-stage-3-ground",
+    "name": "버섯 마을 · 바닥",
+    "src": "/assets/pixel/scenes/jump-stage-3-ground.png",
+    "width": 384,
+    "height": 96
+  },
+  {
+    "id": "jump-stage-4",
+    "name": "고대 유적 · 배경",
+    "src": "/assets/pixel/scenes/jump-stage-4.png",
+    "width": 1152,
+    "height": 768
+  },
+  {
+    "id": "jump-stage-4-ground",
+    "name": "고대 유적 · 바닥",
+    "src": "/assets/pixel/scenes/jump-stage-4-ground.png",
+    "width": 384,
+    "height": 96
+  },
+  {
+    "id": "jump-stage-5",
+    "name": "수정 동굴 · 배경",
+    "src": "/assets/pixel/scenes/jump-stage-5.png",
+    "width": 1152,
+    "height": 768
+  },
+  {
+    "id": "jump-stage-5-ground",
+    "name": "수정 동굴 · 바닥",
+    "src": "/assets/pixel/scenes/jump-stage-5-ground.png",
+    "width": 384,
+    "height": 96
+  },
+  {
+    "id": "jump-stage-6",
+    "name": "설산 정상 · 배경",
+    "src": "/assets/pixel/scenes/jump-stage-6.png",
+    "width": 1152,
+    "height": 768
+  },
+  {
+    "id": "jump-stage-6-ground",
+    "name": "설산 정상 · 바닥",
+    "src": "/assets/pixel/scenes/jump-stage-6-ground.png",
+    "width": 384,
+    "height": 96
+  },
+  {
+    "id": "jump-stage-2-short",
+    "name": "깊은 숲 · 낮은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-2-short.png",
+    "width": 256,
+    "height": 190
+  },
+  {
+    "id": "jump-stage-2-wide",
+    "name": "깊은 숲 · 넓은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-2-wide.png",
+    "width": 256,
+    "height": 94
+  },
+  {
+    "id": "jump-stage-2-double",
+    "name": "깊은 숲 · 높은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-2-double.png",
+    "width": 256,
+    "height": 422
+  },
+  {
+    "id": "jump-stage-2-slide",
+    "name": "깊은 숲 · 슬라이딩 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-2-slide.png",
+    "width": 256,
+    "height": 230
+  },
+  {
+    "id": "jump-stage-3-short",
+    "name": "버섯 마을 · 낮은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-3-short.png",
+    "width": 256,
+    "height": 196
+  },
+  {
+    "id": "jump-stage-3-wide",
+    "name": "버섯 마을 · 넓은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-3-wide.png",
+    "width": 256,
+    "height": 103
+  },
+  {
+    "id": "jump-stage-3-double",
+    "name": "버섯 마을 · 높은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-3-double.png",
+    "width": 256,
+    "height": 424
+  },
+  {
+    "id": "jump-stage-3-slide",
+    "name": "버섯 마을 · 슬라이딩 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-3-slide.png",
+    "width": 256,
+    "height": 193
+  },
+  {
+    "id": "jump-stage-4-short",
+    "name": "고대 유적 · 낮은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-4-short.png",
+    "width": 256,
+    "height": 208
+  },
+  {
+    "id": "jump-stage-4-wide",
+    "name": "고대 유적 · 넓은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-4-wide.png",
+    "width": 256,
+    "height": 101
+  },
+  {
+    "id": "jump-stage-4-double",
+    "name": "고대 유적 · 높은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-4-double.png",
+    "width": 256,
+    "height": 450
+  },
+  {
+    "id": "jump-stage-4-slide",
+    "name": "고대 유적 · 슬라이딩 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-4-slide.png",
+    "width": 256,
+    "height": 211
+  },
+  {
+    "id": "jump-stage-5-short",
+    "name": "수정 동굴 · 낮은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-5-short.png",
+    "width": 256,
+    "height": 278
+  },
+  {
+    "id": "jump-stage-5-wide",
+    "name": "수정 동굴 · 넓은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-5-wide.png",
+    "width": 256,
+    "height": 115
+  },
+  {
+    "id": "jump-stage-5-double",
+    "name": "수정 동굴 · 높은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-5-double.png",
+    "width": 256,
+    "height": 448
+  },
+  {
+    "id": "jump-stage-5-slide",
+    "name": "수정 동굴 · 슬라이딩 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-5-slide.png",
+    "width": 256,
+    "height": 206
+  },
+  {
+    "id": "jump-stage-6-short",
+    "name": "설산 정상 · 낮은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-6-short.png",
+    "width": 256,
+    "height": 237
+  },
+  {
+    "id": "jump-stage-6-wide",
+    "name": "설산 정상 · 넓은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-6-wide.png",
+    "width": 256,
+    "height": 104
+  },
+  {
+    "id": "jump-stage-6-double",
+    "name": "설산 정상 · 높은 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-6-double.png",
+    "width": 256,
+    "height": 460
+  },
+  {
+    "id": "jump-stage-6-slide",
+    "name": "설산 정상 · 슬라이딩 장애물",
+    "src": "/assets/pixel/scenes/jump-stage-6-slide.png",
+    "width": 256,
+    "height": 224
+  },
+  {
+    "id": "sort-v16-blue-normal",
+    "name": "파란 여우 · 기본",
+    "src": "/assets/pixel/scenes/sort-v16-blue-normal.png",
+    "width": 256,
+    "height": 277
+  },
+  {
+    "id": "sort-v16-white-normal",
+    "name": "하얀 구름 · 기본",
+    "src": "/assets/pixel/scenes/sort-v16-white-normal.png",
+    "width": 256,
+    "height": 241
+  },
+  {
+    "id": "sort-v16-blue-smile",
+    "name": "파란 여우 · 웃음",
+    "src": "/assets/pixel/scenes/sort-v16-blue-smile.png",
+    "width": 256,
+    "height": 275
+  },
+  {
+    "id": "sort-v16-white-smile",
+    "name": "하얀 구름 · 웃음",
+    "src": "/assets/pixel/scenes/sort-v16-white-smile.png",
+    "width": 256,
+    "height": 241
+  },
+  {
+    "id": "sort-v16-blue-cry",
+    "name": "파란 여우 · 눈물",
+    "src": "/assets/pixel/scenes/sort-v16-blue-cry.png",
+    "width": 256,
+    "height": 277
+  },
+  {
+    "id": "sort-v16-white-cry",
+    "name": "하얀 구름 · 눈물",
+    "src": "/assets/pixel/scenes/sort-v16-white-cry.png",
+    "width": 256,
+    "height": 241
+  }
+]

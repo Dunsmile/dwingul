@@ -14,9 +14,10 @@ test('city renderer uses upright illustrated player and traffic sprites with a g
  assert.match(source,/projection:'upright-illustrated-2\.5D'/);
 });
 
-test('city renderer reports the v7 mode and recoverable damage details',()=>{
- assert.match(source,/mode:`city-\$\{s\.car\}-v7`/);
- assert.match(source,/hits:s\.hits/);
- assert.match(source,/boostProcs:s\.boostProcs/);
+test('city renderer reports the selected historical or current mode and recoverable damage details',()=>{
+ assert.match(source,/mode:`city-\$\{s\.car\}-\$\{rulesVersion\}`/);
+ assert.match(source,/version:rulesVersion/);
+ assert.match(source,/hits:s\.hits\|\|0/);
+ assert.match(source,/boostProcs:s\.boostProcs\|\|0/);
  assert.match(source,/충돌 -\$\{10-engine\.spec\.armor\} 연료/);
 });
