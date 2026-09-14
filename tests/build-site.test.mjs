@@ -24,7 +24,7 @@ const hasType=(value,type)=>JSON.stringify(value).includes(`"@type":"${type}"`);
 
 test('publication build creates crawlable pages and excludes server stores',async()=>{
   const result=await buildSite();
-  assert.deepEqual({pages:result.pages,contents:result.contents},{pages:31,contents:21});
+  assert.deepEqual({pages:result.pages,contents:result.contents},{pages:30,contents:20});
 
   await assert.rejects(stat(path.join(dist,'js/rpg-store.js')),{code:'ENOENT'});
   await assert.rejects(stat(path.join(dist,'js/garage-store.js')),{code:'ENOENT'});
@@ -58,27 +58,24 @@ test('publication build creates crawlable pages and excludes server stores',asyn
     assert.ok(hasType(data,'BreadcrumbList'));
     intros.add(guides[item.id].intro);
   }
-  assert.equal(intros.size,21,'각 콘텐츠는 고유한 안내문을 가져야 한다.');
+  assert.equal(intros.size,20,'각 콘텐츠는 고유한 안내문을 가져야 한다.');
 
   assert.match(guides.racing.faq.flat().join(' '),/초당 0\.5칸/);
   assert.match(guides.racing.scoring,/충돌[^.]*연료/);
   assert.match(guides.racing.faq.flat().join(' '),/차량마다 50~200토큰/);
-  assert.match(guides.sequence.intro,/세 레인/);
-  assert.match(guides.sequence.faq.flat().join(' '),/왼쪽.*가운데.*오른쪽/);
-  assert.match(guides.jump.scoring,/같은 이동 거리 축/);
-  assert.match(guides.jump.scoring,/이동 속도가 빨라질수록.*시간 간격/);
+  assert.match(guides.jump.rules,/같은 이동 거리 축/);
+  assert.match(guides.jump.scoring,/10초마다.*1개씩.*속도/);
+  assert.match(guides.jump.scoring,/안전 간격/);
   assert.match(guides.typing.intro,/16종/);
   assert.match(guides.typing.intro,/25종/);
   assert.match(guides.typing.faq.flat().join(' '),/전투 능력치에 영향/);
   assert.match(guides.shop.scoring,/16가지.*주·보조/);
-  assert.equal(Object.keys(searchMetadata).length,21);
-  const currentGuides=Object.fromEntries(await Promise.all(['racing','sequence','jump','typing','shop'].map(async id=>[id,await readFile(path.join(dist,'content',id,'index.html'),'utf8')])));
+  assert.equal(Object.keys(searchMetadata).length,20);
+  const currentGuides=Object.fromEntries(await Promise.all(['racing','jump','typing','shop'].map(async id=>[id,await readFile(path.join(dist,'content',id,'index.html'),'utf8')])));
   assert.match(currentGuides.racing,/초당 0\.5칸/);
   assert.match(currentGuides.racing,/0\.9초 동안 보호/);
   assert.match(currentGuides.racing,/8종 차량/);
   assert.doesNotMatch(currentGuides.racing,/초당 2칸|모든 차량.{0,8}50토큰/);
-  assert.match(currentGuides.sequence,/세 레인/);
-  assert.match(currentGuides.sequence,/왼쪽은 ←·A/);
   assert.match(currentGuides.jump,/같은 이동 거리 축/);
   assert.match(currentGuides.typing,/25종 몬스터/);
   assert.match(currentGuides.typing,/16종 캐릭터/);
@@ -101,8 +98,8 @@ test('publication build creates crawlable pages and excludes server stores',asyn
     assert.ok(hasType(data,'WebPage'),`${pathname} needs a WebPage entity`);
     if(pathname!=='/')assert.ok(hasType(data,'BreadcrumbList'),`${pathname} needs breadcrumbs`);
   }
-  assert.equal(titles.size,31,'31개 정식 주소의 제목이 모두 달라야 한다.');
-  assert.equal(descriptions.size,31,'31개 정식 주소의 설명이 모두 달라야 한다.');
+  assert.equal(titles.size,30,'30개 정식 주소의 제목이 모두 달라야 한다.');
+  assert.equal(descriptions.size,30,'30개 정식 주소의 설명이 모두 달라야 한다.');
 
   for(const [id] of Object.entries(discoveryCategories)){
     const html=await readFile(path.join(dist,'content','category',id,'index.html'),'utf8');
@@ -111,7 +108,7 @@ test('publication build creates crawlable pages and excludes server stores',asyn
 
   assert.equal(await readFile(path.join(dist,'ads.txt'),'utf8'),'google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0\n');
   const sitemap=await readFile(path.join(dist,'sitemap.xml'),'utf8');
-  assert.equal((sitemap.match(/<url>/g)||[]).length,31);
+  assert.equal((sitemap.match(/<url>/g)||[]).length,30);
   for (const page of ['about','privacy','terms','contact']) {
     const html=await readFile(path.join(dist,page,'index.html'),'utf8');
     assert.match(html,/type="module" src="\/js\/telemetry\.js"/);

@@ -1,3 +1,4 @@
+import {assetUrl,readyImage} from './asset-delivery.js';
 // Decorative sprites never determine game rules or collision boxes.
 import {artAssetSources} from './art.js';
 
@@ -8,10 +9,10 @@ export function worldImageSources(name){return /^[a-z0-9-]+$/.test(name)?artAsse
 export function worldImage(name){
  const sources=worldImageSources(name);if(!sources)return null;
  if(!cache.has(name)){
-  const image=new Image();
+  const image=readyImage(sources.primary)||new Image();
   const useFallback=()=>{if(sources.fallback&&image.getAttribute?.('src')!==sources.fallback){image.removeEventListener?.('error',useFallback);image.src=sources.fallback;}};
   image.addEventListener?.('error',useFallback);
-  image.src=sources.primary;cache.set(name,image);
+  image.src=assetUrl(sources.primary);cache.set(name,image);
  }
  return cache.get(name);
 }
@@ -28,6 +29,6 @@ export function drawWorldQuad(pen,name,corners){
 }
 const portraitCache=new Map();
 const portraits=new Set(['runner','runner-run-b','runner-jump','runner-slide','runner-dead']);
-export function portraitImage(name){if(!portraits.has(name))return null;if(!portraitCache.has(name)){const image=new Image();image.src='/assets/pixel/portraits/'+name+'.webp';portraitCache.set(name,image);}return portraitCache.get(name);}
+export function portraitImage(name){if(!portraits.has(name))return null;if(!portraitCache.has(name)){const source='/assets/pixel/portraits/'+name+'.webp',image=readyImage(source)||new Image();image.src=source;portraitCache.set(name,image);}return portraitCache.get(name);}
 export function drawPortraitSprite(pen,name,x,y,width,height=width){const image=portraitImage(name);if(!image?.complete||!image.naturalWidth)return false;const box=name==='runner-slide'?[.09,.25,.82,.53]:name==='runner-dead'?[.05,.12,.90,.82]:name==='runner-jump'||name==='runner-run-b'?[.04,.05,.92,.91]:[.06,.08,.88,.88];pen.imageSmoothingEnabled=false;pen.drawImage(image,image.naturalWidth*box[0],image.naturalHeight*box[1],image.naturalWidth*box[2],image.naturalHeight*box[3],Math.round(x),Math.round(y),Math.round(width),Math.round(height));return true;}
 export function pixelPanel(pen,x,y,w,h,fill='#fff1d3'){pen.fillStyle='#49382d';pen.fillRect(x+4,y+4,w,h);pen.fillStyle=fill;pen.fillRect(x,y,w,h);pen.strokeStyle='#49382d';pen.lineWidth=3;pen.strokeRect(x,y,w,h);}

@@ -1,13 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {cityTrafficRearSource} from '../public/js/city-vehicle-art.js';
 
 const source=await readFile(new URL('../public/js/city-racing.js',import.meta.url),'utf8');
 
 test('city renderer uses upright illustrated player and traffic sprites with a geometric fallback',()=>{
  assert.match(source,/vehicleSpriteBox/);
- assert.match(source,/illustratedImage\(player\?engine\.spec\.art/);
- for(const type of ['car','van','truck','bus'])assert.match(source,new RegExp(`traffic/${type}\\.png`));
+ assert.match(source,/player\?cityPlayerArtSource\(s\.car\):cityTrafficRearSource\(type\)/);
+ for(const type of ['car','van','truck','bus'])assert.match(cityTrafficRearSource(type),/-rear\.png$/);
  assert.match(source,/uprightFallback/);
  assert.doesNotMatch(source,/drawWorldQuad/);
  assert.match(source,/projection:'upright-illustrated-2\.5D'/);

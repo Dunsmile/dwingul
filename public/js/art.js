@@ -1,3 +1,4 @@
+import {assetUrl,readyImage} from './asset-delivery.js';
 import {catalog,esc} from './catalog.js';
 
 const ids=new Set(catalog.map(c=>c.id));
@@ -30,13 +31,13 @@ export function thumbnail(c,{eager=false,small=false}={}){if(!c||!ids.has(c.id))
 export function decorativeImage(src,{className='',frameClass='',width=32,height=32,fallback='✦',loading=''}={}){
  const sources=artAssetSources(src);if(!sources)return '';
  const w=Math.max(1,Math.round(Number(width)||32)),h=Math.max(1,Math.round(Number(height)||32)),load=loading==='lazy'||loading==='eager'?` loading="${loading}"`:'';
- return `<span class="decorative-image ${safeClasses(frameClass)}" data-decorative-frame><span class="decorative-image-fallback" aria-hidden="true">${esc(fallback)}</span><img data-decorative-image class="${safeClasses(className)}" src="${sources.primary}"${fallbackAttr(sources)} width="${w}" height="${h}" alt=""${load} decoding="async"></span>`;
+ return `<span class="decorative-image ${safeClasses(frameClass)}" data-decorative-frame><span class="decorative-image-fallback" aria-hidden="true">${esc(fallback)}</span><img data-decorative-image class="${safeClasses(className)}" src="${assetUrl(sources.primary)}"${fallbackAttr(sources)} width="${w}" height="${h}" alt=""${load} decoding="async"></span>`;
 }
 
 export function worldIcon(name,cls='world-icon'){
  if(!/^[a-z0-9-]+$/.test(name))return '';
  const sources=artAssetSources(`/assets/pixel/world/${name}.svg`);
- return `<img data-decorative-image class="${safeClasses(cls)}" src="${sources.primary}"${fallbackAttr(sources)} width="32" height="32" alt="" decoding="async">`;
+ return `<img data-decorative-image class="${safeClasses(cls)}" src="${assetUrl(sources.primary)}"${fallbackAttr(sources)} width="32" height="32" alt="" decoding="async">`;
 }
 
 export const elementAsset={'목':'wood','화':'fire','토':'earth','금':'metal','수':'water'};

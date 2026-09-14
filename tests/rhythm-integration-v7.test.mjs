@@ -1,34 +1,6 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import {createApp} from '../server.mjs';
-import {gameSettings,gameMode} from '../public/js/game-options.js';
-import {currentGameModes} from '../public/js/catalog.js';
-
-test('new rhythm runs and friend rooms use v11, while v9, v7 and nine-pad results remain separately ranked',async()=>{
- const app=createApp({dbPath:':memory:'});await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));const base=`http://127.0.0.1:${app.server.address().port}`;let cookie='';
- const req=async(path,data)=>{const r=await fetch(base+'/api/'+path,{method:data?'POST':'GET',headers:{cookie,'Content-Type':'application/json'},body:data?JSON.stringify(data):undefined});cookie=r.headers.get('set-cookie')?.split(';')[0]||cookie;return{status:r.status,...await r.json()};};
- try{
-  assert.equal(currentGameModes.sequence,'rhythm-three-lane-v11');assert.equal(gameMode('sequence',gameSettings('sequence')),'rhythm-three-lane-v11');assert.equal(gameMode('sequence',{version:'v9'}),'rhythm-endless-v9');assert.equal(gameMode('sequence',{version:'v7'}),'rhythm-relay-v7');
-  await req('profile',{nickname:'리듬 모험가',pin:'1234'});
-  const room=await req('groups',{name:'우리의 박자',content:'sequence',period:'all'});assert.equal(room.status,200);
-  const a=await req('runs',{content:'sequence',seed:73,groupId:room.id});assert.equal(a.gameSettings.version,'v11');
-  const record=await req('records',{run:a.id,result:{value:1234,mode:'nine-pad',unit:'단계'},scopes:['world','friends'],country:'대한민국',groupId:room.id});assert.equal(record.status,200);
-  const saved=(await req('records')).records[0];assert.equal(saved.mode,'rhythm-three-lane-v11');assert.equal(saved.unit,'점');
-  const b=await req('runs',{content:'sequence',groupId:room.id});assert.equal(b.seed,a.seed);
-  app.db.prepare('UPDATE groups SET game_settings=? WHERE id=?').run('{}',room.id);
-  assert.equal((await req('runs',{content:'sequence',groupId:room.id})).status,400);
-  const v9=await req('runs',{content:'sequence',seed:9});app.db.prepare('UPDATE runs SET game_settings=? WHERE id=?').run('{"version":"v9","mode":"rhythm"}',v9.id);
-  assert.equal((await req('records',{run:v9.id,result:{value:90,mode:'nine-pad'},scopes:['world'],country:'대한민국'})).status,200);
-  const v7=await req('runs',{content:'sequence',seed:7});app.db.prepare('UPDATE runs SET game_settings=? WHERE id=?').run('{"version":"v7","mode":"rhythm"}',v7.id);
-  assert.equal((await req('records',{run:v7.id,result:{value:70,mode:'nine-pad'},scopes:['world'],country:'대한민국'})).status,200);
-  const old=await req('runs',{content:'sequence',seed:4});app.db.prepare('UPDATE runs SET game_settings=NULL WHERE id=?').run(old.id);
-  assert.equal((await req('records',{run:old.id,result:{value:4,mode:'nine-pad',unit:'단계'},scopes:['world'],country:'대한민국'})).status,200);
-  const records=(await req('records')).records;assert.ok(records.some(r=>r.mode==='rhythm-endless-v9'&&r.unit==='점'));assert.ok(records.some(r=>r.mode==='rhythm-relay-v7'&&r.unit==='점'));assert.ok(records.some(r=>r.mode==='nine-pad'&&r.unit==='단계'));
-  const ranks=await req('rankings?content=sequence&scope=world');assert.equal(ranks.mode,'rhythm-three-lane-v11');assert.equal(ranks.rows[0].unit,'점');assert.deepEqual(new Set(ranks.modes),new Set(['rhythm-three-lane-v11','rhythm-endless-v9','rhythm-relay-v7','nine-pad']));
-  assert.equal((await req('rankings?content=sequence&scope=world&mode=rhythm-endless-v9')).count,1);
-  assert.equal((await req('rankings?content=sequence&scope=world&mode=rhythm-relay-v7')).count,1);assert.equal((await req('rankings?content=sequence&scope=world&mode=nine-pad')).count,1);
-  for(const version of ['v9','v7','v6'])assert.equal((await req('runs',{content:'sequence',gameSettings:{version}})).status,400);
-  const oldShare=await req('shares',{content:'sequence',kind:'challenge',seed:7,payload:{gameSettings:{version:'v11',mode:'rhythm'}}});assert.equal(oldShare.status,200);app.db.prepare('UPDATE shares SET payload=? WHERE id=?').run('{"gameSettings":{"version":"v9","mode":"rhythm"}}',oldShare.id);
-  assert.equal((await req('runs',{content:'sequence',shareId:oldShare.id})).status,400);
- }finally{await app.close();}
+import test from 'node:test';import assert from 'node:assert/strict';import {createApp} from '../server.mjs';
+test('retired rhythm keeps all four historical rule modes readable without new play',async()=>{
+ const app=createApp({dbPath:':memory:'});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${app.server.address().port}/api/`;let cookie='';
+ const req=async(p,data)=>{const r=await fetch(base+p,{method:data?'POST':'GET',headers:{cookie,'Content-Type':'application/json'},body:data?JSON.stringify(data):undefined});cookie=r.headers.get('set-cookie')?.split(';')[0]||cookie;return {status:r.status,...await r.json()};};
+ try{const {user}=await req('profile',{nickname:'리듬 기록',pin:'1234'});for(const [version,mode]of [['v11','rhythm-three-lane-v11'],['v9','rhythm-endless-v9'],['v7','rhythm-relay-v7'],[null,'nine-pad']]){const id='old-'+mode;app.db.prepare('INSERT INTO runs(id,user_id,content,seed,started,game_settings)VALUES(?,?,?,?,?,?)').run(id,user.id,'sequence',73,Date.now(),version?JSON.stringify({version,mode:'rhythm'}):null);assert.equal((await req('records',{run:id,result:{value:123,mode,unit:version?'점':'단계'},scopes:['world'],country:'대한민국'})).status,200);assert.equal((await req('rankings?content=sequence&scope=world&mode='+mode)).count,1);}assert.equal((await req('records')).records.length,4);assert.equal((await req('runs',{content:'sequence'})).status,410);assert.equal((await req('groups',{name:'새 리듬 방',content:'sequence'})).status,410);}finally{await app.close();}
 });

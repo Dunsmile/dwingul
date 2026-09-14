@@ -1,5 +1,5 @@
 {
-  "version": "pixel-v12",
+  "version": "pixel-v13",
   "copyright": "© 2026 DWINGUL",
   "contact": {
     "email": "poilkjmnb122@gmail.com",
@@ -103,17 +103,6 @@
       "kind": "game",
       "src": "/assets/pixel/thumbnails/numbers.webp",
       "preview": "/assets/pixel/thumbnails/numbers-small.webp",
-      "width": 960,
-      "height": 640,
-      "searchAliases": ""
-    },
-    {
-      "id": "sequence",
-      "name": "따라해 뒹굴",
-      "group": "썸네일",
-      "kind": "game",
-      "src": "/assets/pixel/thumbnails/sequence.webp",
-      "preview": "/assets/pixel/thumbnails/sequence-small.webp",
       "width": 960,
       "height": 640,
       "searchAliases": ""
@@ -5815,7 +5804,7 @@
     {
       "id": "scenes/traffic-car-left-edge",
       "name": "승용차 · 왼쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-car-left-edge.png",
       "width": 256,
@@ -5825,7 +5814,7 @@
     {
       "id": "scenes/traffic-car-left",
       "name": "승용차 · 왼쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-car-left.png",
       "width": 256,
@@ -5835,7 +5824,7 @@
     {
       "id": "scenes/traffic-car-front",
       "name": "승용차 · 정면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-car-front.png",
       "width": 256,
@@ -5845,7 +5834,7 @@
     {
       "id": "scenes/traffic-car-right",
       "name": "승용차 · 오른쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-car-right.png",
       "width": 256,
@@ -5855,7 +5844,7 @@
     {
       "id": "scenes/traffic-car-right-edge",
       "name": "승용차 · 오른쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-car-right-edge.png",
       "width": 256,
@@ -5865,7 +5854,7 @@
     {
       "id": "scenes/traffic-van-left-edge",
       "name": "밴 · 왼쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-van-left-edge.png",
       "width": 256,
@@ -5875,7 +5864,7 @@
     {
       "id": "scenes/traffic-van-left",
       "name": "밴 · 왼쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-van-left.png",
       "width": 256,
@@ -5885,7 +5874,7 @@
     {
       "id": "scenes/traffic-van-front",
       "name": "밴 · 정면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-van-front.png",
       "width": 256,
@@ -5895,7 +5884,7 @@
     {
       "id": "scenes/traffic-van-right",
       "name": "밴 · 오른쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-van-right.png",
       "width": 256,
@@ -5905,7 +5894,7 @@
     {
       "id": "scenes/traffic-van-right-edge",
       "name": "밴 · 오른쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-van-right-edge.png",
       "width": 256,
@@ -5915,7 +5904,7 @@
     {
       "id": "scenes/traffic-truck-left-edge",
       "name": "트럭 · 왼쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-truck-left-edge.png",
       "width": 256,
@@ -5925,7 +5914,7 @@
     {
       "id": "scenes/traffic-truck-left",
       "name": "트럭 · 왼쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-truck-left.png",
       "width": 256,
@@ -5935,7 +5924,7 @@
     {
       "id": "scenes/traffic-truck-front",
       "name": "트럭 · 정면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-truck-front.png",
       "width": 256,
@@ -5945,7 +5934,7 @@
     {
       "id": "scenes/traffic-truck-right",
       "name": "트럭 · 오른쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-truck-right.png",
       "width": 256,
@@ -5955,7 +5944,7 @@
     {
       "id": "scenes/traffic-truck-right-edge",
       "name": "트럭 · 오른쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-truck-right-edge.png",
       "width": 256,
@@ -5965,7 +5954,7 @@
     {
       "id": "scenes/traffic-bus-left-edge",
       "name": "버스 · 왼쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-bus-left-edge.png",
       "width": 256,
@@ -5975,7 +5964,7 @@
     {
       "id": "scenes/traffic-bus-left",
       "name": "버스 · 왼쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-bus-left.png",
       "width": 256,
@@ -5985,7 +5974,7 @@
     {
       "id": "scenes/traffic-bus-front",
       "name": "버스 · 정면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-bus-front.png",
       "width": 256,
@@ -5995,7 +5984,7 @@
     {
       "id": "scenes/traffic-bus-right",
       "name": "버스 · 오른쪽",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-bus-right.png",
       "width": 256,
@@ -6005,7 +5994,7 @@
     {
       "id": "scenes/traffic-bus-right-edge",
       "name": "버스 · 오른쪽 가장자리",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/traffic-bus-right-edge.png",
       "width": 256,
@@ -6015,7 +6004,7 @@
     {
       "id": "scenes/player-basic-rear",
       "name": "시티 원 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-basic-rear.png",
       "width": 256,
@@ -6025,7 +6014,7 @@
     {
       "id": "scenes/player-sport-rear",
       "name": "스프린터 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-sport-rear.png",
       "width": 256,
@@ -6035,7 +6024,7 @@
     {
       "id": "scenes/player-touring-rear",
       "name": "롱런 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-touring-rear.png",
       "width": 256,
@@ -6045,7 +6034,7 @@
     {
       "id": "scenes/player-compact-rear",
       "name": "도토리 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-compact-rear.png",
       "width": 256,
@@ -6055,7 +6044,7 @@
     {
       "id": "scenes/player-rally-rear",
       "name": "솔방울 랠리 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-rally-rear.png",
       "width": 256,
@@ -6065,7 +6054,7 @@
     {
       "id": "scenes/player-pickup-rear",
       "name": "오크 픽업 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-pickup-rear.png",
       "width": 256,
@@ -6075,7 +6064,7 @@
     {
       "id": "scenes/player-van-rear",
       "name": "모스 캠퍼 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-van-rear.png",
       "width": 256,
@@ -6085,7 +6074,7 @@
     {
       "id": "scenes/player-roadster-rear",
       "name": "반딧불 로드스터 · 후면",
-      "group": "차량 방향 28종",
+      "group": "차량 방향",
       "kind": "scenes",
       "src": "/assets/pixel/scenes/player-roadster-rear.png",
       "width": 256,
@@ -6501,6 +6490,16 @@
       "width": 256,
       "height": 261,
       "searchAliases": "캐릭터 몬스터 전투 별빛 불사조 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/traffic-bus-rear",
+      "name": "숲마을 버스 · 후면",
+      "group": "차량 방향",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-bus-rear.png",
+      "width": 256,
+      "height": 304,
+      "searchAliases": "차량 자동차 방향 숲마을 버스 · 후면"
     }
   ]
 }

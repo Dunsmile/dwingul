@@ -1,9 +1,8 @@
-import { createRhythm as createRhythmV11 } from './rhythm-game.js';
-import { createRhythm as createRhythmV9 } from './legacy/rhythm-game-v9.js';
 import { createSortGame } from './sort-game.js';
 import { seededRandom } from './game-random.js';
 import { createTypingRpg } from './typing-rpg.js';
-import { createJump as createJumpV11 } from './jump-game.js';
+import { createJump as createJumpV13 } from './jump-game.js';
+import { createJump as createJumpV11 } from './legacy/jump-game-v11.js';
 import { createJump as createJumpV6 } from './legacy/jump-game-v6.js';
 import { createJump as createJumpV5 } from './legacy/jump-game-v5.js';
 import { createCityRacing } from './city-racing.js';
@@ -55,12 +54,9 @@ export function gameContextSettings(id, settings = {}) {
 
 export function resolveGameCreator(id, settings = {}) {
   const normalized = gameSettings(id, settings);
-  if (id === 'sequence') {
-    if (normalized.version === 'v11') return createRhythmV11;
-    if (normalized.version === 'v9') return createRhythmV9;
-    throw new RangeError(`지원하지 않는 리듬 규칙: ${normalized.version}`);
-  }
+  if (id === 'sequence') throw new RangeError('운영이 종료된 게임이에요.');
   if (id === 'jump') {
+    if (normalized.version === 'v13') return createJumpV13;
     if (normalized.version === 'v11') return createJumpV11;
     if (normalized.version === 'v6') return createJumpV6;
     if (normalized.version === 'v5') return createJumpV5;
@@ -150,6 +146,7 @@ export function mountGame(container, id, { seed = "dwingul", settings = {}, onCh
     if (effective && !inputsSuspended) {
       inputsSuspended = true;
       stage.querySelectorAll("button, input, textarea, select").forEach((control) => {
+        if(control===pauseButton)return;
         disabledBeforePause.set(control, control.disabled);
         control.disabled = true;
       });

@@ -1,0 +1,4102 @@
+{
+  "generator": "scripts/build-delivery-art.mjs",
+  "assets": {
+    "/assets/pixel/illustrated/items/attack-common-02.png": {
+      "url": "/assets/delivery/attack-common-02-a6e1aac041ee.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12068,
+      "originalBytes": 13451
+    },
+    "/assets/pixel/illustrated/items/attack-common-03.png": {
+      "url": "/assets/delivery/attack-common-03-c5e52912e8e9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12070,
+      "originalBytes": 13452
+    },
+    "/assets/pixel/illustrated/items/attack-common-04.png": {
+      "url": "/assets/delivery/attack-common-04-7ee2f6079d14.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12008,
+      "originalBytes": 13391
+    },
+    "/assets/pixel/illustrated/items/attack-common-05.png": {
+      "url": "/assets/delivery/attack-common-05-19cc66405ea0.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12070,
+      "originalBytes": 13453
+    },
+    "/assets/pixel/illustrated/items/attack-common-06.png": {
+      "url": "/assets/delivery/attack-common-06-988a86f7756a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12010,
+      "originalBytes": 13392
+    },
+    "/assets/pixel/illustrated/items/attack-common-07.png": {
+      "url": "/assets/delivery/attack-common-07-530a99cd153a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12008,
+      "originalBytes": 13393
+    },
+    "/assets/pixel/illustrated/items/attack-common-08.png": {
+      "url": "/assets/delivery/attack-common-08-8a2cc8287b51.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 11954,
+      "originalBytes": 13341
+    },
+    "/assets/pixel/illustrated/items/attack-common-09.png": {
+      "url": "/assets/delivery/attack-common-09-90d661980f0a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12068,
+      "originalBytes": 13445
+    },
+    "/assets/pixel/illustrated/items/attack-common-10.png": {
+      "url": "/assets/delivery/attack-common-10-d0846597a742.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12012,
+      "originalBytes": 13393
+    },
+    "/assets/pixel/illustrated/items/attack-common-11.png": {
+      "url": "/assets/delivery/attack-common-11-cfdcd8177bf9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13768,
+      "originalBytes": 15196
+    },
+    "/assets/pixel/illustrated/items/attack-common-12.png": {
+      "url": "/assets/delivery/attack-common-12-83d05e32886d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13758,
+      "originalBytes": 15185
+    },
+    "/assets/pixel/illustrated/items/attack-common-13.png": {
+      "url": "/assets/delivery/attack-common-13-1ccec57b0e92.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13770,
+      "originalBytes": 15196
+    },
+    "/assets/pixel/illustrated/items/attack-common-14.png": {
+      "url": "/assets/delivery/attack-common-14-751bb7724cfc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13758,
+      "originalBytes": 15184
+    },
+    "/assets/pixel/illustrated/items/attack-common-15.png": {
+      "url": "/assets/delivery/attack-common-15-0cb70d21bc7d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13760,
+      "originalBytes": 15184
+    },
+    "/assets/pixel/illustrated/items/attack-common-16.png": {
+      "url": "/assets/delivery/attack-common-16-ddd19d181309.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13780,
+      "originalBytes": 15186
+    },
+    "/assets/pixel/illustrated/items/attack-common-17.png": {
+      "url": "/assets/delivery/attack-common-17-b0a3acdb2e57.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14198,
+      "originalBytes": 15223
+    },
+    "/assets/pixel/illustrated/items/attack-common-18.png": {
+      "url": "/assets/delivery/attack-common-18-d317f102d5d2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13768,
+      "originalBytes": 15195
+    },
+    "/assets/pixel/illustrated/items/attack-common-19.png": {
+      "url": "/assets/delivery/attack-common-19-d5115c9fbd7a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13768,
+      "originalBytes": 15196
+    },
+    "/assets/pixel/illustrated/items/attack-common-20.png": {
+      "url": "/assets/delivery/attack-common-20-63c9e6be0607.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13758,
+      "originalBytes": 15184
+    },
+    "/assets/pixel/illustrated/items/attack-common-21.png": {
+      "url": "/assets/delivery/attack-common-21-2de97751f0d5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16990,
+      "originalBytes": 18722
+    },
+    "/assets/pixel/illustrated/items/attack-common-22.png": {
+      "url": "/assets/delivery/attack-common-22-674dd6c75431.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16968,
+      "originalBytes": 18797
+    },
+    "/assets/pixel/illustrated/items/attack-common-23.png": {
+      "url": "/assets/delivery/attack-common-23-b71ecd6de971.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16970,
+      "originalBytes": 18796
+    },
+    "/assets/pixel/illustrated/items/attack-common-24.png": {
+      "url": "/assets/delivery/attack-common-24-deab75394bde.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17026,
+      "originalBytes": 18799
+    },
+    "/assets/pixel/illustrated/items/attack-common-25.png": {
+      "url": "/assets/delivery/attack-common-25-fd7655a24b9e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16988,
+      "originalBytes": 18715
+    },
+    "/assets/pixel/illustrated/items/attack-common-26.png": {
+      "url": "/assets/delivery/attack-common-26-5c76e9b9630e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16968,
+      "originalBytes": 18795
+    },
+    "/assets/pixel/illustrated/items/attack-common-27.png": {
+      "url": "/assets/delivery/attack-common-27-c80dc318726e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16970,
+      "originalBytes": 18796
+    },
+    "/assets/pixel/illustrated/items/attack-common-28.png": {
+      "url": "/assets/delivery/attack-common-28-97dec49801d7.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17024,
+      "originalBytes": 18799
+    },
+    "/assets/pixel/illustrated/items/attack-common-29.png": {
+      "url": "/assets/delivery/attack-common-29-e097ce7a8aa5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16972,
+      "originalBytes": 18797
+    },
+    "/assets/pixel/illustrated/items/attack-common-30.png": {
+      "url": "/assets/delivery/attack-common-30-1758e7fe58a8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17024,
+      "originalBytes": 18803
+    },
+    "/assets/pixel/illustrated/items/attack-common-31.png": {
+      "url": "/assets/delivery/attack-common-31-734c61b8cfcb.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13476,
+      "originalBytes": 14697
+    },
+    "/assets/pixel/illustrated/items/attack-common-32.png": {
+      "url": "/assets/delivery/attack-common-32-51a1b8565d0c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13546,
+      "originalBytes": 14781
+    },
+    "/assets/pixel/illustrated/items/attack-common-33.png": {
+      "url": "/assets/delivery/attack-common-33-4702a3373d1b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13542,
+      "originalBytes": 14812
+    },
+    "/assets/pixel/illustrated/items/attack-common-34.png": {
+      "url": "/assets/delivery/attack-common-34-95f8436d24c5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13542,
+      "originalBytes": 14784
+    },
+    "/assets/pixel/illustrated/items/attack-common-35.png": {
+      "url": "/assets/delivery/attack-common-35-26c9197c1b2f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13564,
+      "originalBytes": 14785
+    },
+    "/assets/pixel/illustrated/items/attack-common-36.png": {
+      "url": "/assets/delivery/attack-common-36-55e1650f0ba0.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13472,
+      "originalBytes": 14768
+    },
+    "/assets/pixel/illustrated/items/attack-common-37.png": {
+      "url": "/assets/delivery/attack-common-37-01d5a2721928.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13562,
+      "originalBytes": 14786
+    },
+    "/assets/pixel/illustrated/items/attack-common-38.png": {
+      "url": "/assets/delivery/attack-common-38-b2cd423d875d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13474,
+      "originalBytes": 14768
+    },
+    "/assets/pixel/illustrated/items/attack-common-39.png": {
+      "url": "/assets/delivery/attack-common-39-c04c9c12d609.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13468,
+      "originalBytes": 14768
+    },
+    "/assets/pixel/illustrated/items/attack-common-40.png": {
+      "url": "/assets/delivery/attack-common-40-8aafd9f40b74.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13478,
+      "originalBytes": 14698
+    },
+    "/assets/pixel/illustrated/items/attack-common-41.png": {
+      "url": "/assets/delivery/attack-common-41-f027f16ab2eb.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12668,
+      "originalBytes": 14027
+    },
+    "/assets/pixel/illustrated/items/attack-common-42.png": {
+      "url": "/assets/delivery/attack-common-42-3b95381e8458.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12472,
+      "originalBytes": 13902
+    },
+    "/assets/pixel/illustrated/items/attack-common-43.png": {
+      "url": "/assets/delivery/attack-common-43-484aa9584c76.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12470,
+      "originalBytes": 13902
+    },
+    "/assets/pixel/illustrated/items/attack-common-44.png": {
+      "url": "/assets/delivery/attack-common-44-c19f6a7db458.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12614,
+      "originalBytes": 14053
+    },
+    "/assets/pixel/illustrated/items/attack-common-45.png": {
+      "url": "/assets/delivery/attack-common-45-93e8e1736a83.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12472,
+      "originalBytes": 13902
+    },
+    "/assets/pixel/illustrated/items/attack-common-46.png": {
+      "url": "/assets/delivery/attack-common-46-839b0e036f96.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12614,
+      "originalBytes": 14051
+    },
+    "/assets/pixel/illustrated/items/attack-common-47.png": {
+      "url": "/assets/delivery/attack-common-47-1da3696eb891.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12614,
+      "originalBytes": 14053
+    },
+    "/assets/pixel/illustrated/items/attack-common-48.png": {
+      "url": "/assets/delivery/attack-common-48-62fd56b2116e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12636,
+      "originalBytes": 14042
+    },
+    "/assets/pixel/illustrated/items/attack-common-49.png": {
+      "url": "/assets/delivery/attack-common-49-bd9e9158f155.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12670,
+      "originalBytes": 14025
+    },
+    "/assets/pixel/illustrated/items/attack-common-50.png": {
+      "url": "/assets/delivery/attack-common-50-36cee4c92568.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12472,
+      "originalBytes": 13902
+    },
+    "/assets/pixel/illustrated/items/attack-common.png": {
+      "url": "/assets/delivery/attack-common-e034452040aa.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12034,
+      "originalBytes": 13389
+    },
+    "/assets/pixel/illustrated/items/attack-divine-01.png": {
+      "url": "/assets/delivery/attack-divine-01-8e6d66b404b2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14254,
+      "originalBytes": 15765
+    },
+    "/assets/pixel/illustrated/items/attack-divine-02.png": {
+      "url": "/assets/delivery/attack-divine-02-f42e59e57cf3.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14252,
+      "originalBytes": 15765
+    },
+    "/assets/pixel/illustrated/items/attack-divine-03.png": {
+      "url": "/assets/delivery/attack-divine-03-218cc4b2fa1e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14150,
+      "originalBytes": 15769
+    },
+    "/assets/pixel/illustrated/items/attack-legend-02.png": {
+      "url": "/assets/delivery/attack-legend-02-b8126c5a04c6.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16680,
+      "originalBytes": 18142
+    },
+    "/assets/pixel/illustrated/items/attack-legend-03.png": {
+      "url": "/assets/delivery/attack-legend-03-90e0c9fc1e81.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16896,
+      "originalBytes": 18399
+    },
+    "/assets/pixel/illustrated/items/attack-legend-04.png": {
+      "url": "/assets/delivery/attack-legend-04-0923eb7707e2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16896,
+      "originalBytes": 18400
+    },
+    "/assets/pixel/illustrated/items/attack-legend-05.png": {
+      "url": "/assets/delivery/attack-legend-05-184abf2c64dc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16872,
+      "originalBytes": 18389
+    },
+    "/assets/pixel/illustrated/items/attack-legend-06.png": {
+      "url": "/assets/delivery/attack-legend-06-e9dd158a5506.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16898,
+      "originalBytes": 18400
+    },
+    "/assets/pixel/illustrated/items/attack-legend.png": {
+      "url": "/assets/delivery/attack-legend-6d8d7c76efce.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 15278,
+      "originalBytes": 16141
+    },
+    "/assets/pixel/illustrated/items/attack-rare-02.png": {
+      "url": "/assets/delivery/attack-rare-02-422b193cb09b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14202,
+      "originalBytes": 16012
+    },
+    "/assets/pixel/illustrated/items/attack-rare-03.png": {
+      "url": "/assets/delivery/attack-rare-03-d38039a0719b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14374,
+      "originalBytes": 16099
+    },
+    "/assets/pixel/illustrated/items/attack-rare-04.png": {
+      "url": "/assets/delivery/attack-rare-04-c8c571578701.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14372,
+      "originalBytes": 16098
+    },
+    "/assets/pixel/illustrated/items/attack-rare-05.png": {
+      "url": "/assets/delivery/attack-rare-05-a4faf3666f6f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14498,
+      "originalBytes": 16233
+    },
+    "/assets/pixel/illustrated/items/attack-rare-06.png": {
+      "url": "/assets/delivery/attack-rare-06-90cf6524f2a9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14370,
+      "originalBytes": 16152
+    },
+    "/assets/pixel/illustrated/items/attack-rare-07.png": {
+      "url": "/assets/delivery/attack-rare-07-640dedbd70f8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14202,
+      "originalBytes": 16014
+    },
+    "/assets/pixel/illustrated/items/attack-rare-08.png": {
+      "url": "/assets/delivery/attack-rare-08-284d084eead8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14200,
+      "originalBytes": 16014
+    },
+    "/assets/pixel/illustrated/items/attack-rare-09.png": {
+      "url": "/assets/delivery/attack-rare-09-7ca2683f5de4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14374,
+      "originalBytes": 16101
+    },
+    "/assets/pixel/illustrated/items/attack-rare-10.png": {
+      "url": "/assets/delivery/attack-rare-10-311f21b268cf.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 14202,
+      "originalBytes": 16014
+    },
+    "/assets/pixel/illustrated/items/attack-rare-11.png": {
+      "url": "/assets/delivery/attack-rare-11-536cb215be20.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13716,
+      "originalBytes": 15034
+    },
+    "/assets/pixel/illustrated/items/attack-rare-12.png": {
+      "url": "/assets/delivery/attack-rare-12-a1a8598b12f8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13718,
+      "originalBytes": 15035
+    },
+    "/assets/pixel/illustrated/items/attack-rare-13.png": {
+      "url": "/assets/delivery/attack-rare-13-ad9e5041975c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13804,
+      "originalBytes": 15064
+    },
+    "/assets/pixel/illustrated/items/attack-rare-14.png": {
+      "url": "/assets/delivery/attack-rare-14-d665c6a52b5c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13654,
+      "originalBytes": 14902
+    },
+    "/assets/pixel/illustrated/items/attack-rare-15.png": {
+      "url": "/assets/delivery/attack-rare-15-fe9a63c173fc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13716,
+      "originalBytes": 15034
+    },
+    "/assets/pixel/illustrated/items/attack-rare-16.png": {
+      "url": "/assets/delivery/attack-rare-16-dd6772c94c83.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13718,
+      "originalBytes": 15033
+    },
+    "/assets/pixel/illustrated/items/attack-rare-17.png": {
+      "url": "/assets/delivery/attack-rare-17-0d940501ba13.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13806,
+      "originalBytes": 15064
+    },
+    "/assets/pixel/illustrated/items/attack-rare-18.png": {
+      "url": "/assets/delivery/attack-rare-18-b3e4a237a304.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13718,
+      "originalBytes": 15035
+    },
+    "/assets/pixel/illustrated/items/attack-rare-19.png": {
+      "url": "/assets/delivery/attack-rare-19-2493b054f3a7.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13806,
+      "originalBytes": 15067
+    },
+    "/assets/pixel/illustrated/items/attack-rare-20.png": {
+      "url": "/assets/delivery/attack-rare-20-8d737e1405c1.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 13806,
+      "originalBytes": 15064
+    },
+    "/assets/pixel/illustrated/items/attack-rare.png": {
+      "url": "/assets/delivery/attack-rare-6efbce984b5a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17864,
+      "originalBytes": 19382
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-02.png": {
+      "url": "/assets/delivery/attack-uncommon-02-96a8c4e8e19a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12000,
+      "originalBytes": 13588
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-03.png": {
+      "url": "/assets/delivery/attack-uncommon-03-a9ec04eb6551.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12154,
+      "originalBytes": 13702
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-04.png": {
+      "url": "/assets/delivery/attack-uncommon-04-80abf28cf552.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12004,
+      "originalBytes": 13592
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-05.png": {
+      "url": "/assets/delivery/attack-uncommon-05-a1c22b29c9a9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 11998,
+      "originalBytes": 13587
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-06.png": {
+      "url": "/assets/delivery/attack-uncommon-06-2320e0021793.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12126,
+      "originalBytes": 13730
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-07.png": {
+      "url": "/assets/delivery/attack-uncommon-07-e10839572592.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12146,
+      "originalBytes": 13690
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-08.png": {
+      "url": "/assets/delivery/attack-uncommon-08-3d59031477d0.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 11996,
+      "originalBytes": 13588
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-09.png": {
+      "url": "/assets/delivery/attack-uncommon-09-724dbbbf1340.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 11998,
+      "originalBytes": 13586
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-10.png": {
+      "url": "/assets/delivery/attack-uncommon-10-29bc5b87f8e2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12128,
+      "originalBytes": 13731
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-11.png": {
+      "url": "/assets/delivery/attack-uncommon-11-b108fd2f1a0d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12582,
+      "originalBytes": 13806
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-12.png": {
+      "url": "/assets/delivery/attack-uncommon-12-4f43cc87f4e0.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12630,
+      "originalBytes": 13905
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-13.png": {
+      "url": "/assets/delivery/attack-uncommon-13-141ef61ee0ce.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12626,
+      "originalBytes": 13904
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-14.png": {
+      "url": "/assets/delivery/attack-uncommon-14-3b804c292c64.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12690,
+      "originalBytes": 13913
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-15.png": {
+      "url": "/assets/delivery/attack-uncommon-15-b162653f1372.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12466,
+      "originalBytes": 13798
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-16.png": {
+      "url": "/assets/delivery/attack-uncommon-16-2d561e79f0d9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12622,
+      "originalBytes": 13923
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-17.png": {
+      "url": "/assets/delivery/attack-uncommon-17-53191a56874e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12622,
+      "originalBytes": 13924
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-18.png": {
+      "url": "/assets/delivery/attack-uncommon-18-c4277d2c551e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12606,
+      "originalBytes": 13908
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-19.png": {
+      "url": "/assets/delivery/attack-uncommon-19-2f5840061488.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12622,
+      "originalBytes": 13925
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-20.png": {
+      "url": "/assets/delivery/attack-uncommon-20-776b25fc5ca8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12608,
+      "originalBytes": 13910
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-21.png": {
+      "url": "/assets/delivery/attack-uncommon-21-5f1ad2e11a89.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17766,
+      "originalBytes": 19152
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-22.png": {
+      "url": "/assets/delivery/attack-uncommon-22-452f9a95b5ad.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17846,
+      "originalBytes": 19265
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-23.png": {
+      "url": "/assets/delivery/attack-uncommon-23-3227c64bb522.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17740,
+      "originalBytes": 19074
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-24.png": {
+      "url": "/assets/delivery/attack-uncommon-24-75fa8f8ca410.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17768,
+      "originalBytes": 19159
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon-25.png": {
+      "url": "/assets/delivery/attack-uncommon-25-2f7a78df6831.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17768,
+      "originalBytes": 19159
+    },
+    "/assets/pixel/illustrated/items/attack-uncommon.png": {
+      "url": "/assets/delivery/attack-uncommon-aa7d4a25f4ff.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 12626,
+      "originalBytes": 13908
+    },
+    "/assets/pixel/illustrated/items/defense-common-02.png": {
+      "url": "/assets/delivery/defense-common-02-6997738d62ea.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21046,
+      "originalBytes": 22939
+    },
+    "/assets/pixel/illustrated/items/defense-common-03.png": {
+      "url": "/assets/delivery/defense-common-03-e699dcb4ee44.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21044,
+      "originalBytes": 22939
+    },
+    "/assets/pixel/illustrated/items/defense-common-04.png": {
+      "url": "/assets/delivery/defense-common-04-8cae088219d9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21038,
+      "originalBytes": 22971
+    },
+    "/assets/pixel/illustrated/items/defense-common-05.png": {
+      "url": "/assets/delivery/defense-common-05-bf7be4bca460.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21046,
+      "originalBytes": 22938
+    },
+    "/assets/pixel/illustrated/items/defense-common-06.png": {
+      "url": "/assets/delivery/defense-common-06-386878b0f000.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21038,
+      "originalBytes": 22970
+    },
+    "/assets/pixel/illustrated/items/defense-common-07.png": {
+      "url": "/assets/delivery/defense-common-07-d966e4fa91da.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21036,
+      "originalBytes": 22972
+    },
+    "/assets/pixel/illustrated/items/defense-common-08.png": {
+      "url": "/assets/delivery/defense-common-08-1224684d6629.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20974,
+      "originalBytes": 22710
+    },
+    "/assets/pixel/illustrated/items/defense-common-09.png": {
+      "url": "/assets/delivery/defense-common-09-084b9e7138fa.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21156,
+      "originalBytes": 22960
+    },
+    "/assets/pixel/illustrated/items/defense-common-10.png": {
+      "url": "/assets/delivery/defense-common-10-8b06776060d3.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21044,
+      "originalBytes": 22939
+    },
+    "/assets/pixel/illustrated/items/defense-common-11.png": {
+      "url": "/assets/delivery/defense-common-11-276bd1508d6b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19934,
+      "originalBytes": 22294
+    },
+    "/assets/pixel/illustrated/items/defense-common-12.png": {
+      "url": "/assets/delivery/defense-common-12-07d5433bcddc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19980,
+      "originalBytes": 22365
+    },
+    "/assets/pixel/illustrated/items/defense-common-13.png": {
+      "url": "/assets/delivery/defense-common-13-4221719e0e0c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19936,
+      "originalBytes": 22293
+    },
+    "/assets/pixel/illustrated/items/defense-common-14.png": {
+      "url": "/assets/delivery/defense-common-14-742002ba730c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19984,
+      "originalBytes": 22370
+    },
+    "/assets/pixel/illustrated/items/defense-common-15.png": {
+      "url": "/assets/delivery/defense-common-15-0fef7386fb7c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19980,
+      "originalBytes": 22367
+    },
+    "/assets/pixel/illustrated/items/defense-common-16.png": {
+      "url": "/assets/delivery/defense-common-16-0c697085e14c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19914,
+      "originalBytes": 22285
+    },
+    "/assets/pixel/illustrated/items/defense-common-17.png": {
+      "url": "/assets/delivery/defense-common-17-443a0bff3ffa.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19932,
+      "originalBytes": 22282
+    },
+    "/assets/pixel/illustrated/items/defense-common-18.png": {
+      "url": "/assets/delivery/defense-common-18-75ce2a66af49.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19980,
+      "originalBytes": 22366
+    },
+    "/assets/pixel/illustrated/items/defense-common-19.png": {
+      "url": "/assets/delivery/defense-common-19-1e0c08e5cd35.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19980,
+      "originalBytes": 22366
+    },
+    "/assets/pixel/illustrated/items/defense-common-20.png": {
+      "url": "/assets/delivery/defense-common-20-06a9c0272d4c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19916,
+      "originalBytes": 22288
+    },
+    "/assets/pixel/illustrated/items/defense-common-21.png": {
+      "url": "/assets/delivery/defense-common-21-318e5c97ec17.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21704,
+      "originalBytes": 23799
+    },
+    "/assets/pixel/illustrated/items/defense-common-22.png": {
+      "url": "/assets/delivery/defense-common-22-dd10d0695914.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21944,
+      "originalBytes": 23876
+    },
+    "/assets/pixel/illustrated/items/defense-common-23.png": {
+      "url": "/assets/delivery/defense-common-23-14c00fbf3755.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21940,
+      "originalBytes": 23876
+    },
+    "/assets/pixel/illustrated/items/defense-common-24.png": {
+      "url": "/assets/delivery/defense-common-24-3b895614087a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21606,
+      "originalBytes": 23695
+    },
+    "/assets/pixel/illustrated/items/defense-common-25.png": {
+      "url": "/assets/delivery/defense-common-25-79756a1ad217.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21694,
+      "originalBytes": 23819
+    },
+    "/assets/pixel/illustrated/items/defense-common-26.png": {
+      "url": "/assets/delivery/defense-common-26-9f0dcee3033a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21834,
+      "originalBytes": 23823
+    },
+    "/assets/pixel/illustrated/items/defense-common-27.png": {
+      "url": "/assets/delivery/defense-common-27-53535ffe9201.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21832,
+      "originalBytes": 23824
+    },
+    "/assets/pixel/illustrated/items/defense-common-28.png": {
+      "url": "/assets/delivery/defense-common-28-42de67a06efb.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21952,
+      "originalBytes": 23941
+    },
+    "/assets/pixel/illustrated/items/defense-common-29.png": {
+      "url": "/assets/delivery/defense-common-29-e97a1823d7bf.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21834,
+      "originalBytes": 23823
+    },
+    "/assets/pixel/illustrated/items/defense-common-30.png": {
+      "url": "/assets/delivery/defense-common-30-6a590c2e69ee.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21952,
+      "originalBytes": 23943
+    },
+    "/assets/pixel/illustrated/items/defense-common-31.png": {
+      "url": "/assets/delivery/defense-common-31-08b8a7a7bbb5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22948,
+      "originalBytes": 25151
+    },
+    "/assets/pixel/illustrated/items/defense-common-32.png": {
+      "url": "/assets/delivery/defense-common-32-3cc913613434.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 23128,
+      "originalBytes": 25318
+    },
+    "/assets/pixel/illustrated/items/defense-common-33.png": {
+      "url": "/assets/delivery/defense-common-33-7a74099142b5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 23016,
+      "originalBytes": 25212
+    },
+    "/assets/pixel/illustrated/items/defense-common-34.png": {
+      "url": "/assets/delivery/defense-common-34-b937ee4e169f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22950,
+      "originalBytes": 25154
+    },
+    "/assets/pixel/illustrated/items/defense-common-35.png": {
+      "url": "/assets/delivery/defense-common-35-cb5af10acb81.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22950,
+      "originalBytes": 25155
+    },
+    "/assets/pixel/illustrated/items/defense-common-36.png": {
+      "url": "/assets/delivery/defense-common-36-0499df7771dd.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 23136,
+      "originalBytes": 25325
+    },
+    "/assets/pixel/illustrated/items/defense-common-37.png": {
+      "url": "/assets/delivery/defense-common-37-885f5c878c48.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22952,
+      "originalBytes": 25154
+    },
+    "/assets/pixel/illustrated/items/defense-common-38.png": {
+      "url": "/assets/delivery/defense-common-38-e7943288805c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 23136,
+      "originalBytes": 25326
+    },
+    "/assets/pixel/illustrated/items/defense-common-39.png": {
+      "url": "/assets/delivery/defense-common-39-63e05e524225.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 23134,
+      "originalBytes": 25325
+    },
+    "/assets/pixel/illustrated/items/defense-common-40.png": {
+      "url": "/assets/delivery/defense-common-40-4cf8cb5cb9ca.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22930,
+      "originalBytes": 25122
+    },
+    "/assets/pixel/illustrated/items/defense-common-41.png": {
+      "url": "/assets/delivery/defense-common-41-166290ae3f4b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24054,
+      "originalBytes": 25949
+    },
+    "/assets/pixel/illustrated/items/defense-common-42.png": {
+      "url": "/assets/delivery/defense-common-42-f5634b1806d5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24008,
+      "originalBytes": 26172
+    },
+    "/assets/pixel/illustrated/items/defense-common-43.png": {
+      "url": "/assets/delivery/defense-common-43-45229f65c205.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24006,
+      "originalBytes": 26172
+    },
+    "/assets/pixel/illustrated/items/defense-common-44.png": {
+      "url": "/assets/delivery/defense-common-44-3bc8638dbae4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24184,
+      "originalBytes": 26068
+    },
+    "/assets/pixel/illustrated/items/defense-common-45.png": {
+      "url": "/assets/delivery/defense-common-45-a0562a089fab.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24006,
+      "originalBytes": 26171
+    },
+    "/assets/pixel/illustrated/items/defense-common-46.png": {
+      "url": "/assets/delivery/defense-common-46-fb68ec56d6a9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24190,
+      "originalBytes": 26069
+    },
+    "/assets/pixel/illustrated/items/defense-common-47.png": {
+      "url": "/assets/delivery/defense-common-47-2461bafff324.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24190,
+      "originalBytes": 26068
+    },
+    "/assets/pixel/illustrated/items/defense-common-48.png": {
+      "url": "/assets/delivery/defense-common-48-f94f805571a8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24176,
+      "originalBytes": 26174
+    },
+    "/assets/pixel/illustrated/items/defense-common-49.png": {
+      "url": "/assets/delivery/defense-common-49-f9dcabbfa081.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24006,
+      "originalBytes": 26166
+    },
+    "/assets/pixel/illustrated/items/defense-common-50.png": {
+      "url": "/assets/delivery/defense-common-50-0c06e269bc61.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 24190,
+      "originalBytes": 26067
+    },
+    "/assets/pixel/illustrated/items/defense-common.png": {
+      "url": "/assets/delivery/defense-common-f9b7c03cd757.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21158,
+      "originalBytes": 22963
+    },
+    "/assets/pixel/illustrated/items/defense-divine-01.png": {
+      "url": "/assets/delivery/defense-divine-01-73dffd3e409b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20366,
+      "originalBytes": 22042
+    },
+    "/assets/pixel/illustrated/items/defense-divine-02.png": {
+      "url": "/assets/delivery/defense-divine-02-3ff7106d7c04.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20366,
+      "originalBytes": 22039
+    },
+    "/assets/pixel/illustrated/items/defense-divine-03.png": {
+      "url": "/assets/delivery/defense-divine-03-e2b61c173a88.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20364,
+      "originalBytes": 22106
+    },
+    "/assets/pixel/illustrated/items/defense-legend-02.png": {
+      "url": "/assets/delivery/defense-legend-02-efc018384050.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20708,
+      "originalBytes": 22600
+    },
+    "/assets/pixel/illustrated/items/defense-legend-03.png": {
+      "url": "/assets/delivery/defense-legend-03-286314e0ec2e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20954,
+      "originalBytes": 22735
+    },
+    "/assets/pixel/illustrated/items/defense-legend-04.png": {
+      "url": "/assets/delivery/defense-legend-04-2bc49f30967e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20954,
+      "originalBytes": 22736
+    },
+    "/assets/pixel/illustrated/items/defense-legend-05.png": {
+      "url": "/assets/delivery/defense-legend-05-e7880e83eadd.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20854,
+      "originalBytes": 22661
+    },
+    "/assets/pixel/illustrated/items/defense-legend-06.png": {
+      "url": "/assets/delivery/defense-legend-06-c92cbdc5b23c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20960,
+      "originalBytes": 22737
+    },
+    "/assets/pixel/illustrated/items/defense-legend.png": {
+      "url": "/assets/delivery/defense-legend-85463496e567.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 23096,
+      "originalBytes": 24987
+    },
+    "/assets/pixel/illustrated/items/defense-rare-02.png": {
+      "url": "/assets/delivery/defense-rare-02-cc1ad45e95fc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18886,
+      "originalBytes": 20886
+    },
+    "/assets/pixel/illustrated/items/defense-rare-03.png": {
+      "url": "/assets/delivery/defense-rare-03-b937543c8056.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18758,
+      "originalBytes": 20644
+    },
+    "/assets/pixel/illustrated/items/defense-rare-04.png": {
+      "url": "/assets/delivery/defense-rare-04-085c076829d8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18754,
+      "originalBytes": 20641
+    },
+    "/assets/pixel/illustrated/items/defense-rare-05.png": {
+      "url": "/assets/delivery/defense-rare-05-3a366ace57cb.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18834,
+      "originalBytes": 20689
+    },
+    "/assets/pixel/illustrated/items/defense-rare-06.png": {
+      "url": "/assets/delivery/defense-rare-06-65d78c71479b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18878,
+      "originalBytes": 20875
+    },
+    "/assets/pixel/illustrated/items/defense-rare-07.png": {
+      "url": "/assets/delivery/defense-rare-07-dc688135410e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18754,
+      "originalBytes": 20641
+    },
+    "/assets/pixel/illustrated/items/defense-rare-08.png": {
+      "url": "/assets/delivery/defense-rare-08-639d6f727cce.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18754,
+      "originalBytes": 20641
+    },
+    "/assets/pixel/illustrated/items/defense-rare-09.png": {
+      "url": "/assets/delivery/defense-rare-09-78a0d5a79c53.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18838,
+      "originalBytes": 20688
+    },
+    "/assets/pixel/illustrated/items/defense-rare-10.png": {
+      "url": "/assets/delivery/defense-rare-10-ca9aecc5bb8c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18760,
+      "originalBytes": 20641
+    },
+    "/assets/pixel/illustrated/items/defense-rare-11.png": {
+      "url": "/assets/delivery/defense-rare-11-94eb5d9376ac.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19890,
+      "originalBytes": 22124
+    },
+    "/assets/pixel/illustrated/items/defense-rare-12.png": {
+      "url": "/assets/delivery/defense-rare-12-194056c0b651.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19890,
+      "originalBytes": 22125
+    },
+    "/assets/pixel/illustrated/items/defense-rare-13.png": {
+      "url": "/assets/delivery/defense-rare-13-ae0e6fc818f4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19946,
+      "originalBytes": 22176
+    },
+    "/assets/pixel/illustrated/items/defense-rare-14.png": {
+      "url": "/assets/delivery/defense-rare-14-c51f4aec679f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20134,
+      "originalBytes": 22329
+    },
+    "/assets/pixel/illustrated/items/defense-rare-15.png": {
+      "url": "/assets/delivery/defense-rare-15-dbe53682f63e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19990,
+      "originalBytes": 22194
+    },
+    "/assets/pixel/illustrated/items/defense-rare-16.png": {
+      "url": "/assets/delivery/defense-rare-16-ed83cc74bdda.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19990,
+      "originalBytes": 22195
+    },
+    "/assets/pixel/illustrated/items/defense-rare-17.png": {
+      "url": "/assets/delivery/defense-rare-17-af47b8bf3ecc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20008,
+      "originalBytes": 22267
+    },
+    "/assets/pixel/illustrated/items/defense-rare-18.png": {
+      "url": "/assets/delivery/defense-rare-18-d427693a6998.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19988,
+      "originalBytes": 22196
+    },
+    "/assets/pixel/illustrated/items/defense-rare-19.png": {
+      "url": "/assets/delivery/defense-rare-19-d08df4e9f741.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20010,
+      "originalBytes": 22272
+    },
+    "/assets/pixel/illustrated/items/defense-rare-20.png": {
+      "url": "/assets/delivery/defense-rare-20-a3f095195c17.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20008,
+      "originalBytes": 22265
+    },
+    "/assets/pixel/illustrated/items/defense-rare.png": {
+      "url": "/assets/delivery/defense-rare-2e2e1dcb8949.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19150,
+      "originalBytes": 20872
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-02.png": {
+      "url": "/assets/delivery/defense-uncommon-02-c43866963f76.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20766,
+      "originalBytes": 22682
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-03.png": {
+      "url": "/assets/delivery/defense-uncommon-03-72839c097756.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20878,
+      "originalBytes": 22788
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-04.png": {
+      "url": "/assets/delivery/defense-uncommon-04-4ce0c937bd22.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20770,
+      "originalBytes": 22686
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-05.png": {
+      "url": "/assets/delivery/defense-uncommon-05-9b632ae3d1c7.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20768,
+      "originalBytes": 22682
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-06.png": {
+      "url": "/assets/delivery/defense-uncommon-06-0b451b3457e6.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20644,
+      "originalBytes": 22582
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-07.png": {
+      "url": "/assets/delivery/defense-uncommon-07-edc549f61afd.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20904,
+      "originalBytes": 22793
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-08.png": {
+      "url": "/assets/delivery/defense-uncommon-08-cba8b43204c3.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20890,
+      "originalBytes": 22739
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-09.png": {
+      "url": "/assets/delivery/defense-uncommon-09-e8b457e8b5f1.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20894,
+      "originalBytes": 22742
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-10.png": {
+      "url": "/assets/delivery/defense-uncommon-10-9edf7dedf54a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20882,
+      "originalBytes": 22789
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-11.png": {
+      "url": "/assets/delivery/defense-uncommon-11-3e8351442564.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20044,
+      "originalBytes": 22255
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-12.png": {
+      "url": "/assets/delivery/defense-uncommon-12-55c8ac52582b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20200,
+      "originalBytes": 22339
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-13.png": {
+      "url": "/assets/delivery/defense-uncommon-13-203886894e1c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20202,
+      "originalBytes": 22338
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-14.png": {
+      "url": "/assets/delivery/defense-uncommon-14-b8bd7e8f16d2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20302,
+      "originalBytes": 22370
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-15.png": {
+      "url": "/assets/delivery/defense-uncommon-15-f9b54c4a2d36.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20042,
+      "originalBytes": 22242
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-16.png": {
+      "url": "/assets/delivery/defense-uncommon-16-d310342a76d9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20202,
+      "originalBytes": 22339
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-17.png": {
+      "url": "/assets/delivery/defense-uncommon-17-912376bd9499.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20198,
+      "originalBytes": 22339
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-18.png": {
+      "url": "/assets/delivery/defense-uncommon-18-8cbcc9571693.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20300,
+      "originalBytes": 22372
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-19.png": {
+      "url": "/assets/delivery/defense-uncommon-19-d02d541c6197.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20200,
+      "originalBytes": 22338
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-20.png": {
+      "url": "/assets/delivery/defense-uncommon-20-e9936e838d25.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20304,
+      "originalBytes": 22370
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-21.png": {
+      "url": "/assets/delivery/defense-uncommon-21-fcde60a0f8e5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22338,
+      "originalBytes": 24293
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-22.png": {
+      "url": "/assets/delivery/defense-uncommon-22-ebacb4d3dd09.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22134,
+      "originalBytes": 24191
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-23.png": {
+      "url": "/assets/delivery/defense-uncommon-23-baff7af664f4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22240,
+      "originalBytes": 24315
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-24.png": {
+      "url": "/assets/delivery/defense-uncommon-24-c5e9f6bf973e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22248,
+      "originalBytes": 24284
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon-25.png": {
+      "url": "/assets/delivery/defense-uncommon-25-9e9426f3902d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 22248,
+      "originalBytes": 24286
+    },
+    "/assets/pixel/illustrated/items/defense-uncommon.png": {
+      "url": "/assets/delivery/defense-uncommon-ecf4f0c3e595.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20196,
+      "originalBytes": 22336
+    },
+    "/assets/pixel/illustrated/items/heal-common-02.png": {
+      "url": "/assets/delivery/heal-common-02-ceebd2e1137e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18138,
+      "originalBytes": 20608
+    },
+    "/assets/pixel/illustrated/items/heal-common-03.png": {
+      "url": "/assets/delivery/heal-common-03-23e23dc28041.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18136,
+      "originalBytes": 20609
+    },
+    "/assets/pixel/illustrated/items/heal-common-04.png": {
+      "url": "/assets/delivery/heal-common-04-95da9a4ab475.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18456,
+      "originalBytes": 20764
+    },
+    "/assets/pixel/illustrated/items/heal-common-05.png": {
+      "url": "/assets/delivery/heal-common-05-d1a002ff2a19.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18140,
+      "originalBytes": 20608
+    },
+    "/assets/pixel/illustrated/items/heal-common-06.png": {
+      "url": "/assets/delivery/heal-common-06-77906c2735a9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18458,
+      "originalBytes": 20763
+    },
+    "/assets/pixel/illustrated/items/heal-common-07.png": {
+      "url": "/assets/delivery/heal-common-07-c589d48ae5fd.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18456,
+      "originalBytes": 20767
+    },
+    "/assets/pixel/illustrated/items/heal-common-08.png": {
+      "url": "/assets/delivery/heal-common-08-f09043f2874a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18170,
+      "originalBytes": 20551
+    },
+    "/assets/pixel/illustrated/items/heal-common-09.png": {
+      "url": "/assets/delivery/heal-common-09-004accd83d94.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18132,
+      "originalBytes": 20594
+    },
+    "/assets/pixel/illustrated/items/heal-common-10.png": {
+      "url": "/assets/delivery/heal-common-10-8bb3ca00003e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18456,
+      "originalBytes": 20760
+    },
+    "/assets/pixel/illustrated/items/heal-common-11.png": {
+      "url": "/assets/delivery/heal-common-11-91ccb1c36b32.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 15870,
+      "originalBytes": 18198
+    },
+    "/assets/pixel/illustrated/items/heal-common-12.png": {
+      "url": "/assets/delivery/heal-common-12-db964c5d8254.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16032,
+      "originalBytes": 18399
+    },
+    "/assets/pixel/illustrated/items/heal-common-13.png": {
+      "url": "/assets/delivery/heal-common-13-fad0c56368fe.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 15870,
+      "originalBytes": 18199
+    },
+    "/assets/pixel/illustrated/items/heal-common-14.png": {
+      "url": "/assets/delivery/heal-common-14-86eee4c04529.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16032,
+      "originalBytes": 18402
+    },
+    "/assets/pixel/illustrated/items/heal-common-15.png": {
+      "url": "/assets/delivery/heal-common-15-5ba10a308552.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16030,
+      "originalBytes": 18397
+    },
+    "/assets/pixel/illustrated/items/heal-common-16.png": {
+      "url": "/assets/delivery/heal-common-16-7fc1a7606c6f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 15828,
+      "originalBytes": 18151
+    },
+    "/assets/pixel/illustrated/items/heal-common-17.png": {
+      "url": "/assets/delivery/heal-common-17-dc5d5a049fe5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16122,
+      "originalBytes": 18247
+    },
+    "/assets/pixel/illustrated/items/heal-common-18.png": {
+      "url": "/assets/delivery/heal-common-18-74cce98e8c87.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16046,
+      "originalBytes": 18340
+    },
+    "/assets/pixel/illustrated/items/heal-common-19.png": {
+      "url": "/assets/delivery/heal-common-19-08277bff1fc3.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16076,
+      "originalBytes": 18340
+    },
+    "/assets/pixel/illustrated/items/heal-common-20.png": {
+      "url": "/assets/delivery/heal-common-20-be00652d2ffe.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 15870,
+      "originalBytes": 18198
+    },
+    "/assets/pixel/illustrated/items/heal-common-21.png": {
+      "url": "/assets/delivery/heal-common-21-eedbc16bec21.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17276,
+      "originalBytes": 19390
+    },
+    "/assets/pixel/illustrated/items/heal-common-22.png": {
+      "url": "/assets/delivery/heal-common-22-b4c509324436.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17242,
+      "originalBytes": 19460
+    },
+    "/assets/pixel/illustrated/items/heal-common-23.png": {
+      "url": "/assets/delivery/heal-common-23-c6aee0803ca4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17238,
+      "originalBytes": 19455
+    },
+    "/assets/pixel/illustrated/items/heal-common-24.png": {
+      "url": "/assets/delivery/heal-common-24-bf734e12b93c.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17216,
+      "originalBytes": 19368
+    },
+    "/assets/pixel/illustrated/items/heal-common-25.png": {
+      "url": "/assets/delivery/heal-common-25-4a352fdca98d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17276,
+      "originalBytes": 19382
+    },
+    "/assets/pixel/illustrated/items/heal-common-26.png": {
+      "url": "/assets/delivery/heal-common-26-3d72af67acbb.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17240,
+      "originalBytes": 19459
+    },
+    "/assets/pixel/illustrated/items/heal-common-27.png": {
+      "url": "/assets/delivery/heal-common-27-1d62c909bac8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17240,
+      "originalBytes": 19457
+    },
+    "/assets/pixel/illustrated/items/heal-common-28.png": {
+      "url": "/assets/delivery/heal-common-28-f60d005e71b2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17220,
+      "originalBytes": 19370
+    },
+    "/assets/pixel/illustrated/items/heal-common-29.png": {
+      "url": "/assets/delivery/heal-common-29-09603192480f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17242,
+      "originalBytes": 19458
+    },
+    "/assets/pixel/illustrated/items/heal-common-30.png": {
+      "url": "/assets/delivery/heal-common-30-e2b3424feef5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17218,
+      "originalBytes": 19371
+    },
+    "/assets/pixel/illustrated/items/heal-common-31.png": {
+      "url": "/assets/delivery/heal-common-31-5147ac3eb0ba.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18750,
+      "originalBytes": 21175
+    },
+    "/assets/pixel/illustrated/items/heal-common-32.png": {
+      "url": "/assets/delivery/heal-common-32-97414b70a5e8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18856,
+      "originalBytes": 21231
+    },
+    "/assets/pixel/illustrated/items/heal-common-33.png": {
+      "url": "/assets/delivery/heal-common-33-0d64f5857af6.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18856,
+      "originalBytes": 21203
+    },
+    "/assets/pixel/illustrated/items/heal-common-34.png": {
+      "url": "/assets/delivery/heal-common-34-a278188b8b14.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18674,
+      "originalBytes": 21121
+    },
+    "/assets/pixel/illustrated/items/heal-common-35.png": {
+      "url": "/assets/delivery/heal-common-35-4b64ac729a35.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18670,
+      "originalBytes": 21121
+    },
+    "/assets/pixel/illustrated/items/heal-common-36.png": {
+      "url": "/assets/delivery/heal-common-36-ebef9a6424bc.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18750,
+      "originalBytes": 21171
+    },
+    "/assets/pixel/illustrated/items/heal-common-37.png": {
+      "url": "/assets/delivery/heal-common-37-67f9b1c1f226.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18674,
+      "originalBytes": 21122
+    },
+    "/assets/pixel/illustrated/items/heal-common-38.png": {
+      "url": "/assets/delivery/heal-common-38-d18876357c29.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18770,
+      "originalBytes": 21175
+    },
+    "/assets/pixel/illustrated/items/heal-common-39.png": {
+      "url": "/assets/delivery/heal-common-39-3f76688535ce.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18748,
+      "originalBytes": 21172
+    },
+    "/assets/pixel/illustrated/items/heal-common-40.png": {
+      "url": "/assets/delivery/heal-common-40-9573c5d737c6.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18854,
+      "originalBytes": 21229
+    },
+    "/assets/pixel/illustrated/items/heal-common-41.png": {
+      "url": "/assets/delivery/heal-common-41-babc7cef3172.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19046,
+      "originalBytes": 21338
+    },
+    "/assets/pixel/illustrated/items/heal-common-42.png": {
+      "url": "/assets/delivery/heal-common-42-5b6bd3b81501.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19082,
+      "originalBytes": 21440
+    },
+    "/assets/pixel/illustrated/items/heal-common-43.png": {
+      "url": "/assets/delivery/heal-common-43-0cc7aff094b6.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19080,
+      "originalBytes": 21440
+    },
+    "/assets/pixel/illustrated/items/heal-common-44.png": {
+      "url": "/assets/delivery/heal-common-44-48235344673b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19072,
+      "originalBytes": 21441
+    },
+    "/assets/pixel/illustrated/items/heal-common-45.png": {
+      "url": "/assets/delivery/heal-common-45-2f1c21d65fa2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19082,
+      "originalBytes": 21440
+    },
+    "/assets/pixel/illustrated/items/heal-common-46.png": {
+      "url": "/assets/delivery/heal-common-46-bb9649a9e2ad.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19070,
+      "originalBytes": 21441
+    },
+    "/assets/pixel/illustrated/items/heal-common-47.png": {
+      "url": "/assets/delivery/heal-common-47-c45a403a5c6b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19070,
+      "originalBytes": 21439
+    },
+    "/assets/pixel/illustrated/items/heal-common-48.png": {
+      "url": "/assets/delivery/heal-common-48-e12fd131d3f9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19000,
+      "originalBytes": 21354
+    },
+    "/assets/pixel/illustrated/items/heal-common-49.png": {
+      "url": "/assets/delivery/heal-common-49-4e4af5eb1f46.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 19170,
+      "originalBytes": 21452
+    },
+    "/assets/pixel/illustrated/items/heal-common-50.png": {
+      "url": "/assets/delivery/heal-common-50-736741b96f80.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18994,
+      "originalBytes": 21326
+    },
+    "/assets/pixel/illustrated/items/heal-common.png": {
+      "url": "/assets/delivery/heal-common-5710ece2fb0b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17912,
+      "originalBytes": 20296
+    },
+    "/assets/pixel/illustrated/items/heal-divine-01.png": {
+      "url": "/assets/delivery/heal-divine-01-1c85ffbffefa.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20836,
+      "originalBytes": 23120
+    },
+    "/assets/pixel/illustrated/items/heal-divine-02.png": {
+      "url": "/assets/delivery/heal-divine-02-b6dc7a699ad8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20834,
+      "originalBytes": 23117
+    },
+    "/assets/pixel/illustrated/items/heal-divine-03.png": {
+      "url": "/assets/delivery/heal-divine-03-b7241eb010c2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 20934,
+      "originalBytes": 23203
+    },
+    "/assets/pixel/illustrated/items/heal-legend-02.png": {
+      "url": "/assets/delivery/heal-legend-02-5f45a0186096.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21242,
+      "originalBytes": 23528
+    },
+    "/assets/pixel/illustrated/items/heal-legend-03.png": {
+      "url": "/assets/delivery/heal-legend-03-5085366c4da8.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21482,
+      "originalBytes": 23716
+    },
+    "/assets/pixel/illustrated/items/heal-legend-04.png": {
+      "url": "/assets/delivery/heal-legend-04-2aa538398df2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21482,
+      "originalBytes": 23716
+    },
+    "/assets/pixel/illustrated/items/heal-legend-05.png": {
+      "url": "/assets/delivery/heal-legend-05-8e5cff5207a4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21458,
+      "originalBytes": 23705
+    },
+    "/assets/pixel/illustrated/items/heal-legend-06.png": {
+      "url": "/assets/delivery/heal-legend-06-8cdd7bb9a0bd.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 21480,
+      "originalBytes": 23716
+    },
+    "/assets/pixel/illustrated/items/heal-legend.png": {
+      "url": "/assets/delivery/heal-legend-fa52450e559e.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17840,
+      "originalBytes": 20142
+    },
+    "/assets/pixel/illustrated/items/heal-rare-02.png": {
+      "url": "/assets/delivery/heal-rare-02-543e07c32153.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17724,
+      "originalBytes": 19905
+    },
+    "/assets/pixel/illustrated/items/heal-rare-03.png": {
+      "url": "/assets/delivery/heal-rare-03-4e955a63ce03.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17822,
+      "originalBytes": 19993
+    },
+    "/assets/pixel/illustrated/items/heal-rare-04.png": {
+      "url": "/assets/delivery/heal-rare-04-61e25bc8eb75.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17818,
+      "originalBytes": 19990
+    },
+    "/assets/pixel/illustrated/items/heal-rare-05.png": {
+      "url": "/assets/delivery/heal-rare-05-75452499a3b4.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17808,
+      "originalBytes": 19983
+    },
+    "/assets/pixel/illustrated/items/heal-rare-06.png": {
+      "url": "/assets/delivery/heal-rare-06-76aea97837c5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17642,
+      "originalBytes": 19819
+    },
+    "/assets/pixel/illustrated/items/heal-rare-07.png": {
+      "url": "/assets/delivery/heal-rare-07-a2844868422b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17656,
+      "originalBytes": 19846
+    },
+    "/assets/pixel/illustrated/items/heal-rare-08.png": {
+      "url": "/assets/delivery/heal-rare-08-93ca7032bcc2.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17660,
+      "originalBytes": 19845
+    },
+    "/assets/pixel/illustrated/items/heal-rare-09.png": {
+      "url": "/assets/delivery/heal-rare-09-e3e4b3525141.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17724,
+      "originalBytes": 19901
+    },
+    "/assets/pixel/illustrated/items/heal-rare-10.png": {
+      "url": "/assets/delivery/heal-rare-10-9c64c843c7e5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17660,
+      "originalBytes": 19846
+    },
+    "/assets/pixel/illustrated/items/heal-rare-11.png": {
+      "url": "/assets/delivery/heal-rare-11-1aaebc9ed047.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16568,
+      "originalBytes": 18911
+    },
+    "/assets/pixel/illustrated/items/heal-rare-12.png": {
+      "url": "/assets/delivery/heal-rare-12-e0205836b46f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16566,
+      "originalBytes": 18910
+    },
+    "/assets/pixel/illustrated/items/heal-rare-13.png": {
+      "url": "/assets/delivery/heal-rare-13-4c618bdbd68a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17172,
+      "originalBytes": 19337
+    },
+    "/assets/pixel/illustrated/items/heal-rare-14.png": {
+      "url": "/assets/delivery/heal-rare-14-c70c63e577c3.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17052,
+      "originalBytes": 19398
+    },
+    "/assets/pixel/illustrated/items/heal-rare-15.png": {
+      "url": "/assets/delivery/heal-rare-15-e67d05943170.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16574,
+      "originalBytes": 18910
+    },
+    "/assets/pixel/illustrated/items/heal-rare-16.png": {
+      "url": "/assets/delivery/heal-rare-16-07af6367e79d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16570,
+      "originalBytes": 18910
+    },
+    "/assets/pixel/illustrated/items/heal-rare-17.png": {
+      "url": "/assets/delivery/heal-rare-17-b231f6393d12.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17172,
+      "originalBytes": 19339
+    },
+    "/assets/pixel/illustrated/items/heal-rare-18.png": {
+      "url": "/assets/delivery/heal-rare-18-7e8cf8df211b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16572,
+      "originalBytes": 18910
+    },
+    "/assets/pixel/illustrated/items/heal-rare-19.png": {
+      "url": "/assets/delivery/heal-rare-19-bcf7d849a305.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17174,
+      "originalBytes": 19337
+    },
+    "/assets/pixel/illustrated/items/heal-rare-20.png": {
+      "url": "/assets/delivery/heal-rare-20-57506b66b7b0.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17172,
+      "originalBytes": 19339
+    },
+    "/assets/pixel/illustrated/items/heal-rare.png": {
+      "url": "/assets/delivery/heal-rare-a86d654c860d.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17574,
+      "originalBytes": 19922
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-02.png": {
+      "url": "/assets/delivery/heal-uncommon-02-8db120f4b644.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18034,
+      "originalBytes": 20216
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-03.png": {
+      "url": "/assets/delivery/heal-uncommon-03-8d573afa7c06.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18142,
+      "originalBytes": 20419
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-04.png": {
+      "url": "/assets/delivery/heal-uncommon-04-1d6a437226a3.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18034,
+      "originalBytes": 20218
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-05.png": {
+      "url": "/assets/delivery/heal-uncommon-05-f4cfa4d5e6a9.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18040,
+      "originalBytes": 20217
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-06.png": {
+      "url": "/assets/delivery/heal-uncommon-06-c2f5c6f285de.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17910,
+      "originalBytes": 20155
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-07.png": {
+      "url": "/assets/delivery/heal-uncommon-07-8b42e04929d6.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18146,
+      "originalBytes": 20415
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-08.png": {
+      "url": "/assets/delivery/heal-uncommon-08-70b004531458.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18044,
+      "originalBytes": 20222
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-09.png": {
+      "url": "/assets/delivery/heal-uncommon-09-473c7160b0f7.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18034,
+      "originalBytes": 20221
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-10.png": {
+      "url": "/assets/delivery/heal-uncommon-10-f65b53c3c59a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 17914,
+      "originalBytes": 20163
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-11.png": {
+      "url": "/assets/delivery/heal-uncommon-11-58ff077af729.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16752,
+      "originalBytes": 19088
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-12.png": {
+      "url": "/assets/delivery/heal-uncommon-12-9df81bbfb1e5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16674,
+      "originalBytes": 19004
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-13.png": {
+      "url": "/assets/delivery/heal-uncommon-13-79d55d240a8a.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16674,
+      "originalBytes": 19003
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-14.png": {
+      "url": "/assets/delivery/heal-uncommon-14-7085f3c5bfd1.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16630,
+      "originalBytes": 18964
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-15.png": {
+      "url": "/assets/delivery/heal-uncommon-15-2a6803d116d1.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16754,
+      "originalBytes": 19084
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-16.png": {
+      "url": "/assets/delivery/heal-uncommon-16-bc856fc8ab38.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16748,
+      "originalBytes": 19089
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-17.png": {
+      "url": "/assets/delivery/heal-uncommon-17-3e170dcf0eaa.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16752,
+      "originalBytes": 19088
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-18.png": {
+      "url": "/assets/delivery/heal-uncommon-18-0a5f3ef738c7.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16674,
+      "originalBytes": 19005
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-19.png": {
+      "url": "/assets/delivery/heal-uncommon-19-01e83e274ef7.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16750,
+      "originalBytes": 19090
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-20.png": {
+      "url": "/assets/delivery/heal-uncommon-20-67f7699fde0f.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16676,
+      "originalBytes": 19006
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-21.png": {
+      "url": "/assets/delivery/heal-uncommon-21-c381a82f21e5.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18502,
+      "originalBytes": 20929
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-22.png": {
+      "url": "/assets/delivery/heal-uncommon-22-f10c22447166.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18498,
+      "originalBytes": 20993
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-23.png": {
+      "url": "/assets/delivery/heal-uncommon-23-9f7611194506.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18400,
+      "originalBytes": 20855
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-24.png": {
+      "url": "/assets/delivery/heal-uncommon-24-5580845f4d46.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18496,
+      "originalBytes": 20928
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon-25.png": {
+      "url": "/assets/delivery/heal-uncommon-25-2379e5399f96.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 18502,
+      "originalBytes": 20931
+    },
+    "/assets/pixel/illustrated/items/heal-uncommon.png": {
+      "url": "/assets/delivery/heal-uncommon-598b677d3a0b.webp",
+      "width": 224,
+      "height": 224,
+      "bytes": 16758,
+      "originalBytes": 19089
+    },
+    "/assets/pixel/illustrated/monsters/01.png": {
+      "url": "/assets/delivery/01-e7150ed2925e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 30872,
+      "originalBytes": 35160
+    },
+    "/assets/pixel/illustrated/monsters/02.png": {
+      "url": "/assets/delivery/02-ede87c05b53b.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 32576,
+      "originalBytes": 36979
+    },
+    "/assets/pixel/illustrated/monsters/03.png": {
+      "url": "/assets/delivery/03-9862ec5cf02e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34452,
+      "originalBytes": 38687
+    },
+    "/assets/pixel/illustrated/monsters/04.png": {
+      "url": "/assets/delivery/04-79945231d7b5.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 38688,
+      "originalBytes": 42533
+    },
+    "/assets/pixel/illustrated/monsters/05.png": {
+      "url": "/assets/delivery/05-c418daa4d976.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35276,
+      "originalBytes": 40143
+    },
+    "/assets/pixel/illustrated/monsters/06.png": {
+      "url": "/assets/delivery/06-d41f06af2bf2.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34680,
+      "originalBytes": 39564
+    },
+    "/assets/pixel/illustrated/monsters/07.png": {
+      "url": "/assets/delivery/07-62aa90303331.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34642,
+      "originalBytes": 39230
+    },
+    "/assets/pixel/illustrated/monsters/08.png": {
+      "url": "/assets/delivery/08-f352c5a4df73.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 38690,
+      "originalBytes": 42899
+    },
+    "/assets/pixel/illustrated/monsters/09.png": {
+      "url": "/assets/delivery/09-28b4848bc028.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 36488,
+      "originalBytes": 41501
+    },
+    "/assets/pixel/illustrated/monsters/10.png": {
+      "url": "/assets/delivery/10-46593ba22278.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 29406,
+      "originalBytes": 33608
+    },
+    "/assets/pixel/illustrated/monsters/11.png": {
+      "url": "/assets/delivery/11-e003703a256b.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 27912,
+      "originalBytes": 33261
+    },
+    "/assets/pixel/illustrated/monsters/12.png": {
+      "url": "/assets/delivery/12-1ddba652f669.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 32838,
+      "originalBytes": 36773
+    },
+    "/assets/pixel/illustrated/monsters/13.png": {
+      "url": "/assets/delivery/13-800c8237c369.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 30152,
+      "originalBytes": 35161
+    },
+    "/assets/pixel/illustrated/monsters/14.png": {
+      "url": "/assets/delivery/14-fa9c0adcf5e3.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 33844,
+      "originalBytes": 37759
+    },
+    "/assets/pixel/illustrated/monsters/15.png": {
+      "url": "/assets/delivery/15-6d796609d903.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 36460,
+      "originalBytes": 41005
+    },
+    "/assets/pixel/illustrated/monsters/16.png": {
+      "url": "/assets/delivery/16-2f57f62a558e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 28428,
+      "originalBytes": 33395
+    },
+    "/assets/pixel/illustrated/monsters/17.png": {
+      "url": "/assets/delivery/17-5ba733c8365e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 37254,
+      "originalBytes": 40948
+    },
+    "/assets/pixel/illustrated/monsters/18.png": {
+      "url": "/assets/delivery/18-bb8b233a4d78.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34482,
+      "originalBytes": 38768
+    },
+    "/assets/pixel/illustrated/monsters/19.png": {
+      "url": "/assets/delivery/19-a38c43075f39.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 26066,
+      "originalBytes": 30281
+    },
+    "/assets/pixel/illustrated/monsters/20.png": {
+      "url": "/assets/delivery/20-e20c66ed3fe6.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 33472,
+      "originalBytes": 38617
+    },
+    "/assets/pixel/illustrated/monsters/21.png": {
+      "url": "/assets/delivery/21-9bd4ff504559.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35274,
+      "originalBytes": 40304
+    },
+    "/assets/pixel/illustrated/monsters/22.png": {
+      "url": "/assets/delivery/22-f5e53070c565.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34858,
+      "originalBytes": 38287
+    },
+    "/assets/pixel/illustrated/monsters/23.png": {
+      "url": "/assets/delivery/23-0f259c7722a6.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35016,
+      "originalBytes": 39722
+    },
+    "/assets/pixel/illustrated/monsters/24.png": {
+      "url": "/assets/delivery/24-970b74e5df58.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34662,
+      "originalBytes": 38990
+    },
+    "/assets/pixel/illustrated/monsters/25.png": {
+      "url": "/assets/delivery/25-ba9aa3f1a927.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 29918,
+      "originalBytes": 34584
+    },
+    "/assets/pixel/illustrated/personas/0.png": {
+      "url": "/assets/delivery/0-3074c0a66ce8.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 24292,
+      "originalBytes": 28538
+    },
+    "/assets/pixel/illustrated/personas/1.png": {
+      "url": "/assets/delivery/1-d6745c4f176d.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 26146,
+      "originalBytes": 30255
+    },
+    "/assets/pixel/illustrated/personas/10.png": {
+      "url": "/assets/delivery/10-7fb1d58185ee.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 26310,
+      "originalBytes": 30719
+    },
+    "/assets/pixel/illustrated/personas/11.png": {
+      "url": "/assets/delivery/11-35c5b62aa480.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 26152,
+      "originalBytes": 30925
+    },
+    "/assets/pixel/illustrated/personas/12.png": {
+      "url": "/assets/delivery/12-1fab4255aba5.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 26810,
+      "originalBytes": 30667
+    },
+    "/assets/pixel/illustrated/personas/13.png": {
+      "url": "/assets/delivery/13-87b6d0ac4735.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 26680,
+      "originalBytes": 30909
+    },
+    "/assets/pixel/illustrated/personas/14.png": {
+      "url": "/assets/delivery/14-a3257915bd5b.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 23454,
+      "originalBytes": 27946
+    },
+    "/assets/pixel/illustrated/personas/15.png": {
+      "url": "/assets/delivery/15-3ccbc5c2756f.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 28978,
+      "originalBytes": 33359
+    },
+    "/assets/pixel/illustrated/personas/2.png": {
+      "url": "/assets/delivery/2-a6a251aa4b6a.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 23380,
+      "originalBytes": 27254
+    },
+    "/assets/pixel/illustrated/personas/3.png": {
+      "url": "/assets/delivery/3-601f33011aff.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 25772,
+      "originalBytes": 30038
+    },
+    "/assets/pixel/illustrated/personas/4.png": {
+      "url": "/assets/delivery/4-4f78209b1502.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 28830,
+      "originalBytes": 32671
+    },
+    "/assets/pixel/illustrated/personas/5.png": {
+      "url": "/assets/delivery/5-b69dce1e8dfe.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 25538,
+      "originalBytes": 29879
+    },
+    "/assets/pixel/illustrated/personas/6.png": {
+      "url": "/assets/delivery/6-37317a50d665.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 28998,
+      "originalBytes": 32737
+    },
+    "/assets/pixel/illustrated/personas/7.png": {
+      "url": "/assets/delivery/7-b180610a34d0.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 27036,
+      "originalBytes": 31120
+    },
+    "/assets/pixel/illustrated/personas/8.png": {
+      "url": "/assets/delivery/8-b047ae7ed1de.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 23614,
+      "originalBytes": 27733
+    },
+    "/assets/pixel/illustrated/personas/9.png": {
+      "url": "/assets/delivery/9-1640e94665d9.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 25358,
+      "originalBytes": 29590
+    },
+    "/assets/pixel/illustrated/rpg/battlefield.png": {
+      "url": "/assets/delivery/battlefield-47d24daa95c4.webp",
+      "width": 960,
+      "height": 640,
+      "bytes": 207062,
+      "originalBytes": 363821
+    },
+    "/assets/pixel/illustrated/rpg/boss-01.png": {
+      "url": "/assets/delivery/boss-01-e7150ed2925e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 30872,
+      "originalBytes": 35160
+    },
+    "/assets/pixel/illustrated/rpg/boss-02.png": {
+      "url": "/assets/delivery/boss-02-ede87c05b53b.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 32576,
+      "originalBytes": 36979
+    },
+    "/assets/pixel/illustrated/rpg/boss-03.png": {
+      "url": "/assets/delivery/boss-03-9862ec5cf02e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34452,
+      "originalBytes": 38687
+    },
+    "/assets/pixel/illustrated/rpg/boss-04.png": {
+      "url": "/assets/delivery/boss-04-79945231d7b5.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 38688,
+      "originalBytes": 42533
+    },
+    "/assets/pixel/illustrated/rpg/boss-05.png": {
+      "url": "/assets/delivery/boss-05-c418daa4d976.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35276,
+      "originalBytes": 40143
+    },
+    "/assets/pixel/illustrated/rpg/boss-06.png": {
+      "url": "/assets/delivery/boss-06-d41f06af2bf2.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34680,
+      "originalBytes": 39564
+    },
+    "/assets/pixel/illustrated/rpg/boss-07.png": {
+      "url": "/assets/delivery/boss-07-62aa90303331.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34642,
+      "originalBytes": 39230
+    },
+    "/assets/pixel/illustrated/rpg/boss-08.png": {
+      "url": "/assets/delivery/boss-08-f352c5a4df73.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 38690,
+      "originalBytes": 42899
+    },
+    "/assets/pixel/illustrated/rpg/boss-09.png": {
+      "url": "/assets/delivery/boss-09-28b4848bc028.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 36488,
+      "originalBytes": 41501
+    },
+    "/assets/pixel/illustrated/rpg/boss-10.png": {
+      "url": "/assets/delivery/boss-10-46593ba22278.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 29406,
+      "originalBytes": 33608
+    },
+    "/assets/pixel/illustrated/rpg/boss-11.png": {
+      "url": "/assets/delivery/boss-11-e003703a256b.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 27912,
+      "originalBytes": 33261
+    },
+    "/assets/pixel/illustrated/rpg/boss-12.png": {
+      "url": "/assets/delivery/boss-12-1ddba652f669.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 32838,
+      "originalBytes": 36773
+    },
+    "/assets/pixel/illustrated/rpg/boss-13.png": {
+      "url": "/assets/delivery/boss-13-800c8237c369.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 30152,
+      "originalBytes": 35161
+    },
+    "/assets/pixel/illustrated/rpg/boss-14.png": {
+      "url": "/assets/delivery/boss-14-fa9c0adcf5e3.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 33844,
+      "originalBytes": 37759
+    },
+    "/assets/pixel/illustrated/rpg/boss-15.png": {
+      "url": "/assets/delivery/boss-15-6d796609d903.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 36460,
+      "originalBytes": 41005
+    },
+    "/assets/pixel/illustrated/rpg/boss-16.png": {
+      "url": "/assets/delivery/boss-16-2f57f62a558e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 28428,
+      "originalBytes": 33395
+    },
+    "/assets/pixel/illustrated/rpg/boss-17.png": {
+      "url": "/assets/delivery/boss-17-5ba733c8365e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 37254,
+      "originalBytes": 40948
+    },
+    "/assets/pixel/illustrated/rpg/boss-18.png": {
+      "url": "/assets/delivery/boss-18-bb8b233a4d78.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34482,
+      "originalBytes": 38768
+    },
+    "/assets/pixel/illustrated/rpg/boss-19.png": {
+      "url": "/assets/delivery/boss-19-a38c43075f39.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 26066,
+      "originalBytes": 30281
+    },
+    "/assets/pixel/illustrated/rpg/boss-20.png": {
+      "url": "/assets/delivery/boss-20-e20c66ed3fe6.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 33472,
+      "originalBytes": 38617
+    },
+    "/assets/pixel/illustrated/rpg/boss-21.png": {
+      "url": "/assets/delivery/boss-21-9bd4ff504559.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35274,
+      "originalBytes": 40304
+    },
+    "/assets/pixel/illustrated/rpg/boss-22.png": {
+      "url": "/assets/delivery/boss-22-f5e53070c565.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34858,
+      "originalBytes": 38287
+    },
+    "/assets/pixel/illustrated/rpg/boss-23.png": {
+      "url": "/assets/delivery/boss-23-0f259c7722a6.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35016,
+      "originalBytes": 39722
+    },
+    "/assets/pixel/illustrated/rpg/boss-24.png": {
+      "url": "/assets/delivery/boss-24-970b74e5df58.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34662,
+      "originalBytes": 38990
+    },
+    "/assets/pixel/illustrated/rpg/boss-25.png": {
+      "url": "/assets/delivery/boss-25-ba9aa3f1a927.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 29918,
+      "originalBytes": 34584
+    },
+    "/assets/pixel/illustrated/rpg/chest-common-closed.png": {
+      "url": "/assets/delivery/chest-common-closed-c6d7cd03b316.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 43140,
+      "originalBytes": 48013
+    },
+    "/assets/pixel/illustrated/rpg/chest-common-open.png": {
+      "url": "/assets/delivery/chest-common-open-2cd0c54866c0.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 51172,
+      "originalBytes": 56993
+    },
+    "/assets/pixel/illustrated/rpg/chest-divine-closed.png": {
+      "url": "/assets/delivery/chest-divine-closed-d0411c379d01.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 43720,
+      "originalBytes": 48413
+    },
+    "/assets/pixel/illustrated/rpg/chest-divine-open.png": {
+      "url": "/assets/delivery/chest-divine-open-1c59f879de3b.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 50800,
+      "originalBytes": 56890
+    },
+    "/assets/pixel/illustrated/rpg/chest-legend-closed.png": {
+      "url": "/assets/delivery/chest-legend-closed-12f715e21cbd.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 44064,
+      "originalBytes": 47899
+    },
+    "/assets/pixel/illustrated/rpg/chest-legend-open.png": {
+      "url": "/assets/delivery/chest-legend-open-d4996a094d1b.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 51480,
+      "originalBytes": 57073
+    },
+    "/assets/pixel/illustrated/rpg/chest-rare-closed.png": {
+      "url": "/assets/delivery/chest-rare-closed-1b56a5cdb276.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 42800,
+      "originalBytes": 47016
+    },
+    "/assets/pixel/illustrated/rpg/chest-rare-open.png": {
+      "url": "/assets/delivery/chest-rare-open-952c8bba7405.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 48518,
+      "originalBytes": 54628
+    },
+    "/assets/pixel/illustrated/rpg/chest-sealed.png": {
+      "url": "/assets/delivery/chest-sealed-ade92f9d86f1.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 53496,
+      "originalBytes": 56899
+    },
+    "/assets/pixel/illustrated/rpg/chest-uncommon-closed.png": {
+      "url": "/assets/delivery/chest-uncommon-closed-7424e0d2b4ac.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 41478,
+      "originalBytes": 45716
+    },
+    "/assets/pixel/illustrated/rpg/chest-uncommon-open.png": {
+      "url": "/assets/delivery/chest-uncommon-open-473ecdc45a4e.webp",
+      "width": 320,
+      "height": 320,
+      "bytes": 45234,
+      "originalBytes": 50880
+    },
+    "/assets/pixel/illustrated/rpg/hero.png": {
+      "url": "/assets/delivery/hero-3074c0a66ce8.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 24292,
+      "originalBytes": 28538
+    },
+    "/assets/pixel/illustrated/rpg/monster-01.png": {
+      "url": "/assets/delivery/monster-01-e7150ed2925e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 30872,
+      "originalBytes": 35160
+    },
+    "/assets/pixel/illustrated/rpg/monster-02.png": {
+      "url": "/assets/delivery/monster-02-ede87c05b53b.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 32576,
+      "originalBytes": 36979
+    },
+    "/assets/pixel/illustrated/rpg/monster-03.png": {
+      "url": "/assets/delivery/monster-03-9862ec5cf02e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34452,
+      "originalBytes": 38687
+    },
+    "/assets/pixel/illustrated/rpg/monster-04.png": {
+      "url": "/assets/delivery/monster-04-79945231d7b5.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 38688,
+      "originalBytes": 42533
+    },
+    "/assets/pixel/illustrated/rpg/monster-05.png": {
+      "url": "/assets/delivery/monster-05-c418daa4d976.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35276,
+      "originalBytes": 40143
+    },
+    "/assets/pixel/illustrated/rpg/monster-06.png": {
+      "url": "/assets/delivery/monster-06-d41f06af2bf2.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34680,
+      "originalBytes": 39564
+    },
+    "/assets/pixel/illustrated/rpg/monster-07.png": {
+      "url": "/assets/delivery/monster-07-62aa90303331.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34642,
+      "originalBytes": 39230
+    },
+    "/assets/pixel/illustrated/rpg/monster-08.png": {
+      "url": "/assets/delivery/monster-08-f352c5a4df73.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 38690,
+      "originalBytes": 42899
+    },
+    "/assets/pixel/illustrated/rpg/monster-09.png": {
+      "url": "/assets/delivery/monster-09-28b4848bc028.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 36488,
+      "originalBytes": 41501
+    },
+    "/assets/pixel/illustrated/rpg/monster-10.png": {
+      "url": "/assets/delivery/monster-10-46593ba22278.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 29406,
+      "originalBytes": 33608
+    },
+    "/assets/pixel/illustrated/rpg/monster-11.png": {
+      "url": "/assets/delivery/monster-11-e003703a256b.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 27912,
+      "originalBytes": 33261
+    },
+    "/assets/pixel/illustrated/rpg/monster-12.png": {
+      "url": "/assets/delivery/monster-12-1ddba652f669.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 32838,
+      "originalBytes": 36773
+    },
+    "/assets/pixel/illustrated/rpg/monster-13.png": {
+      "url": "/assets/delivery/monster-13-800c8237c369.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 30152,
+      "originalBytes": 35161
+    },
+    "/assets/pixel/illustrated/rpg/monster-14.png": {
+      "url": "/assets/delivery/monster-14-fa9c0adcf5e3.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 33844,
+      "originalBytes": 37759
+    },
+    "/assets/pixel/illustrated/rpg/monster-15.png": {
+      "url": "/assets/delivery/monster-15-6d796609d903.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 36460,
+      "originalBytes": 41005
+    },
+    "/assets/pixel/illustrated/rpg/monster-16.png": {
+      "url": "/assets/delivery/monster-16-2f57f62a558e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 28428,
+      "originalBytes": 33395
+    },
+    "/assets/pixel/illustrated/rpg/monster-17.png": {
+      "url": "/assets/delivery/monster-17-5ba733c8365e.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 37254,
+      "originalBytes": 40948
+    },
+    "/assets/pixel/illustrated/rpg/monster-18.png": {
+      "url": "/assets/delivery/monster-18-bb8b233a4d78.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34482,
+      "originalBytes": 38768
+    },
+    "/assets/pixel/illustrated/rpg/monster-19.png": {
+      "url": "/assets/delivery/monster-19-a38c43075f39.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 26066,
+      "originalBytes": 30281
+    },
+    "/assets/pixel/illustrated/rpg/monster-20.png": {
+      "url": "/assets/delivery/monster-20-e20c66ed3fe6.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 33472,
+      "originalBytes": 38617
+    },
+    "/assets/pixel/illustrated/rpg/monster-21.png": {
+      "url": "/assets/delivery/monster-21-9bd4ff504559.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35274,
+      "originalBytes": 40304
+    },
+    "/assets/pixel/illustrated/rpg/monster-22.png": {
+      "url": "/assets/delivery/monster-22-f5e53070c565.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34858,
+      "originalBytes": 38287
+    },
+    "/assets/pixel/illustrated/rpg/monster-23.png": {
+      "url": "/assets/delivery/monster-23-0f259c7722a6.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 35016,
+      "originalBytes": 39722
+    },
+    "/assets/pixel/illustrated/rpg/monster-24.png": {
+      "url": "/assets/delivery/monster-24-970b74e5df58.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 34662,
+      "originalBytes": 38990
+    },
+    "/assets/pixel/illustrated/rpg/monster-25.png": {
+      "url": "/assets/delivery/monster-25-ba9aa3f1a927.webp",
+      "width": 288,
+      "height": 288,
+      "bytes": 29918,
+      "originalBytes": 34584
+    },
+    "/assets/pixel/illustrated/rpg/spell-attack.png": {
+      "url": "/assets/delivery/spell-attack-835dcc91e4fb.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 16218,
+      "originalBytes": 18751
+    },
+    "/assets/pixel/illustrated/rpg/spell-heal.png": {
+      "url": "/assets/delivery/spell-heal-0708323ad06a.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 14778,
+      "originalBytes": 16935
+    },
+    "/assets/pixel/illustrated/traffic/bus.png": {
+      "url": "/assets/delivery/bus-252e4f3fe4de.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 62582,
+      "originalBytes": 69964
+    },
+    "/assets/pixel/illustrated/traffic/car.png": {
+      "url": "/assets/delivery/car-ec5618d7e92f.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 60320,
+      "originalBytes": 67745
+    },
+    "/assets/pixel/illustrated/traffic/truck.png": {
+      "url": "/assets/delivery/truck-d530c4df778d.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 68930,
+      "originalBytes": 76612
+    },
+    "/assets/pixel/illustrated/traffic/van.png": {
+      "url": "/assets/delivery/van-db225c7a1cf1.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 63048,
+      "originalBytes": 70717
+    },
+    "/assets/pixel/illustrated/vehicles/basic.png": {
+      "url": "/assets/delivery/basic-969fca8c9564.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 47856,
+      "originalBytes": 53890
+    },
+    "/assets/pixel/illustrated/vehicles/compact.png": {
+      "url": "/assets/delivery/compact-2d6c9ea22fa3.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 54134,
+      "originalBytes": 61170
+    },
+    "/assets/pixel/illustrated/vehicles/pickup.png": {
+      "url": "/assets/delivery/pickup-75aca3d7095b.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 54532,
+      "originalBytes": 59674
+    },
+    "/assets/pixel/illustrated/vehicles/rally.png": {
+      "url": "/assets/delivery/rally-1c57a42a18c8.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 51302,
+      "originalBytes": 58324
+    },
+    "/assets/pixel/illustrated/vehicles/roadster.png": {
+      "url": "/assets/delivery/roadster-78eb4c03f203.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 47808,
+      "originalBytes": 53372
+    },
+    "/assets/pixel/illustrated/vehicles/sport.png": {
+      "url": "/assets/delivery/sport-e53d7d9790ff.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 47016,
+      "originalBytes": 52296
+    },
+    "/assets/pixel/illustrated/vehicles/touring.png": {
+      "url": "/assets/delivery/touring-163d83b12d3a.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 55730,
+      "originalBytes": 61926
+    },
+    "/assets/pixel/illustrated/vehicles/van.png": {
+      "url": "/assets/delivery/van-994604b59be8.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 57610,
+      "originalBytes": 64446
+    },
+    "/assets/pixel/illustrated/world/book.png": {
+      "url": "/assets/delivery/book-736aac90705d.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 22278,
+      "originalBytes": 24481
+    },
+    "/assets/pixel/illustrated/world/boost.png": {
+      "url": "/assets/delivery/boost-5b466b6771a7.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 14310,
+      "originalBytes": 16499
+    },
+    "/assets/pixel/illustrated/world/coin.png": {
+      "url": "/assets/delivery/coin-7dd0ff064f4d.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 18578,
+      "originalBytes": 20861
+    },
+    "/assets/pixel/illustrated/world/element-earth.png": {
+      "url": "/assets/delivery/element-earth-9dd3186b3d2c.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 17614,
+      "originalBytes": 19890
+    },
+    "/assets/pixel/illustrated/world/element-fire.png": {
+      "url": "/assets/delivery/element-fire-e6cb0777a032.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 14686,
+      "originalBytes": 17134
+    },
+    "/assets/pixel/illustrated/world/element-metal.png": {
+      "url": "/assets/delivery/element-metal-ed0dc29dc8d5.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 19582,
+      "originalBytes": 22124
+    },
+    "/assets/pixel/illustrated/world/element-water.png": {
+      "url": "/assets/delivery/element-water-c0e478e5c0d8.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 17160,
+      "originalBytes": 19386
+    },
+    "/assets/pixel/illustrated/world/element-wood.png": {
+      "url": "/assets/delivery/element-wood-266ddc572ba8.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 17834,
+      "originalBytes": 19794
+    },
+    "/assets/pixel/illustrated/world/fuel.png": {
+      "url": "/assets/delivery/fuel-1aa95e40771e.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 17198,
+      "originalBytes": 19499
+    },
+    "/assets/pixel/illustrated/world/heart.png": {
+      "url": "/assets/delivery/heart-cd81713d0a63.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 17826,
+      "originalBytes": 20545
+    },
+    "/assets/pixel/illustrated/world/lantern.png": {
+      "url": "/assets/delivery/lantern-f854463f9b6a.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 16494,
+      "originalBytes": 18598
+    },
+    "/assets/pixel/illustrated/world/rhythm-drum.png": {
+      "url": "/assets/delivery/rhythm-drum-bfee521e508f.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 18596,
+      "originalBytes": 20898
+    },
+    "/assets/pixel/illustrated/world/runner-dead.png": {
+      "url": "/assets/delivery/runner-dead-4fcc5b7c2a4b.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 24070,
+      "originalBytes": 25951
+    },
+    "/assets/pixel/illustrated/world/runner-jump.png": {
+      "url": "/assets/delivery/runner-jump-c20c3cbe9b5e.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 24720,
+      "originalBytes": 27367
+    },
+    "/assets/pixel/illustrated/world/runner-run-a.png": {
+      "url": "/assets/delivery/runner-run-a-b161c6dca58b.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 25220,
+      "originalBytes": 27367
+    },
+    "/assets/pixel/illustrated/world/runner-run-b.png": {
+      "url": "/assets/delivery/runner-run-b-eb6ef02ae735.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 23382,
+      "originalBytes": 25638
+    },
+    "/assets/pixel/illustrated/world/runner-slide.png": {
+      "url": "/assets/delivery/runner-slide-2bb684d47d4d.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 15140,
+      "originalBytes": 16399
+    },
+    "/assets/pixel/illustrated/world/sort-blue-cry.png": {
+      "url": "/assets/delivery/sort-blue-cry-1078637bf23c.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 31770,
+      "originalBytes": 35395
+    },
+    "/assets/pixel/illustrated/world/sort-blue-normal.png": {
+      "url": "/assets/delivery/sort-blue-normal-b4f4f814252b.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 30348,
+      "originalBytes": 33815
+    },
+    "/assets/pixel/illustrated/world/sort-blue-smile.png": {
+      "url": "/assets/delivery/sort-blue-smile-aedb1f3de8e9.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 29554,
+      "originalBytes": 33007
+    },
+    "/assets/pixel/illustrated/world/sort-purple-cry.png": {
+      "url": "/assets/delivery/sort-purple-cry-e44c0b084868.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 30138,
+      "originalBytes": 33698
+    },
+    "/assets/pixel/illustrated/world/sort-purple-normal.png": {
+      "url": "/assets/delivery/sort-purple-normal-327e31d4851d.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 30734,
+      "originalBytes": 34100
+    },
+    "/assets/pixel/illustrated/world/sort-purple-smile.png": {
+      "url": "/assets/delivery/sort-purple-smile-72ad180fec49.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 29846,
+      "originalBytes": 33384
+    },
+    "/assets/pixel/illustrated/world/sort-white-cry.png": {
+      "url": "/assets/delivery/sort-white-cry-ba595f3710b4.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 31464,
+      "originalBytes": 34839
+    },
+    "/assets/pixel/illustrated/world/sort-white-normal.png": {
+      "url": "/assets/delivery/sort-white-normal-3f851f2c04dd.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 31688,
+      "originalBytes": 34973
+    },
+    "/assets/pixel/illustrated/world/sort-white-smile.png": {
+      "url": "/assets/delivery/sort-white-smile-67ef4ec79183.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 31986,
+      "originalBytes": 35300
+    },
+    "/assets/pixel/illustrated/world/spell-attack.png": {
+      "url": "/assets/delivery/spell-attack-835dcc91e4fb.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 16218,
+      "originalBytes": 18751
+    },
+    "/assets/pixel/illustrated/world/spell-heal.png": {
+      "url": "/assets/delivery/spell-heal-0708323ad06a.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 14778,
+      "originalBytes": 16935
+    },
+    "/assets/pixel/illustrated/world/star.png": {
+      "url": "/assets/delivery/star-1a16972a798e.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 19174,
+      "originalBytes": 21825
+    },
+    "/assets/pixel/illustrated/world/tarot-0.png": {
+      "url": "/assets/delivery/tarot-0-e170020dbba0.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 51470,
+      "originalBytes": 57489
+    },
+    "/assets/pixel/illustrated/world/tarot-1.png": {
+      "url": "/assets/delivery/tarot-1-f1162767877d.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 54186,
+      "originalBytes": 60361
+    },
+    "/assets/pixel/illustrated/world/tarot-10.png": {
+      "url": "/assets/delivery/tarot-10-9059acb5deac.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 58320,
+      "originalBytes": 63474
+    },
+    "/assets/pixel/illustrated/world/tarot-11.png": {
+      "url": "/assets/delivery/tarot-11-a8f090bea06d.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 51720,
+      "originalBytes": 57606
+    },
+    "/assets/pixel/illustrated/world/tarot-12.png": {
+      "url": "/assets/delivery/tarot-12-7d7e33ca2976.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 47492,
+      "originalBytes": 53053
+    },
+    "/assets/pixel/illustrated/world/tarot-13.png": {
+      "url": "/assets/delivery/tarot-13-20ca3f3de7f0.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 54402,
+      "originalBytes": 60272
+    },
+    "/assets/pixel/illustrated/world/tarot-14.png": {
+      "url": "/assets/delivery/tarot-14-814904acdf22.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 50842,
+      "originalBytes": 56474
+    },
+    "/assets/pixel/illustrated/world/tarot-15.png": {
+      "url": "/assets/delivery/tarot-15-3feb187c8791.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 54230,
+      "originalBytes": 60193
+    },
+    "/assets/pixel/illustrated/world/tarot-16.png": {
+      "url": "/assets/delivery/tarot-16-5cbd5a0cc75b.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 51632,
+      "originalBytes": 57996
+    },
+    "/assets/pixel/illustrated/world/tarot-17.png": {
+      "url": "/assets/delivery/tarot-17-463d6e728855.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 47488,
+      "originalBytes": 53252
+    },
+    "/assets/pixel/illustrated/world/tarot-18.png": {
+      "url": "/assets/delivery/tarot-18-04f0c646285f.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 50664,
+      "originalBytes": 56756
+    },
+    "/assets/pixel/illustrated/world/tarot-19.png": {
+      "url": "/assets/delivery/tarot-19-b3cdcaaf5e13.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 51868,
+      "originalBytes": 57561
+    },
+    "/assets/pixel/illustrated/world/tarot-2.png": {
+      "url": "/assets/delivery/tarot-2-ed0a4d41d613.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 53484,
+      "originalBytes": 59685
+    },
+    "/assets/pixel/illustrated/world/tarot-20.png": {
+      "url": "/assets/delivery/tarot-20-961f036900a6.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 52674,
+      "originalBytes": 58778
+    },
+    "/assets/pixel/illustrated/world/tarot-21.png": {
+      "url": "/assets/delivery/tarot-21-1b429a109be3.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 54108,
+      "originalBytes": 60423
+    },
+    "/assets/pixel/illustrated/world/tarot-3.png": {
+      "url": "/assets/delivery/tarot-3-ddc3cf50b266.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 59650,
+      "originalBytes": 65129
+    },
+    "/assets/pixel/illustrated/world/tarot-4.png": {
+      "url": "/assets/delivery/tarot-4-a5a5ff4ae6c6.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 55670,
+      "originalBytes": 61791
+    },
+    "/assets/pixel/illustrated/world/tarot-5.png": {
+      "url": "/assets/delivery/tarot-5-306c9047c411.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 54966,
+      "originalBytes": 60677
+    },
+    "/assets/pixel/illustrated/world/tarot-6.png": {
+      "url": "/assets/delivery/tarot-6-c523d01a8994.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 54930,
+      "originalBytes": 60049
+    },
+    "/assets/pixel/illustrated/world/tarot-7.png": {
+      "url": "/assets/delivery/tarot-7-e30f591a77b7.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 50870,
+      "originalBytes": 56663
+    },
+    "/assets/pixel/illustrated/world/tarot-8.png": {
+      "url": "/assets/delivery/tarot-8-3287315f8aa4.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 56144,
+      "originalBytes": 61580
+    },
+    "/assets/pixel/illustrated/world/tarot-9.png": {
+      "url": "/assets/delivery/tarot-9-c1375c758c4f.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 48880,
+      "originalBytes": 55415
+    },
+    "/assets/pixel/illustrated/world/tarot-back-purple.png": {
+      "url": "/assets/delivery/tarot-back-purple-24b2d2ef2e03.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 63940,
+      "originalBytes": 68542
+    },
+    "/assets/pixel/illustrated/world/tarot-back.png": {
+      "url": "/assets/delivery/tarot-back-fe811833ed84.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 65796,
+      "originalBytes": 69852
+    },
+    "/assets/pixel/illustrated/world/tarot-deck.png": {
+      "url": "/assets/delivery/tarot-deck-bc5d4d6e0b8b.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 59806,
+      "originalBytes": 65114
+    },
+    "/assets/pixel/illustrated/world/tarot-fan.png": {
+      "url": "/assets/delivery/tarot-fan-7081f2b3d8d8.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 59224,
+      "originalBytes": 63852
+    },
+    "/assets/pixel/illustrated/world/tarot-pouch.png": {
+      "url": "/assets/delivery/tarot-pouch-9b902db8c639.webp",
+      "width": 256,
+      "height": 384,
+      "bytes": 57144,
+      "originalBytes": 63260
+    },
+    "/assets/pixel/illustrated/world/trophy.png": {
+      "url": "/assets/delivery/trophy-d5e365b46368.webp",
+      "width": 192,
+      "height": 192,
+      "bytes": 17610,
+      "originalBytes": 19391
+    },
+    "/assets/pixel/illustrated/world/vehicle-basic.png": {
+      "url": "/assets/delivery/vehicle-basic-969fca8c9564.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 47856,
+      "originalBytes": 53890
+    },
+    "/assets/pixel/illustrated/world/vehicle-bus.png": {
+      "url": "/assets/delivery/vehicle-bus-252e4f3fe4de.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 62582,
+      "originalBytes": 69964
+    },
+    "/assets/pixel/illustrated/world/vehicle-car.png": {
+      "url": "/assets/delivery/vehicle-car-ec5618d7e92f.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 60320,
+      "originalBytes": 67745
+    },
+    "/assets/pixel/illustrated/world/vehicle-sport.png": {
+      "url": "/assets/delivery/vehicle-sport-e53d7d9790ff.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 47016,
+      "originalBytes": 52296
+    },
+    "/assets/pixel/illustrated/world/vehicle-touring.png": {
+      "url": "/assets/delivery/vehicle-touring-163d83b12d3a.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 55730,
+      "originalBytes": 61926
+    },
+    "/assets/pixel/illustrated/world/vehicle-truck.png": {
+      "url": "/assets/delivery/vehicle-truck-d530c4df778d.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 68930,
+      "originalBytes": 76612
+    },
+    "/assets/pixel/illustrated/world/vehicle-van.png": {
+      "url": "/assets/delivery/vehicle-van-db225c7a1cf1.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 63048,
+      "originalBytes": 70717
+    },
+    "/assets/pixel/scenes/analysis-reader.png": {
+      "url": "/assets/delivery/analysis-reader-957a6c3e750e.webp",
+      "width": 384,
+      "height": 384,
+      "bytes": 60898,
+      "originalBytes": 67435
+    },
+    "/assets/pixel/scenes/city-prop-cottage.png": {
+      "url": "/assets/delivery/city-prop-cottage-c6221e4326b8.webp",
+      "width": 307,
+      "height": 320,
+      "bytes": 54010,
+      "originalBytes": 58849
+    },
+    "/assets/pixel/scenes/city-prop-lamp.png": {
+      "url": "/assets/delivery/city-prop-lamp-5bb9c8397abf.webp",
+      "width": 170,
+      "height": 320,
+      "bytes": 22272,
+      "originalBytes": 24719
+    },
+    "/assets/pixel/scenes/city-prop-shrub.png": {
+      "url": "/assets/delivery/city-prop-shrub-22cd801c8994.webp",
+      "width": 446,
+      "height": 320,
+      "bytes": 67722,
+      "originalBytes": 74420
+    },
+    "/assets/pixel/scenes/city-prop-tree.png": {
+      "url": "/assets/delivery/city-prop-tree-559a94edf03e.webp",
+      "width": 281,
+      "height": 320,
+      "bytes": 44726,
+      "originalBytes": 47492
+    },
+    "/assets/pixel/scenes/city-village.png": {
+      "url": "/assets/delivery/city-village-cf16ed2a9471.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 234072,
+      "originalBytes": 505930
+    },
+    "/assets/pixel/scenes/color-table.png": {
+      "url": "/assets/delivery/color-table-d4b4e1acd68b.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 239890,
+      "originalBytes": 263550
+    },
+    "/assets/pixel/scenes/duel-hero-0.png": {
+      "url": "/assets/delivery/duel-hero-0-92f7f83f9509.webp",
+      "width": 256,
+      "height": 260,
+      "bytes": 25710,
+      "originalBytes": 29193
+    },
+    "/assets/pixel/scenes/duel-hero-1.png": {
+      "url": "/assets/delivery/duel-hero-1-01291a1a2324.webp",
+      "width": 256,
+      "height": 250,
+      "bytes": 25754,
+      "originalBytes": 29107
+    },
+    "/assets/pixel/scenes/duel-hero-10.png": {
+      "url": "/assets/delivery/duel-hero-10-8d12c93c41ba.webp",
+      "width": 256,
+      "height": 228,
+      "bytes": 23994,
+      "originalBytes": 27329
+    },
+    "/assets/pixel/scenes/duel-hero-11.png": {
+      "url": "/assets/delivery/duel-hero-11-30e62418977e.webp",
+      "width": 256,
+      "height": 236,
+      "bytes": 22482,
+      "originalBytes": 26140
+    },
+    "/assets/pixel/scenes/duel-hero-12.png": {
+      "url": "/assets/delivery/duel-hero-12-ab45df0dbee2.webp",
+      "width": 256,
+      "height": 228,
+      "bytes": 24320,
+      "originalBytes": 27111
+    },
+    "/assets/pixel/scenes/duel-hero-13.png": {
+      "url": "/assets/delivery/duel-hero-13-35181b94793f.webp",
+      "width": 256,
+      "height": 224,
+      "bytes": 23654,
+      "originalBytes": 26549
+    },
+    "/assets/pixel/scenes/duel-hero-14.png": {
+      "url": "/assets/delivery/duel-hero-14-5c802808b192.webp",
+      "width": 256,
+      "height": 244,
+      "bytes": 21516,
+      "originalBytes": 25077
+    },
+    "/assets/pixel/scenes/duel-hero-15.png": {
+      "url": "/assets/delivery/duel-hero-15-079c39963814.webp",
+      "width": 256,
+      "height": 237,
+      "bytes": 25684,
+      "originalBytes": 28657
+    },
+    "/assets/pixel/scenes/duel-hero-2.png": {
+      "url": "/assets/delivery/duel-hero-2-64395aa96ea7.webp",
+      "width": 256,
+      "height": 207,
+      "bytes": 21450,
+      "originalBytes": 24132
+    },
+    "/assets/pixel/scenes/duel-hero-3.png": {
+      "url": "/assets/delivery/duel-hero-3-913405658731.webp",
+      "width": 256,
+      "height": 240,
+      "bytes": 22166,
+      "originalBytes": 25345
+    },
+    "/assets/pixel/scenes/duel-hero-4.png": {
+      "url": "/assets/delivery/duel-hero-4-8e6f783141fa.webp",
+      "width": 256,
+      "height": 236,
+      "bytes": 25834,
+      "originalBytes": 28872
+    },
+    "/assets/pixel/scenes/duel-hero-5.png": {
+      "url": "/assets/delivery/duel-hero-5-e19b02716eb5.webp",
+      "width": 256,
+      "height": 251,
+      "bytes": 24802,
+      "originalBytes": 28435
+    },
+    "/assets/pixel/scenes/duel-hero-6.png": {
+      "url": "/assets/delivery/duel-hero-6-0fe91e074abe.webp",
+      "width": 256,
+      "height": 264,
+      "bytes": 29806,
+      "originalBytes": 33193
+    },
+    "/assets/pixel/scenes/duel-hero-7.png": {
+      "url": "/assets/delivery/duel-hero-7-91ec4f65ee95.webp",
+      "width": 256,
+      "height": 243,
+      "bytes": 25238,
+      "originalBytes": 28608
+    },
+    "/assets/pixel/scenes/duel-hero-8.png": {
+      "url": "/assets/delivery/duel-hero-8-943d8f5b9408.webp",
+      "width": 256,
+      "height": 250,
+      "bytes": 22964,
+      "originalBytes": 26415
+    },
+    "/assets/pixel/scenes/duel-hero-9.png": {
+      "url": "/assets/delivery/duel-hero-9-8690aeaf85fe.webp",
+      "width": 256,
+      "height": 272,
+      "bytes": 25204,
+      "originalBytes": 28949
+    },
+    "/assets/pixel/scenes/duel-monster-01.png": {
+      "url": "/assets/delivery/duel-monster-01-ae377d45fdc0.webp",
+      "width": 256,
+      "height": 238,
+      "bytes": 24170,
+      "originalBytes": 27057
+    },
+    "/assets/pixel/scenes/duel-monster-02.png": {
+      "url": "/assets/delivery/duel-monster-02-a93d1b223832.webp",
+      "width": 256,
+      "height": 219,
+      "bytes": 21404,
+      "originalBytes": 24321
+    },
+    "/assets/pixel/scenes/duel-monster-03.png": {
+      "url": "/assets/delivery/duel-monster-03-73be2c3eed4e.webp",
+      "width": 256,
+      "height": 227,
+      "bytes": 24772,
+      "originalBytes": 27617
+    },
+    "/assets/pixel/scenes/duel-monster-04.png": {
+      "url": "/assets/delivery/duel-monster-04-dcf6beabe094.webp",
+      "width": 256,
+      "height": 259,
+      "bytes": 32224,
+      "originalBytes": 34861
+    },
+    "/assets/pixel/scenes/duel-monster-05.png": {
+      "url": "/assets/delivery/duel-monster-05-263d56a5950f.webp",
+      "width": 256,
+      "height": 239,
+      "bytes": 26676,
+      "originalBytes": 29854
+    },
+    "/assets/pixel/scenes/duel-monster-06.png": {
+      "url": "/assets/delivery/duel-monster-06-e75a8bfada14.webp",
+      "width": 256,
+      "height": 290,
+      "bytes": 30946,
+      "originalBytes": 34809
+    },
+    "/assets/pixel/scenes/duel-monster-07.png": {
+      "url": "/assets/delivery/duel-monster-07-5cc70dfb58ad.webp",
+      "width": 256,
+      "height": 254,
+      "bytes": 25848,
+      "originalBytes": 29068
+    },
+    "/assets/pixel/scenes/duel-monster-08.png": {
+      "url": "/assets/delivery/duel-monster-08-6370e1ad3e21.webp",
+      "width": 256,
+      "height": 236,
+      "bytes": 28650,
+      "originalBytes": 31539
+    },
+    "/assets/pixel/scenes/duel-monster-09.png": {
+      "url": "/assets/delivery/duel-monster-09-5ac0820c9658.webp",
+      "width": 256,
+      "height": 246,
+      "bytes": 27398,
+      "originalBytes": 30872
+    },
+    "/assets/pixel/scenes/duel-monster-10.png": {
+      "url": "/assets/delivery/duel-monster-10-f24b761a9ac8.webp",
+      "width": 256,
+      "height": 259,
+      "bytes": 23610,
+      "originalBytes": 26871
+    },
+    "/assets/pixel/scenes/duel-monster-11.png": {
+      "url": "/assets/delivery/duel-monster-11-b416a58f1ec7.webp",
+      "width": 256,
+      "height": 239,
+      "bytes": 22090,
+      "originalBytes": 26052
+    },
+    "/assets/pixel/scenes/duel-monster-12.png": {
+      "url": "/assets/delivery/duel-monster-12-35407bea37aa.webp",
+      "width": 256,
+      "height": 222,
+      "bytes": 23700,
+      "originalBytes": 26573
+    },
+    "/assets/pixel/scenes/duel-monster-13.png": {
+      "url": "/assets/delivery/duel-monster-13-09c41d817ae3.webp",
+      "width": 256,
+      "height": 224,
+      "bytes": 21670,
+      "originalBytes": 25013
+    },
+    "/assets/pixel/scenes/duel-monster-14.png": {
+      "url": "/assets/delivery/duel-monster-14-66c00f32c3b9.webp",
+      "width": 256,
+      "height": 223,
+      "bytes": 24370,
+      "originalBytes": 26797
+    },
+    "/assets/pixel/scenes/duel-monster-15.png": {
+      "url": "/assets/delivery/duel-monster-15-3a34c1821976.webp",
+      "width": 256,
+      "height": 243,
+      "bytes": 29430,
+      "originalBytes": 32372
+    },
+    "/assets/pixel/scenes/duel-monster-16.png": {
+      "url": "/assets/delivery/duel-monster-16-3bd8f9718655.webp",
+      "width": 256,
+      "height": 268,
+      "bytes": 23314,
+      "originalBytes": 27145
+    },
+    "/assets/pixel/scenes/duel-monster-17.png": {
+      "url": "/assets/delivery/duel-monster-17-86e4eb3739c9.webp",
+      "width": 256,
+      "height": 228,
+      "bytes": 29760,
+      "originalBytes": 32071
+    },
+    "/assets/pixel/scenes/duel-monster-18.png": {
+      "url": "/assets/delivery/duel-monster-18-d8ae5d92ea10.webp",
+      "width": 256,
+      "height": 226,
+      "bytes": 22786,
+      "originalBytes": 25557
+    },
+    "/assets/pixel/scenes/duel-monster-19.png": {
+      "url": "/assets/delivery/duel-monster-19-f2ed95c13c51.webp",
+      "width": 256,
+      "height": 226,
+      "bytes": 21000,
+      "originalBytes": 23923
+    },
+    "/assets/pixel/scenes/duel-monster-20.png": {
+      "url": "/assets/delivery/duel-monster-20-8bcd25f2999a.webp",
+      "width": 256,
+      "height": 251,
+      "bytes": 25280,
+      "originalBytes": 28649
+    },
+    "/assets/pixel/scenes/duel-monster-21.png": {
+      "url": "/assets/delivery/duel-monster-21-343d82b29b2a.webp",
+      "width": 256,
+      "height": 224,
+      "bytes": 24880,
+      "originalBytes": 27726
+    },
+    "/assets/pixel/scenes/duel-monster-22.png": {
+      "url": "/assets/delivery/duel-monster-22-3bf94ee8a25b.webp",
+      "width": 256,
+      "height": 243,
+      "bytes": 25212,
+      "originalBytes": 27149
+    },
+    "/assets/pixel/scenes/duel-monster-23.png": {
+      "url": "/assets/delivery/duel-monster-23-092f47e3bca4.webp",
+      "width": 256,
+      "height": 245,
+      "bytes": 26696,
+      "originalBytes": 30056
+    },
+    "/assets/pixel/scenes/duel-monster-24.png": {
+      "url": "/assets/delivery/duel-monster-24-4ffce5236d07.webp",
+      "width": 256,
+      "height": 247,
+      "bytes": 25512,
+      "originalBytes": 28587
+    },
+    "/assets/pixel/scenes/duel-monster-25.png": {
+      "url": "/assets/delivery/duel-monster-25-ea3904fca596.webp",
+      "width": 256,
+      "height": 261,
+      "bytes": 25684,
+      "originalBytes": 29431
+    },
+    "/assets/pixel/scenes/jump-forest.png": {
+      "url": "/assets/delivery/jump-forest-fdc56e21679a.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 213214,
+      "originalBytes": 477861
+    },
+    "/assets/pixel/scenes/jump-ground.png": {
+      "url": "/assets/delivery/jump-ground-03dad7e10d1c.webp",
+      "width": 384,
+      "height": 96,
+      "bytes": 31872,
+      "originalBytes": 31540
+    },
+    "/assets/pixel/scenes/jump-obstacle-double.png": {
+      "url": "/assets/delivery/jump-obstacle-double-8eafcb220711.webp",
+      "width": 192,
+      "height": 384,
+      "bytes": 56594,
+      "originalBytes": 60012
+    },
+    "/assets/pixel/scenes/jump-obstacle-short.png": {
+      "url": "/assets/delivery/jump-obstacle-short-0fc8518a1388.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 41094,
+      "originalBytes": 45196
+    },
+    "/assets/pixel/scenes/jump-obstacle-slide.png": {
+      "url": "/assets/delivery/jump-obstacle-slide-7ddfa34f0101.webp",
+      "width": 192,
+      "height": 576,
+      "bytes": 59596,
+      "originalBytes": 64589
+    },
+    "/assets/pixel/scenes/jump-obstacle-wide.png": {
+      "url": "/assets/delivery/jump-obstacle-wide-d44d1307daac.webp",
+      "width": 384,
+      "height": 160,
+      "bytes": 43568,
+      "originalBytes": 45733
+    },
+    "/assets/pixel/scenes/memory-table.png": {
+      "url": "/assets/delivery/memory-table-050cbc060cbb.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 248922,
+      "originalBytes": 275136
+    },
+    "/assets/pixel/scenes/paper-texture.png": {
+      "url": "/assets/delivery/paper-texture-4dc190d7643e.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 53774,
+      "originalBytes": 56958
+    },
+    "/assets/pixel/scenes/player-basic-rear.png": {
+      "url": "/assets/delivery/player-basic-rear-ddd3f5ffb5da.webp",
+      "width": 256,
+      "height": 229,
+      "bytes": 25134,
+      "originalBytes": 28303
+    },
+    "/assets/pixel/scenes/player-compact-rear.png": {
+      "url": "/assets/delivery/player-compact-rear-9cd4520d502c.webp",
+      "width": 256,
+      "height": 269,
+      "bytes": 26150,
+      "originalBytes": 29330
+    },
+    "/assets/pixel/scenes/player-pickup-rear.png": {
+      "url": "/assets/delivery/player-pickup-rear-3b7d2fefd324.webp",
+      "width": 256,
+      "height": 224,
+      "bytes": 25762,
+      "originalBytes": 28641
+    },
+    "/assets/pixel/scenes/player-rally-rear.png": {
+      "url": "/assets/delivery/player-rally-rear-6c44ea35f55f.webp",
+      "width": 256,
+      "height": 242,
+      "bytes": 26604,
+      "originalBytes": 29677
+    },
+    "/assets/pixel/scenes/player-roadster-rear.png": {
+      "url": "/assets/delivery/player-roadster-rear-10527671311f.webp",
+      "width": 256,
+      "height": 183,
+      "bytes": 23446,
+      "originalBytes": 25828
+    },
+    "/assets/pixel/scenes/player-sport-rear.png": {
+      "url": "/assets/delivery/player-sport-rear-2bfcac2ad2d7.webp",
+      "width": 256,
+      "height": 202,
+      "bytes": 25810,
+      "originalBytes": 28255
+    },
+    "/assets/pixel/scenes/player-touring-rear.png": {
+      "url": "/assets/delivery/player-touring-rear-98b783853553.webp",
+      "width": 256,
+      "height": 262,
+      "bytes": 27446,
+      "originalBytes": 30541
+    },
+    "/assets/pixel/scenes/player-van-rear.png": {
+      "url": "/assets/delivery/player-van-rear-d28f7c31fbbf.webp",
+      "width": 256,
+      "height": 267,
+      "bytes": 28030,
+      "originalBytes": 31420
+    },
+    "/assets/pixel/scenes/rhythm-stage.png": {
+      "url": "/assets/delivery/rhythm-stage-c65d225e9651.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 256976,
+      "originalBytes": 279375
+    },
+    "/assets/pixel/scenes/road-texture.png": {
+      "url": "/assets/delivery/road-texture-4dc32d1a1139.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 52244,
+      "originalBytes": 54676
+    },
+    "/assets/pixel/scenes/sort-lodge.png": {
+      "url": "/assets/delivery/sort-lodge-3a9aa6f02e34.webp",
+      "width": 1152,
+      "height": 768,
+      "bytes": 194078,
+      "originalBytes": 469145
+    },
+    "/assets/pixel/scenes/timing-desk.png": {
+      "url": "/assets/delivery/timing-desk-f5d9dd755b03.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 258172,
+      "originalBytes": 281781
+    },
+    "/assets/pixel/scenes/traffic-bus-front.png": {
+      "url": "/assets/delivery/traffic-bus-front-045f73ea2208.webp",
+      "width": 256,
+      "height": 309,
+      "bytes": 28392,
+      "originalBytes": 32484
+    },
+    "/assets/pixel/scenes/traffic-bus-left-edge.png": {
+      "url": "/assets/delivery/traffic-bus-left-edge-9b81611696a0.webp",
+      "width": 256,
+      "height": 276,
+      "bytes": 31176,
+      "originalBytes": 34688
+    },
+    "/assets/pixel/scenes/traffic-bus-left.png": {
+      "url": "/assets/delivery/traffic-bus-left-306a711c23a0.webp",
+      "width": 256,
+      "height": 282,
+      "bytes": 31554,
+      "originalBytes": 35028
+    },
+    "/assets/pixel/scenes/traffic-bus-rear.png": {
+      "url": "/assets/delivery/traffic-bus-rear-ba132a321423.webp",
+      "width": 256,
+      "height": 304,
+      "bytes": 25886,
+      "originalBytes": 29764
+    },
+    "/assets/pixel/scenes/traffic-bus-right-edge.png": {
+      "url": "/assets/delivery/traffic-bus-right-edge-d4929358e0f2.webp",
+      "width": 256,
+      "height": 274,
+      "bytes": 30784,
+      "originalBytes": 34291
+    },
+    "/assets/pixel/scenes/traffic-bus-right.png": {
+      "url": "/assets/delivery/traffic-bus-right-9a8599ff31af.webp",
+      "width": 256,
+      "height": 284,
+      "bytes": 31690,
+      "originalBytes": 35296
+    },
+    "/assets/pixel/scenes/traffic-car-front.png": {
+      "url": "/assets/delivery/traffic-car-front-bfd65332f8d6.webp",
+      "width": 256,
+      "height": 282,
+      "bytes": 29796,
+      "originalBytes": 33285
+    },
+    "/assets/pixel/scenes/traffic-car-left-edge.png": {
+      "url": "/assets/delivery/traffic-car-left-edge-d106efcfd748.webp",
+      "width": 256,
+      "height": 233,
+      "bytes": 26876,
+      "originalBytes": 29438
+    },
+    "/assets/pixel/scenes/traffic-car-left.png": {
+      "url": "/assets/delivery/traffic-car-left-b5b86f1c9bc5.webp",
+      "width": 256,
+      "height": 258,
+      "bytes": 28742,
+      "originalBytes": 31834
+    },
+    "/assets/pixel/scenes/traffic-car-right-edge.png": {
+      "url": "/assets/delivery/traffic-car-right-edge-b9838981a68f.webp",
+      "width": 256,
+      "height": 233,
+      "bytes": 26918,
+      "originalBytes": 29578
+    },
+    "/assets/pixel/scenes/traffic-car-right.png": {
+      "url": "/assets/delivery/traffic-car-right-b86c53081492.webp",
+      "width": 256,
+      "height": 257,
+      "bytes": 28990,
+      "originalBytes": 31953
+    },
+    "/assets/pixel/scenes/traffic-truck-front.png": {
+      "url": "/assets/delivery/traffic-truck-front-e2b3bae9619b.webp",
+      "width": 256,
+      "height": 325,
+      "bytes": 33288,
+      "originalBytes": 37612
+    },
+    "/assets/pixel/scenes/traffic-truck-left-edge.png": {
+      "url": "/assets/delivery/traffic-truck-left-edge-875be78a4389.webp",
+      "width": 256,
+      "height": 249,
+      "bytes": 30372,
+      "originalBytes": 33591
+    },
+    "/assets/pixel/scenes/traffic-truck-left.png": {
+      "url": "/assets/delivery/traffic-truck-left-b50984c489dc.webp",
+      "width": 256,
+      "height": 265,
+      "bytes": 30968,
+      "originalBytes": 34432
+    },
+    "/assets/pixel/scenes/traffic-truck-right-edge.png": {
+      "url": "/assets/delivery/traffic-truck-right-edge-4a9ea10b743b.webp",
+      "width": 256,
+      "height": 247,
+      "bytes": 29688,
+      "originalBytes": 33110
+    },
+    "/assets/pixel/scenes/traffic-truck-right.png": {
+      "url": "/assets/delivery/traffic-truck-right-013d5d412c6e.webp",
+      "width": 256,
+      "height": 273,
+      "bytes": 32640,
+      "originalBytes": 36152
+    },
+    "/assets/pixel/scenes/traffic-van-front.png": {
+      "url": "/assets/delivery/traffic-van-front-a38736cb1ee2.webp",
+      "width": 256,
+      "height": 309,
+      "bytes": 27238,
+      "originalBytes": 31176
+    },
+    "/assets/pixel/scenes/traffic-van-left-edge.png": {
+      "url": "/assets/delivery/traffic-van-left-edge-9fe650463dbe.webp",
+      "width": 256,
+      "height": 283,
+      "bytes": 32958,
+      "originalBytes": 36528
+    },
+    "/assets/pixel/scenes/traffic-van-left.png": {
+      "url": "/assets/delivery/traffic-van-left-51566a5400ac.webp",
+      "width": 256,
+      "height": 294,
+      "bytes": 31134,
+      "originalBytes": 34853
+    },
+    "/assets/pixel/scenes/traffic-van-right-edge.png": {
+      "url": "/assets/delivery/traffic-van-right-edge-0c520d948a8c.webp",
+      "width": 256,
+      "height": 283,
+      "bytes": 32766,
+      "originalBytes": 36277
+    },
+    "/assets/pixel/scenes/traffic-van-right.png": {
+      "url": "/assets/delivery/traffic-van-right-6762726b0536.webp",
+      "width": 256,
+      "height": 292,
+      "bytes": 31008,
+      "originalBytes": 34653
+    },
+    "/assets/pixel/scenes/wood-token.png": {
+      "url": "/assets/delivery/wood-token-9f224b96463e.webp",
+      "width": 128,
+      "height": 128,
+      "bytes": 14952,
+      "originalBytes": 16588
+    },
+    "/assets/pixel/woodland-pets.png": {
+      "url": "/assets/delivery/woodland-pets-a0f60dc0a43c.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 464866,
+      "originalBytes": 1656545
+    }
+  },
+  "originalBytes": 20972447,
+  "deliveryBytes": 17018776
+}

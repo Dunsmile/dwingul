@@ -1,3 +1,5 @@
+import {assetUrl,readyImage} from './asset-delivery.js';
+
 export const CITY_TRAFFIC_VIEWS = Object.freeze(['left-edge', 'left', 'front', 'right', 'right-edge']);
 export const CITY_TRAFFIC_TYPES = Object.freeze(['car', 'van', 'truck', 'bus']);
 export const CITY_PLAYER_CARS = Object.freeze(['basic', 'sport', 'touring', 'compact', 'rally', 'pickup', 'van', 'roadster']);
@@ -30,12 +32,15 @@ export function cityPlayerArtSource(car) {
   return playerCars.has(car) ? `/assets/pixel/scenes/player-${car}-rear.png` : null;
 }
 
+const trafficRearSources=Object.freeze({car:'/assets/pixel/scenes/player-basic-rear.png',van:'/assets/pixel/scenes/player-van-rear.png',truck:'/assets/pixel/scenes/player-pickup-rear.png',bus:'/assets/pixel/scenes/traffic-bus-rear.png'});
+export function cityTrafficRearSource(type){return trafficTypes.has(type)?trafficRearSources[type]:null;}
+
 export function cityVehicleImage(source) {
   if (!source || typeof Image === 'undefined') return null;
   if (!imageCache.has(source)) {
-    const image = new Image();
+    const image = readyImage(source)||new Image();
     image.decoding = 'async';
-    image.src = source;
+    image.src = assetUrl(source);
     imageCache.set(source, image);
   }
   return imageCache.get(source);
@@ -45,9 +50,9 @@ export function cityVehicleImageReady(image) {
   return Boolean(image?.complete && image.naturalWidth > 0 && image.naturalHeight > 0);
 }
 
-export function preloadCityVehicleArt() {
-  for (const type of CITY_TRAFFIC_TYPES) for (const view of CITY_TRAFFIC_VIEWS) cityVehicleImage(cityTrafficArtSource(type, view));
-  for (const car of CITY_PLAYER_CARS) cityVehicleImage(cityPlayerArtSource(car));
+export function preloadCityVehicleArt(selectedCar='basic') {
+  for (const type of CITY_TRAFFIC_TYPES) cityVehicleImage(cityTrafficRearSource(type));
+  cityVehicleImage(cityPlayerArtSource(playerCars.has(selectedCar)?selectedCar:'basic'));
 }
 
 export function cityVehicleDrawBox(box, image) {

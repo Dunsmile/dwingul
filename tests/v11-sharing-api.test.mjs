@@ -5,12 +5,10 @@ import {createCityEngine as createCityV6} from '../public/js/legacy/city-engine-
 import {seededRandom} from '../public/js/game-random.js';
 
 const currentGames=[
-  ['sequence',{version:'v11',mode:'rhythm'}],
-  ['jump',{version:'v11'}],
+  ['jump',{version:'v13'}],
   ['racing',{version:'v7',car:'basic'}],
 ];
 const legacyGames=[
-  ['sequence',{version:'v9',mode:'rhythm'}],
   ['jump',{version:'v6'}],
   ['racing',{version:'v6',car:'basic'}],
 ];

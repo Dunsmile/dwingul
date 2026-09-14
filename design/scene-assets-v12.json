@@ -621,5 +621,12 @@
     "src": "/assets/pixel/scenes/duel-monster-25.png",
     "width": 256,
     "height": 261
+  },
+  {
+    "id": "traffic-bus-rear",
+    "name": "숲마을 버스 · 후면",
+    "src": "/assets/pixel/scenes/traffic-bus-rear.png",
+    "width": 256,
+    "height": 304
   }
 ]

@@ -1,5 +1,6 @@
 import { typingPhrases } from "./typing-phrases.js";
 import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterIndex,rpgMonsterName} from './rpg-characters.js';
+import {assetUrl,warmImage} from './asset-delivery.js';
 
 export const RPG_RULES = Object.freeze({
   maxHp: 100,
@@ -318,12 +319,12 @@ function node(tag, className, text) {
 }
 
 function pixelArt(src,className,width,height){
-  const image=node('img',className);if(src)image.src=src;image.alt='';image.width=width;image.height=height;image.draggable=false;image.decoding='async';return image;
+  const image=node('img',className);if(src)image.src=assetUrl(src);image.alt='';image.width=width;image.height=height;image.draggable=false;image.decoding='async';return image;
 }
 
 function wirePixelArt(image,container){
   image.addEventListener('error',()=>{
-    if(image.dataset.fallback&&!image.dataset.usingFallback){image.dataset.usingFallback='true';image.src=image.dataset.fallback;return;}
+    if(image.dataset.fallback&&!image.dataset.usingFallback){image.dataset.usingFallback='true';image.src=assetUrl(image.dataset.fallback);return;}
     container.classList.add('is-art-missing');
   });
   image.addEventListener('load',()=>container.classList.remove('is-art-missing'));
@@ -337,7 +338,7 @@ function setPixelArt(image,container,primary,fallback){
   image.dataset.fallbackSrc=fallback;
   delete image.dataset.usingFallback;
   container.classList.remove('is-art-missing');
-  image.src=primary;
+  image.src=assetUrl(primary);
 }
 
 export function createTypingRpg(ctx) {
@@ -360,7 +361,8 @@ export function createTypingRpg(ctx) {
   const progressLabel = node("span", "typing-rpg__stat-label", "스테이지"); const progressValue = node("b", "typing-rpg__stat-value"); progressCard.append(progressLabel, progressValue);
   const goldCard = node("div", "typing-rpg__stat-card typing-rpg__stat-card--gold");
   const goldLabel = node("span", "typing-rpg__stat-label", "골드"); const goldValue = node("b", "typing-rpg__stat-value"); goldCard.append(goldLabel, goldValue);
-  hud.append(hpCard, mpCard, progressCard, goldCard);
+  const playerHud = node("section", "typing-rpg__player-hud"); playerHud.setAttribute("aria-label", "플레이어 상태"); playerHud.append(hpCard, mpCard);
+  const runHud = node("section", "typing-rpg__run-hud"); runHud.setAttribute("aria-label", "현재 진행"); runHud.append(progressCard, goldCard);
 
   const battlefield = node("div", "typing-rpg__battlefield");
   const arena = node("section", "typing-rpg__arena"); arena.setAttribute("aria-label", "몬스터 전투 상황");
@@ -381,7 +383,8 @@ export function createTypingRpg(ctx) {
   const counter = node("div", "typing-rpg__counter");
   const counterText = node("span", "typing-rpg__counter-text");
   const counterTrack = node("span", "typing-rpg__counter-track"); const counterFill = node("i", "typing-rpg__counter-fill"); counterTrack.append(counterFill); counter.append(counterText, counterTrack);
-  arena.append(enemyHead, enemyMeter, scene, counter);
+  const enemyHud = node("section", "typing-rpg__enemy-hud"); enemyHud.setAttribute("aria-label", "몬스터 상태"); enemyHud.append(enemyHead, enemyMeter, counter);
+  hud.append(playerHud, runHud, enemyHud);
 
   const command = node("section", "typing-rpg__command");
   const targetLabel = node("span", "typing-rpg__eyebrow", "이번 공격 주문");
@@ -397,12 +400,14 @@ export function createTypingRpg(ctx) {
   const comboText=node('span'),speedText = node("span"), accuracyText = node("span"), defeatedText = node("span"), completedText = node("span"); numbers.append(comboText,speedText, accuracyText, defeatedText, completedText);
   const details=node('details','typing-rpg__details'),detailsLabel=node('summary','', '전투 상세 보기');details.append(detailsLabel,gearText,numbers);
   command.append(targetLabel, targetText, letterGuide, form, message, healHint, details);
-  battlefield.append(arena, command); root.append(hud, battlefield); ctx.stage.append(root);
+  arena.append(hud, scene, command); battlefield.append(arena); root.append(battlefield); ctx.stage.append(root);
+  const pauseButton=gameRoot?.querySelector('.dg-game__pause');if(pauseButton){pauseButton.classList.add('typing-rpg__pause');arena.append(pauseButton);}
 
   let composing = false;
   let reported = false;
   let effectMs = 0;
   let seenAction = -1;
+  let warmedAfterStage = 0;
 
   function actionMessage(state) {
     const { type, amount } = state.lastAction;
@@ -444,13 +449,15 @@ export function createTypingRpg(ctx) {
     root.style.setProperty("--rpg-stage-color", state.palette);
     root.classList.toggle("is-boss", state.boss);
     setPixelArt(creatureArt,creature,typingRpgMonsterDuelArtPath(state.stage),rpgMonsterArtPath(state.stage));
+    if(warmedAfterStage!==state.stage){warmedAfterStage=state.stage;void warmImage(typingRpgMonsterDuelArtPath(state.stage+1)).catch(()=>{});}
     hpMeter.value = state.hp; hpValue.textContent = `${state.hp} / ${state.maxHp}`;
     mpMeter.value = state.mp; mpValue.textContent = `${state.mp} / ${state.maxMp}`;
     progressValue.textContent = `${state.stage}`;goldValue.textContent=`${state.gold}`;
     stageBadge.textContent = state.boss ? `STAGE ${state.stage} · BOSS` : `STAGE ${state.stage}`;
     enemyName.textContent = rpgMonsterName(state.stage,state.boss);
     enemyMeter.max = state.monsterMaxHp; enemyMeter.value = state.monsterHp; enemyHpText.textContent = `${Math.max(0, state.monsterHp)} / ${state.monsterMaxHp}`;
-    counterText.textContent = `반격까지 ${(state.counterMs / 1000).toFixed(1)}초 · 피해 ${state.counterDamage}`;
+    counterText.textContent = `반격까지 ${(state.counterMs / 1000).toFixed(1)}초`;
+    counterText.title = `반격 피해 ${state.counterDamage}`;
     counterFill.style.width = `${state.counterMs / state.counterEveryMs * 100}%`;
     targetText.textContent = state.healDraft ? "회복 주문: 힐" : state.target;
     renderLetters(state);
