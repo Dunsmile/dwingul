@@ -13,6 +13,6 @@ Authorized design: use the user's supplied RPG placements within existing pixel 
 - [x] Energy: TestMoa reference review, original teto/egen question+result scoring with versioned sharing/history compatibility.
 - [x] Focused failing regression checks before fixes; independent review of implementation and semantics.
 - [x] Root: full tests/build sequentially; official game client and screenshots; responsive browser checks and cold asset measurements (warm-cache speed is not claimed).
-- [ ] GitHub PR, merge, Cloudflare deployment and production read-only verification. No modifications to production database or user port4173.
+- [x] GitHub PR, merge, Cloudflare deployment and production read-only verification. No modifications to production database or user port4173.
 
 Latest user instruction supersedes prior one-lane rhythm plan: delete the game, do not continue rhythm implementation.
