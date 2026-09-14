@@ -1,7 +1,8 @@
 import { createSortGame } from './sort-game.js';
 import { seededRandom } from './game-random.js';
 import { createTypingRpg } from './typing-rpg.js';
-import { createJump as createJumpV16 } from './jump-game.js';
+import { createJump as createJumpV17 } from './jump-game.js';
+import { createJump as createJumpV16 } from './jump-game-v16.js';
 import { createJump as createJumpV13 } from './legacy/jump-game-v13.js';
 import { createJump as createJumpV11 } from './legacy/jump-game-v11.js';
 import { createJump as createJumpV6 } from './legacy/jump-game-v6.js';
@@ -57,6 +58,7 @@ export function resolveGameCreator(id, settings = {}) {
   const normalized = gameSettings(id, settings);
   if (id === 'sequence') throw new RangeError('운영이 종료된 게임이에요.');
   if (id === 'jump') {
+    if (normalized.version === 'v17') return createJumpV17;
     if (normalized.version === 'v16') return createJumpV16;
     if (normalized.version === 'v13') return createJumpV13;
     if (normalized.version === 'v11') return createJumpV11;

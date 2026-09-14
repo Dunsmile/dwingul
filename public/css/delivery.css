@@ -543,6 +543,24 @@ body.playing .game-top .title-block { gap: 4px; }
  .typing-rpg--pixel.typing-rpg--long .typing-rpg__letter{min-width:12px;height:17px;padding:0 1px;font-size:10px;line-height:15px}
 }
 
+/* The result uses the same compact, square gauges/panels as the battle. */
+.typing-result-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 8px;text-align:left}
+.typing-result-stats>div{padding:14px;border:2px solid var(--ink,#544333);background:#fff8e8;box-shadow:3px 3px 0 #b6a27c}
+.typing-result-stats span{display:block;font-size:14px;color:#53634e;font-weight:700}
+.typing-result-stats strong{display:block;font-size:clamp(26px,5vw,38px);line-height:1.35;white-space:nowrap}
+.typing-result-stats small{font-size:14px;margin-left:5px}
+.typing-result-method{text-align:left;font-size:13px;line-height:1.65;margin:12px 0}
+.typing-result-method summary{cursor:pointer;font-weight:700;min-height:32px;padding:5px 0}
+.typing-result-method p{margin:8px 0}
+@media(max-width:390px){.typing-result-stats>div{padding:10px}.typing-result-stats span{font-size:12px}}
+
+.result-card.result-card--typing{padding:26px 22px;gap:12px}
+.result-card.result-card--typing .result-game-art{width:80px;margin:0 auto 4px}
+.result-card.result-card--typing .result-number{font-size:56px}
+.result-card--typing .typing-result-stats{width:100%;max-width:520px;margin:0}
+.result-card--typing .typing-result-method{width:100%;max-width:520px;margin:0}
+@media(max-width:390px){.result-card.result-card--typing{padding:24px 16px;gap:10px}.result-card.result-card--typing .result-number{font-size:48px}}
+
 /* typing-hub */
 .rpg-hub-summary {display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}.rpg-hub-summary strong{color:#987027}.rpg-hub-summary b{display:block;margin-top:5px}.rpg-hub-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;background:#eef0e7;padding:5px;border-radius:13px}.rpg-hub-tabs a{text-align:center;padding:12px 4px;font-size:14px;font-weight:800;border-radius:9px}.rpg-hub-tabs .active{background:#fffdf7;box-shadow:0 3px 8px #324b3210;color:#245c45}.rpg-hub-intro{text-align:center;padding:20px 0}.rpg-hub-intro p{font-size:13px;color:#6e796c;margin-top:10px}.rpg-book{display:block;font-size:54px;line-height:1.5;color:#3e6549}.rpg-gear-stats{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;background:#e8efe2;padding:13px;border-radius:12px;font-size:13px;font-weight:800}.rpg-profile{border-top:1px solid #dce1d4;padding-top:14px}.rpg-profile summary{cursor:pointer;font-size:13px;font-weight:700}.rpg-profile form,.rpg-profile p{margin-top:15px}.rpg-equipped{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.rpg-equipped article{padding:14px 10px;background:#f1f1e9;border-radius:12px;display:grid;gap:8px}.rpg-equipped span{font-size:12px;color:#72816d}.rpg-equipped strong{font-size:14px;word-break:keep-all}.rpg-inventory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.rpg-inventory article{display:grid;gap:10px;border:2px solid var(--rarity,#d6decf);border-radius:14px;padding:16px}.rpg-inventory small{color:#6c786a}.rpg-inventory strong{font-size:16px}.rpg-inventory span{font-size:13px}.rarity-common{--rarity:#c8d1c0}.rarity-uncommon{--rarity:#92b8d5}.rarity-rare{--rarity:#b098d5}.rarity-legend{--rarity:#e4b847}.rpg-drop{text-align:center;padding:22px;border:3px solid var(--rarity);background:#fffdf5;border-radius:16px}.rpg-drop h2{margin:10px 0}.rpg-drop p,.rpg-drop span{font-size:13px}.rpg-drop p{margin-top:10px}@media(max-width:560px){.rpg-hub{padding:16px}.rpg-hub-tabs a{font-size:12px}.rpg-hub-intro h2{font-size:21px}.rpg-equipped{grid-template-columns:1fr}.rpg-equipped article{grid-template-columns:60px 1fr auto;align-items:center}.rpg-inventory{gap:8px}.rpg-inventory article{padding:12px}.rpg-inventory .button{font-size:12px;padding:10px}.rpg-gear-stats{font-size:12px;padding:11px}.rpg-hub-summary{font-size:12px}}
 
@@ -1773,7 +1791,7 @@ dialog::backdrop{
 }
 
 /* Distance and hearts are already drawn inside the runner scene. */
-.dg-game--jump-v16 .dg-game__status{display:none}.dg-game--jump-v16 .dg-game__toolbar{justify-content:flex-end;min-height:48px;padding:6px 10px}
+:is(.dg-game--jump-v16,.dg-game--jump-v17) .dg-game__status{display:none}:is(.dg-game--jump-v16,.dg-game--jump-v17) .dg-game__toolbar{justify-content:flex-end;min-height:48px;padding:6px 10px}
 
 /* loading */
 .game-loading{min-height:min(65dvh,530px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:32px 20px;border:3px solid #49382d;background:#f8eed7;text-align:center}.game-loading h2{margin:0;font-size:22px}.game-loading p{margin:0;font-size:14px}.game-loading progress{width:min(100%,260px);height:12px;accent-color:#536d40}.game-loading .buttons{justify-content:center}.game-loading-spark{font-size:38px;color:#876931;animation:loading-spark 1s steps(4) infinite}@keyframes loading-spark{50%{transform:translateY(-7px)}}@media(prefers-reduced-motion:reduce){.game-loading-spark{animation:none}}

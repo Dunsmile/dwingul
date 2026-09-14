@@ -41,6 +41,15 @@ export function createProfileStore(db,fail){
   if(Array.isArray(r.business))out.business=r.business.slice(0,4).map(x=>({name:text(x.name,40),count:Math.max(0,Math.min(12,Number(x.count)||0)),percent:Math.max(0,Math.min(100,Number(x.percent)||0))}));
   // A private saved result excludes raw birth fields, run credentials, input replays and inventory snapshots.
   out.details={};for(const key of ['target','stoppedSeconds','best','bestMs','accuracy','maxCombo','roundsCompleted','perfect','good','misses','currentStage','stage','defeated','gold','coins','distance'])if(Number.isFinite(r.details?.[key]))out.details[key]=r.details[key];
+  if(r.content==='typing' && r.details?.typingStats?.version===1){
+   const source=r.details.typingStats,stats={version:1};
+   for(const [key,max] of Object.entries({strokes:1000000,elapsedMs:7200000,submissions:50000,characters:5000000,errors:5000000}))stats[key]=Math.max(0,Math.min(max,Math.floor(Number(source[key])||0)));
+   stats.errors=Math.min(stats.characters,stats.errors);
+   stats.cpm=stats.elapsedMs?Math.round(stats.strokes*60000/stats.elapsedMs):0;
+   stats.accuracy=stats.characters?Math.round((stats.characters-stats.errors)/stats.characters*1000)/10:null;
+   out.details.typingStats=stats;
+   if(stats.accuracy!==null)out.details.accuracy=stats.accuracy;else delete out.details.accuracy;
+  }
   if(r.details?.reason)out.details.reason=text(r.details.reason,30);
   if(r.gameSettings){out.gameSettings={};for(const key of ['version','mode','car','startStage','sentenceMode'])if(['string','number'].includes(typeof r.gameSettings[key]))out.gameSettings[key]=typeof r.gameSettings[key]==='string'?text(r.gameSettings[key],50):r.gameSettings[key];}
   if(r.birth&&Array.isArray(r.birth.pillars)){const b=r.birth;out.birth={name:text(b.name,50),symbol:text(b.symbol,2),timeKnown:!!b.timeKnown,pillars:b.pillars.slice(0,4).filter(x=>Array.isArray(x)&&x.length===2).map(x=>x.map(v=>text(v,5))),counts:Object.fromEntries(['목','화','토','금','수'].map(k=>[k,Math.min(8,Math.max(0,Number(b.counts?.[k])||0))]))};}

@@ -376,3 +376,21 @@
  .typing-rpg--pixel.typing-rpg--long .typing-rpg__letters{height:36px;align-content:center}
  .typing-rpg--pixel.typing-rpg--long .typing-rpg__letter{min-width:12px;height:17px;padding:0 1px;font-size:10px;line-height:15px}
 }
+
+/* The result uses the same compact, square gauges/panels as the battle. */
+.typing-result-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 8px;text-align:left}
+.typing-result-stats>div{padding:14px;border:2px solid var(--ink,#544333);background:#fff8e8;box-shadow:3px 3px 0 #b6a27c}
+.typing-result-stats span{display:block;font-size:14px;color:#53634e;font-weight:700}
+.typing-result-stats strong{display:block;font-size:clamp(26px,5vw,38px);line-height:1.35;white-space:nowrap}
+.typing-result-stats small{font-size:14px;margin-left:5px}
+.typing-result-method{text-align:left;font-size:13px;line-height:1.65;margin:12px 0}
+.typing-result-method summary{cursor:pointer;font-weight:700;min-height:32px;padding:5px 0}
+.typing-result-method p{margin:8px 0}
+@media(max-width:390px){.typing-result-stats>div{padding:10px}.typing-result-stats span{font-size:12px}}
+
+.result-card.result-card--typing{padding:26px 22px;gap:12px}
+.result-card.result-card--typing .result-game-art{width:80px;margin:0 auto 4px}
+.result-card.result-card--typing .result-number{font-size:56px}
+.result-card--typing .typing-result-stats{width:100%;max-width:520px;margin:0}
+.result-card--typing .typing-result-method{width:100%;max-width:520px;margin:0}
+@media(max-width:390px){.result-card.result-card--typing{padding:24px 16px;gap:10px}.result-card.result-card--typing .result-number{font-size:48px}}

@@ -5,7 +5,7 @@ import {createCityEngine as createCityV6} from '../public/js/legacy/city-engine-
 import {seededRandom} from '../public/js/game-random.js';
 
 const currentGames=[
-  ['jump',{version:'v16'}],
+  ['jump',{version:'v17'}],
   ['racing',{version:'v16',car:'basic'}],
 ];
 const legacyGames=[

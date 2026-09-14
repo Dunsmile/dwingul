@@ -156,5 +156,5 @@ test("HP zero is the only ending and result exposes the replay audit fields", ()
   assert.equal(result.value, 10);
   assert.equal(result.unit, "점");
   assert.equal(result.mode, "typing-rpg-v5-s10");
-  assert.deepEqual(Object.keys(result.details).sort(), ["accuracy", "actions", "bestClearedStage", "completed", "currentStage", "defeated", "elapsedMs", "gold", "stage", "startStage", "survivedSeconds", "typed"]);
+  assert.deepEqual(Object.keys(result.details).sort(), ["accuracy", "actions", "bestClearedStage", "completed", "currentStage", "defeated", "elapsedMs", "gold", "stage", "startStage", "survivedSeconds", "typed", "typingStats"]);
 });

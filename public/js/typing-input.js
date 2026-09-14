@@ -9,6 +9,7 @@ export function createTypingInput(model) {
     edit(value, options = {}) {
       draft = String(value ?? '').normalize('NFC');
       composing = Boolean(options.composing);
+      model.captureDraft(draft);
       if (composing) return {type:'composing'};
       const state = model.getState();
       const healing = state.healDraft || (!state.input && state.mp === state.maxMp && healParts.has(draft));
@@ -19,12 +20,9 @@ export function createTypingInput(model) {
     },
     submit() {
       if (composing) return {type:'composing'};
-      const hpBefore = model.getState().hp;
-      model.commitInput(draft);
-      const inputDamage = Math.max(0, hpBefore - model.getState().hp);
-      const result = model.submit();
+      const result = model.confirmInput(draft);
       draft = model.getState().input;
-      return {...result,inputDamage};
+      return result;
     },
     clear() {
       draft = ''; composing = false;
