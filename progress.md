@@ -155,3 +155,13 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - Rebuilt the scene with square brown borders/paper/shadows, PC height420–560px, actors up to136/144px, persistent top-center pause. Details use a bounded internal overlay; input and arena geometry stay fixed.
 - Checks:240unit/API tests pass. Six viewport checks1440/1366/1280/1024/390/320, genuine Chromium composition viaCDP plus unflagged pre-edit, NFD, correction, confirmed typo feedback, counter, heal15, and pause/resume passed. Official game client run captured separate draft inputs. Test server4176 uses memoryDB; user4173 and production records are untouched.
 - Released: PR#4 implementation365b7fa/main76dd772; Cloudflaree2a96db0-217c-4252-a49e-c7eabcb5c713. Four production JS/CSS hashes match tested artifacts, home200. Test4176 PID43864 stopped; user4173 PID95174 preserved. No remaining requested work.
+
+## 2026-09-15 — v15 typing menu and long sentences
+
+- User requested consistent Safari monster HP, a Minecraft-layout-inspired in-game title/menu, and 250 long 20–30-character sentences with double attack. Existing illustration/pixel style retained; no third-party game assets copied.
+- Added a bounded forest title/menu with settings, shop, equipment, characters and profile panels. Internal lists scroll without moving the frame; mode/checkpoint survive navigation, batch-draw return and profile recovery.
+- Added short/long mode settings through client, server replay, checkpoints, rewards, records, rooms, shares and private history. Short record key/rules remain compatible; long has its own key and doubles final equipment/combo damage. Inventory and unlocked chapters are shared.
+- Long deck: 250 unique static reviewed sentences (23–30 characters including spaces), 200 traditional-proverb adaptations and 50 original wisdom lines; source/editing notes in docs/content. Removed draft automatic word deletion and directly repaired awkward shortened sentences before release.
+- Replaced native meters with common accessible 11px square gauges. Fixed narrow-mobile HP text overlap and small-PC internal overflow when opening help; cleared stale menu toast when starting combat.
+- Verified 250 unit/API tests, 12 Chromium/WebKit menu+combat views, 2 engine shop/draw/equip/enhance/delete flows, old Korean composition/correction/heal and 6 short-mode layouts. Official game client captured long-mode drafts at HP100; screenshots visually inspected. Full build succeeds with 615 artwork entries and 30 crawlable pages. Test data only isolated memory DB; production/user4173 untouched.
+- Release pending final deployment and read-only verification. See docs/releases/2026-09-15-v15.md.
