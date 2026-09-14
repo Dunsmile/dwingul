@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { canSpawnJumpHeart, jumpHeal, jumpRunAfterHit } from '../public/js/jump-game.js';
+import { canSpawnJumpHeart, jumpHeal, jumpRunAfterHit } from '../public/js/jump-game-v16.js';
 import {
   JUMP_V16_RULES,
   JUMP_V16_STAGES,
@@ -14,7 +14,7 @@ import {
   jumpWorldSpeedV13,
   nextHeartMeters,
   jumpPatterns100,
-} from '../public/js/jump-patterns.js';
+} from '../public/js/jump-patterns-v16.js';
 
 test('v16 has six 1000m stages and each stage raises pattern frequency by 20 percent', () => {
   assert.equal(JUMP_V16_STAGES.length, 6);
@@ -122,7 +122,7 @@ test('heart waits for a clear corridor after all pattern events', () => {
 });
 
 test('runtime exposes resilient input, pause cleanup, heart, stage and ending state', async () => {
-  const source=await readFile(new URL('../public/js/jump-game.js',import.meta.url),'utf8');
+  const source=await readFile(new URL('../public/js/jump-game-v16.js',import.meta.url),'utf8');
   assert.match(source,/version='v16'/);
   assert.match(source,/jumpBufferMs = JUMP_V16_RULES\.jumpBufferMs/);
   assert.match(source,/heldJumpKeys\.add/);

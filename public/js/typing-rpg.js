@@ -3,6 +3,7 @@ import { typingPhrases } from "./typing-phrases.js";
 import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterIndex,rpgMonsterName} from './rpg-characters.js';
 import {assetUrl,warmImage} from './asset-delivery.js';
 import {createTypingInput} from './typing-input.js';
+import {createTypingStats} from './typing-stats.js';
 
 export const RPG_RULES = Object.freeze({
   maxHp: 100,
@@ -145,9 +146,11 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
   let actionSerial = 0;
   let lastAction = { type: "ready", amount: 0 };
   const actions = [];
+  const typingStats = createTypingStats();
+  let recording = true, confirming = false;
 
-  const accuracy = () => typed ? Math.round(correctTyped / typed * 1000) / 10 : 0;
-  const speed = () => elapsedMs ? Math.round(correctTyped * 60000 / elapsedMs) : 0;
+  const accuracy = () => typingStats.snapshot(elapsedMs).accuracy;
+  const speed = () => typingStats.snapshot(elapsedMs).cpm;
   const score = () => 10 + defeated * 10;
   const combo = () => comboHundredths / 100;
   const target = () => deck[phraseCursor];
@@ -158,7 +161,7 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
   }
   function record(type, text) {
     const entry = text === undefined ? [elapsedMs, type] : [elapsedMs, type, text];
-    actions.push(entry);
+    if (recording) actions.push(entry);
     return entry;
   }
   function end(reason) {
@@ -172,6 +175,7 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
   function clearInput() {
     if (finished) return { type: "finished", amount: 0 };
     record("clear");
+    typingStats.resetDraft();
     input = "";
     judgedInput = "";
     healDraft = false;
@@ -180,7 +184,8 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
 
   function commitInput(nextValue, { composing = false } = {}) {
     if (finished || composing) return { type: composing ? "composing" : "finished", amount: 0 };
-    const next = String(nextValue ?? "");
+    const next = String(nextValue ?? "").normalize("NFC");
+    typingStats.edit(next);
     if (next === input) return { type: "duplicate", amount: 0 };
     record("input", next);
     if (healDraft) {
@@ -223,12 +228,14 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
   function submit() {
     if (finished) return { type: "finished", amount: 0 };
     record("submit");
+    if (!confirming) typingStats.submit(target(), input, completed, {command: healDraft});
     if (healDraft) {
       if (input === HEAL_WORD && mp === RPG_RULES.maxMp) {
         const healAmount = RPG_RULES.baseHeal + equipment.heal;
         const recovered = Math.min(healAmount, RPG_RULES.maxHp - hp);
         hp = Math.min(RPG_RULES.maxHp, hp + healAmount);
         mp = 0;
+        typingStats.resetDraft();
         input = "";
         judgedInput = "";
         healDraft = false;
@@ -244,6 +251,7 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
     previousPhrase = target();
     phraseCursor += 1;
     if (phraseCursor >= deck.length) refillDeck();
+    typingStats.resetDraft();
     input = "";
     judgedInput = "";
     let defeatedNow = false;
@@ -260,6 +268,31 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
       if (bossDown) return action("boss-down", damage, { clearedStage: stage - 1 });
     }
     return action(defeatedNow ? "monster-down" : "attack", damage);
+  }
+
+  function captureDraft(value) {
+    if (finished) return;
+    const next = String(value ?? '').normalize('NFC');
+    record('draft', next);
+    typingStats.edit(next);
+  }
+
+  // Record the entire confirmed attempt before combat can end the run. This
+  // includes a lethal typo, and replays as one atomic operation on the server.
+  function confirmInput(value) {
+    if (finished) return {type: 'finished', inputDamage: 0};
+    const next = String(value ?? '').normalize('NFC');
+    record('confirm', next);
+    typingStats.edit(next);
+    const command = healDraft || (!input && mp === RPG_RULES.maxMp && HEAL_PARTS.has(next));
+    typingStats.submit(target(), next, completed, {command});
+    const hpBefore = hp;
+    recording = false; confirming = true;
+    try {
+      commitInput(next);
+      const inputDamage = Math.max(0, hpBefore - hp);
+      return {...submit(), inputDamage};
+    } finally { recording = true; confirming = false; }
   }
 
   function tick(ms) {
@@ -288,7 +321,7 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
       monsterHp, monsterMaxHp: monster.maxHp, counterDamage: monster.counterDamage, rawCounterDamage: monster.rawCounterDamage, counterEveryMs: monster.counterEveryMs, counterMs,
       defeated, completed, phraseCount: phrases.length, phraseCycle: cycle, deckRemaining: deck.length - phraseCursor, target: target(), input, healDraft,
       gold, bestClearedStage,
-      typed, correctTyped, accuracy: accuracy(), speed: speed(), elapsedMs,
+      typed, correctTyped, accuracy: accuracy(), speed: speed(), typingStats: typingStats.snapshot(elapsedMs), elapsedMs,
       survivedSeconds: Math.round(elapsedMs / 100) / 10, score: score(), finished, finishReason,
       actionSerial, lastAction: { ...lastAction }, actionCount: actions.length,
       lastRecordedAction: actions.length ? [...actions[actions.length - 1]] : null,
@@ -301,7 +334,7 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
       mode: `typing-rpg-v5-${sentenceMode === 'long' ? 'long-' : ''}s${firstStage}`,
       finished,
       details: {
-        stage, currentStage: stage, bestClearedStage, defeated, completed, accuracy: accuracy(), typed,
+        stage, currentStage: stage, bestClearedStage, defeated, completed, accuracy: accuracy(), typed, typingStats: typingStats.snapshot(elapsedMs),
         elapsedMs, survivedSeconds: Math.round(elapsedMs / 100) / 10, gold, startStage: firstStage,
         actions: actions.map((entry) => [...entry]),
       },
@@ -312,7 +345,7 @@ export function createTypingRpgModel({ random = Math.random, phrases, startStage
     return finished ? getProgress() : null;
   }
 
-  return { commitInput, clearInput, submit, tick, getState, getProgress, getResult };
+  return { commitInput, captureDraft, confirmInput, clearInput, submit, tick, getState, getProgress, getResult };
 }
 
 function node(tag, className, text) {
@@ -484,7 +517,7 @@ export function createTypingRpg(ctx) {
     targetLabel.textContent = state.sentenceMode === "long" ? "긴 문장 · 공격 ×2" : "이번 공격 주문";
     targetText.textContent = state.healDraft ? "회복 주문: 힐" : state.target;
     renderLetters({...state,input:typingInput.draft});
-    comboText.textContent=`콤보 ${Math.floor(state.combo)}`;speedText.textContent = `속도 ${state.speed}글자/분`; accuracyText.textContent = `정확도 ${state.accuracy.toFixed(1)}%`; defeatedText.textContent = `처치 ${state.defeated}`; completedText.textContent = `문장 ${state.completed}`;
+    comboText.textContent=`콤보 ${Math.floor(state.combo)}`;speedText.textContent = `평균 ${state.speed}타/분`; accuracyText.textContent = `정확도 ${state.accuracy === null ? '—' : state.accuracy.toFixed(1)+'%'}`; defeatedText.textContent = `처치 ${state.defeated}`; completedText.textContent = `문장 ${state.completed}`;
     healHint.textContent = `MP 100이면 빈 입력창에 ‘힐’ + Enter · HP ${RPG_RULES.baseHeal + state.gear.heal} 회복 · Esc로 지우기`;
     gearText.textContent = `장비 효과 · 공격 +${state.gear.attack} · 방어 -${state.gear.defense} · 회복 +${state.gear.heal}`;
     healHint.classList.toggle("is-ready", state.mp === RPG_RULES.maxMp);

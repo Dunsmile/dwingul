@@ -96,13 +96,23 @@ export function createRpgStore(db,fail){
   const actions=data.actions,elapsed=Number(data.elapsedMs);if(!Array.isArray(actions)||actions.length>50000||!Number.isInteger(elapsed)||elapsed<0||elapsed>7200000)fail('모험 기록을 확인해주세요.');
   if(previous&&(actions.length<previous.action_count||elapsed<previous.elapsed_ms||digest(actions.slice(0,previous.action_count))!==previous.action_hash))fail('저장된 모험에 이어서 진행해주세요.');
   const model=createTypingRpgModel({random:seededRandom(`typing:${attempt.seed}`),startStage:config.startStage,gear:config.gear,sentenceMode:config.sentenceMode});let time=0;
-  for(const a of actions){if(!Array.isArray(a)||!Number.isInteger(a[0])||a[0]<time||a[0]>elapsed||!['input','clear','submit'].includes(a[1]))fail('입력 기록을 확인해주세요.');model.tick(a[0]-time);time=a[0];if(model.getState().finished)fail('종료 후 입력은 기록할 수 없어요.');if(a[1]==='input'){if(typeof a[2]!=='string'||a[2].length>100)fail('입력 길이를 확인해주세요.');model.commitInput(a[2]);}else if(a[1]==='clear')model.clearInput();else model.submit();}
+  // Broad token bucket permits IME/accessibility bursts, but rejects fabricated
+  // zero-time edit oscillations. It is an abuse bound, not keyboard attestation.
+  let strokeBudget=512,lastStrokeTime=0,previousStrokes=0;
+  for(const a of actions){if(!Array.isArray(a)||!Number.isInteger(a[0])||a[0]<time||a[0]>elapsed||!['input','clear','submit','draft','confirm'].includes(a[1]))fail('입력 기록을 확인해주세요.');model.tick(a[0]-time);time=a[0];if(model.getState().finished)fail('종료 후 입력은 기록할 수 없어요.');if(['input','draft','confirm'].includes(a[1])){if(typeof a[2]!=='string'||a[2].length>100)fail('입력 길이를 확인해주세요.');if(a[1]==='draft')model.captureDraft(a[2]);else if(a[1]==='confirm')model.confirmInput(a[2]);else model.commitInput(a[2]);}else if(a[1]==='clear')model.clearInput();else model.submit();
+   {
+    strokeBudget=Math.min(512,strokeBudget+(a[0]-lastStrokeTime)*.08);
+    const currentStrokes=model.getState().typingStats.strokes;
+    strokeBudget-=currentStrokes-previousStrokes;previousStrokes=currentStrokes;lastStrokeTime=a[0];
+    if(strokeBudget<0)fail('너무 빠른 입력 기록이에요. 직접 문장을 입력해 다시 도전해주세요.');
+   }
+  }
   model.tick(elapsed-time);const outcome=model.getProgress(),s=model.getState(),d=outcome.details;const final=data.final===true;
   // Broad human-input ceiling, independent of the submitted score or gold.
   if(elapsed<Math.max(d.completed*250,s.correctTyped*15))fail('너무 짧은 시간의 입력 기록이에요. 직접 문장을 입력해 다시 도전해주세요.');
   if(final&&!s.finished)fail('모험이 아직 끝나지 않았어요.');if(!final&&d.bestClearedStage<1)fail('몬스터를 클리어한 뒤 저장할 수 있어요.');
   const earned=d.gold-(previous?.gold||0);if(earned<0)fail('저장된 모험을 확인해주세요.');
-  return atomic(db,()=>{profile(user);run('UPDATE rpg_profiles SET gold=gold+?,best_cleared=MAX(best_cleared,?) WHERE user_id=?',earned,d.bestClearedStage,user.id);run('INSERT INTO rpg_progress(run_id,gold,score,best_cleared,stage,elapsed_ms,action_count,action_hash,finished) VALUES(?,?,?,?,?,?,?,?,?) ON CONFLICT(run_id) DO UPDATE SET gold=excluded.gold,score=excluded.score,best_cleared=excluded.best_cleared,stage=excluded.stage,elapsed_ms=excluded.elapsed_ms,action_count=excluded.action_count,action_hash=excluded.action_hash,finished=excluded.finished',attempt.id,d.gold,outcome.value,d.bestClearedStage,d.currentStage??d.stage,elapsed,actions.length,digest(actions),final?1:0);return{...profile(user),earned,finished:final,score:outcome.value,stage:d.currentStage??d.stage};});
+  return atomic(db,()=>{profile(user);run('UPDATE rpg_profiles SET gold=gold+?,best_cleared=MAX(best_cleared,?) WHERE user_id=?',earned,d.bestClearedStage,user.id);run('INSERT INTO rpg_progress(run_id,gold,score,best_cleared,stage,elapsed_ms,action_count,action_hash,finished) VALUES(?,?,?,?,?,?,?,?,?) ON CONFLICT(run_id) DO UPDATE SET gold=excluded.gold,score=excluded.score,best_cleared=excluded.best_cleared,stage=excluded.stage,elapsed_ms=excluded.elapsed_ms,action_count=excluded.action_count,action_hash=excluded.action_hash,finished=excluded.finished',attempt.id,d.gold,outcome.value,d.bestClearedStage,d.currentStage??d.stage,elapsed,actions.length,digest(actions),final?1:0);return{...profile(user),earned,finished:final,score:outcome.value,stage:d.currentStage??d.stage,typingStats:d.typingStats};});
  }
  return{profile,settings,draw,equip,enhance,discard,purchaseCharacter,equipCharacter,progress};
 }
