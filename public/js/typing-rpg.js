@@ -1,6 +1,7 @@
 import { typingPhrases } from "./typing-phrases.js";
 import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterIndex,rpgMonsterName} from './rpg-characters.js';
 import {assetUrl,warmImage} from './asset-delivery.js';
+import {createTypingInput} from './typing-input.js';
 
 export const RPG_RULES = Object.freeze({
   maxHp: 100,
@@ -398,16 +399,20 @@ export function createTypingRpg(ctx) {
   const gearText = node("p", "typing-rpg__gear");
   const numbers = node("div", "typing-rpg__numbers");
   const comboText=node('span'),speedText = node("span"), accuracyText = node("span"), defeatedText = node("span"), completedText = node("span"); numbers.append(comboText,speedText, accuracyText, defeatedText, completedText);
-  const details=node('details','typing-rpg__details'),detailsLabel=node('summary','', '전투 상세 보기');details.append(detailsLabel,gearText,numbers);
+  const details=node('details','typing-rpg__details'),detailsLabel=node('summary','', '전투 설명'),detailsContent=node('div','typing-rpg__details-content');
+  const inputRule=node('p','typing-rpg__input-rule','입력·수정 중에는 HP가 줄지 않아요. 공격할 때 남아 있는 오타만 판정해요. 몬스터 반격은 시간이 끝나면 들어와요.');
+  detailsContent.append(inputRule,gearText,numbers);details.append(detailsLabel,detailsContent);
   command.append(targetLabel, targetText, letterGuide, form, message, healHint, details);
   arena.append(hud, scene, command); battlefield.append(arena); root.append(battlefield); ctx.stage.append(root);
-  const pauseButton=gameRoot?.querySelector('.dg-game__pause');if(pauseButton){pauseButton.classList.add('typing-rpg__pause');arena.append(pauseButton);}
+  const pauseButton=gameRoot?.querySelector('.dg-game__pause');if(pauseButton){pauseButton.classList.add('typing-rpg__pause');runHud.append(pauseButton);}
 
+  const typingInput = createTypingInput(model);
   let composing = false;
   let reported = false;
   let effectMs = 0;
   let seenAction = -1;
   let warmedAfterStage = 0;
+  let submittedTypoDamage = 0;
 
   function actionMessage(state) {
     const { type, amount } = state.lastAction;
@@ -422,7 +427,7 @@ export function createTypingRpg(ctx) {
       "heal-draft": "회복 주문 준비 중 · ‘힐’을 완성하고 Enter를 누르세요.",
       heal: `회복 성공! HP를 ${amount} 회복했어요.`,
       "heal-invalid": "회복 주문은 정확히 ‘힐’이에요. Esc로 지울 수 있어요.",
-      incomplete: "아직 문장이 맞지 않아요. 표시된 글자를 확인하세요.",
+      incomplete: submittedTypoDamage ? `공격 실패 · 확정한 오타로 HP ${submittedTypoDamage} 감소. 문장을 고쳐주세요.` : "아직 문장이 맞지 않아요. 표시된 글자를 확인하세요.",
       empty: "공격할 문장을 입력해 주세요.",
       clear: "입력을 지웠어요. 다시 차분히 시작하세요.",
       defeat: "HP가 모두 줄었어요. 이번 모험은 여기까지예요.",
@@ -460,7 +465,7 @@ export function createTypingRpg(ctx) {
     counterText.title = `반격 피해 ${state.counterDamage}`;
     counterFill.style.width = `${state.counterMs / state.counterEveryMs * 100}%`;
     targetText.textContent = state.healDraft ? "회복 주문: 힐" : state.target;
-    renderLetters(state);
+    renderLetters({...state,input:typingInput.draft});
     comboText.textContent=`콤보 ${Math.floor(state.combo)}`;speedText.textContent = `속도 ${state.speed}글자/분`; accuracyText.textContent = `정확도 ${state.accuracy.toFixed(1)}%`; defeatedText.textContent = `처치 ${state.defeated}`; completedText.textContent = `문장 ${state.completed}`;
     healHint.textContent = `MP 100이면 빈 입력창에 ‘힐’ + Enter · HP ${RPG_RULES.baseHeal + state.gear.heal} 회복 · Esc로 지우기`;
     gearText.textContent = `장비 효과 · 공격 +${state.gear.attack} · 방어 -${state.gear.defense} · 회복 +${state.gear.heal}`;
@@ -471,24 +476,27 @@ export function createTypingRpg(ctx) {
       const effect = ["attack", "monster-down", "boss-down"].includes(state.lastAction.type) ? "is-attack" : ["typo", "counter"].includes(state.lastAction.type) ? "is-hit" : state.lastAction.type === "heal" ? "is-heal" : "";
       if (effect) { void root.offsetWidth; root.classList.add(effect); effectMs = 360; }
     }
+    if(!state.finished && typingInput.draft!==state.input && !composing) message.textContent='입력 중 · 공격 전에 표시된 글자를 확인하세요.';
     input.disabled = state.finished; submit.disabled = state.finished;
     ctx.setStatus(`타이포 RPG · STAGE ${state.stage}${state.boss ? " BOSS" : ""} · ${state.score}점 · ${state.gold}골드`);
     if (state.finished && !reported) { reported = true; ctx.finish(model.getResult()); }
   }
 
-  function commit() { model.commitInput(input.value, { composing }); render(); }
-  ctx.listen(input, "compositionstart", () => { composing = true; });
+  function commit() { submittedTypoDamage=0; typingInput.edit(input.value, { composing }); render(); }
+  ctx.listen(input, "compositionstart", () => { composing = true; typingInput.edit(input.value,{composing:true}); });
   ctx.listen(input, "compositionend", () => { composing = false; commit(); });
   ctx.listen(input, "input", (event) => { if (!event.isComposing) commit(); });
   ctx.listen(input, "keydown", (event) => {
+    if(event.key === "Enter" && (composing || event.isComposing || event.keyCode === 229)){event.preventDefault();return;}
     if (event.key !== "Escape") return;
-    event.preventDefault(); composing = false; input.value = ""; model.clearInput(); render();
+    event.preventDefault(); composing = false; input.value = ""; submittedTypoDamage=0; typingInput.clear(); render();
   });
   ctx.listen(form, "submit", (event) => {
     event.preventDefault();
     if (composing || ctx.isFinished()) return;
-    model.commitInput(input.value);
-    const outcome = model.submit();
+    typingInput.edit(input.value);
+    const outcome = typingInput.submit();
+    submittedTypoDamage=outcome.inputDamage||0;
     if (["boss-down", "monster-down"].includes(outcome.type) && ctx.checkpoint) {
       try { Promise.resolve(ctx.checkpoint(model.getProgress())).catch(() => {}); } catch { /* A failed optional save must not pause combat. */ }
     }
@@ -504,7 +512,7 @@ export function createTypingRpg(ctx) {
       if (!effectMs) root.classList.remove("is-attack", "is-hit", "is-heal");
       render();
     },
-    getState: () => ({ ...model.getState(), composing }),
+    getState: () => ({ ...model.getState(), draft: typingInput.draft, composing }),
     destroy() { gameRoot?.classList.remove("dg-game--typing-rpg"); },
   };
 }
