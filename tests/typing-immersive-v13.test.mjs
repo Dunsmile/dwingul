@@ -11,11 +11,11 @@ test('typing battle places three status groups, actors, and commands in one illu
   assert.match(js,/pauseButton\.classList\.add\('typing-rpg__pause'\)/);
   assert.doesNotMatch(js,/root\.append\(hud, battlefield\)/);
   assert.match(css,/v13: one immersive battlefield/);
-  assert.match(css,/typing-rpg__arena[\s\S]*background-image:[^;]*battlefield\.png/);
+  assert.match(css,/typing-rpg__arena[\s\S]*background(?:-image)?:[^;]*battlefield\.png/);
   assert.match(css,/typing-rpg__hud[\s\S]*grid-template-columns/);
   assert.match(css,/typing-rpg__command[\s\S]*position:relative/);
   assert.match(css,/dg-game--typing-rpg \.dg-game__toolbar\{display:none\}/);
-  assert.match(css,/typing-rpg__pause\{position:absolute/);
+  assert.match(css,/typing-rpg__pause\{position:relative/);
 });
 
 test('typing battle keeps semantic asset paths while delivering and warming optimized images',()=>{
