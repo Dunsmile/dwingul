@@ -42,6 +42,6 @@
 ## 6. Verification and release — main
 - [x] Use isolated in-memory QA DB on 4174 only. Do not restart or reset the user's 4173 DB. No test records on production.
 - [x] Meaningful tests of new behavior, old replay/profile regressions, 320/390/768/1440/1920 responsive checks, official web-game client inputs and screenshot inspection.
-- [ ] Independent spec/code review, fix material findings, build and deploy after verification. Public read-only checks and GitHub release notes.
+- [x] Independent spec/code review, fix material findings, build and deploy after verification. Public read-only checks and GitHub release notes. See `docs/releases/2026-09-14-v11.md`.
 
 References: user supplied Naver vehicle design URL and Newdaily camera reference. Official Google Search Central starter guide informs SEO changes. External artwork is reference only, not copied into the product.

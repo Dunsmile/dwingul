@@ -124,4 +124,4 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - Generated 13 source atlases/backgrounds, exported 494 production PNGs and 526-entry artbook. 312 equipment cards derive from 75 base illustrations; original16 character identities retained.
 - 31 crawlable pages with unique metadata, categories, canonical links, schema and image sitemap.
 - QA evidence: 199 unit/API tests, 115 responsive views (320–1920), 20 game views, real RPG/rhythm/jump controls, prior-mode replay and sharing guards, image fallbacks; independent review issues resolved.
-- Production deployment pending final release verification.
+- Released from GitHub main 4c13f04 (PR #1), Cloudflare version 24c2fdf3-f464-4aa1-9e67-bc8c76f3019d. Production read-only check passed: artbook526, resources551, crawlable pages31 with unique titles/canonical/contact, www308, private server modules404. Existing in-app browser renders current home and RPG character menu. No production game/profile creation or test purchases were performed.

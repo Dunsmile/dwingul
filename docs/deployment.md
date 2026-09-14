@@ -2,6 +2,8 @@
 
 2026-09-14에 https://dwingul.com 초기 공개 배포를 완료했다. 아래 계정 연결 상태는 초기 출시 당시의 확인 기록이며, 버전별 배포 검증은 출시 기록을 함께 참고한다.
 
+최신 배포: [v11 출시 기록](releases/2026-09-14-v11.md). GitHub `main`의 `4c13f04`, Cloudflare 버전 `24c2fdf3-f464-4aa1-9e67-bc8c76f3019d`를 2026-09-14에 공개했다.
+
 - Cloudflare Workers + SQLite Durable Object로 배포했고, `www`는 대표 주소로 308 이동한다.
 - 원본 로컬 DB를 백업한 뒤 기존 107행을 이전했다. 삽입 결과는 원본 테이블별 개수와 일치했다. 일회성 DB 반입 경로와 비밀키는 제거했다.
 - 기존 로컬 브라우저는 홈의 “온라인에서 기존 기록 이어가기”로 성장·장비·차량을 연결할 수 있다. 연결표는 30일 동안 한 번만 사용 가능하며 브라우저에만 남아 있던 미저장 결과와 생일은 원래 로컬 브라우저에 유지된다.
@@ -27,7 +29,7 @@ npm run build
 - `dist/content/<콘텐츠 ID>/index.html`에서 이용 안내를 읽을 수 있고, 시작 버튼이 `/#/detail/<콘텐츠 ID>`로 이동하는지 확인한다.
 - `dist/js/rpg-store.js`와 `dist/js/garage-store.js`가 없는지 확인한다.
 - `dist/ads.txt` 내용이 `google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0`인지 확인한다.
-- `dist/sitemap.xml`에 홈 1개, 가이드 목록 1개, 콘텐츠 21개, 안내 4개로 총 27개 URL이 있는지 확인한다.
+- `dist/sitemap.xml`에 홈 1개, 가이드 목록 1개, 장르 4개, 콘텐츠 21개, 안내 4개로 총 31개 URL이 있는지 확인한다.
 - 모바일과 데스크톱에서 홈, 게임 1개, 퀴즈 1개, 성향 테스트 1개, 운세 1개, 개인정보처리방침을 직접 연다.
 
 `dist/`는 매번 지우고 다시 만드는 결과물이다. `wrangler.jsonc`의 정적 자산 디렉터리는 `./dist`를 가리키며, 모든 요청이 먼저 Worker를 통과하도록 설정되어 있다. 정적 자산 설정은 Cloudflare 공식 [Workers Static Assets 시작 안내](https://developers.cloudflare.com/workers/static-assets/get-started/)와 실제 설정을 함께 확인한다. 계정 로그인과 아래 외부 확인을 마친 뒤의 배포 명령은 다음과 같다.
@@ -55,8 +57,8 @@ npx wrangler deploy
 ### 공개 GitHub 저장소와 연락 창구
 
 1. `Dunsmile/dwingul`을 공개 저장소로 게시하고 Issues 기능을 켠다.
-2. `https://github.com/Dunsmile/dwingul/issues`가 로그아웃 상태에서도 열리는지 확인한다.
-3. 저장소에 포함된 오류 제보 양식이 기본 양식으로 보이고 개인정보 경고와 필수 항목이 동작하는지 확인한다.
+2. 서비스의 문의·제안은 `mailto:poilkjmnb122@gmail.com`, 제휴 문의는 같은 주소의 제목이 지정된 이메일 링크로 연결한다.
+3. GitHub Issues는 개발 협업용으로 유지하되, 사용자에게 보이는 연락 링크가 이메일을 가리키는지 확인한다.
 4. 저장소 공개 전 커밋 기록과 파일에 Cloudflare 토큰, 복구 코드, 세션 값 같은 비밀정보가 없는지 점검한다.
 
 ### Cloudflare 배포와 데이터
