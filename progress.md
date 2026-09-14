@@ -113,3 +113,15 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - 생성 도중 두 포즈의 가짜 투명 배경을 발견하여 재제작, 최종11 WebP 모두 실제 alpha 검증. 단위 테스트에 투명 채널·482개 목록·실제 SVG 비율·한국어 검색을 검증하도록 추가.
 - 검증은 4174 메모리 DB와 별도 테스트 브라우저만 사용. 사용자 4173 DB 및 운영 데이터/서버 규칙 변경 없음. 최종 자동 검사147개, 전체 브라우저 실행 5폭/115화면·게임13확인·결과5종·장비/뽑기·아트북482항목 모두 통과, findings 없음. Cloudflare 로컬4175에서 정적 리소스507개와 가이드3개 통과.
 - 배포 완료: GitHub main fd6322a, Cloudflare a803a3b4-246d-421a-8791-eb94b93e8c03. dwingul.com/www 사용자 지정 도메인 배포 성공. 운영 읽기 전용 확인에서 제작물482개·정적 리소스507개·대표 가이드3개 HTTP200, 모바일 아트북/가이드 그림·레이아웃 직접 확인.
+
+## 2026-09-14 — v11 release preparation
+
+- Hero-only readable type, email/partnership footer, account-scoped recent ordering and reset handling.
+- 300 original guessing clues under initial-clues-v11; frozen V8 bank retained.
+- Racing V7: 8 cars, fuel-as-health, armor, 0.5/s drain, 1.5x pickups, per-car boost traits and illustrated upright vehicles.
+- Jump V11 uses world-distance scheduling. Rhythm V11 has three explicit lanes and fixed keyboard/countdown behavior; mobile start panel no longer clips its button.
+- RPG: 16 cosmetic characters, atomic ownership/equip and recovery, 25 species, compact HUD with legible enemy status over illustrated background.
+- Generated 13 source atlases/backgrounds, exported 494 production PNGs and 526-entry artbook. 312 equipment cards derive from 75 base illustrations; original16 character identities retained.
+- 31 crawlable pages with unique metadata, categories, canonical links, schema and image sitemap.
+- QA evidence: 199 unit/API tests, 115 responsive views (320–1920), 20 game views, real RPG/rhythm/jump controls, prior-mode replay and sharing guards, image fallbacks; independent review issues resolved.
+- Production deployment pending final release verification.

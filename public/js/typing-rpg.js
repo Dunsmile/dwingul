@@ -1,4 +1,5 @@
 import { typingPhrases } from "./typing-phrases.js";
+import {rpgCharacter,rpgCharacterArtPath,rpgMonsterArtPath,rpgMonsterName} from './rpg-characters.js';
 
 export const RPG_RULES = Object.freeze({
   maxHp: 100,
@@ -309,14 +310,29 @@ function node(tag, className, text) {
 }
 
 function pixelArt(src,className,width,height){
-  const image=node('img',className);image.src=src;image.alt='';image.width=width;image.height=height;image.draggable=false;image.decoding='async';return image;
+  const image=node('img',className);if(src)image.src=src;image.alt='';image.width=width;image.height=height;image.draggable=false;image.decoding='async';return image;
 }
 
-const MONSTER_NAMES = ["쉼표 슬라임", "괄호 도깨비", "물음표 해파리", "띄어쓰기 골렘", "마침표 용"];
-const BOSS_NAMES = ["문장왕 그라모", "황금 오타룡", "대괄호 군주", "천 글자 마왕", "무한서고 지기"];
+function wirePixelArt(image,container){
+  image.addEventListener('error',()=>{
+    if(image.dataset.fallback&&!image.dataset.usingFallback){image.dataset.usingFallback='true';image.src=image.dataset.fallback;return;}
+    container.classList.add('is-art-missing');
+  });
+  image.addEventListener('load',()=>container.classList.remove('is-art-missing'));
+}
+
+function setPixelArt(image,container,primary,fallback){
+  if(image.dataset.asset===primary)return;
+  image.dataset.asset=primary;
+  image.dataset.fallback=fallback;
+  delete image.dataset.usingFallback;
+  container.classList.remove('is-art-missing');
+  image.src=primary;
+}
 
 export function createTypingRpg(ctx) {
   const model = createTypingRpgModel({ random: ctx.random, startStage: ctx.settings?.startStage, gear: ctx.settings?.gear });
+  const selectedCharacter=rpgCharacter(ctx.settings?.characterId);
   const gameRoot = ctx.stage.closest?.(".dg-game");
   gameRoot?.classList.add("dg-game--typing-rpg");
 
@@ -330,11 +346,11 @@ export function createTypingRpg(ctx) {
   const mpLabel = node("span", "typing-rpg__meter-label", "회복 MP");
   const mpMeter = node("meter", "typing-rpg__meter"); mpMeter.min = 0; mpMeter.max = RPG_RULES.maxMp;
   const mpValue = node("b", "typing-rpg__meter-value"); mpCard.append(mpLabel, mpMeter, mpValue);
-  const comboCard = node("div", "typing-rpg__stat-card");
-  const comboLabel = node("span", "typing-rpg__stat-label", "콤보"); const comboValue = node("b", "typing-rpg__stat-value"); comboCard.append(comboLabel, comboValue);
   const progressCard = node("div", "typing-rpg__stat-card");
   const progressLabel = node("span", "typing-rpg__stat-label", "스테이지"); const progressValue = node("b", "typing-rpg__stat-value"); progressCard.append(progressLabel, progressValue);
-  hud.append(hpCard, mpCard, comboCard, progressCard);
+  const goldCard = node("div", "typing-rpg__stat-card typing-rpg__stat-card--gold");
+  const goldLabel = node("span", "typing-rpg__stat-label", "골드"); const goldValue = node("b", "typing-rpg__stat-value"); goldCard.append(goldLabel, goldValue);
+  hud.append(hpCard, mpCard, progressCard, goldCard);
 
   const battlefield = node("div", "typing-rpg__battlefield");
   const arena = node("section", "typing-rpg__arena"); arena.setAttribute("aria-label", "몬스터 전투 상황");
@@ -345,12 +361,12 @@ export function createTypingRpg(ctx) {
   const enemyMeter = node("meter", "typing-rpg__enemy-meter"); enemyMeter.min = 0;
   const scene = node("div", "typing-rpg__scene");
   const hero = node("div", "typing-rpg__hero"); hero.setAttribute("aria-hidden", "true");
-  const heroArt=pixelArt('/assets/pixel/rpg/hero.svg','typing-rpg__hero-art',96,96),heroFallback=node('span','typing-rpg__art-fallback','⌨');hero.append(heroFallback,heroArt);
-  heroArt.addEventListener('error',()=>hero.classList.add('is-art-missing'));heroArt.addEventListener('load',()=>hero.classList.remove('is-art-missing'));
-  const bolt = pixelArt('/assets/pixel/rpg/spell-attack.svg','typing-rpg__bolt',48,48); bolt.setAttribute("aria-hidden", "true");
+  const heroArt=pixelArt('','typing-rpg__hero-art',112,112),heroFallback=node('span','typing-rpg__art-fallback','⌨');hero.append(heroFallback,heroArt);
+  wirePixelArt(heroArt,hero);setPixelArt(heroArt,hero,rpgCharacterArtPath(selectedCharacter.id),'/assets/pixel/rpg/hero.svg');
+  const bolt = pixelArt('/assets/pixel/illustrated/rpg/spell-attack.png','typing-rpg__bolt',48,48); bolt.setAttribute("aria-hidden", "true");
   const creature = node("div", "typing-rpg__monster"); creature.setAttribute("aria-hidden", "true");
-  const creatureArt=pixelArt('/assets/pixel/rpg/monster-01.svg','typing-rpg__monster-art',96,96),creatureFallback=node('span','typing-rpg__art-fallback','◆');creature.append(creatureFallback,creatureArt);
-  creatureArt.addEventListener('error',()=>creature.classList.add('is-art-missing'));creatureArt.addEventListener('load',()=>creature.classList.remove('is-art-missing'));
+  const creatureArt=pixelArt('','typing-rpg__monster-art',128,128),creatureFallback=node('span','typing-rpg__art-fallback','◆'),crown=node('span','typing-rpg__crown','♛');creature.append(crown,creatureFallback,creatureArt);
+  wirePixelArt(creatureArt,creature);
   scene.append(hero, bolt, creature);
   const counter = node("div", "typing-rpg__counter");
   const counterText = node("span", "typing-rpg__counter-text");
@@ -368,8 +384,9 @@ export function createTypingRpg(ctx) {
   const healHint = node("p", "typing-rpg__heal-hint");
   const gearText = node("p", "typing-rpg__gear");
   const numbers = node("div", "typing-rpg__numbers");
-  const speedText = node("span"), accuracyText = node("span"), defeatedText = node("span"), completedText = node("span"); numbers.append(speedText, accuracyText, defeatedText, completedText);
-  command.append(targetLabel, targetText, letterGuide, form, message, healHint, gearText, numbers);
+  const comboText=node('span'),speedText = node("span"), accuracyText = node("span"), defeatedText = node("span"), completedText = node("span"); numbers.append(comboText,speedText, accuracyText, defeatedText, completedText);
+  const details=node('details','typing-rpg__details'),detailsLabel=node('summary','', '전투 상세 보기');details.append(detailsLabel,gearText,numbers);
+  command.append(targetLabel, targetText, letterGuide, form, message, healHint, details);
   battlefield.append(arena, command); root.append(hud, battlefield); ctx.stage.append(root);
 
   let composing = false;
@@ -416,19 +433,18 @@ export function createTypingRpg(ctx) {
     const state = model.getState();
     root.style.setProperty("--rpg-stage-color", state.palette);
     root.classList.toggle("is-boss", state.boss);
-    const artPath=typingRpgArtPath(state.stage,state.boss);
-    if(creatureArt.dataset.asset!==artPath){creatureArt.dataset.asset=artPath;creatureArt.src=artPath;}
+    setPixelArt(creatureArt,creature,rpgMonsterArtPath(state.stage),typingRpgArtPath(state.stage,state.boss));
     hpMeter.value = state.hp; hpValue.textContent = `${state.hp} / ${state.maxHp}`;
     mpMeter.value = state.mp; mpValue.textContent = `${state.mp} / ${state.maxMp}`;
-    comboValue.textContent = `${Math.floor(state.combo)}`; progressValue.textContent = `${state.stage}`;
+    progressValue.textContent = `${state.stage}`;goldValue.textContent=`${state.gold}`;
     stageBadge.textContent = state.boss ? `STAGE ${state.stage} · BOSS` : `STAGE ${state.stage}`;
-    enemyName.textContent = state.boss ? BOSS_NAMES[(Math.floor(state.stage / 10) - 1) % BOSS_NAMES.length] : MONSTER_NAMES[(state.stage - 1) % MONSTER_NAMES.length];
+    enemyName.textContent = rpgMonsterName(state.stage,state.boss);
     enemyMeter.max = state.monsterMaxHp; enemyMeter.value = state.monsterHp; enemyHpText.textContent = `${Math.max(0, state.monsterHp)} / ${state.monsterMaxHp}`;
     counterText.textContent = `반격까지 ${(state.counterMs / 1000).toFixed(1)}초 · 피해 ${state.counterDamage}`;
     counterFill.style.width = `${state.counterMs / state.counterEveryMs * 100}%`;
     targetText.textContent = state.healDraft ? "회복 주문: 힐" : state.target;
     renderLetters(state);
-    speedText.textContent = `속도 ${state.speed}글자/분`; accuracyText.textContent = `정확도 ${state.accuracy.toFixed(1)}%`; defeatedText.textContent = `처치 ${state.defeated}`; completedText.textContent = `문장 ${state.completed}`;
+    comboText.textContent=`콤보 ${Math.floor(state.combo)}`;speedText.textContent = `속도 ${state.speed}글자/분`; accuracyText.textContent = `정확도 ${state.accuracy.toFixed(1)}%`; defeatedText.textContent = `처치 ${state.defeated}`; completedText.textContent = `문장 ${state.completed}`;
     healHint.textContent = `MP 100이면 빈 입력창에 ‘힐’ + Enter · HP ${RPG_RULES.baseHeal + state.gear.heal} 회복 · Esc로 지우기`;
     gearText.textContent = `장비 효과 · 공격 +${state.gear.attack} · 방어 -${state.gear.defense} · 회복 +${state.gear.heal}`;
     healHint.classList.toggle("is-ready", state.mp === RPG_RULES.maxMp);

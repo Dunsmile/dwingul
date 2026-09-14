@@ -1,8 +1,11 @@
-import { createRhythm } from './rhythm-game.js';
+import { createRhythm as createRhythmV11 } from './rhythm-game.js';
+import { createRhythm as createRhythmV9 } from './legacy/rhythm-game-v9.js';
 import { createSortGame } from './sort-game.js';
 import { seededRandom } from './game-random.js';
 import { createTypingRpg } from './typing-rpg.js';
-import { createJump } from './jump-game.js';
+import { createJump as createJumpV11 } from './jump-game.js';
+import { createJump as createJumpV6 } from './legacy/jump-game-v6.js';
+import { createJump as createJumpV5 } from './legacy/jump-game-v5.js';
 import { createCityRacing } from './city-racing.js';
 import { gameSettings } from './game-options.js';
 const FRAME_MS = 1000 / 60;
@@ -35,6 +38,35 @@ export function colorGridSize(correctCount) {
   if (correctCount < 16) return 5;
   if (correctCount < 24) return 6;
   return 7;
+}
+
+const CURRENT_CREATORS = Object.freeze({
+  sort: createSortGame,
+  typing: createTypingRpg,
+  racing: createCityRacing,
+});
+
+export function gameContextSettings(id, settings = {}) {
+  const source = settings && typeof settings === 'object' ? settings : {};
+  const normalized = { ...gameSettings(id, source), gear: source.gear || {} };
+  if (typeof source.characterId === 'string') normalized.characterId = source.characterId;
+  return normalized;
+}
+
+export function resolveGameCreator(id, settings = {}) {
+  const normalized = gameSettings(id, settings);
+  if (id === 'sequence') {
+    if (normalized.version === 'v11') return createRhythmV11;
+    if (normalized.version === 'v9') return createRhythmV9;
+    throw new RangeError(`지원하지 않는 리듬 규칙: ${normalized.version}`);
+  }
+  if (id === 'jump') {
+    if (normalized.version === 'v11') return createJumpV11;
+    if (normalized.version === 'v6') return createJumpV6;
+    if (normalized.version === 'v5') return createJumpV5;
+    throw new RangeError(`지원하지 않는 점프 규칙: ${normalized.version}`);
+  }
+  return CURRENT_CREATORS[id] || null;
 }
 
 export function mountGame(container, id, { seed = "dwingul", settings = {}, onCheckpoint = () => {}, onFinish = () => {} } = {}) {
@@ -100,11 +132,11 @@ export function mountGame(container, id, { seed = "dwingul", settings = {}, onCh
     });
   };
 
-  const context = { root, stage, random, settings: { ...gameSettings(id, settings), gear: settings.gear || {} }, checkpoint: onCheckpoint, listen: gameListen, setStatus, finish, isFinished: () => finished };
-  const creators = { sort: createSortGame, timing: createTiming, color: createColor, reaction: createReaction,
-    typing: createTypingRpg, racing: createCityRacing, memory: createMemory, numbers: createNumbers, sequence: createRhythm, jump: createJump };
-  if (!creators[id]) throw new RangeError(`지원하지 않는 게임: ${id}`);
-  const game = creators[id](context);
+  const context = { root, stage, random, settings: gameContextSettings(id, settings), checkpoint: onCheckpoint, listen: gameListen, setStatus, finish, isFinished: () => finished };
+  const inlineCreators = { timing: createTiming, color: createColor, reaction: createReaction, memory: createMemory, numbers: createNumbers };
+  const creator = resolveGameCreator(id, context.settings) || inlineCreators[id];
+  if (!creator) throw new RangeError(`지원하지 않는 게임: ${id}`);
+  const game = creator(context);
 
   function setPaused(next, byVisibility = false) {
     if (finished || destroyed) return;

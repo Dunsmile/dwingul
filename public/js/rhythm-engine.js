@@ -329,6 +329,22 @@ export function createRhythmPatterns(random = Math.random) {
   });
 }
 
+export const RHYTHM_LANES = Object.freeze(["left", "center", "right"]);
+
+export function createRhythmLanePatterns(random = Math.random) {
+  const patterns = createRhythmPatterns(random);
+  return patterns.map((pattern) => {
+    let previous = null;
+    const lanes = pattern.notes.map((_, noteIndex) => {
+      let lane = RHYTHM_LANES[Math.min(2, Math.floor(random() * RHYTHM_LANES.length))];
+      if (lane === previous) lane = RHYTHM_LANES[(RHYTHM_LANES.indexOf(lane) + 1 + noteIndex % 2) % RHYTHM_LANES.length];
+      previous = lane;
+      return lane;
+    });
+    return { ...pattern, lanes };
+  });
+}
+
 export function judgeEndlessRhythmOffset(offsetMs) {
   const offset = Number(offsetMs) || 0;
   const timing = offset < 0 ? "fast" : offset > 0 ? "late" : "exact";
@@ -341,8 +357,8 @@ export function judgeEndlessRhythmOffset(offsetMs) {
   };
 }
 
-export function createRhythmEndlessEngine({ random = Math.random } = {}) {
-  let patterns = createRhythmPatterns(random);
+function createRhythmCore({ random = Math.random, laneMode = false } = {}) {
+  let patterns = laneMode ? createRhythmLanePatterns(random) : createRhythmPatterns(random);
   let phase = "idle";
   let roundIndex = 0;
   let patternCycle = 0;
@@ -399,12 +415,12 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
     pulseCursor = 0;
     emit("gameover", { reason, holdMs: RHYTHM_ENDLESS_RULES.gameOverHoldMs });
   }
-  function penalize(kind, amount) {
+  function penalize(kind, amount, judgment = null) {
     energy = Math.max(0, energy - amount);
     combo = 0;
     if (kind === "miss") misses += 1;
     else extraTaps += 1;
-    lastJudgment = { grade: kind, timing: kind === "miss" ? "late" : "wrong", diffMs: null };
+    lastJudgment = judgment || { grade: kind, timing: kind === "miss" ? "late" : "wrong", diffMs: null };
     emit("judgment", lastJudgment);
     if (!energy) beginGameOver("energy");
   }
@@ -418,6 +434,7 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
         beat,
         atMs: Math.round((beat + RHYTHM_ENDLESS_RULES.responseLeadBeats) * beatMs()),
         tone: current().tones[index],
+        ...(laneMode ? { lane: current().lanes[index] } : {}),
         status: "pending",
         grade: "",
         diffMs: null,
@@ -475,7 +492,7 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
     roundIndex += 1;
     if (roundIndex % patterns.length === 0) {
       patternCycle += 1;
-      let next = createRhythmPatterns(random);
+      let next = laneMode ? createRhythmLanePatterns(random) : createRhythmPatterns(random);
       if (next[0].notes.join(",") === previous && next.length > 1) [next[0], next[1]] = [next[1], next[0]];
       patterns = next;
     }
@@ -520,9 +537,9 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
     if (pendingMs < 0) pendingMs = 0;
     return getState();
   }
-  function extra(timing = "wrong") {
-    const result = { grade: "extra", timing, diffMs: null };
-    penalize("extra", RHYTHM_ENDLESS_RULES.extraPenalty);
+  function extra(timing = "wrong", detail = {}) {
+    const result = { grade: "extra", timing, diffMs: null, ...detail };
+    penalize("extra", RHYTHM_ENDLESS_RULES.extraPenalty, laneMode ? result : null);
     return result;
   }
   function award(note, diffMs) {
@@ -537,22 +554,33 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
     if (judgment.grade === "perfect") perfect += 1;
     else good += 1;
     score += (judgment.grade === "perfect" ? 100 : 60) + Math.min(50, Math.max(0, combo - 1) * 5);
-    lastJudgment = { ...judgment, diffMs };
+    lastJudgment = { ...judgment, diffMs, ...(laneMode ? { lane: note.lane } : {}) };
     emit("judgment", lastJudgment);
-    emit("player-note", { tone: note.tone, grade: judgment.grade });
+    emit("player-note", { tone: note.tone, grade: judgment.grade, ...(laneMode ? { lane: note.lane } : {}) });
     return lastJudgment;
   }
-  function tap() {
-    if (phase !== "respond") return { grade: "ignored", timing: ending() ? "gameover" : "wrong-phase", diffMs: null };
+  function tap(lane) {
+    const inputLane = laneMode && RHYTHM_LANES.includes(lane) ? lane : null;
+    if (phase !== "respond") return {
+      grade: "ignored", timing: ending() ? "gameover" : "wrong-phase", diffMs: null,
+      ...(laneMode ? { lane: inputLane ?? String(lane || "") } : {}),
+    };
+    if (laneMode && !inputLane) return { grade: "ignored", timing: "invalid-lane", diffMs: null, lane: String(lane || "") };
     emit("tap");
-    if (elapsedMs - lastTapElapsedMs < RHYTHM_ENDLESS_RULES.rapidTapMs) return extra("rapid");
+    if (elapsedMs - lastTapElapsedMs < RHYTHM_ENDLESS_RULES.rapidTapMs) return extra("rapid", laneMode ? { lane: inputLane } : {});
     lastTapElapsedMs = elapsedMs;
     const pending = noteStates.filter((note) => note.status === "pending");
-    if (!pending.length) return extra("late");
+    if (!pending.length) return extra("late", laneMode ? { lane: inputLane } : {});
     const nearest = pending.reduce((best, note) => (
       Math.abs(phaseElapsedMs - note.atMs) < Math.abs(phaseElapsedMs - best.atMs) ? note : best
     ));
-    return award(nearest, phaseElapsedMs - nearest.atMs);
+    const diffMs = phaseElapsedMs - nearest.atMs;
+    if (laneMode && nearest.lane !== inputLane) {
+      const result = { grade: "extra", timing: "wrong-lane", diffMs, lane: inputLane, expectedLane: nearest.lane };
+      penalize("extra", RHYTHM_ENDLESS_RULES.extraPenalty, result);
+      return result;
+    }
+    return award(nearest, diffMs);
   }
   function toggleMuted(force) {
     muted = typeof force === "boolean" ? force : !muted;
@@ -570,6 +598,7 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
     return {
       index,
       atMs: note.atMs,
+      ...(laneMode ? { lane: note.lane } : {}),
       inMs: Math.max(0, note.atMs - phaseElapsedMs),
       lateByMs: Math.max(0, phaseElapsedMs - note.atMs),
     };
@@ -588,6 +617,7 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
       beat,
       atMs: Math.round(beat * beatMs()),
       tone: current().tones[index],
+      ...(laneMode ? { lane: current().lanes[index] } : {}),
       status: phase === "listen" && index < noteCueCursor ? "played" : "waiting",
       grade: "",
       diffMs: null,
@@ -609,6 +639,7 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
       endless: true,
       patternIndex: roundIndex % patterns.length + 1,
       patternCycle,
+      ...(laneMode ? { lanes: RHYTHM_LANES } : {}),
       totalPatterns: RHYTHM_ENDLESS_RULES.patternCount,
       bpm: bpm(),
       beatMs: beatMs(),
@@ -645,7 +676,7 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
       display: String(score),
       unit: "점",
       higherBetter: true,
-      mode: "rhythm-endless-v9",
+      mode: laneMode ? "rhythm-three-lane-v11" : "rhythm-endless-v9",
       details: {
         accuracy: accuracy(), roundsCompleted, perfect, good, misses, extraTaps, hits,
         totalExpected, maxCombo, energy, elapsedMs, maxBpm: bpm(), patternCycle,
@@ -657,4 +688,12 @@ export function createRhythmEndlessEngine({ random = Math.random } = {}) {
   }
 
   return { start, tap, tick, toggleMuted, getState, getResult, drainEvents };
+}
+
+export function createRhythmEndlessEngine({ random = Math.random } = {}) {
+  return createRhythmCore({ random, laneMode: false });
+}
+
+export function createRhythmThreeLaneEngine({ random = Math.random } = {}) {
+  return createRhythmCore({ random, laneMode: true });
 }

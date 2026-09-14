@@ -6,7 +6,7 @@ import {
   createCityEngine,
   frontGap,
   vehicleLength,
-} from "../public/js/city-engine.js";
+} from "../public/js/legacy/city-engine-v6.js";
 import { hasTrafficPath, trafficLength } from "../public/js/city-traffic.js";
 import { cityCars } from "../public/js/game-options.js";
 import { seededRandom } from "../public/js/game-random.js";

@@ -1,6 +1,6 @@
 # 뒹굴에 기여하기
 
-오류 수정, 접근성 개선, 테스트 보강과 작은 콘텐츠 개선을 환영합니다. 큰 기능이나 규칙 변경은 먼저 [GitHub Issues](https://github.com/Dunsmile/dwingul/issues)에서 범위와 기존 기록 호환성을 이야기해주세요.
+오류 수정, 접근성 개선, 테스트 보강과 작은 콘텐츠 개선을 환영합니다. 큰 기능이나 규칙 변경은 먼저 [문의 이메일](mailto:poilkjmnb122@gmail.com)에서 범위와 기존 기록 호환성을 이야기해주세요.
 
 ## 시작하기
 
@@ -27,7 +27,7 @@ DW_DB=:memory: PORT=4174 npm start
 - 게임 규칙, 점수 단위, 문제 묶음이나 결과 구조를 바꾸면 버전 호환성과 기존 공유 링크·기록을 함께 검토합니다.
 - 성향 결과를 공인 MBTI나 검증된 심리검사로 표현하지 않습니다. IQ 추리를 표준화 검사로, 운세를 확정적 판단으로 소개하지 않습니다.
 - 브라우저와 서버가 함께 쓰는 계약을 바꾸면 로컬 SQLite와 Cloudflare Durable Object SQLite 경로를 모두 검증합니다.
-- 생성 파일을 직접 고치지 않습니다. 픽셀 SVG는 `scripts/generate-pixel-assets.mjs`, 정적 공개 페이지와 `dist/`는 `scripts/build-site.mjs`에서 수정합니다.
+- 생성 파일을 직접 고치지 않습니다. 현재 일러스트 PNG는 `scripts/build-illustrated-art.mjs`와 `design/atlas-sources-v11.json`, 이전 SVG는 `scripts/generate-pixel-assets.mjs`, 정적 공개 페이지와 `dist/`는 `scripts/build-site.mjs`에서 수정합니다.
 - 새 의존성은 꼭 필요한 경우에만 추가하고, `package-lock.json`을 함께 갱신합니다.
 - 사용자 문구와 오류 메시지는 쉬운 한국어로 씁니다. 모바일 320px 폭에서도 조작과 읽기가 가능한지 확인합니다.
 

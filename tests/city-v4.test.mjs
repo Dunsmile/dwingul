@@ -42,7 +42,7 @@ test('garage validates replay, settles once independently of rankings, unlocks a
   assert.equal(e.state.ended,true);const result={run:attempt.id,coins:e.state.coins,distance:Math.floor(e.state.distance),elapsedMs:Math.round(e.state.seconds*1000),inputs:e.state.inputs,reason:e.state.reason};
   const paid=await req('garage/settle',result);assert.equal(paid.status,200);assert.equal((await req('garage/settle',result)).alreadyPaid,true);
   await req('profile',{nickname:'운전자',pin:'1234'});assert.equal((await req('records',{run:attempt.id,scopes:['world'],country:'대한민국',result:{value:999999,mode:'city-sport-v4',display:'999999',unit:'m'}})).status,200);
-  const ranks=await req('rankings?content=racing');assert.equal(ranks.mode,'city-basic-v6');assert.equal(ranks.rows[0].display,String(result.distance));
+  const ranks=await req('rankings?content=racing');assert.equal(ranks.mode,'city-basic-v7');assert.equal(ranks.rows[0].display,String(result.distance));
   app.db.prepare('UPDATE racing_wallet SET tokens=100 WHERE user_id=?').run(session.user.id);
   assert.equal((await req('garage/unlock',{car:'sport'})).tokens,50);assert.equal((await req('garage/unlock',{car:'sport'})).tokens,50);assert.equal((await req('garage/unlock',{car:'touring'})).tokens,0);
   assert.deepEqual((await req('garage')).unlocked,['basic','sport','touring']);assert.equal((await req('garage/unlock',{car:'coming-soon'})).status,400);

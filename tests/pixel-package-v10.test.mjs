@@ -5,6 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {rpgItems,RPG_RARITIES,RPG_SLOTS} from '../public/js/rpg-items.js';
 import {RPG_PALETTE_25,typingRpgArtPath} from '../public/js/typing-rpg.js';
+import {rpgChestArtSources,rpgItemArtSources} from '../public/js/rpg-draw-dialog.js';
 import {validateSvg} from '../scripts/generate-pixel-assets.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -113,17 +114,15 @@ test('all 25 boss sprites are reachable at milestone stages',()=>{
  assert.equal(typingRpgArtPath(26,false),'/assets/pixel/rpg/monster-01.svg');
 });
 
-test('battle and draw views point at the native pixel package',async()=>{
- const [battle,draw,css]=await Promise.all([
+test('battle and draw views select illustrated raster art with legacy fallbacks',async()=>{
+ const [battle,css]=await Promise.all([
   readFile(path.join(root,'public/js/typing-rpg.js'),'utf8'),
-  readFile(path.join(root,'public/js/rpg-draw-dialog.js'),'utf8'),
   readFile(path.join(root,'public/css/typing-rpg.css'),'utf8'),
  ]);
  assert.match(battle,/typing-rpg--pixel/);
- assert.match(battle,/assets\/pixel\/rpg\/hero\.svg/);
- assert.match(battle,/typingRpgArtPath\(state\.stage,state\.boss\)/);
- assert.match(draw,/chest-\$\{item\.rarity\}-open\.svg/);
- assert.match(draw,/chest-\$\{state\}\.svg/);
- assert.match(draw,/wireChestFallback/);
- assert.match(css,/assets\/pixel\/rpg\/battlefield\.svg/);
+ assert.match(battle,/rpgCharacterArtPath\(selectedCharacter\.id\)/);
+ assert.match(battle,/rpgMonsterArtPath\(state\.stage\)/);
+ assert.match(css,/assets\/pixel\/illustrated\/rpg\/battlefield\.png/);
+ assert.deepEqual(rpgChestArtSources('sealed'),{primary:'/assets/pixel/illustrated/rpg/chest-sealed.png',fallback:'/assets/pixel/rpg/chest-sealed.svg'});
+ assert.deepEqual(rpgItemArtSources(rpgItems[0]),{primary:`/assets/pixel/illustrated/items/${rpgItems[0].id}.png`,fallback:rpgItems[0].image});
 });

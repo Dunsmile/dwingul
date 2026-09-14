@@ -177,7 +177,7 @@ test('portable profile and share APIs preserve validated 12-answer personality v
   }
 });
 
-test('portable API ranks rhythm v9 with points, rejects old shared starts, and retains legacy modes', async () => {
+test('portable API ranks current rhythm v11 with points and retains separate v9, v7 and nine-pad modes', async () => {
   const fixture = durableFixture();
   try {
     const request = client(fixture.handler);
@@ -185,7 +185,7 @@ test('portable API ranks rhythm v9 with points, rejects old shared starts, and r
     await request('profile', 'POST', {nickname: '박자 수집가', pin: '1234'}, {origin: 'https://worker.test'});
 
     const currentRun = await request('runs', 'POST', {content: 'sequence', seed: 7}, {origin: 'https://worker.test'});
-    assert.equal(currentRun.gameSettings.version, 'v9');
+    assert.equal(currentRun.gameSettings.version, 'v11');
     const currentRecord = await request('records', 'POST', {
       run: currentRun.id,
       result: {value: 123.9, display: 'forged', unit: '단계', mode: 'nine-pad'},
@@ -194,7 +194,7 @@ test('portable API ranks rhythm v9 with points, rejects old shared starts, and r
     }, {origin: 'https://worker.test'});
     assert.equal(currentRecord.status, 200);
     const savedCurrent = fixture.sqlite.prepare('SELECT value,display,unit,mode FROM records WHERE id=?').get(currentRecord.id);
-    assert.deepEqual({...savedCurrent}, {value: 123, display: '123', unit: '점', mode: 'rhythm-endless-v9'});
+    assert.deepEqual({...savedCurrent}, {value: 123, display: '123', unit: '점', mode: 'rhythm-three-lane-v11'});
 
     const createLegacyRecord = async (settings, submittedMode, value) => {
       const run = await request('runs', 'POST', {content: 'sequence', seed: value}, {origin: 'https://worker.test'});
@@ -206,19 +206,23 @@ test('portable API ranks rhythm v9 with points, rejects old shared starts, and r
       }, {origin: 'https://worker.test'});
       assert.equal(record.status, 200);
     };
+    await createLegacyRecord('{"version":"v9","mode":"rhythm"}', 'nine-pad', 90);
     await createLegacyRecord('{"version":"v7","mode":"rhythm"}', 'nine-pad', 70);
-    await createLegacyRecord('{}', 'nine-pad', 9);
+    await createLegacyRecord(null, 'nine-pad', 9);
 
     const rankings = await request('rankings?content=sequence&scope=world');
-    assert.equal(rankings.mode, 'rhythm-endless-v9');
+    assert.equal(rankings.mode, 'rhythm-three-lane-v11');
     assert.equal(rankings.rows[0].unit, '점');
-    assert.deepEqual(new Set(rankings.modes), new Set(['nine-pad', 'rhythm-relay-v7', 'rhythm-endless-v9']));
+    assert.deepEqual(new Set(rankings.modes), new Set(['nine-pad', 'rhythm-relay-v7', 'rhythm-endless-v9', 'rhythm-three-lane-v11']));
+    assert.equal((await request('rankings?content=sequence&scope=world&mode=rhythm-endless-v9')).count, 1);
     assert.equal((await request('rankings?content=sequence&scope=world&mode=rhythm-relay-v7')).count, 1);
     assert.equal((await request('rankings?content=sequence&scope=world&mode=nine-pad')).count, 1);
 
     const insertShare = fixture.sqlite.prepare('INSERT INTO shares(id,user_id,content,kind,seed,payload,created) VALUES(?,?,?,?,?,?,?)');
+    insertShare.run('old-rhythm-v9', session.user.id, 'sequence', 'challenge', 2, JSON.stringify({gameSettings: {version: 'v9', mode: 'rhythm'}}), Date.now());
     insertShare.run('old-rhythm-v7', session.user.id, 'sequence', 'challenge', 3, JSON.stringify({gameSettings: {version: 'v7', mode: 'rhythm'}}), Date.now());
     insertShare.run('old-nine-pad', session.user.id, 'sequence', 'challenge', 4, JSON.stringify({}), Date.now());
+    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-rhythm-v9'}, {origin: 'https://worker.test'})).status, 400);
     assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-rhythm-v7'}, {origin: 'https://worker.test'})).status, 400);
     assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-nine-pad'}, {origin: 'https://worker.test'})).status, 400);
   } finally {
