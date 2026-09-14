@@ -4,9 +4,9 @@ const origin=new URL(process.env.PUBLIC_SITE||'https://dwingul.com');
 const manifestResponse=await fetch(new URL('/artbook/manifest.json',origin),{cache:'no-store'});
 assert.equal(manifestResponse.status,200);
 const manifest=await manifestResponse.json();
-assert.equal(manifest.version,'pixel-v11');
-assert.equal(manifest.assets.length,526);
-const paths=new Set(['/css/world.css','/js/art.js','/js/pixel-world.js','/artbook/']);
+assert.equal(manifest.version,'pixel-v12');
+assert.equal(manifest.assets.length,615);
+const paths=new Set(['/css/world.css','/css/scenes.css','/css/fortune.css','/js/art.js','/js/pixel-world.js','/js/scene-art.js','/js/city-vehicle-art.js','/js/fortune-analysis.js','/js/fortune-results.js','/artbook/']);
 for(const asset of manifest.assets)for(const src of [asset.src,asset.preview].filter(Boolean)){
  assert.match(src,/^\/assets\/pixel\/[a-z0-9/-]+\.(png|svg|webp)$/);
  paths.add(src);
@@ -32,8 +32,8 @@ for(const path of pages){
  const title=html.match(/<title>([^<]+)<\/title>/)?.[1];
  assert.ok(title,path);assert.ok(!titles.has(title),`Duplicate title: ${title}`);titles.add(title);
 }
-const www=await fetch('https://www.dwingul.com/?v=pixel-v11',{redirect:'manual'});
-assert.equal(www.status,308);assert.equal(www.headers.get('location'),'https://dwingul.com/?v=pixel-v11');
+const www=await fetch('https://www.dwingul.com/?v=pixel-v12',{redirect:'manual'});
+assert.equal(www.status,308);assert.equal(www.headers.get('location'),'https://dwingul.com/?v=pixel-v12');
 for(const path of ['/js/rpg-store.js','/js/garage-store.js']){
  const response=await fetch(new URL(path,origin));
  assert.equal(response.status,404,path);

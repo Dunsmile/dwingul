@@ -1,11 +1,13 @@
 import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
 import { jumpPatterns100, jumpWorldDelta, jumpWorldSpeed, shuffledJumpPatterns } from "./jump-patterns.js";
+import {drawSceneCover,drawSceneTileX,preloadSceneArt,sceneImage,sceneImageReady} from './scene-art.js';
 
 export const JUMP_FLOOR = 390;
 const CANVAS_WIDTH = 1080;
 const CANVAS_HEIGHT = 450;
 const PLAYER_DRAW_X = 108;
 const METERS_PER_PIXEL = 1 / 20;
+const JUMP_OBSTACLE_ART={basic:'jump-obstacle-short',wide:'jump-obstacle-wide',double:'jump-obstacle-double',slide:'jump-obstacle-slide'};
 
 export function jumpPlayerBox(player) {
   const crouched = player.duck && player.y >= JUMP_FLOOR - .01;
@@ -55,6 +57,8 @@ function rounded(pen, x, y, width, height, radius, color) {
 export function createJump(ctx) {
   preloadWorld(['runner-run-a','runner-run-b','runner-jump','runner-slide','runner-dead']);
   ['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].forEach(portraitImage);
+  const sceneNames=['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide'];
+  preloadSceneArt(sceneNames);const sceneArt=Object.fromEntries(sceneNames.map(name=>[name,sceneImage(name)]));
   const canvas = document.createElement("canvas");
   canvas.width = CANVAS_WIDTH; canvas.height = CANVAS_HEIGHT; canvas.className = "dg-game__canvas jump--v4";
   canvas.setAttribute("role", "img");
@@ -130,15 +134,18 @@ export function createJump(ctx) {
     if (obstacle.kind === "double") {
       pen.fillStyle = "#c89a79";
       for (let y = obstacle.y + 12; y < JUMP_FLOOR - 8; y += 30) pen.fillRect(obstacle.x + 8, y, obstacle.w - 16, 5);
-      pen.fillStyle = "#fff8e8"; pen.textAlign = "center"; pen.font = "800 18px sans-serif";
-      pen.fillText("2단!", obstacle.x + obstacle.w / 2, obstacle.y + 27);
     }
   }
   function drawSlideObstacle(obstacle) {
     pen.fillStyle = "#937a58"; pen.fillRect(obstacle.x, 0, obstacle.w, obstacle.h - 18);
     pen.fillStyle="#49382d";pen.fillRect(obstacle.x-7,obstacle.h-32,obstacle.w+14,32);pen.fillStyle="#647f52";pen.fillRect(obstacle.x-4,obstacle.h-29,obstacle.w+8,25);
-    pen.fillStyle = "#eef4ed"; pen.textAlign = "center"; pen.font = "800 17px sans-serif";
-    pen.fillText("↓ 숙이기", obstacle.x + obstacle.w / 2, obstacle.h - 10);
+  }
+  function drawObstacle(obstacle){
+    const image=sceneArt[JUMP_OBSTACLE_ART[obstacle.kind]||JUMP_OBSTACLE_ART.basic];
+    if(sceneImageReady(image))pen.drawImage(image,obstacle.x,obstacle.kind==='slide'?0:obstacle.y,obstacle.w,obstacle.kind==='slide'?obstacle.h:obstacle.h);
+    else if(obstacle.kind==='slide')drawSlideObstacle(obstacle);else drawGroundObstacle(obstacle);
+    if(obstacle.kind==='double'){pen.fillStyle='#fff8e8';pen.strokeStyle='#49382d';pen.lineWidth=4;pen.textAlign='center';pen.font='800 18px sans-serif';pen.strokeText('2단!',obstacle.x+obstacle.w/2,obstacle.y+27);pen.fillText('2단!',obstacle.x+obstacle.w/2,obstacle.y+27);}
+    if(obstacle.kind==='slide'){pen.fillStyle='#eef4ed';pen.strokeStyle='#49382d';pen.lineWidth=4;pen.textAlign='center';pen.font='800 17px sans-serif';pen.strokeText('↓ 숙이기',obstacle.x+obstacle.w/2,obstacle.h-10);pen.fillText('↓ 숙이기',obstacle.x+obstacle.w/2,obstacle.h-10);}
   }
   function drawWoodland(viewWidth) {
     pen.fillStyle = "#e9f0e8"; pen.fillRect(0, 0, viewWidth, CANVAS_HEIGHT);
@@ -166,7 +173,9 @@ export function createJump(ctx) {
     fitCamera();
     const viewWidth = canvas.width;
     pen.clearRect(0, 0, viewWidth, CANVAS_HEIGHT); drawWoodland(viewWidth);
-    for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; if (obstacle.kind === "slide") drawSlideObstacle(obstacle); else drawGroundObstacle(obstacle); }
+    drawSceneCover(pen,sceneArt['jump-forest'],0,0,viewWidth,CANVAS_HEIGHT,.5,.46);
+    drawSceneTileX(pen,sceneArt['jump-ground'],JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth);
+    for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; drawObstacle(obstacle); }
     pen.globalAlpha = 1;
     const duck = player.duck && player.y >= JUMP_FLOOR - .01, height = duck ? 34 : 72;
     if (!invincibleMs || Math.floor(invincibleMs / 95) % 2 === 0) {
@@ -177,9 +186,13 @@ export function createJump(ctx) {
       if(!drawPortraitSprite(pen,portrait,PLAYER_DRAW_X,player.y-drawnHeight-bob,64,drawnHeight)&&!drawWorldSprite(pen,'runner-'+pose,PLAYER_DRAW_X,player.y-height,64,height)){pen.fillStyle='#92714e';pen.fillRect(PLAYER_DRAW_X+7,player.y-height,50,height);}
 
     }
-    pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.font = "800 32px Galmuri11, sans-serif"; pen.fillText(`${jumpDistanceMeters(distancePixels).toFixed(1)} m`, 26, 48);
+    pen.font = "800 32px Galmuri11, sans-serif";
+    const distanceLabel = `${jumpDistanceMeters(distancePixels).toFixed(1)} m`;
+    rounded(pen,14,14,Math.max(158,pen.measureText(distanceLabel).width+24),47,4,'#fff8e8ef');
+    rounded(pen,viewWidth-122,14,108,47,4,'#fff8e8ef');
+    pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.fillText(distanceLabel, 26, 48);
     pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "28px sans-serif"; pen.fillText(lives === 2 ? "♥ ♥" : lives === 1 ? "♥ ♡" : "♡ ♡", viewWidth - 28, 48);
-    if (elapsed < 2300) { pen.textAlign = "center"; pen.fillStyle = "#4c6859"; pen.font = "700 22px Galmuri11, sans-serif"; pen.fillText("짧게 점프 · 높으면 두 번 · 천장은 숙이기", viewWidth / 2, 168); }
+    if (elapsed < 2300) { const hintWidth=Math.min(570,viewWidth-28);rounded(pen,(viewWidth-hintWidth)/2,136,hintWidth,43,10,'#fff9dddc');pen.textAlign = "center"; pen.fillStyle = "#345445"; pen.font = "700 22px Galmuri11, sans-serif"; pen.fillText("짧게 점프 · 높으면 두 번 · 천장은 숙이기", viewWidth / 2, 166); }
   }
   function finishRun() {
     const distance = jumpDistanceMeters(distancePixels); draw();

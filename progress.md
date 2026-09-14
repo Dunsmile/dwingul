@@ -125,3 +125,14 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - 31 crawlable pages with unique metadata, categories, canonical links, schema and image sitemap.
 - QA evidence: 199 unit/API tests, 115 responsive views (320–1920), 20 game views, real RPG/rhythm/jump controls, prior-mode replay and sharing guards, image fallbacks; independent review issues resolved.
 - Released from GitHub main 4c13f04 (PR #1), Cloudflare version 24c2fdf3-f464-4aa1-9e67-bc8c76f3019d. Production read-only check passed: artbook526, resources551, crawlable pages31 with unique titles/canonical/contact, www308, private server modules404. Existing in-app browser renders current home and RPG character menu. No production game/profile creation or test purchases were performed.
+
+## 2026-09-14 — v12 scene/fortune/camera release preparation
+
+- User requested illustrated play scenery and obstacles, fortune analysis dialog, content-first compact results and bottom actions, explicit privacy use consent. Later added correct car camera views and cross-game orientation audit.
+- Added 89 production scene/pose PNGs from 12 stored generated source atlases/backgrounds. Built-in imagegen handled art and camera edits; Sharp encodes source alpha or reserved chroma backing and slices sprites. No painted checkerboards shipped. Artbook total615.
+- Forest jump/floor/4obstacles, lodge sort, memory/color/timing/rhythm tabletop, RPG scene framing, city village/road/4props, analyzing cat. Readable jump HUD, exact color cells and contact geometry retained.
+- Traffic4types×5authored angles, depth-aware view selection; player8rear poses. New sprite natural aspect ratio and floor anchoring. Typing16heroes face right,25monsters left; menu/collection portraits unchanged.
+- Four fortune flows use required unchecked use consent, independent optional birth remember, cancellable local-analysis dialog and explicit one-shot result confirmation. Birth raw fields excluded from shares. Derived private history retention is described separately in consent and privacy page.
+- Root visual inspection fixed initial tarot intrinsic image overflow and daily CSS-spritesheet clipping; allfour headers now bounded standalone images. CSS/Canvas missing-art fallbacks verified.
+- Verified:217unit/APItests,89assets/615artbook/31crawlable build;36DOMgame views320/390/1440 with7×7hardmemory/color;11Canvasviews;6vehicle views including28all-angle/rear sprites;4duel views plus41asset requests;24fortune captures and8flows withretention/cancel/duplicate/share/fallback checks. Official game client jump and racing executed. Independent material findings resolved.
+- Testing used4174/4176in-memory servers, no changes to user4173 or realDB. No productiontest records. Deployment pending final sequential checks.

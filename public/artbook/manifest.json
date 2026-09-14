@@ -1,5 +1,5 @@
 {
-  "version": "pixel-v11",
+  "version": "pixel-v12",
   "copyright": "© 2026 DWINGUL",
   "contact": {
     "email": "poilkjmnb122@gmail.com",
@@ -5611,6 +5611,896 @@
       "width": 384,
       "height": 384,
       "searchAliases": "교통 차량 자동차"
+    },
+    {
+      "id": "scenes/jump-forest",
+      "name": "멀리 뛰기 · 숲 풍경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-forest.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 멀리 뛰기 · 숲 풍경"
+    },
+    {
+      "id": "scenes/sort-lodge",
+      "name": "좌우로 쏙쏙 · 숲속 우체국",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/sort-lodge.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 좌우로 쏙쏙 · 숲속 우체국"
+    },
+    {
+      "id": "scenes/city-village",
+      "name": "도심 질주 · 숲마을 풍경",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/city-village.png",
+      "width": 1152,
+      "height": 768,
+      "searchAliases": "배경 장애물 숲 원화 도심 질주 · 숲마을 풍경"
+    },
+    {
+      "id": "scenes/jump-ground",
+      "name": "멀리 뛰기 · 흙길",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-ground.png",
+      "width": 384,
+      "height": 96,
+      "searchAliases": "배경 장애물 숲 원화 멀리 뛰기 · 흙길"
+    },
+    {
+      "id": "scenes/memory-table",
+      "name": "반짝 기억판 · 별빛 책상",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/memory-table.png",
+      "width": 640,
+      "height": 640,
+      "searchAliases": "배경 장애물 숲 원화 반짝 기억판 · 별빛 책상"
+    },
+    {
+      "id": "scenes/color-table",
+      "name": "다른 색 한 칸 · 화가의 책상",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/color-table.png",
+      "width": 640,
+      "height": 640,
+      "searchAliases": "배경 장애물 숲 원화 다른 색 한 칸 · 화가의 책상"
+    },
+    {
+      "id": "scenes/timing-desk",
+      "name": "랜덤 초 맞추기 · 시계공 책상",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/timing-desk.png",
+      "width": 640,
+      "height": 640,
+      "searchAliases": "배경 장애물 숲 원화 랜덤 초 맞추기 · 시계공 책상"
+    },
+    {
+      "id": "scenes/rhythm-stage",
+      "name": "따라해 뒹굴 · 작은 무대",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/rhythm-stage.png",
+      "width": 640,
+      "height": 640,
+      "searchAliases": "배경 장애물 숲 원화 따라해 뒹굴 · 작은 무대"
+    },
+    {
+      "id": "scenes/wood-token",
+      "name": "기억·숫자 게임 나무 패",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/wood-token.png",
+      "width": 128,
+      "height": 128,
+      "searchAliases": "배경 장애물 숲 원화 기억·숫자 게임 나무 패"
+    },
+    {
+      "id": "scenes/paper-texture",
+      "name": "안내·주문 두루마리",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/paper-texture.png",
+      "width": 256,
+      "height": 256,
+      "searchAliases": "배경 장애물 숲 원화 안내·주문 두루마리"
+    },
+    {
+      "id": "scenes/road-texture",
+      "name": "도심 질주 · 도로 노면",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/road-texture.png",
+      "width": 256,
+      "height": 256,
+      "searchAliases": "배경 장애물 숲 원화 도심 질주 · 도로 노면"
+    },
+    {
+      "id": "scenes/jump-obstacle-short",
+      "name": "이끼 그루터기",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-obstacle-short.png",
+      "width": 256,
+      "height": 256,
+      "searchAliases": "배경 장애물 숲 원화 이끼 그루터기"
+    },
+    {
+      "id": "scenes/jump-obstacle-wide",
+      "name": "두 칸 돌담",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-obstacle-wide.png",
+      "width": 384,
+      "height": 160,
+      "searchAliases": "배경 장애물 숲 원화 두 칸 돌담"
+    },
+    {
+      "id": "scenes/jump-obstacle-double",
+      "name": "높은 통나무",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-obstacle-double.png",
+      "width": 192,
+      "height": 384,
+      "searchAliases": "배경 장애물 숲 원화 높은 통나무"
+    },
+    {
+      "id": "scenes/jump-obstacle-slide",
+      "name": "매달린 나무뿌리",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-obstacle-slide.png",
+      "width": 192,
+      "height": 576,
+      "searchAliases": "배경 장애물 숲 원화 매달린 나무뿌리"
+    },
+    {
+      "id": "scenes/city-prop-tree",
+      "name": "길가 나무",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/city-prop-tree.png",
+      "width": 281,
+      "height": 320,
+      "searchAliases": "배경 장애물 숲 원화 길가 나무"
+    },
+    {
+      "id": "scenes/city-prop-cottage",
+      "name": "숲마을 오두막",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/city-prop-cottage.png",
+      "width": 307,
+      "height": 320,
+      "searchAliases": "배경 장애물 숲 원화 숲마을 오두막"
+    },
+    {
+      "id": "scenes/city-prop-lamp",
+      "name": "길가 가로등",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/city-prop-lamp.png",
+      "width": 170,
+      "height": 320,
+      "searchAliases": "배경 장애물 숲 원화 길가 가로등"
+    },
+    {
+      "id": "scenes/city-prop-shrub",
+      "name": "길가 꽃덤불",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/city-prop-shrub.png",
+      "width": 446,
+      "height": 320,
+      "searchAliases": "배경 장애물 숲 원화 길가 꽃덤불"
+    },
+    {
+      "id": "scenes/analysis-reader",
+      "name": "이야기를 읽는 고양이 마법사",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/analysis-reader.png",
+      "width": 384,
+      "height": 384,
+      "searchAliases": "배경 장애물 숲 원화 이야기를 읽는 고양이 마법사"
+    },
+    {
+      "id": "scenes/traffic-car-left-edge",
+      "name": "승용차 · 왼쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-car-left-edge.png",
+      "width": 256,
+      "height": 233,
+      "searchAliases": "차량 자동차 방향 승용차 · 왼쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-car-left",
+      "name": "승용차 · 왼쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-car-left.png",
+      "width": 256,
+      "height": 258,
+      "searchAliases": "차량 자동차 방향 승용차 · 왼쪽"
+    },
+    {
+      "id": "scenes/traffic-car-front",
+      "name": "승용차 · 정면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-car-front.png",
+      "width": 256,
+      "height": 282,
+      "searchAliases": "차량 자동차 방향 승용차 · 정면"
+    },
+    {
+      "id": "scenes/traffic-car-right",
+      "name": "승용차 · 오른쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-car-right.png",
+      "width": 256,
+      "height": 257,
+      "searchAliases": "차량 자동차 방향 승용차 · 오른쪽"
+    },
+    {
+      "id": "scenes/traffic-car-right-edge",
+      "name": "승용차 · 오른쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-car-right-edge.png",
+      "width": 256,
+      "height": 233,
+      "searchAliases": "차량 자동차 방향 승용차 · 오른쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-van-left-edge",
+      "name": "밴 · 왼쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-van-left-edge.png",
+      "width": 256,
+      "height": 283,
+      "searchAliases": "차량 자동차 방향 밴 · 왼쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-van-left",
+      "name": "밴 · 왼쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-van-left.png",
+      "width": 256,
+      "height": 294,
+      "searchAliases": "차량 자동차 방향 밴 · 왼쪽"
+    },
+    {
+      "id": "scenes/traffic-van-front",
+      "name": "밴 · 정면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-van-front.png",
+      "width": 256,
+      "height": 309,
+      "searchAliases": "차량 자동차 방향 밴 · 정면"
+    },
+    {
+      "id": "scenes/traffic-van-right",
+      "name": "밴 · 오른쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-van-right.png",
+      "width": 256,
+      "height": 292,
+      "searchAliases": "차량 자동차 방향 밴 · 오른쪽"
+    },
+    {
+      "id": "scenes/traffic-van-right-edge",
+      "name": "밴 · 오른쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-van-right-edge.png",
+      "width": 256,
+      "height": 283,
+      "searchAliases": "차량 자동차 방향 밴 · 오른쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-truck-left-edge",
+      "name": "트럭 · 왼쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-truck-left-edge.png",
+      "width": 256,
+      "height": 249,
+      "searchAliases": "차량 자동차 방향 트럭 · 왼쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-truck-left",
+      "name": "트럭 · 왼쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-truck-left.png",
+      "width": 256,
+      "height": 265,
+      "searchAliases": "차량 자동차 방향 트럭 · 왼쪽"
+    },
+    {
+      "id": "scenes/traffic-truck-front",
+      "name": "트럭 · 정면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-truck-front.png",
+      "width": 256,
+      "height": 325,
+      "searchAliases": "차량 자동차 방향 트럭 · 정면"
+    },
+    {
+      "id": "scenes/traffic-truck-right",
+      "name": "트럭 · 오른쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-truck-right.png",
+      "width": 256,
+      "height": 273,
+      "searchAliases": "차량 자동차 방향 트럭 · 오른쪽"
+    },
+    {
+      "id": "scenes/traffic-truck-right-edge",
+      "name": "트럭 · 오른쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-truck-right-edge.png",
+      "width": 256,
+      "height": 247,
+      "searchAliases": "차량 자동차 방향 트럭 · 오른쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-bus-left-edge",
+      "name": "버스 · 왼쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-bus-left-edge.png",
+      "width": 256,
+      "height": 276,
+      "searchAliases": "차량 자동차 방향 버스 · 왼쪽 가장자리"
+    },
+    {
+      "id": "scenes/traffic-bus-left",
+      "name": "버스 · 왼쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-bus-left.png",
+      "width": 256,
+      "height": 282,
+      "searchAliases": "차량 자동차 방향 버스 · 왼쪽"
+    },
+    {
+      "id": "scenes/traffic-bus-front",
+      "name": "버스 · 정면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-bus-front.png",
+      "width": 256,
+      "height": 309,
+      "searchAliases": "차량 자동차 방향 버스 · 정면"
+    },
+    {
+      "id": "scenes/traffic-bus-right",
+      "name": "버스 · 오른쪽",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-bus-right.png",
+      "width": 256,
+      "height": 284,
+      "searchAliases": "차량 자동차 방향 버스 · 오른쪽"
+    },
+    {
+      "id": "scenes/traffic-bus-right-edge",
+      "name": "버스 · 오른쪽 가장자리",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/traffic-bus-right-edge.png",
+      "width": 256,
+      "height": 274,
+      "searchAliases": "차량 자동차 방향 버스 · 오른쪽 가장자리"
+    },
+    {
+      "id": "scenes/player-basic-rear",
+      "name": "시티 원 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-basic-rear.png",
+      "width": 256,
+      "height": 229,
+      "searchAliases": "차량 자동차 방향 시티 원 · 후면"
+    },
+    {
+      "id": "scenes/player-sport-rear",
+      "name": "스프린터 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-sport-rear.png",
+      "width": 256,
+      "height": 202,
+      "searchAliases": "차량 자동차 방향 스프린터 · 후면"
+    },
+    {
+      "id": "scenes/player-touring-rear",
+      "name": "롱런 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-touring-rear.png",
+      "width": 256,
+      "height": 262,
+      "searchAliases": "차량 자동차 방향 롱런 · 후면"
+    },
+    {
+      "id": "scenes/player-compact-rear",
+      "name": "도토리 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-compact-rear.png",
+      "width": 256,
+      "height": 269,
+      "searchAliases": "차량 자동차 방향 도토리 · 후면"
+    },
+    {
+      "id": "scenes/player-rally-rear",
+      "name": "솔방울 랠리 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-rally-rear.png",
+      "width": 256,
+      "height": 242,
+      "searchAliases": "차량 자동차 방향 솔방울 랠리 · 후면"
+    },
+    {
+      "id": "scenes/player-pickup-rear",
+      "name": "오크 픽업 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-pickup-rear.png",
+      "width": 256,
+      "height": 224,
+      "searchAliases": "차량 자동차 방향 오크 픽업 · 후면"
+    },
+    {
+      "id": "scenes/player-van-rear",
+      "name": "모스 캠퍼 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-van-rear.png",
+      "width": 256,
+      "height": 267,
+      "searchAliases": "차량 자동차 방향 모스 캠퍼 · 후면"
+    },
+    {
+      "id": "scenes/player-roadster-rear",
+      "name": "반딧불 로드스터 · 후면",
+      "group": "차량 방향 28종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/player-roadster-rear.png",
+      "width": 256,
+      "height": 183,
+      "searchAliases": "차량 자동차 방향 반딧불 로드스터 · 후면"
+    },
+    {
+      "id": "scenes/duel-hero-0",
+      "name": "잎망토 여행자 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-0.png",
+      "width": 256,
+      "height": 260,
+      "searchAliases": "캐릭터 몬스터 전투 잎망토 여행자 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-1",
+      "name": "빨간모자 부엉이 학자 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-1.png",
+      "width": 256,
+      "height": 250,
+      "searchAliases": "캐릭터 몬스터 전투 빨간모자 부엉이 학자 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-2",
+      "name": "파란 잠꾸러기 양 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-2.png",
+      "width": 256,
+      "height": 207,
+      "searchAliases": "캐릭터 몬스터 전투 파란 잠꾸러기 양 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-3",
+      "name": "주황여우 기사 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-3.png",
+      "width": 256,
+      "height": 240,
+      "searchAliases": "캐릭터 몬스터 전투 주황여우 기사 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-4",
+      "name": "꽃토끼 치유사 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-4.png",
+      "width": 256,
+      "height": 236,
+      "searchAliases": "캐릭터 몬스터 전투 꽃토끼 치유사 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-5",
+      "name": "잎사귀 등불요정 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-5.png",
+      "width": 256,
+      "height": 251,
+      "searchAliases": "캐릭터 몬스터 전투 잎사귀 등불요정 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-6",
+      "name": "갈색망토 너구리 탐험가 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-6.png",
+      "width": 256,
+      "height": 264,
+      "searchAliases": "캐릭터 몬스터 전투 갈색망토 너구리 탐험가 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-7",
+      "name": "망원경 보랏빛 고양이 마법사 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-7.png",
+      "width": 256,
+      "height": 243,
+      "searchAliases": "캐릭터 몬스터 전투 망원경 보랏빛 고양이 마법사 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-8",
+      "name": "노랑새 우편배달부 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-8.png",
+      "width": 256,
+      "height": 250,
+      "searchAliases": "캐릭터 몬스터 전투 노랑새 우편배달부 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-9",
+      "name": "찻잔 수달 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-9.png",
+      "width": 256,
+      "height": 272,
+      "searchAliases": "캐릭터 몬스터 전투 찻잔 수달 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-10",
+      "name": "레서판다 북잡이 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-10.png",
+      "width": 256,
+      "height": 228,
+      "searchAliases": "캐릭터 몬스터 전투 레서판다 북잡이 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-11",
+      "name": "달빛 등불고양이 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-11.png",
+      "width": 256,
+      "height": 236,
+      "searchAliases": "캐릭터 몬스터 전투 달빛 등불고양이 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-12",
+      "name": "고글 너구리 정비사 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-12.png",
+      "width": 256,
+      "height": 228,
+      "searchAliases": "캐릭터 몬스터 전투 고글 너구리 정비사 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-13",
+      "name": "흰토끼 화가 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-13.png",
+      "width": 256,
+      "height": 224,
+      "searchAliases": "캐릭터 몬스터 전투 흰토끼 화가 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-14",
+      "name": "잎사귀 정원사 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-14.png",
+      "width": 256,
+      "height": 244,
+      "searchAliases": "캐릭터 몬스터 전투 잎사귀 정원사 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-hero-15",
+      "name": "고글 부엉이 비행사 · 오른쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-hero-15.png",
+      "width": 256,
+      "height": 237,
+      "searchAliases": "캐릭터 몬스터 전투 고글 부엉이 비행사 · 오른쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-01",
+      "name": "숲 슬라임 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-01.png",
+      "width": 256,
+      "height": 238,
+      "searchAliases": "캐릭터 몬스터 전투 숲 슬라임 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-02",
+      "name": "버섯 고블린 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-02.png",
+      "width": 256,
+      "height": 219,
+      "searchAliases": "캐릭터 몬스터 전투 버섯 고블린 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-03",
+      "name": "달빛 해파리 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-03.png",
+      "width": 256,
+      "height": 227,
+      "searchAliases": "캐릭터 몬스터 전투 달빛 해파리 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-04",
+      "name": "이끼 골렘 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-04.png",
+      "width": 256,
+      "height": 259,
+      "searchAliases": "캐릭터 몬스터 전투 이끼 골렘 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-05",
+      "name": "에메랄드 드래곤 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-05.png",
+      "width": 256,
+      "height": 239,
+      "searchAliases": "캐릭터 몬스터 전투 에메랄드 드래곤 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-06",
+      "name": "도토리 미믹 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-06.png",
+      "width": 256,
+      "height": 290,
+      "searchAliases": "캐릭터 몬스터 전투 도토리 미믹 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-07",
+      "name": "꿀벌 기사 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-07.png",
+      "width": 256,
+      "height": 254,
+      "searchAliases": "캐릭터 몬스터 전투 꿀벌 기사 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-08",
+      "name": "솔방울 고슴도치 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-08.png",
+      "width": 256,
+      "height": 236,
+      "searchAliases": "캐릭터 몬스터 전투 솔방울 고슴도치 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-09",
+      "name": "호박 임프 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-09.png",
+      "width": 256,
+      "height": 246,
+      "searchAliases": "캐릭터 몬스터 전투 호박 임프 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-10",
+      "name": "뿔토끼 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-10.png",
+      "width": 256,
+      "height": 259,
+      "searchAliases": "캐릭터 몬스터 전투 뿔토끼 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-11",
+      "name": "수정 달팽이 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-11.png",
+      "width": 256,
+      "height": 239,
+      "searchAliases": "캐릭터 몬스터 전투 수정 달팽이 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-12",
+      "name": "불꽃 도롱뇽 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-12.png",
+      "width": 256,
+      "height": 222,
+      "searchAliases": "캐릭터 몬스터 전투 불꽃 도롱뇽 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-13",
+      "name": "아홀로틀 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-13.png",
+      "width": 256,
+      "height": 224,
+      "searchAliases": "캐릭터 몬스터 전투 아홀로틀 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-14",
+      "name": "태엽 딱정벌레 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-14.png",
+      "width": 256,
+      "height": 223,
+      "searchAliases": "캐릭터 몬스터 전투 태엽 딱정벌레 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-15",
+      "name": "구름 숫양 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-15.png",
+      "width": 256,
+      "height": 243,
+      "searchAliases": "캐릭터 몬스터 전투 구름 숫양 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-16",
+      "name": "등불 유령 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-16.png",
+      "width": 256,
+      "height": 268,
+      "searchAliases": "캐릭터 몬스터 전투 등불 유령 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-17",
+      "name": "산호 게 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-17.png",
+      "width": 256,
+      "height": 228,
+      "searchAliases": "캐릭터 몬스터 전투 산호 게 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-18",
+      "name": "종이학 마법사 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-18.png",
+      "width": 256,
+      "height": 226,
+      "searchAliases": "캐릭터 몬스터 전투 종이학 마법사 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-19",
+      "name": "산딸기 박쥐 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-19.png",
+      "width": 256,
+      "height": 226,
+      "searchAliases": "캐릭터 몬스터 전투 산딸기 박쥐 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-20",
+      "name": "그루터기 부엉이 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-20.png",
+      "width": 256,
+      "height": 251,
+      "searchAliases": "캐릭터 몬스터 전투 그루터기 부엉이 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-21",
+      "name": "그림자 아기늑대 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-21.png",
+      "width": 256,
+      "height": 224,
+      "searchAliases": "캐릭터 몬스터 전투 그림자 아기늑대 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-22",
+      "name": "모래 전갈 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-22.png",
+      "width": 256,
+      "height": 243,
+      "searchAliases": "캐릭터 몬스터 전투 모래 전갈 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-23",
+      "name": "해바라기 사자 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-23.png",
+      "width": 256,
+      "height": 245,
+      "searchAliases": "캐릭터 몬스터 전투 해바라기 사자 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-24",
+      "name": "얼음 펭귄 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-24.png",
+      "width": 256,
+      "height": 247,
+      "searchAliases": "캐릭터 몬스터 전투 얼음 펭귄 · 왼쪽 전투 자세"
+    },
+    {
+      "id": "scenes/duel-monster-25",
+      "name": "별빛 불사조 · 왼쪽 전투 자세",
+      "group": "전투 자세 41종",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/duel-monster-25.png",
+      "width": 256,
+      "height": 261,
+      "searchAliases": "캐릭터 몬스터 전투 별빛 불사조 · 왼쪽 전투 자세"
     }
   ]
 }

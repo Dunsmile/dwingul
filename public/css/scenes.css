@@ -1,0 +1,33 @@
+/* Illustrated scenery is decoration; state colors, inputs and hitboxes stay exact. */
+.dg-game__toolbar,.dg-game__split-controls,.city-controls,.sort-fever,.city-hud{background-image:url('/assets/pixel/scenes/paper-texture.png');background-size:256px 256px}
+.dg-game--memory .dg-game__stage,.dg-game--numbers .dg-game__stage{background:#a5af87 url('/assets/pixel/scenes/memory-table.png') center/cover}
+.dg-game--color .dg-game__stage{background:#e6d7b7 url('/assets/pixel/scenes/color-table.png') center/cover}
+.dg-game__memory-grid,.dg-game__numbers-grid{background:transparent;border:0;padding:clamp(14px,3vw,22px)}
+.dg-game__color-grid{background:transparent;border:0}
+.dg-game__memory-cell{background:#a7b288 url('/assets/pixel/scenes/wood-token.png') center/100% 100%;border-color:#635738;box-shadow:inset 0 0 0 1px #d2cca4,2px 3px #49382d66}
+.dg-game__memory-cell.is-lit{background:#eed076 url('/assets/pixel/illustrated/world/star.png') center/62% no-repeat;box-shadow:inset 0 0 0 2px #fff3c0,0 0 9px #fbd671}
+.dg-game__memory-cell.is-chosen{background:#526e4f;box-shadow:inset 0 0 0 2px #bdcea1}
+.dg-game__memory-cell.is-wrong{background:#b55e4a;box-shadow:inset 0 0 0 2px #f4bda4}
+.dg-game__number-cell{background:#fff1d3 url('/assets/pixel/scenes/paper-texture.png') center/128px 128px}
+.dg-game__number-cell.is-done{background:#6b805b;color:transparent}
+.dg-game--timing .dg-game__stage{background:#c5af7b url('/assets/pixel/scenes/timing-desk.png') center/100% 100%}
+.dg-game__timing-card{background:none;border:0;padding:clamp(34px,6vw,54px) clamp(24px,7vw,54px);gap:16px}
+.dg-game__timing-card>p,.dg-game__timing-card>span{color:#49382d;background:#fff8e8e8;padding:5px 9px;border-radius:3px}
+.dg-game__timing-clock{background:none;color:#49382d!important;border:0;outline:0;box-shadow:none;padding:8px 0;text-shadow:1px 1px #fff8e8;letter-spacing:-.05em!important;font-variant-numeric:tabular-nums}
+.dg-game--timing .dg-game__primary{width:calc(100% - 64px);margin:4px 32px 24px;background:#405c3e}
+.typing-rpg.typing-rpg--pixel{background:#e8ddc3 url('/assets/pixel/scenes/memory-table.png') center/cover}
+.typing-rpg--pixel .typing-rpg__arena{background-image:url('/assets/pixel/illustrated/rpg/battlefield.png');background-position:center 65%;background-size:cover;background-repeat:no-repeat}
+.typing-rpg--pixel .typing-rpg__arena::before{content:none}
+.typing-rpg--pixel .typing-rpg__command{background:#fff8e8 url('/assets/pixel/scenes/paper-texture.png') center/256px 256px}
+.typing-rpg--pixel .typing-rpg__target{background:#fff9ebed;box-shadow:none}
+.rhythm-game{background:#9b9d76 url('/assets/pixel/scenes/rhythm-stage.png') center/100% 100%}
+.rhythm-game__relay{background:#fff8e8eb}
+.rhythm-game__start-panel{background:#efead9e8}
+.rhythm-game__track,.rhythm-game__track.is-active{background-image:url('/assets/pixel/scenes/paper-texture.png');background-size:256px 256px}
+.fortune-result-hero,.fortune-reading-block,.fortune-consent,.fortune-remember{border-radius:3px;border:2px solid #b8a47f;box-shadow:3px 3px #dccdad}
+.fortune-reading-block,.fortune-consent,.fortune-remember{background:#fff8e8 url('/assets/pixel/scenes/paper-texture.png') center/320px 320px}
+.fortune-result-hero{background-image:url('/assets/pixel/scenes/paper-texture.png');background-size:320px 320px}
+.fortune-result-art{border-radius:3px;background:#f5ecd5;border:1px solid #caba97}
+.fortune-analysis>img{image-rendering:pixelated}
+@media(max-width:380px){.dg-game__timing-card{padding:30px 21px;gap:10px}.dg-game__timing-card>span{font-size:11px}.dg-game__timing-clock{font-size:56px!important}}
+@media(forced-colors:active){.dg-game__memory-cell,.dg-game__number-cell{background-image:none}.dg-game__memory-cell.is-lit{outline:4px solid Highlight;outline-offset:-5px}.dg-game__memory-cell.is-chosen{outline:3px dashed Highlight;outline-offset:-4px}}
