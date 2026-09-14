@@ -181,3 +181,8 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - Focused engine/legacy/traffic/art checks 25/25 and memory-only browser freeze/visual run passed. Official game client run and screenshots inspected. User4173 and persistent DB untouched.
 - Root must switch shared racing defaults/mode names/catalog/rules to V16. Full detail: `docs/plans/v16-racing-report.md`.
 - Follow-up: `city-racing.js` now routes visible V4–V7 playback through frozen engines and emits matching versioned result modes/details; V7 keeps immediate historical ending while V16 alone pauses 650ms. Direct browser mounts proved V7/V16 one-second balance and modes independently. Prop footpoint/shadow screenshots at 120m, 300m, and 500m were visually inspected and remain grounded.
+
+## v16 통합 완료 (2026-09-15)
+게임 3종 개선 및 신규 원화36개, v16랭킹·정산, 정적안내20개/RSS/sitemap 반영. 전체268테스트, Chromium/WebKit36점검과 6000m구간플레이 통과. PR6병합 f4c15ba, Cloudflare a41a6bb1-7a6e-4743-85b9-61d7428735b6. 운영30페이지/14파일해시/18봇UA조회확인. GSC sitemap30/RSS21 읽기성공; 색인요청 진행결과는 출시문서 참고.
+
+서치콘솔 홈 및 도심질주 안내 색인 생성 요청 접수 완료. sitemap30/RSS21 읽기성공과 별개로 검색 노출 및 AdSense 준비중 상태는 Google 처리 대기. 사용자 서버4173 유지, QA서버종료.

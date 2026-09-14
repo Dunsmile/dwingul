@@ -2,7 +2,7 @@
 
 2026-09-14에 https://dwingul.com 초기 공개 배포를 완료했다. 아래 계정 연결 상태는 초기 출시 당시의 확인 기록이며, 버전별 배포 검증은 출시 기록을 함께 참고한다.
 
-최신 배포: [v11 출시 기록](releases/2026-09-14-v11.md). GitHub `main`의 `4c13f04`, Cloudflare 버전 `24c2fdf3-f464-4aa1-9e67-bc8c76f3019d`를 2026-09-14에 공개했다.
+최신 배포: [v16 출시 기록](releases/2026-09-15-v16.md). GitHub `main` 병합 `f4c15ba`, Cloudflare 버전 `a41a6bb1-7a6e-4743-85b9-61d7428735b6`를 2026-09-15에 공개했다.
 
 - Cloudflare Workers + SQLite Durable Object로 배포했고, `www`는 대표 주소로 308 이동한다.
 - 원본 로컬 DB를 백업한 뒤 기존 107행을 이전했다. 삽입 결과는 원본 테이블별 개수와 일치했다. 일회성 DB 반입 경로와 비밀키는 제거했다.
