@@ -1,6 +1,20 @@
 // Decorative sprites never determine game rules or collision boxes.
+import {artAssetSources} from './art.js';
+
 const cache=new Map();
-export function worldImage(name){if(!/^[a-z0-9-]+$/.test(name))return null;if(!cache.has(name)){const image=new Image();image.src='/assets/pixel/world/'+name+'.svg';cache.set(name,image);}return cache.get(name);}
+
+export function worldImageSources(name){return /^[a-z0-9-]+$/.test(name)?artAssetSources(`/assets/pixel/world/${name}.svg`):null;}
+
+export function worldImage(name){
+ const sources=worldImageSources(name);if(!sources)return null;
+ if(!cache.has(name)){
+  const image=new Image();
+  const useFallback=()=>{if(sources.fallback&&image.getAttribute?.('src')!==sources.fallback){image.removeEventListener?.('error',useFallback);image.src=sources.fallback;}};
+  image.addEventListener?.('error',useFallback);
+  image.src=sources.primary;cache.set(name,image);
+ }
+ return cache.get(name);
+}
 export function drawWorldSprite(pen,name,x,y,width,height=width){const image=worldImage(name);if(!image?.complete||!image.naturalWidth)return false;pen.imageSmoothingEnabled=false;pen.drawImage(image,Math.round(x),Math.round(y),Math.round(width),Math.round(height));return true;}
 export function preloadWorld(names){names.forEach(worldImage);}
 // Scanline projection paints the same garage sprite on a car's world-space top.

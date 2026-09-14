@@ -75,8 +75,11 @@
 .typing-rpg__message { min-height: 38px; margin: 10px 0 0; color: #3b584a; font-size: 13px; font-weight: 700; line-height: 1.45; }
 .typing-rpg__heal-hint { margin: 4px 0 0; padding: 7px 9px; border-radius: 8px; color: #65736d; background: #edf0eb; font-size: 12px; line-height: 1.4; }
 .typing-rpg__heal-hint.is-ready { color: #234f73; background: #dceefd; box-shadow: inset 0 0 0 2px #80afd0; }
-.typing-rpg__gear { margin: 5px 0 0; color: #766741; font-size: 11px; font-weight: 750; }
-.typing-rpg__numbers { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 12px; margin-top: auto; padding-top: 9px; color: #66776e; font-size: 12px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.typing-rpg__details { margin-top: 7px; border: 1px solid #d9ded7; border-radius: 8px; background: #f4f4ed; color: #66776e; font-size: 11px; }
+.typing-rpg__details summary { cursor: pointer; padding: 6px 8px; font-weight: 800; }
+.typing-rpg__details[open] summary { border-bottom: 1px solid #d9ded7; }
+.typing-rpg__gear { margin: 7px 8px 0; color: #766741; font-size: 11px; font-weight: 750; }
+.typing-rpg__numbers { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; padding: 7px 8px; color: #66776e; font-size: 11px; font-weight: 750; font-variant-numeric: tabular-nums; }
 .typing-rpg.is-attack .typing-rpg__bolt { animation: typing-rpg-bolt .34s ease-out; }
 .typing-rpg.is-attack .typing-rpg__monster { animation: typing-rpg-monster-hit .3s ease-out; }
 .typing-rpg.is-hit .typing-rpg__hero { animation: typing-rpg-hero-hit .3s ease-out; }
@@ -179,7 +182,7 @@
 .typing-rpg--pixel .typing-rpg__arena {
   border-width:3px;
   background-color:color-mix(in srgb,var(--rpg-stage-color) 13%,#fff8e8);
-  background-image:url('/assets/pixel/rpg/battlefield.svg');
+  background-image:url('/assets/pixel/illustrated/rpg/battlefield.png');
   background-position:center bottom;
   background-repeat:repeat-x;
   background-size:384px 224px;
@@ -206,6 +209,8 @@
 .typing-rpg--pixel .typing-rpg__hero { left:5%;bottom:5px;width:106px;height:106px; }
 .typing-rpg--pixel .typing-rpg__monster { right:3%;bottom:1px;width:116px;height:116px;transition:none; }
 .typing-rpg--pixel.is-boss .typing-rpg__monster { width:128px;height:128px;border:0;box-shadow:none;filter:drop-shadow(0 0 8px #dfb665); }
+.typing-rpg--pixel .typing-rpg__crown { left:34px;top:-31px;z-index:5;width:60px;color:#dfb33d;font-size:38px;text-shadow:2px 2px 0 #49382d;pointer-events:none; }
+.typing-rpg--pixel.is-boss .typing-rpg__crown { display:block;animation:typing-rpg-crown 1.2s steps(4,end) infinite alternate; }
 .typing-rpg--pixel .typing-rpg__hero-art,
 .typing-rpg--pixel .typing-rpg__monster-art {
   display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(4px 5px 0 #49382d33);
@@ -227,6 +232,8 @@
 .typing-rpg--pixel .typing-rpg__submit { background:var(--rpg-green); }
 .typing-rpg--pixel .typing-rpg__heal-hint { border-radius:2px;background:#eee6d0; }
 .typing-rpg--pixel .typing-rpg__heal-hint.is-ready { background:#d8e8dc;box-shadow:inset 0 0 0 2px #6d9675; }
+.typing-rpg--pixel .typing-rpg__details { border:1px solid #cdbd9e;border-radius:1px;background:#f3ead5; }
+.typing-rpg--pixel .typing-rpg__details[open] summary { border-bottom-color:#cdbd9e; }
 .typing-rpg--pixel.is-attack .typing-rpg__monster,
 .typing-rpg--pixel.is-hit .typing-rpg__hero,
 .typing-rpg--pixel.is-heal .typing-rpg__hero { animation:none; }
@@ -234,7 +241,7 @@
 .typing-rpg--pixel.is-hit .typing-rpg__hero-art { animation:pixel-hero-hit .3s steps(3,end); }
 .typing-rpg--pixel.is-heal .typing-rpg__hero-art { animation:pixel-hero-heal .45s steps(4,end); }
 .typing-rpg--pixel.is-heal .typing-rpg__hero::after {
-  content:"";position:absolute;inset:4px;background:url('/assets/pixel/rpg/spell-heal.svg') center/72px 72px no-repeat;image-rendering:pixelated;animation:pixel-heal-burst .45s steps(4,end);pointer-events:none;
+  content:"";position:absolute;inset:4px;background:url('/assets/pixel/illustrated/rpg/spell-heal.png') center/72px 72px no-repeat;image-rendering:pixelated;animation:pixel-heal-burst .45s steps(4,end);pointer-events:none;
 }
 @keyframes pixel-monster-hit { 50%{transform:translateX(8px);filter:brightness(1.55) drop-shadow(4px 5px 0 #49382d33)} }
 @keyframes pixel-hero-hit { 50%{transform:translateX(-7px);filter:sepia(1) saturate(3)} }
@@ -248,6 +255,7 @@
   .typing-rpg--pixel .typing-rpg__monster{right:2%;bottom:0;transform:scale(.78)}
   .typing-rpg--pixel .typing-rpg__bolt{top:37px;transform:scale(.7)}
   .typing-rpg--pixel .typing-rpg__target{padding:5px 7px}
+  .typing-rpg__details summary{padding:5px 7px}
 }
 @media(max-width:380px){
   .typing-rpg--pixel .typing-rpg__scene{height:96px}
@@ -260,3 +268,7 @@
   .typing-rpg--pixel .typing-rpg__bolt{top:9px;transform:scale(.4)}
   .typing-rpg--pixel .typing-rpg__target{padding:3px 5px}
 }
+
+/* Keep enemy status legible over the illustrated canopy. */
+.typing-rpg--pixel .typing-rpg__enemy-head{padding:6px;background:#fff7e8;border:1px solid #b69b72;}
+.typing-rpg--pixel .typing-rpg__enemy-hp-text{color:#49382d;}

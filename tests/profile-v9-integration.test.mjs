@@ -5,15 +5,17 @@ import {catalog,currentGameModes} from '../public/js/catalog.js';
 import {gameMode,gameModeNames,gameSettings} from '../public/js/game-options.js';
 import {makeResult,compareResults} from '../public/js/profiles.js';
 
-test('catalog and game options select endless rhythm v9 while retaining legacy names',()=>{
+test('catalog and game options select three-lane rhythm v11 while retaining legacy names',()=>{
  const rhythm=catalog.find(item=>item.id==='sequence');assert.equal(rhythm.time,'무한');assert.match(rhythm.rules,/100/);assert.match(rhythm.rules,/3·2·1/);
  for(const id of ['energy','chat','taste']){const item=catalog.find(entry=>entry.id===id);assert.equal(item.time,'12문항');assert.match(item.rules,/네 가지 축/);}
- assert.equal(currentGameModes.sequence,'rhythm-endless-v9');
- assert.equal(gameMode('sequence',gameSettings('sequence')),'rhythm-endless-v9');
+ assert.equal(currentGameModes.sequence,'rhythm-three-lane-v11');
+ assert.equal(gameMode('sequence',gameSettings('sequence')),'rhythm-three-lane-v11');
+ assert.equal(gameMode('sequence',{version:'v9',mode:'rhythm'}),'rhythm-endless-v9');
  assert.equal(gameMode('sequence',{version:'v7',mode:'rhythm'}),'rhythm-relay-v7');
- assert.equal(gameMode('sequence',{}),'nine-pad');
+ assert.equal(gameModeNames['rhythm-three-lane-v11'],'세 갈래 리듬 · 무한 모드');
  assert.equal(gameModeNames['rhythm-endless-v9'],'무한 리듬 · 100가지 패턴');
  assert.equal(gameModeNames['rhythm-relay-v7'],'리듬 릴레이 · 8라운드');
+ assert.equal(gameModeNames['nine-pad'],'기억 순서 · 이전 규칙');
 });
 
 test('profile integration rejects cross-version taste comparison without rewriting legacy results',()=>{

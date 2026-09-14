@@ -1,13 +1,21 @@
 import {RPG_RARITIES,RPG_SLOTS} from './rpg-items.js';
 import {esc} from './catalog.js';
+import {artAssetSources} from './art.js';
 
 export function normalizeRpgDraw(out={}){
  const items=(Array.isArray(out.items)&&out.items.length?out.items:[{item:out.item,duplicate:!!out.duplicate}]).map(row=>row?.item?{item:row.item,duplicate:!!row.duplicate}:{item:row,duplicate:false}).filter(row=>row.item);
  return{...out,item:out.item||items[0]?.item,duplicate:out.duplicate??items[0]?.duplicate??false,items,revealedCount:Math.max(0,Math.min(items.length,Number(out.revealedCount)||0))};
 }
 export const isExtraShakeRarity=rarity=>['rare','legend','divine'].includes(rarity);
-const chest=(state='sealed',motion='')=>`<img class="draw-chest ${motion}" src="/assets/pixel/rpg/chest-${state}.svg" alt="" width="144" height="120">`;
-function wireChestFallback(container){container.querySelectorAll('img.draw-chest').forEach(image=>image.addEventListener('error',()=>{const fallback=document.createElement('span');fallback.className=`${image.className} draw-chest-fallback`;fallback.textContent='✦';fallback.setAttribute('aria-hidden','true');image.replaceWith(fallback);},{once:true}));}
+export const rpgChestArtSources=(state='sealed')=>artAssetSources(`/assets/pixel/rpg/chest-${state}.svg`);
+export const rpgItemArtSources=item=>artAssetSources(item?.image)||(/^[a-z0-9-]+$/.test(item?.id||'')?artAssetSources(`/assets/pixel/items/${item.id}.svg`):null);
+const fallbackAttr=sources=>sources?.fallback?` data-fallback-src="${sources.fallback}"`:'';
+const chest=(state='sealed',motion='')=>{const sources=rpgChestArtSources(state);return `<img class="draw-chest ${motion}" src="${sources.primary}"${fallbackAttr(sources)} alt="" width="144" height="120">`;};
+function wireFallback(image,onMissing){
+ const handle=()=>{const fallback=image.dataset.fallbackSrc;if(fallback&&image.getAttribute('src')!==fallback){delete image.dataset.fallbackSrc;image.src=fallback;return;}image.removeEventListener('error',handle);onMissing();};
+ image.addEventListener('error',handle);
+}
+function wireChestFallback(container){container.querySelectorAll('img.draw-chest').forEach(image=>wireFallback(image,()=>{const fallback=document.createElement('span');fallback.className=`${image.className} draw-chest-fallback`;fallback.textContent='✦';fallback.setAttribute('aria-hidden','true');image.replaceWith(fallback);}));}
 
 // The server owns charging, inventory writes and idempotency. This view reveals a
 // completed result in order and mutates revealedCount so a closed batch can resume.
@@ -49,9 +57,10 @@ export async function openRpgDraw({draw,equip,onResult,onReveal=()=>{},stored=fa
   result.revealedCount=index+1;onReveal(result,index);
   modal.className=`rpg-draw-dialog is-revealed rarity-${item.rarity}${isExtraShakeRarity(item.rarity)?' has-extra-shake':''}`;
   const more=result.revealedCount<result.items.length;
-  body.innerHTML=`<div class="draw-kicker">${result.items.length>1?`${result.revealedCount} / ${result.items.length} · `:''}${rarity.name} · ${RPG_SLOTS[item.slot]}</div><div class="draw-reward-art"><img class="draw-open-chest" src="/assets/pixel/rpg/chest-${item.rarity}-open.svg" alt="" width="144" height="120"><img class="draw-item-icon" src="${item.image||`/assets/pixel/items/${item.id}.svg`}" alt="" width="108" height="108"><span class="draw-item-fallback" aria-hidden="true">✦</span></div><h2 id="draw-title">${esc(item.name)}</h2><div class="draw-effect">${{attack:'공격력',defense:'방어력',heal:'회복량'}[item.slot]} +${item.value}</div><p>${row.duplicate?'같은 장비가 여분으로 추가됐어요.':'새 장비가 내 장비함에 추가됐어요.'}<br>${more?`${result.items.length-result.revealedCount}개의 상자가 남았어요.`:'모든 상자를 확인했어요.'}</p><p class="draw-error" role="alert"></p><div class="draw-actions"><button type="button" class="button" data-draw-equip>바로 장착</button>${more?'<button type="button" class="button primary" data-draw-next>다음 상자</button>':result.items.length>1?'<button type="button" class="button primary" data-draw-home>타이핑 홈으로</button>':'<button type="button" class="button primary" data-draw-done>확인</button>'}</div>`;
+  const openChest=rpgChestArtSources(`${item.rarity}-open`),itemSources=rpgItemArtSources(item);
+  body.innerHTML=`<div class="draw-kicker">${result.items.length>1?`${result.revealedCount} / ${result.items.length} · `:''}${rarity.name} · ${RPG_SLOTS[item.slot]}</div><div class="draw-reward-art"><img class="draw-open-chest" src="${openChest.primary}"${fallbackAttr(openChest)} alt="" width="144" height="120"><img class="draw-item-icon" src="${itemSources.primary}"${fallbackAttr(itemSources)} alt="" width="108" height="108"><span class="draw-item-fallback" aria-hidden="true">✦</span></div><h2 id="draw-title">${esc(item.name)}</h2><div class="draw-effect">${{attack:'공격력',defense:'방어력',heal:'회복량'}[item.slot]} +${item.value}</div><p>${row.duplicate?'같은 장비가 여분으로 추가됐어요.':'새 장비가 내 장비함에 추가됐어요.'}<br>${more?`${result.items.length-result.revealedCount}개의 상자가 남았어요.`:'모든 상자를 확인했어요.'}</p><p class="draw-error" role="alert"></p><div class="draw-actions"><button type="button" class="button" data-draw-equip>바로 장착</button>${more?'<button type="button" class="button primary" data-draw-next>다음 상자</button>':result.items.length>1?'<button type="button" class="button primary" data-draw-home>타이핑 홈으로</button>':'<button type="button" class="button primary" data-draw-done>확인</button>'}</div>`;
   const rewardArt=body.querySelector('.draw-reward-art'),itemArt=body.querySelector('.draw-item-icon');
-  itemArt.addEventListener('error',()=>rewardArt.classList.add('is-item-missing'));body.querySelector('.draw-open-chest').addEventListener('error',event=>event.currentTarget.hidden=true);
+  wireFallback(itemArt,()=>rewardArt.classList.add('is-item-missing'));wireFallback(body.querySelector('.draw-open-chest'),()=>{body.querySelector('.draw-open-chest').hidden=true;});
   const equipButton=body.querySelector('[data-draw-equip]');equipButton.focus({preventScroll:true});
   body.querySelector('[data-draw-next]')?.addEventListener('click',showReady);
   body.querySelector('[data-draw-done]')?.addEventListener('click',()=>modal.close());

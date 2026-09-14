@@ -1,5 +1,5 @@
 import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
-import { jumpPatterns100, shuffledJumpPatterns } from "./jump-patterns.js";
+import { jumpPatterns100, jumpWorldDelta, jumpWorldSpeed, shuffledJumpPatterns } from "./jump-patterns.js";
 
 export const JUMP_FLOOR = 390;
 const CANVAS_WIDTH = 1080;
@@ -75,7 +75,7 @@ export function createJump(ctx) {
 
   const player = { y: JUMP_FLOOR, vy: 0, jumps: 0, duck: false };
   const obstacles = [], pendingEvents = [];
-  let deck = [], currentPattern = null, previousPatternId = null, patternsSeen = 0, nextPatternMs = 0;
+  let deck = [], currentPattern = null, previousPatternId = null, patternsSeen = 0, nextPatternDistance = 0;
   let elapsed = 0, distancePixels = 0, avoided = 0, lives = 2, invincibleMs = 0, nextObstacleId = 1, scroll = 0;
   let pointerDuck = false, keyboardDuck = false, ending = null;
 
@@ -93,10 +93,10 @@ export function createJump(ctx) {
   function beginPattern() {
     currentPattern = takePattern(); patternsSeen += 1;
     currentPattern.events.forEach((event, eventIndex) => {
-      if (event.atMs === 0) addObstacle(currentPattern, event, eventIndex);
-      else pendingEvents.push({ pattern: currentPattern, event, eventIndex, remainingMs: event.atMs });
+      if (event.atDistance === 0) addObstacle(currentPattern, event, eventIndex);
+      else pendingEvents.push({ pattern: currentPattern, event, eventIndex, remainingDistance: event.atDistance });
     });
-    nextPatternMs = Math.max(...currentPattern.events.map(({ atMs }) => atMs)) + currentPattern.gapAfterMs;
+    nextPatternDistance = Math.max(...currentPattern.events.map(({ atDistance }) => atDistance)) + currentPattern.gapAfterDistance;
   }
 
   const jump = () => { if (!ctx.isFinished() && !ending) { tryJump(player); draw(); } };
@@ -140,15 +140,32 @@ export function createJump(ctx) {
     pen.fillStyle = "#eef4ed"; pen.textAlign = "center"; pen.font = "800 17px sans-serif";
     pen.fillText("↓ 숙이기", obstacle.x + obstacle.w / 2, obstacle.h - 10);
   }
+  function drawWoodland(viewWidth) {
+    pen.fillStyle = "#e9f0e8"; pen.fillRect(0, 0, viewWidth, CANVAS_HEIGHT);
+    pen.fillStyle = "#f6df94"; pen.fillRect(viewWidth - 148, 51, 64, 64); pen.fillRect(viewWidth - 140, 43, 48, 80);
+    pen.fillStyle = "#d7e5d4";
+    for (let index = -1; index < 7; index += 1) {
+      const x = index * 190 - (scroll * .08 % 190);
+      pen.beginPath(); pen.moveTo(x, JUMP_FLOOR); pen.lineTo(x + 90, 224); pen.lineTo(x + 180, JUMP_FLOOR); pen.fill();
+    }
+    pen.fillStyle = "#b9d0b2";
+    for (let index = -1; index < 8; index += 1) {
+      const x = index * 160 - (scroll * .18 % 160);
+      pen.fillRect(x + 66, 276, 22, 114);
+      pen.fillRect(x + 12, 263, 130, 34); pen.fillRect(x + 30, 232, 92, 42); pen.fillRect(x + 51, 207, 52, 38);
+    }
+    pen.fillStyle = "#afc7a9"; pen.fillRect(0, JUMP_FLOOR, viewWidth, 60);
+    pen.fillStyle = "#6f986d";
+    for (let x = -(scroll % 90); x < viewWidth + 30; x += 90) {
+      pen.fillRect(x, 419, 38, 4); pen.fillRect(x + 12, 397, 4, 9); pen.fillRect(x + 7, 400, 14, 3);
+    }
+    pen.fillStyle = "#e6b95f";
+    for (let x = 58 - (scroll * .55 % 210); x < viewWidth; x += 210) { pen.fillRect(x, 405, 5, 5); pen.fillRect(x + 2, 410, 2, 8); }
+  }
   function draw() {
     fitCamera();
     const viewWidth = canvas.width;
-    pen.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT); pen.fillStyle = "#e9f0e8"; pen.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    pen.fillStyle = "#f6df94"; pen.fillRect(viewWidth-148,51,64,64);pen.fillRect(viewWidth-140,43,48,80);
-    pen.fillStyle = "#d2e1d0";
-    for (let index = 0; index < 8; index += 1) { const x = index * 180 - (scroll * .18 % 180); pen.fillRect(x,272,100,138);pen.fillRect(x+12,244,76,42);pen.fillRect(x+25,216,52,38); }
-    pen.fillStyle = "#afc7a9"; pen.fillRect(0, JUMP_FLOOR, CANVAS_WIDTH, 60); pen.fillStyle = "#8fab89";
-    for (let x = -(scroll % 90); x < CANVAS_WIDTH + 30; x += 90) pen.fillRect(x, 419, 38, 4);
+    pen.clearRect(0, 0, viewWidth, CANVAS_HEIGHT); drawWoodland(viewWidth);
     for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; if (obstacle.kind === "slide") drawSlideObstacle(obstacle); else drawGroundObstacle(obstacle); }
     pen.globalAlpha = 1;
     const duck = player.duck && player.y >= JUMP_FLOOR - .01, height = duck ? 34 : 72;
@@ -166,23 +183,23 @@ export function createJump(ctx) {
   }
   function finishRun() {
     const distance = jumpDistanceMeters(distancePixels); draw();
-    ctx.finish({ value: distance, display: distance.toFixed(1), unit: "m", higherBetter: true, mode: "jump-distance-v6", details: { distance, avoided, survivedSeconds: Number((elapsed / 1000).toFixed(1)) } });
+    ctx.finish({ value: distance, display: distance.toFixed(1), unit: "m", higherBetter: true, mode: "jump-distance-v11", details: { distance, avoided, survivedSeconds: Number((elapsed / 1000).toFixed(1)) } });
   }
 
   beginPattern(); draw(); ctx.setStatus("0.0 m · 기회 2번");
   return {
     tick(ms) {
       if(ending){stepJumpPlayer(player,ms/1000);if(player.y>=JUMP_FLOOR-.01)ending.groundedMs+=ms;draw();ctx.setStatus("조금 쉬었다가, 다시 뛰어요.");if(ending.groundedMs>=650)finishRun();return;}
-      const seconds = ms / 1000, speed = Math.min(420, 220 + elapsed * .002);
-      elapsed += ms; distancePixels += speed * seconds; scroll += speed * seconds; invincibleMs = Math.max(0, invincibleMs - ms); nextPatternMs -= ms;
+      const seconds = ms / 1000, speed = jumpWorldSpeed(elapsed), worldDelta = jumpWorldDelta(speed, ms);
+      elapsed += ms; distancePixels += worldDelta; scroll += worldDelta; invincibleMs = Math.max(0, invincibleMs - ms); nextPatternDistance -= worldDelta;
       stepJumpPlayer(player, seconds); player.duck = pointerDuck || keyboardDuck;
       for (let index = pendingEvents.length - 1; index >= 0; index -= 1) {
-        const pending = pendingEvents[index]; pending.remainingMs -= ms;
-        if (pending.remainingMs <= 0) { addObstacle(pending.pattern, pending.event, pending.eventIndex); pendingEvents.splice(index, 1); }
+        const pending = pendingEvents[index]; pending.remainingDistance -= worldDelta;
+        if (pending.remainingDistance <= 0) { addObstacle(pending.pattern, pending.event, pending.eventIndex); pendingEvents.splice(index, 1); }
       }
-      if (nextPatternMs <= 0) beginPattern();
+      if (nextPatternDistance <= 0) beginPattern();
       for (const obstacle of obstacles) {
-        obstacle.x -= speed * obstacle.speedScale * seconds;
+        obstacle.x -= worldDelta;
         if (!obstacle.hit && !obstacle.passed && !invincibleMs && jumpCollides(player, obstacle)) {
           obstacle.hit = true; const hit = jumpRunAfterHit(lives); lives = hit.lives; invincibleMs = 950;
           if (hit.finished) { ending={groundedMs:0};invincibleMs=0;clearHeld();draw();return; }
@@ -196,10 +213,10 @@ export function createJump(ctx) {
     onPause(paused) { if (paused) clearHeld(); },
     getState: () => ({
       player: { ...player }, playerBox: jumpPlayerBox(player), obstacles: obstacles.map((obstacle) => ({ ...obstacle })),
-      pendingEvents: pendingEvents.map(({ pattern, eventIndex, remainingMs }) => ({ patternId: pattern.id, eventIndex, remainingMs })),
-      phase: ending ? "ending" : "playing", ending: ending ? {...ending} : null, elapsedMs: elapsed, distance: jumpDistanceMeters(distancePixels), avoided, score: jumpDistanceMeters(distancePixels), lives, invincibleMs,
-      speed: Math.min(420, 220 + elapsed * .002), currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
-      patternsSeen, deckRemaining: deck.length, patternCount: jumpPatterns100.length, nextPatternMs,
+      pendingEvents: pendingEvents.map(({ pattern, eventIndex, remainingDistance }) => ({ patternId: pattern.id, eventIndex, remainingDistance })),
+      phase: ending ? "ending" : "playing", ending: ending ? {...ending} : null, elapsedMs: elapsed, worldDistance: distancePixels, distance: jumpDistanceMeters(distancePixels), avoided, score: jumpDistanceMeters(distancePixels), lives, invincibleMs,
+      speed: jumpWorldSpeed(elapsed), currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
+      patternsSeen, deckRemaining: deck.length, patternCount: jumpPatterns100.length, nextPatternDistance,
     }),
   };
 }

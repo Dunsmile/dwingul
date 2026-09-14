@@ -1,0 +1,2477 @@
+{
+  "version": "pixel-v11",
+  "equipmentBaseIllustrations": 75,
+  "equipmentVariants": 312,
+  "assets": [
+    {
+      "path": "/assets/pixel/illustrated/personas/0.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/1.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/2.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/3.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/4.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/5.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/6.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/7.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/8.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/9.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/10.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/11.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/12.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/13.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/14.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/personas/15.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/01.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-01.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-01.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/02.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-02.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-02.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/03.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-03.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-03.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/04.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-04.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-04.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/05.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-05.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-05.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/06.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-06.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-06.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/07.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-07.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-07.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/08.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-08.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-08.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/09.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-09.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-09.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/10.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-10.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-10.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/11.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-11.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-11.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/12.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-12.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-12.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/13.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-13.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-13.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/14.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-14.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-14.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/15.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-15.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-15.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/16.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-16.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-16.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/17.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-17.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-17.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/18.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-18.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-18.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/19.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-19.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-19.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/20.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-20.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-20.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/21.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-21.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-21.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/22.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-22.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-22.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/23.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-23.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-23.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/24.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-24.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-24.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/monsters/25.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/monster-25.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/boss-25.png",
+      "width": 288,
+      "height": 288
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/hero.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-21.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-22.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-23.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-24.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-25.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-26.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-27.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-28.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-29.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-30.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-31.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-32.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-33.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-34.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-35.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-36.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-37.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-38.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-39.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-40.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-41.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-42.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-43.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-44.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-45.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-46.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-47.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-48.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-49.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-common-50.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-21.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-22.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-23.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-24.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-uncommon-25.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-rare-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-legend.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-legend-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-legend-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-legend-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-legend-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-legend-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-divine-01.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-divine-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/attack-divine-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-21.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-22.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-23.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-24.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-25.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-26.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-27.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-28.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-29.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-30.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-31.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-32.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-33.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-34.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-35.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-36.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-37.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-38.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-39.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-40.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-41.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-42.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-43.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-44.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-45.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-46.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-47.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-48.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-49.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-common-50.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-21.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-22.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-23.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-24.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-uncommon-25.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-rare-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-legend.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-legend-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-legend-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-legend-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-legend-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-legend-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-divine-01.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-divine-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/defense-divine-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-21.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-22.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-23.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-24.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-25.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-26.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-27.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-28.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-29.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-30.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-31.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-32.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-33.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-34.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-35.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-36.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-37.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-38.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-39.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-40.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-41.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-42.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-43.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-44.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-45.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-46.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-47.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-48.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-49.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-common-50.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-21.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-22.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-23.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-24.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-uncommon-25.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-07.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-08.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-09.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-10.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-11.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-12.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-13.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-14.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-15.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-16.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-17.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-18.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-19.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-rare-20.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-legend.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-legend-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-legend-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-legend-04.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-legend-05.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-legend-06.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-divine-01.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-divine-02.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/items/heal-divine-03.png",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/basic.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/sport.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/touring.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/compact.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/rally.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/pickup.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/van.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/vehicles/roadster.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/traffic/car.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/traffic/van.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/traffic/truck.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/traffic/bus.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-basic.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-sport.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-touring.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-car.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-van.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-truck.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/vehicle-bus.png",
+      "width": 384,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/coin.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/fuel.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/boost.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/heart.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/trophy.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/lantern.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/star.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/spell-attack.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/spell-heal.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/rhythm-drum.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/element-wood.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/element-fire.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/element-earth.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/element-metal.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/element-water.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/spell-attack.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/spell-heal.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-white-normal.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-white-smile.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-white-cry.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-blue-normal.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-blue-smile.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-blue-cry.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-purple-normal.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-purple-smile.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/sort-purple-cry.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-common-closed.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-common-open.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-uncommon-closed.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-uncommon-open.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-rare-closed.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-rare-open.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-legend-closed.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-legend-open.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-divine-closed.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-divine-open.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/chest-sealed.png",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/book.png",
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-0.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-1.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-2.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-3.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-4.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-5.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-6.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-7.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-8.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-9.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-10.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-11.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-12.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-13.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-14.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-15.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-16.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-17.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-18.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-19.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-20.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-21.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-back.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-back-purple.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-deck.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-fan.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/tarot-pouch.png",
+      "width": 256,
+      "height": 384
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/runner-run-a.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/runner-run-b.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/runner-jump.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/runner-slide.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/world/runner-dead.png",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "/assets/pixel/illustrated/rpg/battlefield.png",
+      "width": 960,
+      "height": 640
+    }
+  ]
+}

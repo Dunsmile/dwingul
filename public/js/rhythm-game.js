@@ -1,11 +1,17 @@
-import { createRhythmEndlessEngine } from "./rhythm-engine.js";
+import { createRhythmThreeLaneEngine } from "./rhythm-engine.js";
+
+const LANE_COPY = Object.freeze({
+  left: { label: "왼쪽", keys: "← · A" },
+  center: { label: "가운데", keys: "Space · Enter · ↓ · S" },
+  right: { label: "오른쪽", keys: "→ · D" },
+});
 
 const PHASE_COPY = Object.freeze({
   idle: ["리듬 출발 준비", "시작을 누르면 네 박자를 세고 숲속 친구가 먼저 연주해요."],
   countin: ["하나, 둘, 셋, 넷!", "박자를 몸에 익혀요."],
   listen: ["먼저 들어요", "숲속 친구의 리듬을 기억해요."],
   prepare: ["내 차례 준비", "셋, 둘, 하나 뒤에 리듬을 이어 쳐요."],
-  respond: ["이제 따라쳐요", "같은 순간에 큰 버튼을 눌러요."],
+  respond: ["이제 따라쳐요", "같은 순간에 같은 방향을 눌러요."],
   between: ["좋아요, 다음 리듬!", "잠깐 숨을 고르고 이어가요."],
   gameover: ["리듬 에너지를 다 썼어요", "움직임이 멈춘 뒤 결과를 보여 드릴게요."],
   finished: ["무한 리듬 끝!", "결과에서 오늘의 박자 감각을 확인해요."],
@@ -20,6 +26,13 @@ const JUDGMENT_COPY = Object.freeze({
 
 function interactiveTarget(target) {
   return Boolean(target && (target.isContentEditable || /^(BUTTON|INPUT|TEXTAREA|SELECT|A)$/.test(target.tagName || "")));
+}
+
+function laneForKeyboardEvent(event) {
+  if (["ArrowLeft", "KeyA"].includes(event.code)) return "left";
+  if (["Space", "Enter", "ArrowDown", "KeyS"].includes(event.code)) return "center";
+  if (["ArrowRight", "KeyD"].includes(event.code)) return "right";
+  return null;
 }
 
 function timingCopy(judgment) {
@@ -37,16 +50,18 @@ function markerMarkup(notes, phase, response = false) {
     const left = 4 + position * 92;
     const state = response ? (phase === "respond" ? note.status : "waiting") : phase === "listen" && note.status === "played" ? "played" : "waiting";
     const label = `${note.beat + 1}박 ${state === "hit" ? "성공" : state === "miss" ? "놓침" : "음표"}`;
-    return `<i class="rhythm-game__note is-${state}" style="left:${left}%" aria-label="${label}" data-note="${index}"></i>`;
+    const lane = note.lane || "center";
+    return `<i class="rhythm-game__note is-${state} is-lane-${lane}" style="left:${left}%" aria-label="${LANE_COPY[lane].label} ${label}" data-note="${index}" data-lane="${lane}"></i>`;
   }).join("");
 }
 
 export function createRhythm(ctx) {
-  const engine = createRhythmEndlessEngine({ random: ctx.random });
+  const engine = createRhythmThreeLaneEngine({ random: ctx.random });
   ctx.root.classList.add("dg-game--rhythm");
 
   const game = document.createElement("section");
   game.className = "rhythm-game";
+  game.tabIndex = -1;
   game.innerHTML = `
     <div class="rhythm-game__hud" aria-label="현재 기록">
       <span><small>구간</small><b data-ui="round">1 · ∞</b></span>
@@ -66,14 +81,14 @@ export function createRhythm(ctx) {
       </header>
       <div class="rhythm-game__count" aria-live="polite" data-ui="count">♪</div>
       <div class="rhythm-game__track rhythm-game__track--listen" data-ui="listen-track">
-        <div class="rhythm-game__character rhythm-game__character--guide" aria-hidden="true"><i></i></div>
+        <div class="rhythm-game__character rhythm-game__character--guide" aria-hidden="true"><img data-decorative-image data-fallback-src="/assets/pixel/personas/10.svg" src="/assets/pixel/illustrated/personas/10.png" alt=""><i></i></div>
         <div class="rhythm-game__track-body">
           <b>먼저 듣기</b><span>숲속 친구</span>
           <div class="rhythm-game__rail" role="img" aria-label="먼저 들을 네 박자 리듬"><i class="rhythm-game__needle" data-ui="listen-needle"></i><div data-ui="listen-notes"></div></div>
         </div>
       </div>
       <div class="rhythm-game__track rhythm-game__track--respond" data-ui="respond-track">
-        <div class="rhythm-game__character rhythm-game__character--player" aria-hidden="true"><i></i></div>
+        <div class="rhythm-game__character rhythm-game__character--player" aria-hidden="true"><img data-decorative-image data-fallback-src="/assets/pixel/personas/4.svg" src="/assets/pixel/illustrated/personas/4.png" alt=""><i></i></div>
         <div class="rhythm-game__track-body">
           <b>이어 치기</b><span>나</span>
           <div class="rhythm-game__rail" role="img" aria-label="내가 따라 칠 네 박자 리듬"><i class="rhythm-game__needle" data-ui="respond-needle"></i><div data-ui="respond-notes"></div></div>
@@ -81,21 +96,27 @@ export function createRhythm(ctx) {
       </div>
       <p class="rhythm-game__judgment" aria-live="polite" data-ui="judgment">귀로 듣고, 손끝으로 이어 주세요.</p>
       <div class="rhythm-game__actions">
-        <button class="rhythm-game__tap" type="button" data-ui="tap" disabled><span>탁!</span><small>Space · Enter</small></button>
+        <div class="rhythm-game__lane-pads" aria-label="세 방향 리듬 입력">
+          <button class="rhythm-game__tap is-left" type="button" data-lane="left" aria-keyshortcuts="ArrowLeft A" disabled><span>←</span><b>왼쪽</b><small>A</small></button>
+          <button class="rhythm-game__tap is-center" type="button" data-lane="center" aria-keyshortcuts="Space Enter ArrowDown S" disabled><span>탁!</span><b>가운데</b><small>Space · Enter · ↓ · S</small></button>
+          <button class="rhythm-game__tap is-right" type="button" data-lane="right" aria-keyshortcuts="ArrowRight D" disabled><span>→</span><b>오른쪽</b><small>D</small></button>
+        </div>
         <button class="rhythm-game__mute" type="button" data-ui="mute" aria-pressed="false" aria-label="소리 끄기">🔊 소리 켬</button>
       </div>
       <div class="rhythm-game__start-panel" data-ui="start-panel">
         <div class="rhythm-game__start-card">
           <div class="rhythm-game__start-icon" aria-hidden="true">♩ ♪</div>
           <strong>100가지 리듬을<br>끝없이 이어 쳐요</strong>
-          <p>숲속 친구의 리듬을 듣고, 내 차례의 3·2·1 뒤에 큰 버튼을 눌러 주세요.</p>
-          <button type="button" class="rhythm-game__start" data-ui="start">무한 리듬 시작</button>
+          <p>숲속 친구의 방향과 리듬을 기억해요. 내 차례의 3·2·1 뒤에 같은 방향 키를 눌러 주세요.</p>
+          <div class="rhythm-game__key-guide"><kbd>← A</kbd><kbd>Space Enter ↓ S</kbd><kbd>→ D</kbd></div>
+          <button type="button" class="rhythm-game__start" data-ui="start">세 방향 리듬 시작</button>
         </div>
       </div>
     </div>`;
   ctx.stage.append(game);
 
   const ui = Object.fromEntries([...game.querySelectorAll("[data-ui]")].map((node) => [node.dataset.ui.replace(/-([a-z])/g,(_,letter)=>letter.toUpperCase()), node]));
+  const laneButtons = [...game.querySelectorAll(".rhythm-game__tap[data-lane]")];
   let audioContext = null;
   let master = null;
   let destroyed = false;
@@ -171,7 +192,7 @@ export function createRhythm(ctx) {
     ui.phaseKicker.textContent = state.phase === "respond" ? "YOUR TURN" : state.phase === "listen" ? "LISTEN" : state.phase === "prepare" ? "GET READY" : "ENDLESS RHYTHM";
     ui.count.textContent = state.phase === "countin" ? String(5 - state.countInBeat) : state.phase === "prepare" ? String(state.prepareCount) : state.phase === "listen" ? "♪" : state.phase === "respond" ? "탁!" : state.phase === "gameover" ? "끝" : "•";
     ui.judgment.textContent = timingCopy(state.lastJudgment);
-    ui.tap.disabled = state.phase !== "respond";
+    laneButtons.forEach((button) => { button.disabled = state.phase !== "respond"; });
     ui.startPanel.hidden = state.started;
     ui.mute.setAttribute("aria-pressed", String(state.muted));
     ui.mute.setAttribute("aria-label", state.muted ? "소리 켜기" : "소리 끄기");
@@ -210,9 +231,9 @@ export function createRhythm(ctx) {
     }
   }
 
-  function tap() {
+  function tap(lane) {
     if (paused || ctx.isFinished() || engine.getState().phase !== "respond") return;
-    engine.tap();
+    engine.tap(lane);
     flushAudio();
     render();
   }
@@ -223,20 +244,32 @@ export function createRhythm(ctx) {
     engine.start();
     flushAudio();
     render();
-    ui.tap.focus({ preventScroll: true });
+    game.focus({ preventScroll: true });
   });
-  ctx.listen(ui.tap, "pointerdown", event => { if(event.button!==undefined&&event.button!==0)return; event.preventDefault();ui.tap.focus({preventScroll:true});tap(); });
-  ctx.listen(ui.tap, "click", event => { if(event.detail===0)tap(); });
+  laneButtons.forEach((button) => {
+    ctx.listen(button, "pointerdown", event => {
+      if(event.button!==undefined&&event.button!==0)return;
+      event.preventDefault(); tap(button.dataset.lane); game.focus({preventScroll:true});
+    });
+    ctx.listen(button, "keydown", event => {
+      const lane = laneForKeyboardEvent(event);
+      if (!lane) return;
+      event.preventDefault(); event.stopPropagation(); tap(lane); game.focus({preventScroll:true});
+    });
+    ctx.listen(button, "click", event => { if(event.detail===0){tap(button.dataset.lane);game.focus({preventScroll:true});} });
+  });
   ctx.listen(ui.mute, "click", () => {
     const muted = engine.toggleMuted();
     if (master) master.gain.value = muted ? 0 : .19;
     render();
-    if(engine.getState().started)ui.tap.focus({preventScroll:true});
+    if(engine.getState().started)game.focus({preventScroll:true});
   });
   ctx.listen(document, "keydown", (event) => {
-    if (paused || (interactiveTarget(event.target)&&event.target!==ui.tap) || ![" ", "Enter"].includes(event.key)) return;
+    if (paused || interactiveTarget(event.target)) return;
+    const lane = laneForKeyboardEvent(event);
+    if (!lane) return;
     event.preventDefault();
-    if(!event.repeat)tap();
+    if(!event.repeat)tap(lane);
   });
 
   render();
@@ -249,7 +282,7 @@ export function createRhythm(ctx) {
     },
     onPause(next) {
       paused = Boolean(next);
-      if(!paused&&engine.getState().started&&document.activeElement?.classList.contains("dg-game__pause"))ui.tap.focus({preventScroll:true});
+      if(!paused&&engine.getState().started&&document.activeElement?.classList.contains("dg-game__pause"))game.focus({preventScroll:true});
       if (!audioContext || audioContext.state === "closed") return;
       const operation = paused ? audioContext.suspend?.() : engine.getState().started ? audioContext.resume?.() : null;
       operation?.catch?.(() => {});

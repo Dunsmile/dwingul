@@ -1,6 +1,6 @@
 # 뒹굴 공개 배포 안내
 
-2026-09-14에 https://dwingul.com 공개 배포를 완료했다. 다음은 실제 확인한 상태와 이후 배포 시 반복할 절차다.
+2026-09-14에 https://dwingul.com 초기 공개 배포를 완료했다. 아래 계정 연결 상태는 초기 출시 당시의 확인 기록이며, 버전별 배포 검증은 출시 기록을 함께 참고한다.
 
 - Cloudflare Workers + SQLite Durable Object로 배포했고, `www`는 대표 주소로 308 이동한다.
 - 원본 로컬 DB를 백업한 뒤 기존 107행을 이전했다. 삽입 결과는 원본 테이블별 개수와 일치했다. 일회성 DB 반입 경로와 비밀키는 제거했다.
@@ -16,11 +16,10 @@
 저장소 루트에서 다음 순서로 실행한다.
 
 ```sh
-node scripts/generate-pixel-assets.mjs
-node scripts/build-site.mjs
+npm run build
 ```
 
-두 번째 명령은 `public/`을 바탕으로 `dist/`를 새로 만든다. 브라우저에서 사용하면 안 되는 `public/js/rpg-store.js`와 `public/js/garage-store.js`는 복사하지 않는다. 홈, 가이드 목록, 콘텐츠 안내 21개, 소개·개인정보처리방침·이용약관·연락 페이지를 만들고 `sitemap.xml`, `robots.txt`, `ads.txt`도 생성한 뒤 자체 검증한다. 성공 시 `site built: 27 crawlable pages`가 표시된다.
+빌드는 `public/`을 바탕으로 `dist/`를 새로 만든다. 브라우저에서 사용하면 안 되는 `public/js/rpg-store.js`와 `public/js/garage-store.js`는 복사하지 않는다. 홈, 가이드 목록, 콘텐츠 안내 21개, 소개·개인정보처리방침·이용약관·연락 페이지를 만들고 `sitemap.xml`, `robots.txt`, `ads.txt`도 생성한 뒤 자체 검증한다. 현재 성공 시 `site built: 31 crawlable pages`가 표시된다.
 
 배포 전에는 적어도 다음 항목을 확인한다.
 
