@@ -110,8 +110,9 @@ test('Durable Object SQLite adapter serves isolated sessions and RPG batch, enha
     assert.deepEqual(retry.items, batch.items);
     assert.equal(retry.gold, 500);
 
+    const beforeQuantity=fixture.sqlite.prepare('SELECT quantity FROM rpg_inventory WHERE user_id=? AND item_id=?').get(firstSession.user.id,'attack-common').quantity;
     const enhanced = await first('rpg/enhance', 'POST', {itemId: 'attack-common'}, {origin: 'https://worker.test'});
-    assert.deepEqual(enhanced.inventory.find(row => row.itemId === 'attack-common'), {itemId: 'attack-common', quantity: 1, enhancement: 1});
+    assert.deepEqual(enhanced.inventory.find(row => row.itemId === 'attack-common'), {itemId: 'attack-common', quantity: beforeQuantity-2, enhancement: 1});
     assert.equal((await second('rpg/enhance', 'POST', {itemId: 'attack-common'}, {origin: 'https://worker.test'})).status, 400);
 
     await first('rpg/equip', 'POST', {slot: 'attack', itemId: 'attack-common'}, {origin: 'https://worker.test'});
@@ -184,8 +185,9 @@ test('portable API ranks current rhythm v11 with points and retains separate v9,
     const session = await request('session');
     await request('profile', 'POST', {nickname: '박자 수집가', pin: '1234'}, {origin: 'https://worker.test'});
 
-    const currentRun = await request('runs', 'POST', {content: 'sequence', seed: 7}, {origin: 'https://worker.test'});
-    assert.equal(currentRun.gameSettings.version, 'v11');
+    assert.equal((await request('runs', 'POST', {content: 'sequence', seed: 7}, {origin: 'https://worker.test'})).status,410);
+    const currentRun={id:'archived-current'};
+    fixture.sqlite.prepare('INSERT INTO runs(id,user_id,content,seed,started,game_settings) VALUES(?,?,?,?,?,?)').run(currentRun.id,session.user.id,'sequence',7,Date.now(),JSON.stringify({version:'v11',mode:'rhythm'}));
     const currentRecord = await request('records', 'POST', {
       run: currentRun.id,
       result: {value: 123.9, display: 'forged', unit: '단계', mode: 'nine-pad'},
@@ -197,8 +199,8 @@ test('portable API ranks current rhythm v11 with points and retains separate v9,
     assert.deepEqual({...savedCurrent}, {value: 123, display: '123', unit: '점', mode: 'rhythm-three-lane-v11'});
 
     const createLegacyRecord = async (settings, submittedMode, value) => {
-      const run = await request('runs', 'POST', {content: 'sequence', seed: value}, {origin: 'https://worker.test'});
-      fixture.sqlite.prepare('UPDATE runs SET game_settings=? WHERE id=?').run(settings, run.id);
+      const run={id:'archived-'+value};
+      fixture.sqlite.prepare('INSERT INTO runs(id,user_id,content,seed,started,game_settings) VALUES(?,?,?,?,?,?)').run(run.id,session.user.id,'sequence',value,Date.now(),settings);
       const record = await request('records', 'POST', {
         run: run.id,
         result: {value, display: String(value), unit: 'wrong', mode: submittedMode},
@@ -222,9 +224,9 @@ test('portable API ranks current rhythm v11 with points and retains separate v9,
     insertShare.run('old-rhythm-v9', session.user.id, 'sequence', 'challenge', 2, JSON.stringify({gameSettings: {version: 'v9', mode: 'rhythm'}}), Date.now());
     insertShare.run('old-rhythm-v7', session.user.id, 'sequence', 'challenge', 3, JSON.stringify({gameSettings: {version: 'v7', mode: 'rhythm'}}), Date.now());
     insertShare.run('old-nine-pad', session.user.id, 'sequence', 'challenge', 4, JSON.stringify({}), Date.now());
-    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-rhythm-v9'}, {origin: 'https://worker.test'})).status, 400);
-    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-rhythm-v7'}, {origin: 'https://worker.test'})).status, 400);
-    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-nine-pad'}, {origin: 'https://worker.test'})).status, 400);
+    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-rhythm-v9'}, {origin: 'https://worker.test'})).status, 410);
+    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-rhythm-v7'}, {origin: 'https://worker.test'})).status, 410);
+    assert.equal((await request('runs', 'POST', {content: 'sequence', shareId: 'old-nine-pad'}, {origin: 'https://worker.test'})).status, 410);
   } finally {
     fixture.close();
   }

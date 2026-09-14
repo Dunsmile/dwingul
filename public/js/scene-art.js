@@ -1,3 +1,4 @@
+import {assetUrl,readyImage} from './asset-delivery.js';
 export const SCENE_ART_SOURCES = Object.freeze({
   'jump-forest': '/assets/pixel/scenes/jump-forest.png',
   'jump-ground': '/assets/pixel/scenes/jump-ground.png',
@@ -26,9 +27,9 @@ export function sceneImage(name) {
   const source = SCENE_ART_SOURCES[name];
   if (!source || typeof Image === 'undefined') return null;
   if (!imageCache.has(name)) {
-    const image = new Image();
+    const image = readyImage(source)||new Image();
     image.decoding = 'async';
-    image.src = source;
+    image.src = assetUrl(source);
     imageCache.set(name, image);
   }
   return imageCache.get(name);

@@ -64,17 +64,11 @@ export const guides = {
     tips:['현재 숫자를 누르는 동안 시선은 다음 숫자로 옮겨보세요.','격자를 몇 구역으로 나눠 숫자의 대략적인 위치를 기억하세요.','잘못 누른 뒤 급하게 만회하기보다 다음 정답을 다시 확인하세요.'],
     scoring:'25까지 모두 누르는 데 걸린 시간에 오답 벌점이 더해져 최종 초 기록이 됩니다. 시간이 낮을수록 앞섭니다.',
     faq:[['숫자 위치는 매번 같나요?','아니요. 한 판마다 1~25의 위치가 섞입니다.'],['건너뛰어 눌러도 되나요?','현재 찾아야 할 숫자만 처리됩니다. 순서가 아닌 숫자를 누르면 벌점이 생깁니다.'],['모바일과 PC 기록은 같나요?','게임 규칙은 같지만 입력 방식 차이가 있어 순위에서 기기 유형을 나눠 볼 수 있습니다.']]},
-  sequence:{
-    intro:'세 레인에 나타나는 박자와 방향을 보고 들은 뒤, 3·2·1 준비가 끝나면 같은 레인과 타이밍으로 따라 하는 무한 리듬 게임입니다. 소리와 화면의 방향 표시를 함께 쓰면 패턴을 더 오래 이어갈 수 있습니다.',
-    rules:'안내되는 박자와 세 레인의 방향을 기억한 뒤 3·2·1 준비가 끝나면 같은 순서로 입력합니다. 왼쪽은 ←·A, 가운데는 Space·Enter·↓·S, 오른쪽은 →·D를 사용합니다. 100가지 박자 패턴이 섞여 계속 이어지고, 틀린 레인이나 놓친 음으로 에너지가 모두 줄면 끝납니다.',
-    tips:['듣는 동안 박자뿐 아니라 왼쪽·가운데·오른쪽의 이동도 묶어 기억하세요.','3·2·1 준비 중 입력은 처리되지 않으니 응답 안내가 나온 뒤 첫 박자를 기다리세요.','빠른 패턴은 모든 음을 따로 세기보다 방향이 바뀌는 지점을 기준으로 묶으세요.'],
-    scoring:'정확한 레인과 입력 시각, 이어진 콤보에 따라 점수가 올라갑니다. 100개 고유 박자 패턴을 섞고 각 음의 레인을 정해 사용하며, 에너지가 모두 줄 때까지 최대 136 BPM으로 이어집니다.',
-    faq:[['세 레인은 어떤 키로 누르나요?','왼쪽은 ← 또는 A, 가운데는 Space·Enter·↓ 또는 S, 오른쪽은 → 또는 D로 누릅니다. 화면의 세 버튼도 같은 역할을 합니다.'],['다른 레인을 누르면 해당 음이 처리되나요?','아니요. 타이밍이 맞아도 잘못된 레인은 오입력으로 처리되고 원래 음은 남습니다.'],['소리를 끌 수 있나요?','화면의 소리 버튼으로 끌 수 있습니다. 이때는 레인과 박자 표시를 보고 따라 하세요.']]},
   jump:{
     intro:'달리면서 장애물을 한 번 또는 두 번 뛰어넘고 낮은 구름 아래로 숙이는 거리 도전입니다. 장애물 모양을 빨리 알아보고 필요한 동작을 한 번만 정확히 고르는 것이 중요합니다.',
-    rules:'화면·Space·위쪽 키로 점프하고 공중에서 한 번 더 누르면 2단 점프합니다. 낮은 구름은 아래쪽 키나 숙이기 버튼을 누른 채로 피합니다. 바닥과 100가지 장애물 패턴은 같은 이동 거리 축을 사용하며, 속도가 빨라지면 다음 장애물까지 남은 시간이 짧아집니다. 두 번째 충돌에서 끝납니다.',
+    rules:'화면·Space·위쪽 키로 점프하고 공중에서 한 번 더 누르면 2단 점프합니다. 낮은 구름은 아래쪽 키나 숙이기 버튼을 누른 채로 피합니다. 바닥과 100가지 장애물 패턴은 같은 이동 거리 축을 사용합니다. 플레이 시간 10초마다 속도와 장애물 목표 빈도가 한 단계 올라가며, 피할 수 있는 최소 간격은 유지합니다. 두 번째 충돌에서 끝납니다.',
     tips:['낮은 장애물은 한 번, 높은 벽과 넓은 장애물은 두 번째 점프까지 준비하세요.','낮은 구름은 점프로 넘기보다 아래쪽 키나 숙이기 버튼을 누르고 유지하세요.','첫 충돌 뒤 바로 속도를 되찾으려 하지 말고 다음 패턴의 빈 공간부터 확인하세요.'],
-    scoring:'두 번째 충돌 전까지 이동한 거리(m)가 기록입니다. 바닥과 장애물은 같은 이동 거리 축을 쓰고 안전한 배치 간격은 유지되며, 이동 속도가 빨라질수록 다음 장애물까지의 시간 간격이 짧아집니다.',
+    scoring:'두 번째 충돌 전까지 이동한 거리(m)가 기록입니다. 매 10초마다 목표 장애물 수가 10초당 1개씩 늘고 속도도 한 단계 올라갑니다. 긴 장애물이나 2단 점프 다음에는 안전 간격을 우선하므로 실제 등장 수는 목표보다 적을 수 있습니다.',
     faq:[['2단 점프는 어떻게 하나요?','공중에 있을 때 점프 입력을 한 번 더 누르면 됩니다.'],['구름도 점프로 피할 수 있나요?','낮게 걸린 구름은 숙이기가 의도된 동작입니다. 점프하면 닿을 수 있습니다.'],['한 번 부딪히면 끝나나요?','아니요. 첫 충돌 뒤 계속 달리고 두 번째 충돌에서 끝납니다.']]},
   knowledge:{
     intro:'일반 상식, 수도, 국기 등 선택한 주제에서 서로 다른 열 문제를 풀고 짧은 해설로 확인하는 퀴즈입니다. 점수뿐 아니라 틀린 이유를 알아가는 데 초점을 둡니다.',
@@ -98,10 +92,10 @@ export const guides = {
     scoring:'각 답은 네 사업 방식 중 하나에 같은 비중으로 더해집니다. 가장 많이 선택한 주 스타일과 3점 이상인 보조 스타일을 조합한 16가지 주·보조 유형을 사용하며, 동률은 선택 비중과 고정된 기준을 함께 설명합니다.',
     faq:[['좋은 유형과 나쁜 유형이 있나요?','없습니다. 서로 다른 상황에서 먼저 쓰기 편한 접근을 이야기합니다.'],['사업 성공을 예측하나요?','아닙니다. 현재의 경험과 우선순위를 돌아보는 오락·대화용 테스트입니다.'],['결과가 동점이면 오류인가요?','오류가 아닙니다. 여러 방식이 같은 비중이면 균형 또는 혼합 결과로 보여줍니다.']]},
   energy:{
-    intro:'열두 상황을 통해 에너지 충전, 움직이는 속도, 돌봄 방식, 변화 선호의 네 축을 살펴보는 뒹굴 자체 테스트입니다. 테토·에겐이라는 가벼운 유행어를 사용하지만 호르몬이나 건강을 측정하지 않습니다.',
-    tips:['최근의 실제 생활에서 더 자연스러운 반응을 고르세요.','상황에 따라 다르면 피곤할 때도 유지되는 선택을 떠올리세요.','네 글자 코드는 MBTI 코드가 아니라 이 테스트 축의 약자입니다.'],
-    scoring:'각 축을 세 번씩 물어 다수인 방향을 고르므로 축 안의 동점은 없습니다. 네 축을 조합해 16가지 이름과 실천·대화 팁을 제공합니다.',
-    faq:[['MBTI 검사인가요?','아닙니다. 구조만 네 개의 양극 축을 조합하며 공인되거나 타당화된 MBTI 검사가 아닙니다.'],['생일이 결과에 쓰이나요?','아니요. 닉네임과 열두 답만 사용합니다.'],['다시 하면 달라질 수 있나요?','네. 최근 상황과 경험에 따라 답이 바뀌면 결과도 달라질 수 있습니다.']]},
+    intro:'열두 상황에서 실제로 가까운 반응을 고르면 주도적이고 직접적인 테토력과 섬세하게 공감하는 에겐력을 비교해주는 뒹굴 자체 테스트입니다.',
+    tips:['되고 싶은 모습보다 최근에 자연스럽게 한 행동을 고르세요.','직접 말하는 답과 세심하게 살피는 답에 좋은 답과 나쁜 답은 없어요.','두 비율과 함께 어느 상황에서 각 반응을 선택했는지 돌아보세요.'],
+    scoring:'각 선택은 테토 또는 에겐 한 쪽에 같은 비중으로 더해집니다. 12개 답을 합계 100%의 두 비율로 보여주고, 더 높은 쪽의 유형과 설명을 제공합니다. 여섯 개씩 선택하면 50:50 균형형입니다.',
+    faq:[['테토와 에겐은 무엇인가요?','이 테스트에서는 테토를 분명한 표현과 주도성, 에겐을 섬세한 감정 읽기와 공감으로 풉니다. 유행어를 활용한 놀이이며 신체나 호르몬을 측정하지 않아요.'],['생일이나 성별이 필요한가요?','아니요. 닉네임과 열두 답만 사용합니다.'],['다시 하면 달라질 수 있나요?','네. 최근 상황과 경험에 따라 선택한 반응이 바뀌면 결과도 달라질 수 있습니다.']]},
   chat:{
     intro:'새 단톡방, 공지, 약속, 고민 상담처럼 익숙한 열두 상황에서 대화 시작·메시지 호흡·도움 방식·약속 흐름의 네 축을 살펴봅니다.',
     tips:['메신저에서 실제로 자주 하는 행동을 기준으로 답하세요.','읽고 반응하지 않는 경우와 짧게 표시하는 경우를 구분해 떠올리세요.','결과의 소통 팁을 친구에게 보여주고 서로 편한 방식을 물어보세요.'],
@@ -157,12 +151,12 @@ function relatedItems(item) {
 }
 
 function contentIndexPage() {
-  const description='뒹굴 21가지 놀거리의 조작법, 기록 기준, 결과 읽는 법과 시작 팁을 콘텐츠별 안내에서 찾아보세요.';
+  const description='뒹굴 20가지 놀거리의 조작법, 기록 기준, 결과 읽는 법과 시작 팁을 콘텐츠별 안내에서 찾아보세요.';
   const pathname='/content/',breadcrumbId=absolute(pathname)+'#breadcrumb',listId=absolute(pathname)+'#contents';
   const sections=Object.entries(categories).filter(([category])=>category!=='all').map(([category,name])=>`<section class="guide-section"><h2><a href="/content/category/${category}/">${escapeHtml(name)}</a></h2><div class="guide-related">${catalog.filter(item=>item.cat===category).map(item=>`<a href="/content/${item.id}/"><img class="guide-thumb static-art-fallback" src="/assets/pixel/thumbnails/${item.id}-small.webp" width="480" height="320" alt="" loading="lazy" decoding="async"><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.desc)}</p></a>`).join('')}</div></section>`).join('');
   const structured={'@context':'https://schema.org','@graph':[
     {'@type':'WebPage','@id':absolute(pathname),name:'놀거리 가이드',description,url:absolute(pathname),inLanguage:'ko-KR',breadcrumb:{'@id':breadcrumbId},mainEntity:{'@id':listId}},
-    {'@type':'ItemList','@id':listId,name:'뒹굴 놀거리 21가지',numberOfItems:catalog.length,itemListElement:catalog.map((item,index)=>({'@type':'ListItem',position:index+1,name:item.title,url:absolute(`/content/${item.id}/`)}))},
+    {'@type':'ItemList','@id':listId,name:'뒹굴 놀거리 20가지',numberOfItems:catalog.length,itemListElement:catalog.map((item,index)=>({'@type':'ListItem',position:index+1,name:item.title,url:absolute(`/content/${item.id}/`)}))},
     {'@type':'BreadcrumbList','@id':breadcrumbId,itemListElement:[{'@type':'ListItem',position:1,name:'뒹굴',item:siteOrigin+'/'},{'@type':'ListItem',position:2,name:'놀거리 가이드',item:absolute(pathname)}]},
   ]};
   return pageDocument({head:commonHead({title:'놀거리 가이드 | 뒹굴',description,pathname}),body:`<div class="guide-shell"><nav class="guide-nav"><a class="guide-brand" href="/">뒹굴</a><a href="/#/explore">놀거리 시작하기 →</a></nav><main><header class="guide-hero"><span class="guide-kicker">PLAY GUIDE</span><h1>놀거리 가이드</h1><p>${description}</p></header>${sections}</main>${footer()}</div>${structuredScript(structured)}`});
@@ -194,7 +188,7 @@ function guidePage(item) {
 }
 
 const legalPages = {
-  about:{title:'뒹굴 소개',description:'짧은 틈에 즐기는 게임, 퀴즈, 자체 성향 테스트와 오락용 운세를 만드는 뒹굴을 소개합니다.',content:`<p>뒹굴은 짧은 틈에 한 판 즐기고 친구와 결과를 이야기할 수 있는 웹 놀이터입니다. 순발력 게임, 창작 퀴즈, 자체 성향 테스트, 오락용 운세까지 21개 콘텐츠를 한곳에 모았습니다.</p><h2>우리가 만드는 기준</h2><ul><li>규칙과 기록 단위를 시작 전에 분명하게 설명합니다.</li><li>친구 도전은 같은 게임 규칙과 문제 버전을 사용합니다.</li><li>성향 결과와 운세 이야기를 사람의 능력이나 미래를 확정하는 판단으로 소개하지 않습니다.</li><li>게임 골드·토큰·장비는 놀이 안의 가상 항목이며 현금 결제나 현금 교환 기능을 두지 않습니다.</li></ul><h2>운영</h2><p>${owner}이 콘텐츠와 서비스를 관리합니다. 오류, 접근성 문제와 콘텐츠 제안은 <a href="${contactUrl}">${contactEmail}</a>에서 받습니다.</p>`},
+  about:{title:'뒹굴 소개',description:'짧은 틈에 즐기는 게임, 퀴즈, 자체 성향 테스트와 오락용 운세를 만드는 뒹굴을 소개합니다.',content:`<p>뒹굴은 짧은 틈에 한 판 즐기고 친구와 결과를 이야기할 수 있는 웹 놀이터입니다. 순발력 게임, 창작 퀴즈, 자체 성향 테스트, 오락용 운세까지 20개 콘텐츠를 한곳에 모았습니다.</p><h2>우리가 만드는 기준</h2><ul><li>규칙과 기록 단위를 시작 전에 분명하게 설명합니다.</li><li>친구 도전은 같은 게임 규칙과 문제 버전을 사용합니다.</li><li>성향 결과와 운세 이야기를 사람의 능력이나 미래를 확정하는 판단으로 소개하지 않습니다.</li><li>게임 골드·토큰·장비는 놀이 안의 가상 항목이며 현금 결제나 현금 교환 기능을 두지 않습니다.</li></ul><h2>운영</h2><p>${owner}이 콘텐츠와 서비스를 관리합니다. 오류, 접근성 문제와 콘텐츠 제안은 <a href="${contactUrl}">${contactEmail}</a>에서 받습니다.</p>`},
   privacy:{title:'개인정보처리방침',description:'뒹굴의 세션, 프로필, 생일 선택 저장, 기록, 공유와 선택형 분석 도구 처리 방식을 안내합니다.',content:`<p>뒹굴은 서비스를 작동시키는 데 필요한 정보만 다루고, 공개 범위는 이용자가 선택하도록 설계합니다. 이 문서는 ${buildDate} 기준 실제 코드와 출시 준비 상태를 설명합니다.</p><h2>자동으로 만들어지는 세션</h2><p>처음 접속하면 무작위 세션 토큰을 쿠키에 저장합니다. 쿠키 이름은 <code>dw_session</code>이며 HttpOnly, SameSite=Strict, Path=/, 최대 1년 속성을 사용하고 HTTPS에서는 Secure 속성을 붙입니다. 서버에는 원문 토큰 대신 SHA-256 해시를 저장합니다. 이 세션은 같은 브라우저의 게임 진행과 프로필을 연결하는 데 사용됩니다.</p><h2>프로필과 PIN</h2><p>프로필을 만들면 닉네임, 게임 기록, 선택해 등록한 공개 순위 범위, 친구방, 게임 골드·토큰·장비 상태를 처리합니다. 4자리 관리 PIN은 원문으로 저장하지 않고 무작위 salt와 scrypt로 만든 해시를 저장합니다. 복구 코드도 해시로 저장하므로 이용자는 발급된 원문을 직접 안전하게 보관해야 합니다.</p><h2>생일과 개인 기록</h2><p>운세·타로·사주 캐릭터·사주 케미는 닉네임, 생년월일, 달력 종류, 선택 입력한 출생 시간을 사용해 이 브라우저에서 해석을 계산합니다. 입력 화면의 필수 수집·이용 동의는 기본 해제 상태이며, 동의하지 않으면 결과를 생성하지 않습니다. 생년월일·시간 원문은 별도의 선택 항목인 ‘기억해두기’를 고르거나 프로필에 명시적으로 저장할 때만 브라우저 또는 개인 프로필에 보관합니다. 결과 확인하기를 누르면 닉네임, 파생된 캐릭터·간지·오행과 해석 결과는 이 브라우저의 개인 이력에 최근 100개까지 저장하고, 프로필을 만든 이용자의 결과는 서버 개인 이력에도 저장합니다. 개인 이력은 이력 삭제 기능을 사용하거나 새 결과가 쌓여 최근 100개 범위를 벗어날 때까지 보관합니다. 생일 원문 저장과 결과 이력 저장은 서로 다릅니다. 공유 카드와 공개 랭킹에는 생년월일·출생 시간 원문이나 간지 목록을 넣지 않으며, 공유 카드에는 이용자가 공유한 닉네임·결과 제목·오행 등이 표시됩니다. 콘텐츠·모드별 개인 최고 게임 기록은 별도로 관리합니다.</p><h2>브라우저 저장소</h2><p>프로필을 연결하지 않아도 최근 플레이 이력, 설정, 선택적으로 기억한 생일을 이 브라우저의 localStorage에 저장할 수 있습니다. 브라우저 설정에서 사이트 데이터를 지우면 함께 삭제됩니다. 서버 프로필의 생일과 개인 이력은 앱의 설정 화면에서 각각 지울 수 있습니다.</p><h2>분석과 광고 준비</h2><p>Google Analytics 4는 선택 동의를 받은 경우에만 불러오도록 준비합니다. 동의하지 않은 이용자에게 분석 저장을 켜지 않는 흐름을 출시 전에 확인해야 합니다. Google은 활성화된 설정에 따라 기기·브라우저 정보, 대략적 위치, 이용 세션과 <code>_ga</code> 계열 식별 쿠키를 처리할 수 있습니다. 현재 빌드는 AdSense 사이트 소유권 메타 태그와 ads.txt만 포함하며 자동 광고나 게임 중 광고 단위는 넣지 않습니다.</p><h2>제공·공개·보관</h2><p>이용자가 직접 세계·지역·친구 범위를 골라 등록한 게임·퀴즈 기록만 해당 순위에 표시합니다. 공유 링크는 생성 후 30일 동안 열 수 있습니다. Cloudflare는 호스팅과 세션·저장소 인프라 제공자로, Google은 이용자가 동의한 분석 기능이 실제로 활성화된 경우 처리자로 관여할 수 있습니다.</p><h2>문의</h2><p>정책과 기능 문의는 <a href="${contactUrl}">${contactEmail}</a>를 이용해주세요. PIN, 복구 코드, 세션 값 같은 계정 비밀정보는 이메일에 포함하지 마세요. 개인 정보는 먼저 앱 안의 삭제 기능으로 관리해주세요.</p>`},
   terms:{title:'이용약관',description:'뒹굴의 오락 콘텐츠, 기록, 프로필, 가상 게임 항목과 이용 시 지켜야 할 기본 사항을 안내합니다.',content:`<p>뒹굴을 이용하면 아래의 서비스 성격과 기본 이용 기준에 동의하는 것으로 봅니다. 이 약관은 ${buildDate}부터 적용합니다.</p><h2>서비스 성격</h2><p>뒹굴은 게임, 창작 퀴즈, 자체 성향 테스트와 오락용 운세를 제공합니다. 성향 결과는 심리 진단이나 공인 MBTI 검사가 아니고, 운세·타로·사주 이야기는 미래를 확정하지 않습니다. IQ 추리 결과는 표준화된 지능 수치가 아닙니다.</p><h2>중요한 판단</h2><p>사업가 테스트와 다른 콘텐츠는 창업 성공, 투자, 세무, 법률, 의료 또는 직업 적합성에 대한 조언이 아닙니다. 실제 결정에는 상황에 맞는 자료와 필요한 경우 자격 있는 전문가의 검토를 이용해주세요.</p><h2>기록과 커뮤니티 기능</h2><p>공개 순위와 친구방에서는 다른 이용자를 존중하는 닉네임을 사용해야 합니다. 시스템을 우회해 허위 기록을 만들거나 서비스 안정성을 해치는 자동 요청을 보내면 해당 기록이나 접근이 제한될 수 있습니다. 게임 규칙과 문제 버전이 다른 기록은 공정한 비교를 위해 분리될 수 있습니다.</p><h2>가상 항목과 결제</h2><p>골드, 토큰, 차량, 장비와 강화 수치는 게임 안에서만 쓰는 가상 항목입니다. 현재 서비스에는 현금 결제, 유료 뽑기, 환전 또는 현금 가치가 없습니다.</p><h2>이용 가능성과 변경</h2><p>콘텐츠와 규칙은 오류 수정과 개선을 위해 바뀔 수 있습니다. 변경된 규칙은 이전 기록과 구분해 표시하려고 노력합니다. 점검, 장애, 외부 호스팅 사정으로 서비스 일부가 일시적으로 중단될 수 있습니다.</p><h2>문의</h2><p>약관이나 서비스에 관한 문의는 <a href="${contactUrl}">${contactEmail}</a>를 이용해주세요. 이메일에 PIN이나 복구 코드를 보내지 마세요.</p>`},
   contact:{title:'뒹굴에 연락하기',description:'뒹굴의 오류, 접근성 문제, 콘텐츠와 개인정보처리방침 관련 문의 방법을 안내합니다.',content:`<p>${owner}은 오류 제보, 접근성 문제, 콘텐츠 제안과 정책 문의를 <a href="${contactUrl}">${contactEmail}</a>으로 받습니다.</p><p><a class="guide-button" href="${contactUrl}">이메일로 문의·제안하기</a></p><h2>제보에 포함하면 좋은 내용</h2><ul><li>문제가 생긴 콘텐츠 이름과 페이지</li><li>기대했던 동작과 실제로 본 동작</li><li>기기 종류와 브라우저 이름</li><li>재현에 필요한 순서</li></ul><h2>제휴 문의</h2><p>콘텐츠 협업과 제휴 제안은 <a href="${partnershipUrl}">${contactEmail}</a>으로 보내주세요.</p><h2>문의 전 확인해주세요</h2><p>문제 확인에 필요하지 않은 생년월일, 태어난 시간, 관리 PIN, 복구 코드, 세션 쿠키는 보내지 마세요. 화면을 첨부할 때도 해당 값이 보이지 않는지 먼저 확인해주세요.</p>`},
@@ -214,7 +208,7 @@ function injectHomeSeo(source) {
   const art=absolute('/assets/pixel/thumbnails/sort.webp');
   const description='방구석에서 가볍게 즐기는 10가지 게임, 3가지 창작 퀴즈, 4가지 자체 성향 테스트와 4가지 오락용 운세. 뒹굴에서 딱 한 판.';
   const catalogLinks=catalog.map(item=>`<li><a href="/content/${item.id}/"><img class="guide-thumb static-art-fallback" src="/assets/pixel/thumbnails/${item.id}-small.webp" width="480" height="320" alt="" loading="lazy" decoding="async"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.desc)}</span></a></li>`).join('');
-  const fallback=`<main class="seo-home" aria-label="뒹굴 놀거리 안내"><section><p class="seo-home-kicker">게임 · 퀴즈 · 성향 · 운세</p><h1>심심한 틈, 뒹굴에서 한 판</h1><p>${escapeHtml(description)}</p><p><a class="seo-home-start" href="/#/explore">전체 놀거리 시작하기</a></p></section><section><h2>21가지 놀거리 안내</h2><ul>${catalogLinks}</ul></section><footer><span>© 2026 DWINGUL</span><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·제안</a><a href="${contactUrl}">${contactEmail}</a><a href="${partnershipUrl}">제휴 문의</a></footer></main>`;
+  const fallback=`<main class="seo-home" aria-label="뒹굴 놀거리 안내"><section><p class="seo-home-kicker">게임 · 퀴즈 · 성향 · 운세</p><h1>심심한 틈, 뒹굴에서 한 판</h1><p>${escapeHtml(description)}</p><p><a class="seo-home-start" href="/#/explore">전체 놀거리 시작하기</a></p></section><section><h2>20가지 놀거리 안내</h2><ul>${catalogLinks}</ul></section><footer><span>© 2026 DWINGUL</span><a href="/about/">소개</a><a href="/privacy/">개인정보처리방침</a><a href="/terms/">이용약관</a><a href="/contact/">문의·제안</a><a href="${contactUrl}">${contactEmail}</a><a href="${partnershipUrl}">제휴 문의</a></footer></main>`;
   const homeStyle=`<style data-static-home>.seo-home .guide-thumb{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}.seo-home .static-art-fallback{color:#64503b;background-color:#e5dcc1;background-image:repeating-linear-gradient(0deg,#eee4cb 0 8px,#e5dcc1 8px 16px)}.seo-home{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:56px 0 72px;color:#49382d}.seo-home>section:first-child{padding:34px;border:3px solid #49382d;background:#dfe8ca;box-shadow:7px 7px 0 #baa784}.seo-home h1,.seo-home h2{font-family:var(--pixel-display,system-ui)}.seo-home h1{font-size:clamp(34px,7vw,58px);line-height:1.3}.seo-home-kicker{color:#8e4938;font-weight:800}.seo-home-start{display:inline-flex;min-height:48px;align-items:center;padding:10px 18px;border:2px solid #49382d;background:#40563d;color:white;text-decoration:none;box-shadow:3px 3px 0 #bc6850}.seo-home>section+section{margin-top:42px}.seo-home ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0;list-style:none}.seo-home li a{display:grid;gap:6px;height:100%;padding:17px;border:2px solid #49382d;background:#fffaf0;color:inherit;text-decoration:none;box-shadow:3px 3px 0 #c8b694}.seo-home li span{color:#756b5d;font-size:14px}.seo-home footer{display:flex;gap:18px;flex-wrap:wrap;margin-top:38px;padding-top:18px;border-top:2px solid #49382d}.seo-home footer a{color:inherit}@media(max-width:760px){.seo-home{padding-top:28px}.seo-home ul{grid-template-columns:1fr}.seo-home>section:first-child{padding:24px}}</style>`;
   const structured={'@context':'https://schema.org','@graph':[
     {'@type':'WebSite','@id':siteOrigin+'/#website',name:'뒹굴',url:`${siteOrigin}/`,description,hasPart:catalog.map(item=>({'@id':absolute(`/content/${item.id}/`)}))},
@@ -244,9 +238,9 @@ async function writePage(relative,html) {
 }
 
 async function validateBuild() {
-  assert.equal(catalog.length,21,'공개 카탈로그는 정확히 21개여야 합니다.');
-  assert.equal(new Set(catalog.map(item=>item.id)).size,21,'카탈로그 ID가 중복됐습니다.');
-  assert.deepEqual(Object.keys(guides).sort(),catalog.map(item=>item.id).sort(),'21개 콘텐츠마다 고유 가이드가 필요합니다.');
+  assert.equal(catalog.length,20,'공개 카탈로그는 정확히 20개여야 합니다.');
+  assert.equal(new Set(catalog.map(item=>item.id)).size,20,'카탈로그 ID가 중복됐습니다.');
+  assert.deepEqual(Object.keys(guides).sort(),catalog.map(item=>item.id).sort(),'20개 콘텐츠마다 고유 가이드가 필요합니다.');
   for (const excluded of excludedClientFiles) await assert.rejects(stat(path.join(outputDirectory,excluded)),{code:'ENOENT'});
 
   const home=await readFile(path.join(outputDirectory,'index.html'),'utf8');
@@ -270,7 +264,7 @@ async function validateBuild() {
   assert.equal(await readFile(path.join(outputDirectory,'ads.txt'),'utf8'),'google.com, pub-7301223136166743, DIRECT, f08c47fec0942fa0\n');
   assert.match(await readFile(path.join(outputDirectory,'robots.txt'),'utf8'),/Sitemap: https:\/\/dwingul\.com\/sitemap\.xml/);
   const sitemap=await readFile(path.join(outputDirectory,'sitemap.xml'),'utf8');
-  assert.equal((sitemap.match(/<url>/g)||[]).length,31,'사이트맵에는 홈, 가이드 목록, 장르4개, 콘텐츠21개, 안내4개가 있어야 합니다.');
+  assert.equal((sitemap.match(/<url>/g)||[]).length,30,'사이트맵에는 홈, 가이드 목록, 장르4개, 콘텐츠20개, 안내4개가 있어야 합니다.');
 }
 
 export async function buildSite() {

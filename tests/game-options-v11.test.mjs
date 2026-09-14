@@ -9,16 +9,16 @@ test('rhythm and jump default to v11 and retain explicit supported legacy settin
  assert.deepEqual(gameSettings('sequence',{version:'v7'}),{version:'v7',mode:'rhythm'});
  assert.equal(gameMode('sequence',{version:'v9'}),'rhythm-endless-v9');
  assert.equal(gameMode('sequence',{version:'v7'}),'rhythm-relay-v7');
- assert.deepEqual(gameSettings('jump'),{version:'v11'});
- assert.equal(gameMode('jump',{}),'jump-distance-v11');
- for(const version of ['v6','v5','v4']){assert.deepEqual(gameSettings('jump',{version}),{version});assert.equal(gameMode('jump',{version}),`jump-distance-${version}`);}
+ assert.deepEqual(gameSettings('jump'),{version:'v13'});
+ assert.equal(gameMode('jump',{}),'jump-distance-v13');
+ for(const version of ['v11','v6','v5','v4']){assert.deepEqual(gameSettings('jump',{version}),{version});assert.equal(gameMode('jump',{version}),`jump-distance-${version}`);}
  assert.equal(gameModeNames['rhythm-three-lane-v11'],'세 갈래 리듬 · 무한 모드');
  assert.equal(gameModeNames['jump-distance-v11'],'멀리 뛰기 · 숲길 거리');
 });
 
 test('unknown versions sanitize to current while known city history keeps its identity',()=>{
  assert.equal(gameSettings('sequence',{version:'unknown'}).version,'v11');
- assert.equal(gameSettings('jump',{version:'unknown'}).version,'v11');
+ assert.equal(gameSettings('jump',{version:'unknown'}).version,'v13');
  assert.equal(gameSettings('racing',{version:'v6',car:'basic'}).version,'v6');
  assert.equal(gameSettings('racing',{version:'unknown',car:'basic'}).version,'v7');
 });

@@ -6,8 +6,8 @@ import {gameMode,gameModeNames,gameSettings} from '../public/js/game-options.js'
 import {makeResult,compareResults} from '../public/js/profiles.js';
 
 test('catalog and game options select three-lane rhythm v11 while retaining legacy names',()=>{
- const rhythm=catalog.find(item=>item.id==='sequence');assert.equal(rhythm.time,'무한');assert.match(rhythm.rules,/100/);assert.match(rhythm.rules,/3·2·1/);
- for(const id of ['energy','chat','taste']){const item=catalog.find(entry=>entry.id===id);assert.equal(item.time,'12문항');assert.match(item.rules,/네 가지 축/);}
+ assert.equal(catalog.some(item=>item.id==='sequence'),false);
+ for(const id of ['chat','taste']){const item=catalog.find(entry=>entry.id===id);assert.equal(item.time,'12문항');assert.match(item.rules,/네 가지 축/);}
  assert.equal(currentGameModes.sequence,'rhythm-three-lane-v11');
  assert.equal(gameMode('sequence',gameSettings('sequence')),'rhythm-three-lane-v11');
  assert.equal(gameMode('sequence',{version:'v9',mode:'rhythm'}),'rhythm-endless-v9');

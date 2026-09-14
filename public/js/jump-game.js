@@ -1,5 +1,5 @@
 import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
-import { jumpPatterns100, jumpWorldDelta, jumpWorldSpeed, shuffledJumpPatterns } from "./jump-patterns.js";
+import { jumpDifficultyLevel,jumpPatterns100,jumpTargetObstaclesPer10s,jumpV13NextPatternDistance,jumpWorldDelta,jumpWorldSpeedV11,jumpWorldSpeedV13,shuffledJumpPatterns } from "./jump-patterns.js";
 import {drawSceneCover,drawSceneTileX,preloadSceneArt,sceneImage,sceneImageReady} from './scene-art.js';
 
 export const JUMP_FLOOR = 390;
@@ -54,7 +54,7 @@ function rounded(pen, x, y, width, height, radius, color) {
   pen.fill();
 }
 
-export function createJump(ctx) {
+export function createJump(ctx,{version='v13'}={}) {
   preloadWorld(['runner-run-a','runner-run-b','runner-jump','runner-slide','runner-dead']);
   ['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].forEach(portraitImage);
   const sceneNames=['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide'];
@@ -100,7 +100,7 @@ export function createJump(ctx) {
       if (event.atDistance === 0) addObstacle(currentPattern, event, eventIndex);
       else pendingEvents.push({ pattern: currentPattern, event, eventIndex, remainingDistance: event.atDistance });
     });
-    nextPatternDistance = Math.max(...currentPattern.events.map(({ atDistance }) => atDistance)) + currentPattern.gapAfterDistance;
+    nextPatternDistance = version==='v11'?Math.max(...currentPattern.events.map(({ atDistance }) => atDistance))+currentPattern.gapAfterDistance:jumpV13NextPatternDistance(currentPattern,elapsed);
   }
 
   const jump = () => { if (!ctx.isFinished() && !ending) { tryJump(player); draw(); } };
@@ -196,14 +196,14 @@ export function createJump(ctx) {
   }
   function finishRun() {
     const distance = jumpDistanceMeters(distancePixels); draw();
-    ctx.finish({ value: distance, display: distance.toFixed(1), unit: "m", higherBetter: true, mode: "jump-distance-v11", details: { distance, avoided, survivedSeconds: Number((elapsed / 1000).toFixed(1)) } });
+    ctx.finish({ value: distance, display: distance.toFixed(1), unit: "m", higherBetter: true, mode: `jump-distance-${version}`, details: { distance, avoided, survivedSeconds: Number((elapsed / 1000).toFixed(1)) } });
   }
 
   beginPattern(); draw(); ctx.setStatus("0.0 m · 기회 2번");
   return {
     tick(ms) {
       if(ending){stepJumpPlayer(player,ms/1000);if(player.y>=JUMP_FLOOR-.01)ending.groundedMs+=ms;draw();ctx.setStatus("조금 쉬었다가, 다시 뛰어요.");if(ending.groundedMs>=650)finishRun();return;}
-      const seconds = ms / 1000, speed = jumpWorldSpeed(elapsed), worldDelta = jumpWorldDelta(speed, ms);
+      const seconds = ms / 1000, speed = version==='v11'?jumpWorldSpeedV11(elapsed):jumpWorldSpeedV13(elapsed), worldDelta = jumpWorldDelta(speed, ms);
       elapsed += ms; distancePixels += worldDelta; scroll += worldDelta; invincibleMs = Math.max(0, invincibleMs - ms); nextPatternDistance -= worldDelta;
       stepJumpPlayer(player, seconds); player.duck = pointerDuck || keyboardDuck;
       for (let index = pendingEvents.length - 1; index >= 0; index -= 1) {
@@ -221,15 +221,18 @@ export function createJump(ctx) {
       }
       while (obstacles[0]?.x + obstacles[0]?.w < -30) obstacles.shift();
       const distance = jumpDistanceMeters(distancePixels);
-      ctx.setStatus(`${distance.toFixed(1)} m · ${avoided}개 회피 · 기회 ${lives}번`); draw();
+      const tuning=version==='v11'?'':` · 난도 ${jumpDifficultyLevel(elapsed)+1} · 목표 ${jumpTargetObstaclesPer10s(elapsed)}개/10초`;
+      ctx.setStatus(`${distance.toFixed(1)} m · ${avoided}개 회피 · 기회 ${lives}번${tuning}`); draw();
     },
     onPause(paused) { if (paused) clearHeld(); },
     getState: () => ({
       player: { ...player }, playerBox: jumpPlayerBox(player), obstacles: obstacles.map((obstacle) => ({ ...obstacle })),
       pendingEvents: pendingEvents.map(({ pattern, eventIndex, remainingDistance }) => ({ patternId: pattern.id, eventIndex, remainingDistance })),
       phase: ending ? "ending" : "playing", ending: ending ? {...ending} : null, elapsedMs: elapsed, worldDistance: distancePixels, distance: jumpDistanceMeters(distancePixels), avoided, score: jumpDistanceMeters(distancePixels), lives, invincibleMs,
-      speed: jumpWorldSpeed(elapsed), currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
+      speed: version==='v11'?jumpWorldSpeedV11(elapsed):jumpWorldSpeedV13(elapsed),difficultyLevel:version==='v11'?null:jumpDifficultyLevel(elapsed),targetObstaclesPer10s:version==='v11'?null:jumpTargetObstaclesPer10s(elapsed),rulesVersion:version,currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
       patternsSeen, deckRemaining: deck.length, patternCount: jumpPatterns100.length, nextPatternDistance,
     }),
   };
 }
+
+export function createJumpV11(ctx){return createJump(ctx,{version:'v11'});}

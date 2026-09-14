@@ -1,0 +1,4 @@
+.dg-game--memory .dg-game__memory-cell:disabled {
+  opacity: 1;
+  filter: none;
+}

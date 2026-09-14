@@ -78,5 +78,8 @@ for(const source of poseSources){
   await save(id,name,cell,width,height);
  }
 }
+const rearBus=await sharp(path.join(root,'design/scenes-v13/traffic-bus-rear-source.png')).trim({background:'#00000000',threshold:8}).png().toBuffer();
+const rearBusMeta=await sharp(rearBus).metadata();
+await save('traffic-bus-rear','숲마을 버스 · 후면',rearBus,256,Math.round(256*rearBusMeta.height/rearBusMeta.width));
 await writeFile(path.join(root,'design/scene-assets-v12.json'),JSON.stringify(records,null,2));
 console.log('Scene artwork: '+records.length+' PNG assets');

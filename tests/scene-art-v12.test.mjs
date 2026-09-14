@@ -1,3 +1,4 @@
+import {assetUrl} from '../public/js/asset-delivery.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -29,7 +30,7 @@ test('scene images are cached and failures remain an undrawable fallback', () =>
   try {
     const first = sceneImage('jump-ground');
     assert.equal(first, sceneImage('jump-ground'));
-    assert.equal(first.src, '/assets/pixel/scenes/jump-ground.png');
+    assert.equal(first.src, assetUrl('/assets/pixel/scenes/jump-ground.png'));
     assert.equal(sceneImageReady(first), false);
     first.complete = true;
     first.naturalWidth = 384;

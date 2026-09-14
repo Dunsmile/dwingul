@@ -1,5 +1,8 @@
+import {ENERGY_TEST_VERSION, energyTest, makeEnergyResult} from './energy-test.js';
+
 export const PERSONALITY_TEST_VERSION = 'axes-v9';
 export const LEGACY_PERSONALITY_TEST_VERSION = 'legacy-v8';
+export {ENERGY_TEST_VERSION};
 
 const axis = (id, label, first, second) => ({id, label, poles: [first, second]});
 const pole = (code, name, strength, balance) => ({code, name, strength, balance});
@@ -156,13 +159,16 @@ function buildDefinition(id) {
 }
 
 export const personalityTests = Object.freeze({
-  energy: buildDefinition('energy'),
+  energy: energyTest,
   chat: buildDefinition('chat'),
   taste: buildDefinition('taste'),
 });
 
 export const testQuestions = Object.freeze(Object.fromEntries(
-  Object.entries(personalityTests).map(([id, definition]) => [id, definition.questions.map(question => [question.prompt, ...question.options])]),
+  Object.entries(personalityTests).map(([id, definition]) => [id, definition.questions.map(question => [
+    question.prompt,
+    ...question.options.map(option => typeof option === 'string' ? option : option.label),
+  ])]),
 ));
 
 function validateAnswers(id, answers) {
@@ -198,6 +204,7 @@ function scorePersonality(id, answers) {
 }
 
 export function makePersonalityResult(id, name, answers) {
+  if (id === 'energy') return makeEnergyResult(name, answers);
   validateAnswers(id, answers);
   const cleanName = typeof name === 'string' ? name.trim() : '';
   if (!cleanName) throw Error('닉네임을 입력해주세요.');
@@ -233,7 +240,7 @@ export function makePersonalityResult(id, name, answers) {
 }
 
 export function getPersonalityTestVersion(result) {
-  if ([PERSONALITY_TEST_VERSION, LEGACY_PERSONALITY_TEST_VERSION].includes(result?.testVersion)) return result.testVersion;
+  if ([PERSONALITY_TEST_VERSION, ENERGY_TEST_VERSION, LEGACY_PERSONALITY_TEST_VERSION].includes(result?.testVersion)) return result.testVersion;
   if (['energy', 'chat', 'taste'].includes(result?.content) && Array.isArray(result?.answers) && result.answers.length === 8) return LEGACY_PERSONALITY_TEST_VERSION;
   return 'unknown';
 }

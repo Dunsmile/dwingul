@@ -136,3 +136,14 @@ Original prompt: 사용자가 승인한 뒹굴 와이어프레임을 로컬 앱�
 - Root visual inspection fixed initial tarot intrinsic image overflow and daily CSS-spritesheet clipping; allfour headers now bounded standalone images. CSS/Canvas missing-art fallbacks verified.
 - Verified:217unit/APItests,89assets/615artbook/31crawlable build;36DOMgame views320/390/1440 with7×7hardmemory/color;11Canvasviews;6vehicle views including28all-angle/rear sprites;4duel views plus41asset requests;24fortune captures and8flows withretention/cancel/duplicate/share/fallback checks. Official game client jump and racing executed. Independent material findings resolved.
 - Testing used4174/4176in-memory servers, no changes to user4173 or realDB. No productiontest records. Released after final sequential checks: GitHub PR#2 / main4182504, Cloudflare1a47197f-176d-4efb-a78c-01e6b361934d. Read-only production verification:615artbook entries,646resources,31unique crawlable pages, www308/private modules404; live artbook390/1440 vehicle28+duel41loaded withoutoverflow. Release docs/releases/2026-09-14-v12.md. No remaining required work.
+
+## 2026-09-14 — v13 play experience
+
+- Latest user corrections supersede the previous rhythm repair request: retired sequence from discovery/new gameplay, retained old records and read-only result shares. 20 active contents and 30 crawlable pages.
+- Rebuilt energy semantics as 12 original directness/empathy situations, complementary percentages and 5 outcome bands; versioned results remain recoverable/shareable.
+- Jump v13 steps every 10 active seconds, target 5+level obstacles/10sec, speed min(420,220+24*level), family-safe spacing. v11 replay kept. Rear-only racing includes newly generated rear bus and rear geometric fallback. Memory show phase remains opaque.
+- RPG HUD/duel/input integrated in one scene using the user's references. Mobile labels and monster counter remain legible. Found and fixed pause/resume disabled-state and overlay interaction during integration.
+- Added reproducible 585 WebP delivery variants, content hashes/immutable cache, current-game-only preload/decode gate, lazy calendar loading. Fixed delayed route response contamination, unstarted-run cleanup ownership/progress checks, retired-group joins and archived-result display after independent review.
+- Controlled cold-load bytes: home3.83→2.25MB, typing2.02→1.47MB, racing3.83→1.56MB. These are local throttled measurements, not universal user speed claims; no warm-speed claim. Source art retained.
+- Latest unit/API suite:236/236 passed. Integrated36 game views at320/390/768/1440, real attacks/pause/resume/steering, memory/fallback, energy percentages/history/share/recovery, calendar/run races verified. Official game client jump+racing executed and screenshots viewed. Testing only isolated memoryDB; user4173 and actualDB untouched.
+- Release details/evidence: docs/releases/2026-09-14-v13.md. Deployment still pending final build and public verification.

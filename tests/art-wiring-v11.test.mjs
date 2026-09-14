@@ -1,3 +1,4 @@
+import {assetUrl} from '../public/js/asset-delivery.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {artAssetSources,decorativeImage,isIllustratedPngPath,primaryArtPath,worldIcon} from '../public/js/art.js';
@@ -28,12 +29,12 @@ test('art resolver rejects external, traversal, malformed, and unknown asset pat
 
 test('decorative markup advertises its raster primary and one legacy fallback',()=>{
  const image=decorativeImage('/assets/pixel/world/book.svg',{className:'book-icon bad/class',width:40,height:42});
- assert.match(image,/src="\/assets\/pixel\/illustrated\/world\/book\.png"/);
+ assert.ok(image.includes(`src="${assetUrl('/assets/pixel/illustrated/world/book.png')}"`));
  assert.match(image,/data-fallback-src="\/assets\/pixel\/world\/book\.svg"/);
  assert.match(image,/class="book-icon"/);
  assert.doesNotMatch(image,/bad\/class/);
  const icon=worldIcon('trophy');
- assert.match(icon,/illustrated\/world\/trophy\.png/);
+ assert.ok(icon.includes(assetUrl('/assets/pixel/illustrated/world/trophy.png')));
  assert.match(icon,/data-fallback-src="\/assets\/pixel\/world\/trophy\.svg"/);
  assert.equal(worldIcon('../trophy'),'');
 });
@@ -61,7 +62,7 @@ test('canvas world image falls back once when the PNG cannot be decoded',()=>{
  globalThis.Image=FakeImage;
  return import(`../public/js/pixel-world.js?fallback=${Date.now()}`).then(({worldImage})=>{
   const image=worldImage('heart');
-  assert.equal(image.src,'/assets/pixel/illustrated/world/heart.png');
+  assert.equal(image.src,assetUrl('/assets/pixel/illustrated/world/heart.png'));
   image.error();
   assert.equal(image.src,'/assets/pixel/world/heart.svg');
   assert.equal(image.listeners.has('error'),false);

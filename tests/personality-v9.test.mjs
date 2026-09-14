@@ -11,7 +11,7 @@ import {
   compareTasteResults,
 } from '../public/js/personality-tests.js';
 
-const TEST_IDS = ['energy', 'chat', 'taste'];
+const AXES_TEST_IDS = ['chat', 'taste'];
 
 function answersForCode(id, code) {
   const definition = personalityTests[id];
@@ -21,8 +21,8 @@ function answersForCode(id, code) {
   });
 }
 
-test('each personality test has 12 original binary situations balanced across four axes', () => {
-  for (const id of TEST_IDS) {
+test('chat and taste keep 12 original binary situations balanced across four axes', () => {
+  for (const id of AXES_TEST_IDS) {
     const definition = personalityTests[id];
     assert.equal(testQuestions[id].length, 12);
     assert.equal(definition.questions.length, 12);
@@ -50,7 +50,7 @@ test('each personality test has 12 original binary situations balanced across fo
 });
 
 test('all 16 four-axis codes are reachable and have useful distinct outcomes', () => {
-  for (const id of TEST_IDS) {
+  for (const id of AXES_TEST_IDS) {
     const definition = personalityTests[id];
     const codes = [...definition.outcomes.keys()];
     assert.equal(new Set(codes).size, 16);
@@ -78,7 +78,7 @@ test('all 16 four-axis codes are reachable and have useful distinct outcomes', (
 });
 
 test('every answer contributes only to its declared axis', () => {
-  for (const id of TEST_IDS) {
+  for (const id of AXES_TEST_IDS) {
     const definition = personalityTests[id];
     const baseline = definition.questions.map(() => 0);
     const original = makePersonalityResult(id, '축 확인', baseline);
@@ -123,6 +123,8 @@ test('version helpers distinguish v9 from legacy results', () => {
   assert.equal(canComparePersonalityResults(v9, legacyA), false);
   assert.equal(canComparePersonalityResults({...v9, content: 'energy'}, v9), false);
   assert.equal(getPersonalityTestVersion({content: 'taste', testVersion: 'future-v99', answers: []}), 'unknown');
+  assert.equal(getPersonalityTestVersion({content: 'energy', testVersion: 'teto-egen-v13', answers: Array(12).fill(0)}), 'teto-egen-v13');
+  assert.equal(getPersonalityTestVersion({content: 'energy', testVersion: 'axes-v9', personality: {code: 'OQHN'}, answers: Array(12).fill(0)}), 'axes-v9');
   assert.equal(canComparePersonalityResults({content: 'other', testVersion: 'axes-v9'}, {content: 'other', testVersion: 'axes-v9'}), false);
 });
 

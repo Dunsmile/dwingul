@@ -7,11 +7,22 @@ export const JUMP_V11_RULES = Object.freeze({
   minimumGapByType: Object.freeze({ basic: 360, wide: 380, double: 720, slide: 420 }),
 });
 
+export const JUMP_V13_RULES = Object.freeze({
+  initialSpeed:220,speedStep:24,stepMs:10000,maxSpeed:420,
+  initialObstaclesPer10s:5,
+  minimumGapByType:JUMP_V11_RULES.minimumGapByType,
+});
+
+export function jumpDifficultyLevel(elapsedMs){return Math.floor(Math.max(0,Number(elapsedMs)||0)/JUMP_V13_RULES.stepMs);}
+export function jumpTargetObstaclesPer10s(elapsedMs){return JUMP_V13_RULES.initialObstaclesPer10s+jumpDifficultyLevel(elapsedMs);}
+export function jumpWorldSpeedV11(elapsedMs){return Math.min(JUMP_V11_RULES.maxSpeed,JUMP_V11_RULES.initialSpeed+Math.max(0,Number(elapsedMs)||0)*JUMP_V11_RULES.accelerationPerMs);}
+
 export function jumpWorldSpeed(elapsedMs) {
-  return Math.min(
-    JUMP_V11_RULES.maxSpeed,
-    JUMP_V11_RULES.initialSpeed + Math.max(0, Number(elapsedMs) || 0) * JUMP_V11_RULES.accelerationPerMs,
-  );
+  return jumpWorldSpeedV11(elapsedMs);
+}
+
+export function jumpWorldSpeedV13(elapsedMs) {
+  return Math.min(JUMP_V13_RULES.maxSpeed,JUMP_V13_RULES.initialSpeed+jumpDifficultyLevel(elapsedMs)*JUMP_V13_RULES.speedStep);
 }
 
 export function jumpWorldDelta(speed, elapsedMs) {
@@ -21,6 +32,12 @@ export function jumpWorldDelta(speed, elapsedMs) {
 export function jumpPatternIntervalMs(pattern, speed) {
   const lastDistance = Math.max(0, ...pattern.events.map(({ atDistance }) => atDistance));
   return (lastDistance + pattern.gapAfterDistance) / Math.max(1, speed) * 1000;
+}
+
+export function jumpV13NextPatternDistance(pattern,elapsedMs){
+ const speed=jumpWorldSpeedV13(elapsedMs),target=jumpTargetObstaclesPer10s(elapsedMs),last=Math.max(0,...pattern.events.map(event=>event.atDistance));
+ const desiredCycle=speed*10/target*pattern.events.length;
+ return last+Math.max(JUMP_V13_RULES.minimumGapByType[pattern.type],desiredCycle-last);
 }
 
 function event(kind, atDistance, width, height) {
