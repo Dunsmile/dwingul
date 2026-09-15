@@ -25,7 +25,7 @@ try{
    await p.reload();await p.locator('.rpg-title-screen').waitFor();const menu=await bounds(p);assert.ok(menu.overflow<=1);assert.ok(await p.locator('.rpg-start').isVisible());
    assert.equal(await p.locator('.rpg-title-copy h1').evaluate(e=>getComputedStyle(e).color),'rgb(255, 242, 201)');
    await p.screenshot({path:`${out}/${engineName}-menu-${viewport.width}.png`,fullPage:true});
-   await p.getByRole('link',{name:'모험 설정',exact:true}).click();await p.locator('[name=rpg-sentence-mode][value=long]').check();await p.waitForURL(/sentenceMode=long/);await p.locator('[name=rpg-sentence-mode][value=long]:checked').waitFor();
+   await p.locator('.rpg-title-buttons .rpg-start').click();await p.locator('[name=rpg-sentence-mode][value=long]').check();await p.waitForURL(/sentenceMode=long/);await p.locator('[name=rpg-sentence-mode][value=long]:checked').waitFor();
    await p.locator('.rpg-mode-help summary').click();assert.equal((await bounds(p)).scene.height,menu.scene.height);
    await p.locator('.rpg-menu-back').click();await p.locator('[data-rpg-panel=menu]').waitFor();
    for(const [label,panel] of [['뽑기 상점','shop'],['내 장비','gear'],['캐릭터','characters'],['프로필 · 저장','profile']]){
@@ -45,7 +45,7 @@ try{
     if([390,1440].includes(viewport.width))await p.screenshot({path:`${out}/${engineName}-${panel}-${viewport.width}.png`,fullPage:true});
     await p.locator('.rpg-menu-back').click();await p.locator('[data-rpg-panel=menu]').waitFor();
    }
-   await p.getByRole('link',{name:'모험 설정',exact:true}).click();await p.locator('[name=rpg-stage]').selectOption('11');await p.waitForURL(/startStage=11/);await p.locator('[name=rpg-stage]').waitFor();
+   await p.locator('.rpg-title-buttons .rpg-start').click();await p.locator('[name=rpg-stage]').selectOption('11');await p.waitForURL(/startStage=11/);await p.locator('[name=rpg-stage]').waitFor();
    await p.screenshot({path:`${out}/${engineName}-settings-${viewport.width}.png`,fullPage:true});
    await p.locator('.rpg-start').click();await p.locator('.typing-rpg__input').waitFor();await p.evaluate(()=>window.advanceTime(0));
    const initial=await state(p);assert.equal(initial.sentenceMode,'long');assert.equal(initial.attackMultiplier,2);assert.equal(initial.startStage,11);assert.equal(initial.phraseCount,250);
