@@ -50,6 +50,7 @@ for(const car of cityCars)await addPng({id:`vehicles/${car.id}`,name:car.name,gr
 for(const [id,name] of Object.entries({car:'도심 승용차',van:'도심 밴',truck:'도심 트럭',bus:'도심 버스'}))await addPng({id:`traffic/${id}`,name,group:'교통 차량 4종',kind:'traffic',src:`/assets/pixel/illustrated/traffic/${id}.png`,aliases:'교통 차량 자동차'});
 
 const sceneAssets=(await Promise.all(['v12','v16'].map(v=>readFile(new URL(`../design/scene-assets-${v}.json`,import.meta.url),'utf8')))).flatMap(text=>JSON.parse(text));
+sceneAssets.push({id:'jump-obstacle-middle',name:'중간 높이 룬 돌 · 점프 또는 슬라이드',src:'/assets/pixel/scenes/jump-obstacle-middle.png'});
 for(const scene of sceneAssets){const isVehicle=/^(traffic-|player-)/.test(scene.id),isDuel=scene.id.startsWith('duel-');await addPng({id:'scenes/'+scene.id,name:scene.name,group:isVehicle?'차량 방향':isDuel?'전투 자세 41종':'플레이 배경·장애물',kind:'scenes',src:scene.src,aliases:(isVehicle?'차량 자동차 방향 ':isDuel?'캐릭터 몬스터 전투 ':'배경 장애물 숲 원화 ')+scene.name});}
 
 const manifest={

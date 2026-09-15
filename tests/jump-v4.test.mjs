@@ -8,7 +8,7 @@ import {
   jumpRunAfterHit,
   stepJumpPlayer,
   tryJump,
-} from "../public/js/jump-game.js";
+} from "../public/js/jump-game-v17.js";
 
 const TYPES = ["basic", "wide", "double", "slide"];
 

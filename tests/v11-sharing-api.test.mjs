@@ -5,13 +5,28 @@ import {createCityEngine as createCityV6} from '../public/js/legacy/city-engine-
 import {seededRandom} from '../public/js/game-random.js';
 
 const currentGames=[
-  ['jump',{version:'v17'}],
+  ['jump',{version:'v18'}],
   ['racing',{version:'v16',car:'basic'}],
 ];
 const legacyGames=[
-  ['jump',{version:'v6'}],
+  ['jump',{version:'v17'}],
   ['racing',{version:'v6',car:'basic'}],
 ];
+
+test('new jump scores use v18 and an in-flight v17 run retains its own ranking mode',async()=>{
+ const {app,client}=await fixture();
+ try{
+  const user=client();await user('profile',{nickname:'연계 기록',pin:'2468'});
+  const unversioned=await user('runs',{content:'jump'});
+  assert.equal((await user('records',{run:unversioned.id,scopes:['world'],country:'대한민국',result:{value:100,mode:'jump-distance-v18'}})).status,400);
+  const current=await user('runs',{content:'jump',gameSettings:{}});assert.equal(current.gameSettings.version,'v18');
+  const record=await user('records',{run:current.id,scopes:['world'],country:'대한민국',result:{value:234.5,mode:'jump-distance-v17'}});
+  assert.equal(record.status,200);assert.equal(app.db.prepare('SELECT mode FROM records WHERE id=?').get(record.id).mode,'jump-distance-v18');
+  const old=await user('runs',{content:'jump',gameSettings:{}});app.db.prepare('UPDATE runs SET game_settings=? WHERE id=?').run(JSON.stringify({version:'v17'}),old.id);
+  const oldRecord=await user('records',{run:old.id,scopes:['world'],country:'대한민국',result:{value:6123,mode:'jump-distance-v18'}});assert.equal(oldRecord.status,200);
+  assert.equal(app.db.prepare('SELECT mode FROM records WHERE id=?').get(oldRecord.id).mode,'jump-distance-v17');
+ }finally{await app.close();}
+});
 
 async function fixture(){
   const app=createApp({dbPath:':memory:'});

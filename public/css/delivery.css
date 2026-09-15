@@ -1791,7 +1791,7 @@ dialog::backdrop{
 }
 
 /* Distance and hearts are already drawn inside the runner scene. */
-:is(.dg-game--jump-v16,.dg-game--jump-v17) .dg-game__status{display:none}:is(.dg-game--jump-v16,.dg-game--jump-v17) .dg-game__toolbar{justify-content:flex-end;min-height:48px;padding:6px 10px}
+:is(.dg-game--jump-v16,.dg-game--jump-v17,.dg-game--jump-v18) .dg-game__status{display:none}:is(.dg-game--jump-v16,.dg-game--jump-v17,.dg-game--jump-v18) .dg-game__toolbar{justify-content:flex-end;min-height:48px;padding:6px 10px}
 
 /* loading */
 .game-loading{min-height:min(65dvh,530px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:32px 20px;border:3px solid #49382d;background:#f8eed7;text-align:center}.game-loading h2{margin:0;font-size:22px}.game-loading p{margin:0;font-size:14px}.game-loading progress{width:min(100%,260px);height:12px;accent-color:#536d40}.game-loading .buttons{justify-content:center}.game-loading-spark{font-size:38px;color:#876931;animation:loading-spark 1s steps(4) infinite}@keyframes loading-spark{50%{transform:translateY(-7px)}}@media(prefers-reduced-motion:reduce){.game-loading-spark{animation:none}}

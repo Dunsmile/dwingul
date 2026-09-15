@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {JUMP_FLOOR,jumpCollides,stepJumpPlayer,tryJump} from '../public/js/jump-game.js';
-import {JUMP_V17_RULES,jumpPatternsV17,jumpV17PatternsForStage,jumpV17TargetObstaclesPer10s,jumpWorldSpeedV17} from '../public/js/jump-patterns.js';
+import {JUMP_FLOOR,jumpCollides,stepJumpPlayer,tryJump} from '../public/js/jump-game-v17.js';
+import {JUMP_V17_RULES,jumpPatternsV17,jumpV17PatternsForStage,jumpV17TargetObstaclesPer10s,jumpWorldSpeedV17} from '../public/js/jump-patterns-v17.js';
 
 function landingMs(fastAt=Infinity){const player={y:JUMP_FLOOR,vy:0,jumps:0,duck:false};tryJump(player);for(let ms=1;ms<2000;ms+=1){stepJumpPlayer(player,.001,ms>=fastAt);if(player.y===JUMP_FLOOR)return ms;}return Infinity;}
 

@@ -1,73 +1,22 @@
 import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
-import { JUMP_V17_RULES,jumpDifficultyLevel,jumpPatterns100,jumpPatternsV17,jumpStage,jumpStageIndex,jumpTargetObstaclesPer10s,jumpV13NextPatternDistance,jumpV17NextPatternDistance,jumpV17TargetObstaclesPer10s,jumpWorldDelta,jumpWorldSpeedV11,jumpWorldSpeedV13,jumpWorldSpeedV17,nextHeartMeters,shuffledJumpPatterns,shuffledJumpPatternsV17 } from "./jump-patterns.js";
+import {jumpStage,jumpStageIndex} from './jump-patterns-v17.js';
+import {createJumpEngineV18} from './jump-engine-v18.js';
+import {JUMP_FLOOR,jumpDistanceMeters} from './jump-physics-v18.js';
+export * from './jump-physics-v18.js';
 import {drawSceneCover,drawSceneTileX,preloadSceneArt,sceneImage,sceneImageReady} from './scene-art.js';
 
-export const JUMP_FLOOR = 390;
-const CANVAS_WIDTH = 1080;
-const CANVAS_HEIGHT = 450;
-const PLAYER_DRAW_X = 108;
-const METERS_PER_PIXEL = 1 / 20;
-const JUMP_OBSTACLE_ART={basic:'jump-obstacle-short',wide:'jump-obstacle-wide',double:'jump-obstacle-double',slide:'jump-obstacle-slide'};
-
-export function jumpPlayerBox(player) {
-  const crouched = player.duck && player.y >= JUMP_FLOOR - .01;
-  return { x: 116, y: player.y - (crouched ? 31 : 65), w: 48, h: crouched ? 27 : 61 };
-}
-
-export function jumpObstacleBox(obstacle) {
-  return { x: obstacle.x + 6, y: obstacle.y + 6, w: obstacle.w - 12, h: obstacle.h - 12 };
-}
-
-export function jumpCollides(player, obstacle) {
-  if (obstacle.passed) return false;
-  const a = jumpPlayerBox(player);
-  const b = jumpObstacleBox(obstacle);
-  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
-}
-
-export function stepJumpPlayer(player, seconds, fastFall = false) {
-  if(fastFall&&player.y<JUMP_FLOOR-.01)player.vy=Math.max(player.vy,JUMP_V17_RULES.fastFallMinVy);
-  player.vy += (fastFall ? JUMP_V17_RULES.fastFallGravity : player.jumps === 2 ? 1250 : 1500) * seconds;
-  player.y = Math.min(JUMP_FLOOR, player.y + player.vy * seconds);
-  if (player.y >= JUMP_FLOOR) { player.vy = 0; player.jumps = 0; }
-}
-
-export function tryJump(player) {
-  if (player.jumps >= 2) return false;
-  player.duck = false;
-  player.vy = player.jumps === 1 ? -700 : -610;
-  player.jumps += 1;
-  return true;
-}
-
-export function jumpDistanceMeters(pixelDistance) {
-  return Math.round(Math.max(0, pixelDistance) * METERS_PER_PIXEL * 10) / 10;
-}
-
-export function jumpRunAfterHit(lives) {
-  const remaining = Math.max(0, lives - 1);
-  return { lives: remaining, finished: remaining === 0 };
-}
-
-export function jumpHeal(lives, amount = 1) {
-  return Math.min(JUMP_V17_RULES.maxLives, Math.max(0, lives) + Math.max(0, amount));
-}
-
-export function canSpawnJumpHeart(obstacles, pendingCount, player) {
-  const playerX=jumpPlayerBox(player).x;
-  return pendingCount===0&&obstacles.every(obstacle=>obstacle.hit||obstacle.passed||obstacle.x+obstacle.w<playerX);
-}
-
+const CANVAS_WIDTH=1080,CANVAS_HEIGHT=450,PLAYER_DRAW_X=108;
+const JUMP_OBSTACLE_ART={ground:'jump-obstacle-short',wide:'jump-obstacle-wide',double:'jump-obstacle-double',slide:'jump-obstacle-slide',middle:'jump-obstacle-middle'};
 function rounded(pen, x, y, width, height, radius, color) {
   pen.fillStyle = color; pen.beginPath();
   if (pen.roundRect) pen.roundRect(x, y, width, height, radius); else pen.rect(x, y, width, height);
   pen.fill();
 }
 
-export function createJump(ctx,{version='v17'}={}) {
+export function createJump(ctx) {
   preloadWorld(['heart','runner-run-a','runner-run-b','runner-jump','runner-slide','runner-dead']);
   ['runner','runner-run-b','runner-jump','runner-slide','runner-dead'].forEach(portraitImage);
-  const sceneNames=['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide'];
+  const sceneNames=['jump-forest','jump-ground','jump-obstacle-short','jump-obstacle-wide','jump-obstacle-double','jump-obstacle-slide','jump-obstacle-middle'];
   preloadSceneArt(sceneNames);const sceneArt=Object.fromEntries(sceneNames.map(name=>[name,sceneImage(name)]));
   const stageAssetNames = index => index === 0 ? [] : [
     `jump-stage-${index+1}`,
@@ -81,7 +30,7 @@ export function createJump(ctx,{version='v17'}={}) {
     for(const name of names) sceneArt[name]=sceneImage(name);
     warmedStages.add(index);
   }
-  if(version==='v17') warmStage(1);
+  warmStage(1);
   const canvas = document.createElement("canvas");
   canvas.width = CANVAS_WIDTH; canvas.height = CANVAS_HEIGHT; canvas.className = "dg-game__canvas jump--v4";
   canvas.setAttribute("role", "img");
@@ -97,50 +46,21 @@ export function createJump(ctx,{version='v17'}={}) {
   for (const button of [duckButton, jumpButton]) { button.type = "button"; button.className = "dg-game__control"; }
   controls.append(duckButton, jumpButton);
   const hint = document.createElement("p"); hint.className = "dg-game__jump-hint";
-  hint.textContent = "공중에서 ↓를 누르면 빠르게 내려와 바로 숙여요.";
+  hint.textContent = "점프 → 공중에서 ↓ 급강하! 빛나는 룬 돌은 위로 뛰거나 아래로 숙여 피하세요.";
   ctx.stage.append(canvas, controls, hint);
 
-  const player = { y: JUMP_FLOOR, vy: 0, jumps: 0, duck: false };
-  const obstacles = [], pendingEvents = [], hearts = [];
-  let deck = [], deckStage = -1, deckDifficulty = -1, currentPattern = null, previousPatternId = null, patternsSeen = 0, nextPatternDistance = 0;
-  let elapsed = 0, distancePixels = 0, avoided = 0, lives = version === 'v17' ? 3 : 2, invincibleMs = 0, nextObstacleId = 1, scroll = 0;
-  let pointerDuck = false, keyboardDuck = false, ending = null;
-  let jumpBufferMs = 0, nextHeartAt = version === 'v17' ? nextHeartMeters(0, ctx.random, true) : Infinity, heartsCollected = 0;
-  const heldJumpKeys = new Set();
-  ctx.root?.classList.add('dg-game--jump-v17');
-
-  function refillDeck() {
-    deckStage=jumpStageIndex(jumpDistanceMeters(distancePixels));
-    deckDifficulty=jumpDifficultyLevel(elapsed);
-    deck = version==='v17'?shuffledJumpPatternsV17(ctx.random,deckStage,elapsed):shuffledJumpPatterns(ctx.random);
-    if (previousPatternId && deck[0]?.id === previousPatternId) deck.push(deck.shift());
-  }
-  function takePattern() {
-    if (!deck.length) refillDeck();
-    if(version==='v17'&&(deckStage!==jumpStageIndex(jumpDistanceMeters(distancePixels))||deckDifficulty!==jumpDifficultyLevel(elapsed)))refillDeck();
-    const pattern = deck.shift(); previousPatternId = pattern.id; return pattern;
-  }
-  function addObstacle(pattern, event, eventIndex) {
-    obstacles.push({ ...event, id: nextObstacleId++, patternId: pattern.id, patternType: pattern.type, eventIndex, stageIndex: version==='v17'?jumpStageIndex(jumpDistanceMeters(distancePixels)):0, x: CANVAS_WIDTH + 28, hit: false, passed: false });
-  }
-  function beginPattern() {
-    currentPattern = takePattern(); patternsSeen += 1;
-    currentPattern.events.forEach((event, eventIndex) => {
-      if (event.atDistance === 0) addObstacle(currentPattern, event, eventIndex);
-      else pendingEvents.push({ pattern: currentPattern, event, eventIndex, remainingDistance: event.atDistance });
-    });
-    const meters = jumpDistanceMeters(distancePixels);
-    nextPatternDistance = version==='v11'?Math.max(...currentPattern.events.map(({ atDistance }) => atDistance))+currentPattern.gapAfterDistance:version==='v17'?jumpV17NextPatternDistance(currentPattern,elapsed,meters):jumpV13NextPatternDistance(currentPattern,elapsed);
-  }
-
-  const jump = () => { if (!ctx.isFinished() && !ending) { if (!tryJump(player)) jumpBufferMs = JUMP_V17_RULES.jumpBufferMs; draw(); } };
-  const stopDuck = () => { pointerDuck = false; player.duck = keyboardDuck; };
-  const clearHeld = () => { pointerDuck = false; keyboardDuck = false; player.duck = false; jumpBufferMs = 0; heldJumpKeys.clear(); };
+  const engine=createJumpEngineV18(ctx.random),{player,obstacles,hearts}=engine.state;
+  let elapsed=0,distancePixels=0,scroll=0,lives=3,invincibleMs=0,ending=null;
+  let pointerDuck=false,keyboardDuck=false,duckPointerId=null;const heldJumpKeys=new Set();
+  ctx.root?.classList.add('dg-game--jump-v18');
+  const jump=()=>{if(!ctx.isFinished()&&!ending){pointerDuck=false;keyboardDuck=false;duckPointerId=null;engine.input('jump');draw();}};
+  const stopDuck=event=>{if(event&&duckPointerId!==event.pointerId)return;pointerDuck=false;duckPointerId=null;if(!keyboardDuck)engine.input('release');};
+  const clearHeld=()=>{pointerDuck=false;keyboardDuck=false;duckPointerId=null;heldJumpKeys.clear();engine.clearHeld();};
   ctx.listen(jumpButton, "pointerdown", (event) => { event.preventDefault(); jump(); });
   ctx.listen(jumpButton, "click", (event) => { if (event.detail === 0) jump(); });
   ctx.listen(canvas, "pointerdown", (event) => { event.preventDefault(); jump(); });
   ctx.listen(duckButton, "pointerdown", (event) => {
-    event.preventDefault(); if(ending)return; pointerDuck = true; player.duck = true;
+    event.preventDefault(); if(ending)return; pointerDuck = true; duckPointerId=event.pointerId; engine.input('duck');
     try { duckButton.setPointerCapture?.(event.pointerId); } catch { /* Synthetic pointer events have no active pointer to capture. */ }
     draw();
   });
@@ -149,9 +69,9 @@ export function createJump(ctx,{version='v17'}={}) {
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName || "") || event.target?.isContentEditable) return;
     if(ending)return;
     if (["Space", "ArrowUp", "KeyW"].includes(event.code)) { event.preventDefault(); if (!heldJumpKeys.has(event.code)) { heldJumpKeys.add(event.code); jump(); } }
-    if (event.code === "ArrowDown") { event.preventDefault(); keyboardDuck = true; player.duck = true; draw(); }
+    if (event.code === "ArrowDown") { event.preventDefault(); if(!event.repeat){keyboardDuck = true; engine.input('duck'); draw();} }
   });
-  ctx.listen(document, "keyup", (event) => { heldJumpKeys.delete(event.code); if (event.code === "ArrowDown") { keyboardDuck = false; player.duck = pointerDuck; draw(); } });
+  ctx.listen(document, "keyup", (event) => { heldJumpKeys.delete(event.code); if (event.code === "ArrowDown") { keyboardDuck = false; if(!pointerDuck)engine.input('release'); draw(); } });
   ctx.listen(window, "blur", clearHeld);
 
   function drawGroundObstacle(obstacle) {
@@ -172,9 +92,10 @@ export function createJump(ctx,{version='v17'}={}) {
   }
   function drawObstacle(obstacle){
     const suffix=JUMP_OBSTACLE_ART[obstacle.kind]?.replace('jump-obstacle-','')||'short';
-    const image=sceneArt[obstacle.stageIndex ? `jump-stage-${obstacle.stageIndex+1}-${suffix}` : JUMP_OBSTACLE_ART[obstacle.kind]||JUMP_OBSTACLE_ART.basic];
+    const image=obstacle.kind==='middle'?sceneArt['jump-obstacle-middle']:sceneArt[obstacle.stageIndex ? `jump-stage-${obstacle.stageIndex+1}-${suffix}` : JUMP_OBSTACLE_ART[obstacle.kind]||JUMP_OBSTACLE_ART.ground];
     if(sceneImageReady(image))pen.drawImage(image,obstacle.x,obstacle.kind==='slide'?0:obstacle.y,obstacle.w,obstacle.kind==='slide'?obstacle.h:obstacle.h);
     else if(obstacle.kind==='slide')drawSlideObstacle(obstacle);else drawGroundObstacle(obstacle);
+    if(obstacle.kind==='middle'){pen.fillStyle='#fff8e8';pen.strokeStyle='#49382d';pen.lineWidth=3;pen.textAlign='center';pen.font='800 18px sans-serif';pen.strokeText('↕',obstacle.x+obstacle.w/2,obstacle.y-8);pen.fillText('↕',obstacle.x+obstacle.w/2,obstacle.y-8);}
     if(obstacle.kind==='double'){pen.fillStyle='#fff8e8';pen.strokeStyle='#49382d';pen.lineWidth=4;pen.textAlign='center';pen.font='800 18px sans-serif';pen.strokeText('2단!',obstacle.x+obstacle.w/2,obstacle.y+27);pen.fillText('2단!',obstacle.x+obstacle.w/2,obstacle.y+27);}
     if(obstacle.kind==='slide'){pen.fillStyle='#eef4ed';pen.strokeStyle='#49382d';pen.lineWidth=4;pen.textAlign='center';pen.font='800 17px sans-serif';pen.strokeText('↓ 숙이기',obstacle.x+obstacle.w/2,obstacle.h-10);pen.fillText('↓ 숙이기',obstacle.x+obstacle.w/2,obstacle.h-10);}
   }
@@ -210,7 +131,7 @@ export function createJump(ctx,{version='v17'}={}) {
     else drawWoodland(viewWidth, stage);
     const groundImage=stage.id==='easy'?sceneArt['jump-ground']:sceneArt[`jump-stage-${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}-ground`];
     drawSceneTileX(pen,groundImage,JUMP_FLOOR,CANVAS_HEIGHT-JUMP_FLOOR,scroll,viewWidth);
-    for (const obstacle of obstacles) { pen.globalAlpha = obstacle.hit ? .3 : 1; drawObstacle(obstacle); }
+    for (const obstacle of obstacles) { if(obstacle.x>viewWidth+20||obstacle.x+obstacle.w<0)continue;pen.globalAlpha = obstacle.hit ? .3 : 1; drawObstacle(obstacle); }
     pen.globalAlpha = 1;
     for (const heart of hearts) drawWorldSprite(pen,'heart',heart.x,heart.y,heart.w,heart.h);
     pen.globalAlpha = 1;
@@ -228,75 +149,18 @@ export function createJump(ctx,{version='v17'}={}) {
     rounded(pen,14,14,Math.max(158,pen.measureText(distanceLabel).width+24),47,4,'#fff8e8ef');
     rounded(pen,viewWidth-152,14,138,47,4,'#fff8e8ef');
     pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.fillText(distanceLabel, 26, 48);
-    pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "26px sans-serif"; pen.fillText(Array.from({length: version==='v17'?3:2},(_,i)=>i<lives?'♥':'♡').join(' '), viewWidth - 26, 47);
-    if (version === 'v17') { rounded(pen,14,69,132,32,4,'#fff8e8dd'); pen.fillStyle='#284e3d'; pen.textAlign='left'; pen.font='700 17px Galmuri11, sans-serif'; pen.fillText(stage.label,25,92); }
-    if (elapsed < 2300) { const hintWidth=Math.min(570,viewWidth-28);rounded(pen,(viewWidth-hintWidth)/2,136,hintWidth,43,10,'#fff9dddc');pen.textAlign = "center"; pen.fillStyle = "#345445"; pen.font = "700 21px Galmuri11, sans-serif"; pen.fillText("점프 두 번 · 공중에서 ↓ 빠른 착지", viewWidth / 2, 166); }
+    pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "26px sans-serif"; pen.fillText(Array.from({length:3},(_,i)=>i<lives?'♥':'♡').join(' '), viewWidth - 26, 47);
+    { rounded(pen,14,69,132,32,4,'#fff8e8dd'); pen.fillStyle='#284e3d'; pen.textAlign='left'; pen.font='700 17px Galmuri11, sans-serif'; pen.fillText(`${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}구간 · 연계`,25,92); }
+    if (elapsed < 1000) { const hintWidth=Math.min(570,viewWidth-28);rounded(pen,(viewWidth-hintWidth)/2,136,hintWidth,43,10,'#fff9dddc');pen.textAlign = "center"; pen.fillStyle = "#345445"; pen.font = "700 21px Galmuri11, sans-serif"; pen.fillText("점프 두 번 · 공중에서 ↓ 빠른 착지", viewWidth / 2, 166); }
   }
-  function finishRun() {
-    const distance = jumpDistanceMeters(distancePixels); draw();
-    ctx.finish({ value: distance, display: distance.toFixed(1), unit: "m", higherBetter: true, mode: `jump-distance-${version}`, details: { distance, avoided, survivedSeconds: Number((elapsed / 1000).toFixed(1)) } });
-  }
-
-  beginPattern(); draw(); ctx.setStatus(version === 'v17' ? '' : "0.0 m · 기회 2번");
+  function sync(){({elapsedMs:elapsed,worldDistance:distancePixels,lives,invincibleMs,ending}=engine.state);scroll=distancePixels;}
+  draw();ctx.setStatus('');
   return {
-    tick(ms) {
-      if(ending){stepJumpPlayer(player,ms/1000);if(player.y>=JUMP_FLOOR-.01)ending.groundedMs+=ms;draw();ctx.setStatus("조금 쉬었다가, 다시 뛰어요.");if(ending.groundedMs>=650)finishRun();return;}
-      const seconds = ms / 1000, speed = version==='v11'?jumpWorldSpeedV11(elapsed):version==='v17'?jumpWorldSpeedV17(elapsed):jumpWorldSpeedV13(elapsed), worldDelta = jumpWorldDelta(speed, ms);
-      elapsed += ms; distancePixels += worldDelta; scroll += worldDelta; invincibleMs = Math.max(0, invincibleMs - ms); nextPatternDistance -= worldDelta;
-      if(version==='v17') warmStage(jumpStageIndex(jumpDistanceMeters(distancePixels))+1);
-      const wasAirborne = player.y < JUMP_FLOOR - .01;
-      player.duck = pointerDuck || keyboardDuck;
-      const fastFalling=player.duck&&wasAirborne;
-      stepJumpPlayer(player, seconds, fastFalling);
-      if (jumpBufferMs > 0) {
-        jumpBufferMs = Math.max(0, jumpBufferMs - ms);
-        if (wasAirborne && player.y >= JUMP_FLOOR - .01) { tryJump(player); jumpBufferMs = 0; }
-      }
-      for (let index = pendingEvents.length - 1; index >= 0; index -= 1) {
-        const pending = pendingEvents[index]; pending.remainingDistance -= worldDelta;
-        if (pending.remainingDistance <= 0) { addObstacle(pending.pattern, pending.event, pending.eventIndex); pendingEvents.splice(index, 1); }
-      }
-      const distanceNow = jumpDistanceMeters(distancePixels);
-      const heartDue=version==='v17'&&distanceNow>=nextHeartAt;
-      const pickupLaneClear=canSpawnJumpHeart(obstacles,pendingEvents.length,player);
-      if (heartDue && pickupLaneClear && hearts.length===0) {
-        hearts.push({ x: canvas.width + 42, y: JUMP_FLOOR - 35, w: 28, h: 32 });
-        nextHeartAt = nextHeartMeters(nextHeartAt, ctx.random);
-        nextPatternDistance=Math.max(nextPatternDistance,canvas.width-PLAYER_DRAW_X+360);
-      }
-      if (nextPatternDistance <= 0 && !heartDue) beginPattern();
-      for (const obstacle of obstacles) {
-        obstacle.x -= worldDelta;
-        if (!obstacle.hit && !obstacle.passed && !invincibleMs && jumpCollides(player, obstacle)) {
-          obstacle.hit = true; const hit = jumpRunAfterHit(lives); lives = hit.lives; invincibleMs = 950;
-          if (hit.finished) { ending={groundedMs:0};invincibleMs=0;clearHeld();draw();return; }
-        }
-        if (!obstacle.passed && obstacle.x + obstacle.w < jumpPlayerBox(player).x) { obstacle.passed = true; if (!obstacle.hit) avoided += 1; }
-      }
-      for (let index=hearts.length-1;index>=0;index-=1) {
-        const heart=hearts[index]; heart.x-=worldDelta;
-        const box=jumpPlayerBox(player);
-        if (box.x < heart.x+heart.w && box.x+box.w > heart.x && box.y < heart.y+heart.h && box.y+box.h > heart.y) {
-          lives=jumpHeal(lives); heartsCollected+=1; hearts.splice(index,1);
-        } else if (heart.x+heart.w < -30) hearts.splice(index,1);
-      }
-      while (obstacles[0]?.x + obstacles[0]?.w < -30) obstacles.shift();
-      const distance = jumpDistanceMeters(distancePixels);
-      const target=version==='v17'?jumpV17TargetObstaclesPer10s(elapsed,distance):jumpTargetObstaclesPer10s(elapsed);
-      const tuning=version==='v11'?'':` · 난도 ${jumpDifficultyLevel(elapsed)+1} · 목표 ${target.toFixed(version==='v17'?1:0)}개/10초`;
-      ctx.setStatus(version === 'v17' ? '' : `${distance.toFixed(1)} m · ${avoided}개 회피 · 기회 ${lives}번${tuning}`); draw();
+    tick(ms){
+      engine.tick(ms);sync();warmStage(jumpStageIndex(engine.state.distance)+1);draw();
+      if(ending?.groundedMs>=650&&!ctx.isFinished())ctx.finish({value:engine.state.distance,display:engine.state.distance.toFixed(1),unit:'m',higherBetter:true,mode:'jump-distance-v18',details:{distance:engine.state.distance,avoided:engine.state.avoided,survivedSeconds:Number((elapsed/1000).toFixed(1))}});
     },
-    onPause(paused) { if (paused) clearHeld(); },
-    getState: () => ({
-      player: { ...player }, playerBox: jumpPlayerBox(player), obstacles: obstacles.map((obstacle) => ({ ...obstacle })),
-      pendingEvents: pendingEvents.map(({ pattern, eventIndex, remainingDistance }) => ({ patternId: pattern.id, eventIndex, remainingDistance })),
-      phase: ending ? "ending" : "playing", ending: ending ? {...ending} : null, elapsedMs: elapsed, worldDistance: distancePixels, distance: jumpDistanceMeters(distancePixels), avoided, score: jumpDistanceMeters(distancePixels), lives, maxLives:version==='v17'?3:2, invincibleMs,
-      speed: version==='v11'?jumpWorldSpeedV11(elapsed):version==='v17'?jumpWorldSpeedV17(elapsed):jumpWorldSpeedV13(elapsed),difficultyLevel:version==='v11'?null:jumpDifficultyLevel(elapsed),targetObstaclesPer10s:version==='v11'?null:version==='v17'?jumpV17TargetObstaclesPer10s(elapsed,jumpDistanceMeters(distancePixels)):jumpTargetObstaclesPer10s(elapsed),rulesVersion:version,currentPatternId: currentPattern?.id, currentPatternType: currentPattern?.type,
-      patternsSeen, deckRemaining: deck.length, patternCount: version==='v17'?jumpPatternsV17.length:jumpPatterns100.length, nextPatternDistance,
-      stageIndex: version==='v17'?jumpStageIndex(jumpDistanceMeters(distancePixels)):null,stage:version==='v17'?jumpStage(jumpDistanceMeters(distancePixels)):null,
-      hearts:hearts.map(heart=>({...heart})),heartsCollected,nextHeartAt,jumpBufferMs,fastFalling:player.duck&&player.y<JUMP_FLOOR-.01,
-    }),
+    onPause(paused){if(paused)clearHeld();},
+    getState:()=>({...engine.getState(),stage:jumpStage(engine.state.distance)}),
   };
 }
-
-export function createJumpV11(ctx){return createJump(ctx,{version:'v11'});}
