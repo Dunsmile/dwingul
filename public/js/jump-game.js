@@ -46,6 +46,12 @@ export function createJump(ctx) {
   duckButton.textContent = "↓ 꾹 눌러 숙이기"; jumpButton.textContent = "↑ 점프 · 두 번 가능";
   for (const button of [duckButton, jumpButton]) { button.type = "button"; button.className = "dg-game__control"; }
   controls.append(duckButton, jumpButton);
+  // Safari can show selection/translation on a held text button. Cancel only
+  // the gameplay surface's native menus, leaving page content and inputs alone.
+  for(const surface of [canvas,controls]){
+    ctx.listen(surface,'contextmenu',event=>event.preventDefault(),{passive:false});
+    ctx.listen(surface,'selectstart',event=>event.preventDefault(),{passive:false});
+  }
   const hint = document.createElement("p"); hint.className = "dg-game__jump-hint";
   hint.textContent = "점프 → 공중에서 ↓ 급강하! 빛나는 룬 돌은 위로 뛰거나 아래로 숙여 피하세요.";
   ctx.stage.append(canvas, controls, hint);
