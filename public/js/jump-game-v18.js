@@ -1,7 +1,6 @@
 import {drawWorldSprite,preloadWorld,portraitImage,drawPortraitSprite} from './pixel-world.js';
 import {jumpStage,jumpStageIndex} from './jump-patterns-v17.js';
-import {createJumpEngineV19} from './jump-engine-v19.js';
-import {JUMP_STAGE_CONFIG} from './jump-course-v19.js';
+import {createJumpEngineV18} from './jump-engine-v18.js';
 import {JUMP_FLOOR,jumpDistanceMeters} from './jump-physics-v18.js';
 export * from './jump-physics-v18.js';
 import {drawSceneCover,drawSceneTileX,preloadSceneArt,sceneImage,sceneImageReady} from './scene-art.js';
@@ -50,10 +49,10 @@ export function createJump(ctx) {
   hint.textContent = "점프 → 공중에서 ↓ 급강하! 빛나는 룬 돌은 위로 뛰거나 아래로 숙여 피하세요.";
   ctx.stage.append(canvas, controls, hint);
 
-  const engine=createJumpEngineV19(ctx.random),{player,obstacles,hearts}=engine.state;
+  const engine=createJumpEngineV18(ctx.random),{player,obstacles,hearts}=engine.state;
   let elapsed=0,distancePixels=0,scroll=0,lives=3,invincibleMs=0,ending=null;
   let pointerDuck=false,keyboardDuck=false,duckPointerId=null;const heldJumpKeys=new Set();
-  ctx.root?.classList.add('dg-game--jump-v19');
+  ctx.root?.classList.add('dg-game--jump-v18');
   const jump=()=>{if(!ctx.isFinished()&&!ending){pointerDuck=false;keyboardDuck=false;duckPointerId=null;engine.input('jump');draw();}};
   const stopDuck=event=>{if(event&&duckPointerId!==event.pointerId)return;pointerDuck=false;duckPointerId=null;if(!keyboardDuck)engine.input('release');};
   const clearHeld=()=>{pointerDuck=false;keyboardDuck=false;duckPointerId=null;heldJumpKeys.clear();engine.clearHeld();};
@@ -138,10 +137,10 @@ export function createJump(ctx) {
     pen.globalAlpha = 1;
     const duck = player.duck && player.y >= JUMP_FLOOR - .01, height = duck ? 34 : 72;
     if (!invincibleMs || Math.floor(invincibleMs / 95) % 2 === 0) {
-      const pose=ending&&player.y>=JUMP_FLOOR-.01?'dead':duck?'slide':player.y<JUMP_FLOOR-.01?'jump':Math.floor(distancePixels/55)%2?'run-a':'run-b';
+      const pose=ending&&player.y>=JUMP_FLOOR-.01?'dead':duck?'slide':player.y<JUMP_FLOOR-.01?'jump':Math.floor(elapsed/140)%2?'run-a':'run-b';
       const portrait=pose==='run-a'?'runner':'runner-'+pose;
       const drawnHeight=pose==='dead'?62:height;
-      const bob=pose.startsWith('run')?Math.floor(distancePixels/55)%2*2:0;
+      const bob=pose.startsWith('run')?Math.floor(elapsed/140)%2*2:0;
       if(!drawPortraitSprite(pen,portrait,PLAYER_DRAW_X,player.y-drawnHeight-bob,64,drawnHeight)&&!drawWorldSprite(pen,'runner-'+pose,PLAYER_DRAW_X,player.y-height,64,height)){pen.fillStyle='#92714e';pen.fillRect(PLAYER_DRAW_X+7,player.y-height,50,height);}
 
     }
@@ -151,15 +150,15 @@ export function createJump(ctx) {
     rounded(pen,viewWidth-152,14,138,47,4,'#fff8e8ef');
     pen.fillStyle = "#284e3d"; pen.textAlign = "left"; pen.fillText(distanceLabel, 26, 48);
     pen.textAlign = "right"; pen.fillStyle = "#bc6f6c"; pen.font = "26px sans-serif"; pen.fillText(Array.from({length:3},(_,i)=>i<lives?'♥':'♡').join(' '), viewWidth - 26, 47);
-    { rounded(pen,14,69,166,32,4,'#fff8e8dd'); pen.fillStyle='#284e3d'; pen.textAlign='left'; pen.font='700 17px Galmuri11, sans-serif'; pen.fillText(JUMP_STAGE_CONFIG[jumpStageIndex(jumpDistanceMeters(distancePixels))].label,25,92); }
-    if (elapsed < 2400) { const hintWidth=Math.min(570,viewWidth-28);rounded(pen,(viewWidth-hintWidth)/2,136,hintWidth,43,10,'#fff9dddc');pen.textAlign = "center"; pen.fillStyle = "#345445"; pen.font = "700 21px Galmuri11, sans-serif"; pen.fillText("준비! 점프 두 번 · ↓ 급강하", viewWidth / 2, 166); }
+    { rounded(pen,14,69,132,32,4,'#fff8e8dd'); pen.fillStyle='#284e3d'; pen.textAlign='left'; pen.font='700 17px Galmuri11, sans-serif'; pen.fillText(`${jumpStageIndex(jumpDistanceMeters(distancePixels))+1}구간 · 연계`,25,92); }
+    if (elapsed < 1000) { const hintWidth=Math.min(570,viewWidth-28);rounded(pen,(viewWidth-hintWidth)/2,136,hintWidth,43,10,'#fff9dddc');pen.textAlign = "center"; pen.fillStyle = "#345445"; pen.font = "700 21px Galmuri11, sans-serif"; pen.fillText("점프 두 번 · 공중에서 ↓ 빠른 착지", viewWidth / 2, 166); }
   }
   function sync(){({elapsedMs:elapsed,worldDistance:distancePixels,lives,invincibleMs,ending}=engine.state);scroll=distancePixels;}
   draw();ctx.setStatus('');
   return {
     tick(ms){
       engine.tick(ms);sync();warmStage(jumpStageIndex(engine.state.distance)+1);draw();
-      if(ending?.groundedMs>=650&&!ctx.isFinished())ctx.finish({value:engine.state.distance,display:engine.state.distance.toFixed(1),unit:'m',higherBetter:true,mode:'jump-distance-v19',details:{distance:engine.state.distance,avoided:engine.state.avoided,survivedSeconds:Number((elapsed/1000).toFixed(1))}});
+      if(ending?.groundedMs>=650&&!ctx.isFinished())ctx.finish({value:engine.state.distance,display:engine.state.distance.toFixed(1),unit:'m',higherBetter:true,mode:'jump-distance-v18',details:{distance:engine.state.distance,avoided:engine.state.avoided,survivedSeconds:Number((elapsed/1000).toFixed(1))}});
     },
     onPause(paused){if(paused)clearHeld();},
     getState:()=>({...engine.getState(),stage:jumpStage(engine.state.distance)}),
