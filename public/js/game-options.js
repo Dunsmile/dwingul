@@ -14,7 +14,7 @@ export function gameSettings(id, raw = {}) {
   if (id === 'sort') return { version: 'v5', mode: raw.mode === 'endless' ? 'endless' : 'sprint' };
   if (id === 'typing') return { version:'v5', mode:'rpg', sentenceMode:raw.sentenceMode==='long'?'long':'short', startStage:Number.isInteger(Number(raw.startStage))&&Number(raw.startStage)>=1&&(Number(raw.startStage)-1)%10===0?Number(raw.startStage):1 };
   if (id === 'racing') return { version: ['v4','v5','v6','v7'].includes(raw.version) ? raw.version : 'v16', car: cityCars.some(c => c.id === raw.car) ? raw.car : 'basic' };
-  return id === 'jump' ? { version: ['v4','v5','v6','v11','v13','v16'].includes(raw.version) ? raw.version : 'v17' } : {};
+  return id === 'jump' ? { version: ['v4','v5','v6','v11','v13','v16','v17'].includes(raw.version) ? raw.version : 'v18' } : {};
 }
 export function gameMode(id, raw={}) {
   const s=gameSettings(id,raw),v=['v4','v5','v6'].includes(raw?.version)?raw.version:s.version;
@@ -22,6 +22,7 @@ export function gameMode(id, raw={}) {
 }
 export const gameModeNames = {
   'rhythm-three-lane-v11':'세 갈래 리듬 · 무한 모드', 'rhythm-endless-v9':'무한 리듬 · 100가지 패턴', 'rhythm-relay-v7':'리듬 릴레이 · 8라운드', 'nine-pad':'기억 순서 · 이전 규칙',
+  'jump-distance-v18':'멀리 뛰기 · 연계 도전',
   'jump-distance-v17':'멀리 뛰기 · 급강하 도전',
   'jump-distance-v16':'멀리 뛰기 · 여섯 구간',
   ...Object.fromEntries(cityCars.map(car=>[`city-${car.id}-v16`,`도심 질주 · ${car.name} · 연료 도전`])),

@@ -6860,6 +6860,16 @@
       "width": 256,
       "height": 241,
       "searchAliases": "배경 장애물 숲 원화 하얀 구름 · 눈물"
+    },
+    {
+      "id": "scenes/jump-obstacle-middle",
+      "name": "중간 높이 룬 돌 · 점프 또는 슬라이드",
+      "group": "플레이 배경·장애물",
+      "kind": "scenes",
+      "src": "/assets/pixel/scenes/jump-obstacle-middle.png",
+      "width": 256,
+      "height": 217,
+      "searchAliases": "배경 장애물 숲 원화 중간 높이 룬 돌 · 점프 또는 슬라이드"
     }
   ]
 }

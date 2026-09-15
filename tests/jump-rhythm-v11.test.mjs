@@ -8,7 +8,7 @@ import {
   jumpWorldSpeed,
   jumpPatterns100,
 } from "../public/js/jump-patterns.js";
-import { JUMP_FLOOR, stepJumpPlayer, tryJump } from "../public/js/jump-game.js";
+import { JUMP_FLOOR, stepJumpPlayer, tryJump } from "../public/js/jump-game-v17.js";
 import {
   RHYTHM_LANES,
   createRhythmLanePatterns,

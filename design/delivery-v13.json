@@ -3816,6 +3816,13 @@
       "bytes": 56594,
       "originalBytes": 60012
     },
+    "/assets/pixel/scenes/jump-obstacle-middle.png": {
+      "url": "/assets/delivery/jump-obstacle-middle-cfffa610a985.webp",
+      "width": 256,
+      "height": 217,
+      "bytes": 23486,
+      "originalBytes": 29385
+    },
     "/assets/pixel/scenes/jump-obstacle-short.png": {
       "url": "/assets/delivery/jump-obstacle-short-0fc8518a1388.webp",
       "width": 256,
@@ -4349,6 +4356,6 @@
       "originalBytes": 1656545
     }
   },
-  "originalBytes": 24437951,
-  "deliveryBytes": 18916274
+  "originalBytes": 24467336,
+  "deliveryBytes": 18939760
 }
