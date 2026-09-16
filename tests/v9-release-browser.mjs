@@ -110,7 +110,7 @@ async function verifyProfileHistoryAndRank() {
   await page.setViewportSize(viewports[1]);
   await open('profile', '#unified-profile-form');
   await page.locator('[name=nickname]').fill('출시검증');
-  await page.locator('[name=pin]').fill('Test-7391-password!');if(await page.locator('[name=passwordConfirm]').count())await page.locator('[name=passwordConfirm]').fill('Test-7391-password!');
+  await page.locator('[name=pin]').fill('Test-7391!');if(await page.locator('[name=passwordConfirm]').count())await page.locator('[name=passwordConfirm]').fill('Test-7391!');
   await page.locator('#unified-profile-form').evaluate(form => form.scrollIntoView({block: 'start'}));
   const beforeProfileSubmit = await page.evaluate(() => scrollY);
   await page.locator('#unified-profile-form button[type=submit]').click();

@@ -10,7 +10,7 @@
 
 ## 1. Server ownership and credential rules
 - [x] Add failing isolated API tests for nickname/password login, conflicts, legacy upgrade/recovery, role spoofing, wrong credentials and session isolation.
-- [x] Implement `server/auth.js`, integrate `server/api.js`, local server and Worker configuration. New credentials 15–64 characters; existing PINs retained only for legacy recovery/upgrade.
+- [x] Implement `server/auth.js`, integrate `server/api.js`, local server and Worker configuration. New credentials 4–15 characters (updated by user request after v21); existing PINs retained only for legacy recovery/upgrade.
 - [x] Add owner-only password change, logout, recovery-code rotation. Preserve older browser sessions on normal login; revoke all on password/recovery changes.
 - [x] Persist login throttles and avoid storing raw passwords/tokens in audit or response data.
 

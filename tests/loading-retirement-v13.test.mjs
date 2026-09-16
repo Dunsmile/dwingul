@@ -42,8 +42,8 @@ test('retired rooms deny new membership while archived result shares remain read
  const {app,client}=await fixture();
  try{
   const owner=client(),joiner=client();
-  const ownerProfile=await owner('profile','POST',{nickname:'보관방장',pin:'Test-1234-password!'});
-  await joiner('profile','POST',{nickname:'새참가자',pin:'Test-5678-password!'});
+  const ownerProfile=await owner('profile','POST',{nickname:'보관방장',pin:'Test-1234!'});
+  await joiner('profile','POST',{nickname:'새참가자',pin:'Test-5678!'});
   app.db.prepare('INSERT INTO groups(id,owner,name,content,code,seed,period,created,topic,question_version,game_settings) VALUES(?,?,?,?,?,?,?,?,?,?,?)').run('old-room',ownerProfile.user.id,'옛 리듬방','sequence','OLD1',7,'all',Date.now(),'mixed','v1',JSON.stringify({version:'v11'}));
   app.db.prepare('INSERT INTO members VALUES(?,?,?,0)').run('old-room',ownerProfile.user.id,Date.now());
   assert.equal((await joiner('groups/preview','POST',{code:'OLD1'})).status,410);

@@ -33,7 +33,7 @@ test('RPG checkpoints replay authoritatively, pay once, unlock skips and preserv
   const checkpoint=await req('rpg/progress',payload);assert.equal(checkpoint.status,200,JSON.stringify(checkpoint));assert.equal(checkpoint.gold,120);assert.equal(checkpoint.earned,120);assert.deepEqual(checkpoint.checkpoints,[1]);
   assert.equal((await req('rpg/progress',payload)).earned,0);
   const bad=structuredClone(payload);bad.actions[0][2]='변조';assert.equal((await req('rpg/progress',bad)).status,400);
-  await req('profile',{nickname:'타자왕',pin:'Test-1234-password!'});assert.deepEqual((await req('rpg')).checkpoints,[1,11]);
+  await req('profile',{nickname:'타자왕',pin:'Test-1234!'});assert.deepEqual((await req('rpg')).checkpoints,[1,11]);
   const draw=await req('rpg/draw',{key:'first-draw-key'});assert.equal(draw.status,200);assert.equal(draw.gold,70);assert.ok(draw.owned.includes(draw.item.id));assert.equal((await req('rpg/draw',{key:'first-draw-key'})).gold,70);
   assert.equal((await req('rpg/equip',{slot:draw.item.slot,itemId:'nonexistent'})).status,400);
   const equipped=await req('rpg/equip',{slot:draw.item.slot,itemId:draw.item.id});assert.ok(equipped.gear[draw.item.slot]>0);
