@@ -1,0 +1,12 @@
+{
+  "asset": "public/assets/pixel/woodland-pets.png",
+  "tool": "OpenAI built-in image_gen",
+  "generationTimeUtc": "2026-09-13T14:59:59.212Z",
+  "prompt": "Create an original production game asset for a Korean cozy casual-game website called Dwingul. A crisp 16-bit pixel art CHARACTER SPRITE SHEET: exactly 16 different tiny adorable rounded woodland adventurer pets in an evenly spaced 4 by 4 grid, identical cell dimensions, each centered fully inside its cell with generous empty padding, full body front 3/4 view, transparent background. No text, no labels, no borders, no furniture backdrop. Each character about 64 by 64 logical pixels displayed with strict nearest-neighbor pixels, limited 20-color palette, 1-2-pixel dark cocoa outlines, rich but subtle pixel shading, expressive black square eyes, warm cheeks, tiny paws. Cohesive mushroom/leaf/cat/otter-like original fantasy species, not copyrighted characters. Roles across grid: curious leaf explorer with tiny backpack; bespectacled book mage; shy blue cloud sleeper; bold orange fox knight; gentle pink flower healer; mint lantern guide; brown hooded craftsperson; lavender star astronomer; lemon cheerful messenger; teal calm tea keeper; coral rhythm drummer; navy quiet night watcher; tan mechanic with goggles; white snow artist; pale-green gardener; golden curious owl scout. Similar refined charm and clean silhouette to well-drawn desktop pixel pets or premium cozy indie RPG portraits, no plastic 3D rendering or vector curves, absolutely crisp visible pixels. Palette grounded in sage green, cream, terracotta, honey, cocoa, muted blue. All sixteen same scale and grounded at same position within their cells. Deliver a square PNG sprite sheet with transparent alpha background.",
+  "referencedImagePaths": [],
+  "numLastImagesToInclude": null,
+  "generatedSourceFilename": "exec-9c968c2f-e003-420e-acec-b4e8d9805897.png",
+  "sha256": "24490b6ffe0702aba0976cf9f333a856ef678303806ff437d9bf326e6dabbf6d",
+  "auditDate": "2026-09-16",
+  "verification": "Recovered actual generation call from this project conversation. Generated original and repository original are byte-identical. Provenance evidence is not a legal non-infringement guarantee."
+}
