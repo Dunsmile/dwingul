@@ -22,7 +22,7 @@ test('character purchase and equip persist through an isolated server restart wi
   try{
     const session=await request('session');
     app.db.prepare('INSERT OR IGNORE INTO rpg_profiles(user_id,gold) VALUES(?,?)').run(session.user.id,1000);
-    const configured=await request('profile',{method:'POST',body:{nickname:'숲속 타자',pin:'Test-2468-password!'}});
+    const configured=await request('profile',{method:'POST',body:{nickname:'숲속 타자',pin:'Test-2468!'}});
     assert.ok(configured.recovery);
     const before=await request('rpg');
     const purchase=await request('rpg/character/purchase',{method:'POST',body:{characterId:'flower-healer'}});
@@ -38,7 +38,7 @@ test('character purchase and equip persist through an isolated server restart wi
     assert.equal(run.gameSettings.characterId,'flower-healer');
     assert.deepEqual(run.gameSettings.gear,before.gear);
     cookie='';
-    const recovered=await request('recover',{method:'POST',body:{recovery:configured.recovery,pin:'Test-2468-password!'}});
+    const recovered=await request('recover',{method:'POST',body:{recovery:configured.recovery,pin:'Test-2468!'}});
     assert.equal(recovered.user.id,session.user.id);
     assert.equal((await request('rpg')).selectedCharacter,'flower-healer');
     await app.close();

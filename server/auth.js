@@ -16,7 +16,7 @@ export function createAuth(db,{fail,adminBootstrap,now=Date.now}={}){
  CREATE TABLE IF NOT EXISTS auth_bootstrap(id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id));
  CREATE TABLE IF NOT EXISTS moderation_audit(id TEXT PRIMARY KEY,actor_id TEXT NOT NULL,target_user_id TEXT NOT NULL,record_id TEXT NOT NULL,content TEXT NOT NULL,display TEXT NOT NULL,reason TEXT NOT NULL,created INTEGER NOT NULL);`);
  function nickname(value){const n=String(value||'').normalize('NFKC').trim();if(!/^[\p{L}\p{N}_. -]{1,12}$/u.test(n))fail('닉네임은 문자·숫자·공백·._-를 사용해 1~12자로 입력해주세요.');return n;}
- function validPassword(value){if(typeof value!=='string'||[...value].length<15||[...value].length>64||value.trim().length<15)fail('비밀번호는 공백을 포함해 15~64자로 입력해주세요.');if(/^(.)\1+$/u.test(value)||/^(password|123456|qwerty)/i.test(value))fail('쉽게 추측되는 비밀번호 대신 나만의 긴 문장을 사용해주세요.');return value;}
+ function validPassword(value){if(typeof value!=='string'||[...value].length<4||[...value].length>15||value.trim().length<4)fail('비밀번호는 공백을 포함해 4~15자로 입력해주세요.');if(/^(.)\1+$/u.test(value)||/^(password|123456|qwerty)/i.test(value))fail('쉽게 추측되는 비밀번호 대신 다른 비밀번호를 사용해주세요.');return value;}
  let bootstrap=adminBootstrap;
  if(typeof bootstrap==='string'){try{bootstrap=JSON.parse(bootstrap);}catch{throw Error('Invalid administrator bootstrap configuration');}}
  if(bootstrap){
