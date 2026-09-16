@@ -52,10 +52,10 @@ const progressBody=(run,progress,extra={})=>({
 test('a recovered profile retains long-mode history and bests without input logs or equipment snapshots',async()=>{
  const {app,client}=await fixture();
  try{
-  const user=client(),created=await user('profile',{nickname:'긴 문장 보관',pin:'2468'});
+  const user=client(),created=await user('profile',{nickname:'긴 문장 보관',pin:'Test-2468-password!'});
   const result={id:'long-history-v15',content:'typing',at:Date.now(),title:'타이핑 마스터',mode:'typing-rpg-v5-long-s11',value:30,display:'30',unit:'점',gameSettings:{version:'v5',mode:'rpg',sentenceMode:'long',startStage:11,gear:{attack:999},attackMultiplier:999},details:{stage:13,actions:[[0,'input','개인 입력 기록']]}};
   assert.equal((await user('history',{items:[result]})).status,200);
-  const recovered=client();assert.equal((await recovered('recover',{recovery:created.recovery,pin:'2468'})).status,200);
+  const recovered=client();assert.equal((await recovered('recover',{recovery:created.recovery,pin:'Test-2468-password!'})).status,200);
   const profile=await recovered('profile'),saved=profile.history.find(x=>x.id===result.id);
   assert.equal(saved.gameSettings.sentenceMode,'long');assert.equal(saved.gameSettings.startStage,11);assert.equal(saved.mode,result.mode);
   assert.equal(saved.gameSettings.gear,undefined);assert.equal(saved.gameSettings.attackMultiplier,undefined);assert.equal(saved.details.actions,undefined);
@@ -67,7 +67,7 @@ test('a long run checkpoints, replays, settles and registers its authoritative l
   const {app,client}=await fixture();
   try{
     const user=client();
-    await user('profile',{nickname:'긴 문장 검증',pin:'2468'});
+    await user('profile',{nickname:'긴 문장 검증',pin:'Test-2468-password!'});
     const profile=await user('rpg');
     app.db.prepare('UPDATE rpg_profiles SET best_cleared=10 WHERE user_id=(SELECT id FROM users WHERE nickname=?)').run('긴 문장 검증');
 
@@ -100,7 +100,7 @@ test('invalid and omitted sentence modes stay on the legacy short key while rank
   const {app,client}=await fixture();
   try{
     const user=client();
-    await user('profile',{nickname:'모드 분리 검증',pin:'1357'});
+    await user('profile',{nickname:'모드 분리 검증',pin:'Test-1357-password!'});
     const attempts=[];
     for(const gameSettings of [{sentenceMode:'invalid'},{}]){
       const attempt=await user('runs',{content:'typing',seed:1600+attempts.length,gameSettings});
@@ -130,8 +130,8 @@ test('long rooms and challenge shares preserve the mode with stage-one baseline 
   const {app,client}=await fixture();
   try{
     const owner=client(),friend=client();
-    await owner('profile',{nickname:'긴 문장 방장',pin:'1234'});
-    await friend('profile',{nickname:'긴 문장 친구',pin:'5678'});
+    await owner('profile',{nickname:'긴 문장 방장',pin:'Test-1234-password!'});
+    await friend('profile',{nickname:'긴 문장 친구',pin:'Test-5678-password!'});
     const ownerProfile=await owner('rpg');
     app.db.prepare('UPDATE rpg_profiles SET best_cleared=10 WHERE user_id=(SELECT id FROM users WHERE nickname=?)').run('긴 문장 방장');
 

@@ -37,7 +37,7 @@ test('one profile preserves identity, private birth/history/bests, recovers with
  try{
   const guest=await a('session'),uid=guest.user.id;await a('rpg');await a('garage');
   assert.equal((await a('profile/birth','PUT',{name:'나',birthday:'20000101'})).status,400);
-  const created=await a('profile','POST',{nickname:'공통프로필',pin:'2468'});assert.equal(created.user.id,uid);assert.equal((await a('rpg')).configured,true);
+  const created=await a('profile','POST',{nickname:'공통프로필',pin:'Test-2468-password!'});assert.equal(created.user.id,uid);assert.equal((await a('rpg')).configured,true);
   const birth={name:'나',birthday:'2000-01-01',calendar:'solar',time:'00:00'};assert.deepEqual((await a('profile/birth','PUT',birth)).birth,birth);
   assert.equal((await a('profile/birth','PUT',{...birth,calendar:'leap',birthday:'2023-03-01'})).status,400);
   const items=Array.from({length:100},(_,i)=>({id:'play-'+i,content:'jump',value:i===0?999:i,mode:'jump-v6',display:String(i===0?999:i),unit:'m',at:Date.now()-100000+i,details:{inputs:[1,2],actions:[3]},birthday:'19990101',pin:'0000',run:'secret'}));
@@ -45,9 +45,9 @@ test('one profile preserves identity, private birth/history/bests, recovers with
   let saved=await a('profile');assert.equal(saved.history.length,100);assert.equal(saved.bests[0].value,999);assert.ok(!saved.history.some(r=>r.id==='play-0'));assert.ok(!JSON.stringify(saved.history).includes('secret'));assert.ok(!JSON.stringify(saved.history).includes('19990101'));
   const last=saved.history[0];await a('history','POST',{items:[{...last,value:100000}]});assert.equal((await a('profile')).bests[0].value,999,'same event cannot overwrite best');
   assert.deepEqual((await a('records')).records,[],'private history never auto-publishes');
-  await b('profile','POST',{nickname:'다른사람',pin:'1357'});await b('profile/birth','PUT',{...birth,name:'타인',birthday:'20020503'});assert.deepEqual((await b('profile')).history,[]);
+  await b('profile','POST',{nickname:'다른사람',pin:'Test-1357-password!'});await b('profile/birth','PUT',{...birth,name:'타인',birthday:'20020503'});assert.deepEqual((await b('profile')).history,[]);
   assert.equal((await b('profile/birth','PUT',{...birth,user_id:uid})).status,200);assert.equal((await a('profile')).birth.birthday,birth.birthday);
-  const restored=await recovered('recover','POST',{recovery:created.recovery,pin:'2468'});assert.equal(restored.user.id,uid);const restoredState=await recovered('profile');assert.deepEqual(restoredState.birth,birth);assert.equal(restoredState.history.length,100);assert.equal((await recovered('garage')).unlocked.length,1);assert.equal((await recovered('rpg')).configured,true);
+  const restored=await recovered('recover','POST',{recovery:created.recovery,pin:'Test-2468-password!'});assert.equal(restored.user.id,uid);const restoredState=await recovered('profile');assert.deepEqual(restoredState.birth,birth);assert.equal(restoredState.history.length,100);assert.equal((await recovered('garage')).unlocked.length,1);assert.equal((await recovered('rpg')).configured,true);
   const old=await a('profile');assert.equal(old.user.configured,false);assert.equal(old.birth,null);assert.deepEqual(old.history,[]);
   const share=await recovered('shares','POST',{content:'character',payload:{title:'캐릭터',birthday:birth.birthday,time:birth.time}});assert.ok(!JSON.stringify(await recovered('shares/'+share.id)).includes(birth.birthday));
   await recovered('profile/birth','DELETE');assert.equal((await recovered('profile')).birth,null);assert.equal((await recovered('profile')).history.length,100);await recovered('history','DELETE');saved=await recovered('profile');assert.deepEqual(saved.history,[]);assert.deepEqual(saved.bests,[]);assert.equal((await recovered('rpg')).configured,true);

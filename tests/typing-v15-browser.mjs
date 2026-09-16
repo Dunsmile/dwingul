@@ -38,7 +38,7 @@ try{
     }
     if(panel==='profile'){
      assert.equal(await p.locator('.rpg-save-card').getAttribute('open'),null);
-     await p.locator('.rpg-save-card summary').click();await p.locator('[name=nickname]').fill('메뉴 검증');await p.locator('[name=pin]').fill('2468');
+     await p.locator('.rpg-save-card summary').click();await p.locator('[name=nickname]').fill('메뉴 검증');await p.locator('[name=pin]').fill('Test-2468-password!');if(await p.locator('[name=passwordConfirm]').count())await p.locator('[name=passwordConfirm]').fill('Test-2468-password!');
      await p.locator('#rpg-profile-form button[type=submit]').click();await p.locator('.rpg-save-card.is-saved').waitFor();
      assert.ok(p.url().includes('sentenceMode=long'));assert.equal((await api(p,'rpg')).bestCleared,20);
     }

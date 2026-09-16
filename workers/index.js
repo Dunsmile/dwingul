@@ -3,7 +3,7 @@ import {createApiHandler} from '../server/api.js';
 import {durableSqlite} from './sqlite-adapter.js';
 
 export class DwingulDatabase extends DurableObject {
- constructor(ctx,env){super(ctx,env);this.env=env;this.db=durableSqlite(ctx.storage);this.handler=createApiHandler(this.db);}
+ constructor(ctx,env){super(ctx,env);this.env=env;this.db=durableSqlite(ctx.storage);this.handler=createApiHandler(this.db,{adminBootstrap:env.DW_ADMIN_BOOTSTRAP});}
  async fetch(request){
   const url=new URL(request.url);
   const req={url:url.pathname+url.search,origin:url.origin,method:request.method,headers:Object.fromEntries(request.headers),socket:{remoteAddress:request.headers.get('CF-Connecting-IP')||'unknown',encrypted:url.protocol==='https:'},async *[Symbol.asyncIterator](){yield await request.text();}};

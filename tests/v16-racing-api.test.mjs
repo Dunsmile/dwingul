@@ -15,7 +15,7 @@ function play(engine,limit=180000){for(let elapsed=0;elapsed<limit&&!engine.stat
 
 test('v16 settlement and ranking stay separate from a stored v7 deterministic replay',async()=>{
  const {app,api}=await fixture();try{
-  await api('profile',{nickname:'버전 주행자',pin:'1234'});
+  await api('profile',{nickname:'버전 주행자',pin:'Test-1234-password!'});
 
   const currentRun=await api('runs',{content:'racing',seed:160,gameSettings:{car:'basic'}});assert.equal(currentRun.status,200);assert.equal(currentRun.gameSettings.version,'v16');
   const currentResult=play(createCityEngine({car:'basic',random:seededRandom(`racing:${currentRun.seed}`)}));
