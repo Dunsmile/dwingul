@@ -1,6 +1,7 @@
+import {createAuth} from './auth.js';
 import {createLaunchTransfer} from './launch-transfer.js';
 import {makePersonalityResult} from '../public/js/personality-tests.js';
-import {randomBytes,createHash,scryptSync,timingSafeEqual} from 'node:crypto';
+import {randomBytes,createHash} from 'node:crypto';
 import {getQuestions,topics,questionVersion,questionMode,supportedQuestionVersions} from '../public/js/quizzes.js';
 import {catalog,byId,regionMap,countries,currentGameModes} from '../public/js/catalog.js';
 import { gameSettings, gameMode } from '../public/js/game-options.js';
@@ -10,9 +11,7 @@ import { createGarageStore } from '../public/js/garage-store.js';
 import {atomic} from '../lib/transaction.js';
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const token=(n=24)=>randomBytes(n).toString('hex');
-const eq=(a,b)=>{const x=Buffer.from(a),y=Buffer.from(b);return x.length===y.length&&timingSafeEqual(x,y);};
-const pinHash=(pin,salt)=>scryptSync(pin,salt,32).toString('hex');
-export function createApiHandler(db,{localOnly=false,localTickets={},staticHandler=(_req,res)=>{res.writeHead(404);res.end('Not found');}}={}){
+export function createApiHandler(db,{localOnly=false,localTickets={},adminBootstrap,staticHandler=(_req,res)=>{res.writeHead(404);res.end('Not found');}}={}){
  db.exec(`PRAGMA foreign_keys=ON;PRAGMA journal_mode=WAL;
  CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,token_hash TEXT UNIQUE,nickname TEXT DEFAULT '뒹굴러',pin_hash TEXT,salt TEXT,recovery_hash TEXT);
  CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,user_id TEXT REFERENCES users(id),content TEXT,seed INTEGER,started INTEGER,finished INTEGER DEFAULT 0);
@@ -34,8 +33,9 @@ export function createApiHandler(db,{localOnly=false,localTickets={},staticHandl
  function limited(key,max){const now=Date.now(),entry=limits.get(key)||{n:0,until:now+60000};if(entry.until<now){entry.n=0;entry.until=now+60000;}entry.n++;limits.set(key,entry);if(entry.n>max)fail('요청이 많아요. 잠시 후 다시 시도해주세요.',429);if(limits.size>2000)for(const[k,v]of limits)if(v.until<now)limits.delete(k);}
  function member(groupId,userId){const g=get('SELECT * FROM groups WHERE id=?',groupId);if(!g)fail('종료되었거나 없는 친구방이에요.',404);const m=get('SELECT * FROM members WHERE group_id=? AND user_id=? AND excluded=0',groupId,userId);if(!m)fail('초대 코드로 먼저 참여해주세요.',403);return {...g,joined:m.joined};}
  function owner(g,u){if(g.owner!==u.id)fail('방장만 관리할 수 있어요.',403);}
- const publicUser=u=>({id:u.id,nickname:u.nickname,configured:!!u.pin_hash});
- function checkPin(u,pin){limited('pin:'+u.id,10);if(!u.pin_hash||typeof pin!=='string'||!eq(pinHash(pin,u.salt),u.pin_hash))fail('관리 PIN을 확인해주세요.',403);}
+ const auth=createAuth(db,{fail,adminBootstrap}),publicUser=auth.publicUser;
+ function checkPin(u,pin){auth.check(u,pin);}
+
  async function body(req){let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>(req.url==='/api/rpg/progress'?2097152:req.url==='/api/history'?1200000:req.url==='/api/garage/settle'?262144:24000))fail('입력 내용이 너무 길어요.',413);}try{return JSON.parse(raw||'{}');}catch{fail('입력 형식을 확인해주세요.');}}
  function ranks(params,u,group=null){const content=params.get('content')||group?.content||'sort';const c=byId(content);if(!c||!['game','quiz'].includes(c.cat))fail('종목을 확인해주세요.');let where=['r.content=?'],args=[content];if(group){where.push('r.id IN(SELECT gr.record_id FROM group_records gr JOIN members m ON m.group_id=gr.group_id AND m.user_id=r.user_id AND m.excluded=0 WHERE gr.group_id=?)');args.push(group.id);}else{const scope=params.get('scope')||'world';if(!['world','local'].includes(scope))fail('랭킹 범위를 확인해주세요.');where.push('r.'+scope+'=1');if(scope==='world'&&params.get('country')){where.push('r.country=?');args.push(params.get('country'));}if(scope==='local'){if(params.get('region')){where.push('r.region=?');args.push(params.get('region'));}if(params.get('district')){where.push('r.district=?');args.push(params.get('district'));}}}
  const mode=group?.game_settings&&gameMode(group.content,JSON.parse(group.game_settings))||params.get('mode');if(mode){where.push('r.mode=?');args.push(mode);}const device=params.get('device');if(device){where.push('r.device=?');args.push(device);}if((group?.period||params.get('period'))==='week'){const d=new Date(Date.now()+9*3600000);const day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);d.setUTCHours(0,0,0,0);where.push('r.created>=?');args.push(d.getTime()-9*3600000);}
@@ -49,13 +49,23 @@ export function createApiHandler(db,{localOnly=false,localTickets={},staticHandl
  if(!p.startsWith('/api/')){await staticHandler(req,res);return;}
  if(!['GET','HEAD'].includes(method)&&(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)))fail('요청 출처가 일치하지 않아요.',403);
  if(p==='/api/launch-transfer/claim'&&method==='POST'){limited('transfer:'+req.socket.remoteAddress,10);const transferData=await body(req);const claimed=launch.claim(transferData.ticket);headers['Set-Cookie']=`dw_session=${claimed.secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=31536000${origin.startsWith('https:')?'; Secure':''}`;send({user:claimed.user});return;}
- const cookie=/(?:^|;\s*)dw_session=([a-f0-9]{48})/.exec(req.headers.cookie||'')?.[1];let u=cookie?get('SELECT * FROM users WHERE token_hash=?',hash(cookie)):null;
+ const cookie=/(?:^|;\s*)dw_session=([a-f0-9]{48})/.exec(req.headers.cookie||'')?.[1];let u=auth.resolve(cookie);
  if(!u){limited('new:'+req.socket.remoteAddress,30);const secret=token(),id=token(12);run('INSERT INTO users(id,token_hash) VALUES(?,?)',id,hash(secret));u=get('SELECT * FROM users WHERE id=?',id);headers['Set-Cookie']=`dw_session=${secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=31536000${origin.startsWith('https:')?'; Secure':''}`;}
  limited('requests:'+u.id,240);const data=['POST','PUT','DELETE'].includes(method)?await body(req):{};
  if(p==='/api/launch-transfer'&&localOnly){const ticket=launch.localTicket(u.id);send(method==='POST'?ticket||{available:false}:{available:!!ticket});return;}
  if(p==='/api/session'&&method==='GET'){send({user:publicUser(u)});return;}
- if(p==='/api/profile'&&method==='POST'){const nickname=String(data.nickname||'').trim();if(nickname.length<1||nickname.length>12)fail('닉네임은 1~12자로 입력해주세요.');let recovery=null;if(!u.pin_hash){if(!/^\d{4}$/.test(data.pin||''))fail('숫자 4자리 관리 PIN을 입력해주세요.');const salt=token(16);recovery=token(16);run('UPDATE users SET nickname=?,pin_hash=?,salt=?,recovery_hash=? WHERE id=?',nickname,pinHash(data.pin,salt),salt,hash(recovery),u.id);}else{checkPin(u,data.pin);run('UPDATE users SET nickname=? WHERE id=?',nickname,u.id);}send({user:publicUser(get('SELECT * FROM users WHERE id=?',u.id)),recovery});return;}
- if(p==='/api/recover'&&method==='POST'){limited('recover:'+req.socket.remoteAddress,10);const existing=get('SELECT * FROM users WHERE recovery_hash=?',hash(String(data.recovery||'')));if(!existing)fail('복구 코드와 PIN을 확인해주세요.',403);checkPin(existing,data.pin);const secret=token();run('UPDATE users SET token_hash=? WHERE id=?',hash(secret),existing.id);headers['Set-Cookie']=`dw_session=${secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=31536000${origin.startsWith('https:')?'; Secure':''}`;send({user:publicUser(existing)});return;}
+ const signed=result=>{if(result.secret){headers['Set-Cookie']=`dw_session=${result.secret}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${result.maxAge}${origin.startsWith('https:')?'; Secure':''}`;delete result.secret;delete result.maxAge;}send(result);};
+ if(p==='/api/auth/register'&&method==='POST'){signed(auth.register(u,data));return;}
+ if(p==='/api/auth/login'&&method==='POST'){signed(auth.login(data,req.socket.remoteAddress));return;}
+ if(p==='/api/auth/upgrade'&&method==='POST'){signed(auth.upgrade(u,data));return;}
+ if(p==='/api/auth/password'&&method==='POST'){signed(auth.password(u,data));return;}
+ if(p==='/api/auth/recovery'&&method==='POST'){signed(auth.rotateRecovery(u,data));return;}
+ if(p==='/api/auth/logout'&&method==='POST'){auth.logout(u,cookie);headers['Set-Cookie']=`dw_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0${origin.startsWith('https:')?'; Secure':''}`;send({ok:true});return;}
+ if(p==='/api/profile'&&method==='POST'){signed(u.pin_hash?auth.rename(u,data):auth.register(u,data));return;}
+ if(p==='/api/recover'&&method==='POST'){signed(auth.recover(data,req.socket.remoteAddress));return;}
+ if(p==='/api/admin/records'&&method==='GET'){send(auth.records(u,url.searchParams));return;}
+ if(p==='/api/admin/audit'&&method==='GET'){send(auth.audit(u,url.searchParams));return;}
+ if(/^\/api\/admin\/records\/[a-zA-Z0-9_-]+$/.test(p)&&method==='DELETE'){send(auth.deleteRecord(u,p.split('/').pop(),data));return;}
  if(p==='/api/profile'&&method==='GET'){send({user:publicUser(u),...profiles.state(u)});return;}
  if(p==='/api/profile/birth'&&method==='PUT'){send(profiles.saveBirth(u,data));return;}
  if(p==='/api/profile/birth'&&method==='DELETE'){send(profiles.clearBirth(u));return;}
@@ -90,7 +100,7 @@ export function createApiHandler(db,{localOnly=false,localTickets={},staticHandl
  const country=scopes.includes('world')?String(data.country||''):null,region=scopes.includes('local')?String(data.region||''):null,district=scopes.includes('local')?String(data.district||''):null;if(scopes.includes('world')&&!countries.includes(country))fail('표시 국가를 선택해주세요.');if(scopes.includes('local')&&!regionMap[region]?.includes(district))fail('지역을 선택해주세요.');let group=null;if(scopes.includes('friends')){group=member(String(data.groupId||''),u.id);if(group.content!==c.id||attempt.seed!==group.seed||attempt.started<group.joined||(c.cat==='quiz'&&(attempt.topic!==group.topic||attempt.question_version!==group.question_version))||(c.cat==='game'&&JSON.stringify(gameSettings(c.id,JSON.parse(attempt.game_settings||'{}')))!==JSON.stringify(gameSettings(c.id,JSON.parse(group.game_settings||'{}')))))fail('친구방에서 같은 조건으로 새로 플레이해주세요.');}
  const id=token(12);atomic(db,()=>{run('INSERT INTO records VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',id,u.id,c.id,value,display,unit,higher?1:0,mode,data.device==='touch'?'touch':'keyboard',attempt.seed,JSON.stringify({target:details.target,stoppedSeconds:details.stoppedSeconds,gameSettings:attempt.game_settings?JSON.parse(attempt.game_settings):null,distance:Number(details.distance)||0,coins:Number(details.coins)||0,reason:String(details.reason||'').slice(0,30)}),scopes.includes('world')?1:0,scopes.includes('local')?1:0,country,region,district,Date.now());if(group)run('INSERT INTO group_records VALUES(?,?)',group.id,id);run('UPDATE runs SET finished=1 WHERE id=?',attempt.id);});send({id});return;}
  if(p==='/api/records'&&method==='GET'){send({records:all('SELECT id,content,display,unit,mode,world,local,created FROM records WHERE user_id=? ORDER BY created DESC LIMIT 100',u.id)});return;}
- if(/^\/api\/records\/[^/]+$/.test(p)&&method==='DELETE'){checkPin(u,data.pin);run('DELETE FROM records WHERE id=? AND user_id=?',p.split('/')[3],u.id);send({ok:true});return;}
+ if(/^\/api\/records\/[^/]+$/.test(p)&&method==='DELETE'){checkPin(u,data.password??data.pin);run('DELETE FROM records WHERE id=? AND user_id=?',p.split('/')[3],u.id);send({ok:true});return;}
  if(p==='/api/rankings'&&method==='GET'){send(ranks(url.searchParams,u));return;}
  if(p==='/api/groups'&&method==='GET'){send({groups:all('SELECT g.*,g.owner=? AS isOwner FROM groups g JOIN members m ON g.id=m.group_id WHERE m.user_id=? AND m.excluded=0 ORDER BY g.created DESC',u.id,u.id)});return;}
  if(p==='/api/groups'&&method==='POST'){if(!u.pin_hash)fail('먼저 닉네임과 관리 PIN을 설정해주세요.');const name=String(data.name||'').trim(),c=byId(data.content);if(c?.retired)fail('운영이 종료된 게임이에요.',410);if(!name||name.length>24||!c||!['game','quiz'].includes(c.cat))fail('친구방 이름과 종목을 확인해주세요.');if(data.gameSettings?.version&&data.gameSettings.version!==gameSettings(c.id).version&&['sort','racing','typing','jump','sequence'].includes(c.id))fail('게임 규칙이 바뀌었어요. 새 설정으로 친구방을 만들어주세요.');const settings=c.id==='typing'?rpg.settings(u,data.gameSettings||{},true):['sort','racing','jump','sequence'].includes(c.id)?gameSettings(c.id,data.gameSettings):data.gameSettings===undefined?null:gameSettings(c.id,data.gameSettings);if(c.id==='racing'&&settings)garage.requireCar(u.id,settings.car);const id=token(12),seed=randomBytes(4).readUInt32BE(),created=Date.now(),code=token(4).toUpperCase();run('INSERT INTO groups(id,owner,name,content,code,seed,period,created,topic,question_version,game_settings) VALUES(?,?,?,?,?,?,?,?,?,?,?)',id,u.id,name,c.id,code,seed,data.period==='all'?'all':'week',created,topics[c.id]&&Object.hasOwn(topics[c.id],data.topic)?data.topic:c.id==='guess'?'drama':'mixed',questionVersion(c.id),settings?JSON.stringify(settings):null);run('INSERT INTO members VALUES(?,?,?,0)',id,u.id,created);send({id,code});return;}

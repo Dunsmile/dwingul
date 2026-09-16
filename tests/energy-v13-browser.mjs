@@ -19,7 +19,7 @@ async function open(path, selector) {
 
 await open('profile', '#unified-profile-form');
 await page.locator('[name=nickname]').fill('에너지검토');
-await page.locator('[name=pin]').fill('4177');
+await page.locator('[name=pin]').fill('Test-4177-password!');if(await page.locator('[name=passwordConfirm]').count())await page.locator('[name=passwordConfirm]').fill('Test-4177-password!');
 await page.locator('#unified-profile-form button[type=submit]').click();
 await page.locator('.recovery-code').waitFor();
 const recovery = (await page.locator('.recovery-code').innerText()).trim();
@@ -107,7 +107,7 @@ const recoveredPage = await recoveredContext.newPage();
 await recoveredPage.goto(`${base}/#/recover`);
 await recoveredPage.locator('#recover-form').waitFor();
 await recoveredPage.locator('[name=recovery]').fill(recovery);
-await recoveredPage.locator('[name=pin]').fill('4177');
+await recoveredPage.locator('[name=pin]').fill('Test-4177-password!');if(await recoveredPage.locator('[name=passwordConfirm]').count())await recoveredPage.locator('[name=passwordConfirm]').fill('Test-4177-password!');
 await recoveredPage.locator('#recover-form button[type=submit]').click();
 await recoveredPage.waitForURL(/#\/profile$/);
 await recoveredPage.goto(`${base}/#/my`);

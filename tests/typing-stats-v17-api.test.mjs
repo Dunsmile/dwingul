@@ -18,7 +18,7 @@ test('short/long confirmed attempts replay on the server and stats survive profi
     };
   };
   try {
-    const api=client(),profile=await api('profile',{nickname:'타수 확인',pin:'1357'}),expected=[];
+    const api=client(),profile=await api('profile',{nickname:'타수 확인',pin:'Test-1357-password!'}),expected=[];
     for(const sentenceMode of ['short','long']) {
       const run=await api('runs',{content:'typing',seed:1703,gameSettings:{sentenceMode}});
       const model=createTypingRpgModel({random:seededRandom(`typing:${run.seed}`),...run.gameSettings}),input=createTypingInput(model);
@@ -51,7 +51,7 @@ test('short/long confirmed attempts replay on the server and stats survive profi
     const legacyRejected=await api('rpg/progress',{run:legacyRun.id,...legacyModel.getProgress().details,final:false});
     assert.equal(legacyRejected.status,400);
     assert.match(legacyRejected.error,/너무 빠른 입력/);
-    const recovered=client(); assert.equal((await recovered('recover',{recovery:profile.recovery,pin:'1357'})).status,200);
+    const recovered=client(); assert.equal((await recovered('recover',{recovery:profile.recovery,pin:'Test-1357-password!'})).status,200);
     const saved=await recovered('profile');
     for(const {id,stats} of expected){
       const item=saved.history.find(item=>item.id===id);

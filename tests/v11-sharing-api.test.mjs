@@ -16,7 +16,7 @@ const legacyGames=[
 test('new jump scores use v19 and an in-flight v18 run retains its own ranking mode',async()=>{
  const {app,client}=await fixture();
  try{
-  const user=client();await user('profile',{nickname:'연계 기록',pin:'2468'});
+  const user=client();await user('profile',{nickname:'연계 기록',pin:'Test-2468-password!'});
   const unversioned=await user('runs',{content:'jump'});
   assert.equal((await user('records',{run:unversioned.id,scopes:['world'],country:'대한민국',result:{value:100,mode:'jump-distance-v19'}})).status,400);
   const current=await user('runs',{content:'jump',gameSettings:{}});assert.equal(current.gameSettings.version,'v19');
@@ -47,8 +47,8 @@ test('latest sequence, jump and racing groups keep one seed and exact settings f
   const {app,client}=await fixture();
   try{
     const owner=client(),friend=client();
-    await owner('profile',{nickname:'방장',pin:'2468'});
-    await friend('profile',{nickname:'친구',pin:'1357'});
+    await owner('profile',{nickname:'방장',pin:'Test-2468-password!'});
+    await friend('profile',{nickname:'친구',pin:'Test-1357-password!'});
     for(const [content,settings] of currentGames){
       const created=await owner('groups',{name:`${content} v11 방`,content,period:'all',gameSettings:settings});
       assert.equal(created.status,200,content);
@@ -89,7 +89,7 @@ test('new challenges reject explicit old rules and stored old invitations cannot
   const {app,client}=await fixture();
   try{
     const user=client();
-    await user('profile',{nickname:'버전 검증',pin:'1234'});
+    await user('profile',{nickname:'버전 검증',pin:'Test-1234-password!'});
     for(let index=0;index<legacyGames.length;index++){
       const [content,oldSettings]=legacyGames[index],currentSettings=currentGames[index][1];
       const direct=await user('runs',{content,seed:800+index,gameSettings:oldSettings});

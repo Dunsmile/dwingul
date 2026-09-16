@@ -130,14 +130,14 @@ test('portable API rejects cross-origin state changes before mutating the authen
   try {
     const request = client(fixture.handler);
     const session = await request('session');
-    const rejected = await request('profile', 'POST', {nickname: '공격자', pin: '1234'}, {origin: 'https://evil.example'});
+    const rejected = await request('profile', 'POST', {nickname: '공격자', pin: 'Test-1234-password!'}, {origin: 'https://evil.example'});
     assert.equal(rejected.status, 403);
     assert.match(rejected.error, /출처/);
     const unchanged = await request('session');
     assert.equal(unchanged.user.id, session.user.id);
     assert.equal(unchanged.user.configured, false);
     assert.equal(unchanged.user.nickname, '뒹굴러');
-    const accepted = await request('profile', 'POST', {nickname: '안전한 사용자', pin: '1234'}, {origin: 'https://worker.test'});
+    const accepted = await request('profile', 'POST', {nickname: '안전한 사용자', pin: 'Test-1234-password!'}, {origin: 'https://worker.test'});
     assert.equal(accepted.status, 200);
     assert.equal(accepted.user.configured, true);
   } finally {
@@ -150,7 +150,7 @@ test('portable profile and share APIs preserve validated 12-answer personality v
   try {
     const request = client(fixture.handler);
     await request('session');
-    await request('profile', 'POST', {nickname: '취향 탐험가', pin: '1234'}, {origin: 'https://worker.test'});
+    await request('profile', 'POST', {nickname: '취향 탐험가', pin: 'Test-1234-password!'}, {origin: 'https://worker.test'});
     const result = {...makePersonalityResult('taste', '취향 탐험가', Array(12).fill(0)), id: 'taste-v9-worker', at: Date.now()};
     const saved = await request('history', 'POST', {items: [result]}, {origin: 'https://worker.test'});
     assert.equal(saved.status, 200);
@@ -183,7 +183,7 @@ test('portable API ranks current rhythm v11 with points and retains separate v9,
   try {
     const request = client(fixture.handler);
     const session = await request('session');
-    await request('profile', 'POST', {nickname: '박자 수집가', pin: '1234'}, {origin: 'https://worker.test'});
+    await request('profile', 'POST', {nickname: '박자 수집가', pin: 'Test-1234-password!'}, {origin: 'https://worker.test'});
 
     assert.equal((await request('runs', 'POST', {content: 'sequence', seed: 7}, {origin: 'https://worker.test'})).status,410);
     const currentRun={id:'archived-current'};

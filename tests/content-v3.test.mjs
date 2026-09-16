@@ -39,7 +39,7 @@ test('quiz versions keep server grading and friend challenges consistent',async(
   const base='http://127.0.0.1:'+app.server.address().port;let cookie='';
   async function api(path,body){const r=await fetch(base+'/api/'+path,{method:body?'POST':'GET',headers:{Cookie:cookie,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});if(r.headers.get('set-cookie'))cookie=r.headers.get('set-cookie').split(';')[0];return {status:r.status,...await r.json()};}
   try{
-    await api('profile',{nickname:'문항검증',pin:'1234'});
+    await api('profile',{nickname:'문항검증',pin:'Test-1234-password!'});
     for(const [content,topic]of [['iq','mixed'],['guess','drama']]){
       for(const version of ['v1',questionVersion(content)]){
         const attempt=await api('runs',{content,topic,seed:42,questionVersion:version});

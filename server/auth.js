@@ -1,0 +1,58 @@
+import {randomBytes,createHash,scryptSync,timingSafeEqual} from 'node:crypto';
+import {atomic} from '../lib/transaction.js';
+const digest=v=>createHash('sha256').update(String(v)).digest('hex');
+const random=(n=24)=>randomBytes(n).toString('hex');
+const secretHash=(value,salt)=>scryptSync(value,salt,32).toString('hex');
+const same=(a,b)=>{const x=Buffer.from(a||''),y=Buffer.from(b||'');return x.length===y.length&&timingSafeEqual(x,y);};
+export const loginKey=name=>String(name||'').normalize('NFKC').trim().toLowerCase();
+// Reserving a name never grants a role. Only the private bootstrap provisions an administrator.
+const reservedAdminKey=loginKey('DUNSMILE');
+export function createAuth(db,{fail,adminBootstrap,now=Date.now}={}){
+ const get=(sql,...args)=>db.prepare(sql).get(...args),all=(sql,...args)=>db.prepare(sql).all(...args),run=(sql,...args)=>db.prepare(sql).run(...args);
+ db.exec(`CREATE TABLE IF NOT EXISTS auth_accounts(user_id TEXT PRIMARY KEY REFERENCES users(id),login_key TEXT UNIQUE NOT NULL,role TEXT NOT NULL DEFAULT 'user' CHECK(role IN('user','admin')),must_change INTEGER NOT NULL DEFAULT 0);
+ CREATE TABLE IF NOT EXISTS auth_sessions(token_hash TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),expires INTEGER NOT NULL);
+ CREATE INDEX IF NOT EXISTS auth_session_owner ON auth_sessions(user_id);
+ CREATE TABLE IF NOT EXISTS auth_throttles(bucket TEXT PRIMARY KEY,attempts INTEGER NOT NULL,expires INTEGER NOT NULL);
+ CREATE TABLE IF NOT EXISTS auth_bootstrap(id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id));
+ CREATE TABLE IF NOT EXISTS moderation_audit(id TEXT PRIMARY KEY,actor_id TEXT NOT NULL,target_user_id TEXT NOT NULL,record_id TEXT NOT NULL,content TEXT NOT NULL,display TEXT NOT NULL,reason TEXT NOT NULL,created INTEGER NOT NULL);`);
+ function nickname(value){const n=String(value||'').normalize('NFKC').trim();if(!/^[\p{L}\p{N}_. -]{1,12}$/u.test(n))fail('닉네임은 문자·숫자·공백·._-를 사용해 1~12자로 입력해주세요.');return n;}
+ function validPassword(value){if(typeof value!=='string'||[...value].length<15||[...value].length>64||value.trim().length<15)fail('비밀번호는 공백을 포함해 15~64자로 입력해주세요.');if(/^(.)\1+$/u.test(value)||/^(password|123456|qwerty)/i.test(value))fail('쉽게 추측되는 비밀번호 대신 나만의 긴 문장을 사용해주세요.');return value;}
+ let bootstrap=adminBootstrap;
+ if(typeof bootstrap==='string'){try{bootstrap=JSON.parse(bootstrap);}catch{throw Error('Invalid administrator bootstrap configuration');}}
+ if(bootstrap){
+  const name=nickname(bootstrap.nickname),key=loginKey(name);
+  if(!/^[a-f0-9]{32}$/.test(bootstrap.salt||'')||!/^[a-f0-9]{64}$/.test(bootstrap.passwordHash||''))throw Error('Invalid administrator bootstrap credential');
+  atomic(db,()=>{const existing=get("SELECT a.* FROM auth_bootstrap b JOIN auth_accounts a ON a.user_id=b.user_id WHERE b.id='owner'");if(existing){if(existing.role!=='admin'||existing.login_key!==key)throw Error('Administrator bootstrap identity mismatch');return;}
+   if(get('SELECT 1 FROM auth_accounts WHERE login_key=?',key))throw Error('Administrator login name is already claimed');
+   const id=random(12);run('INSERT INTO users(id,nickname,pin_hash,salt) VALUES(?,?,?,?)',id,name,bootstrap.passwordHash,bootstrap.salt);run("INSERT INTO auth_accounts VALUES(?,?,'admin',1)",id,key);run("INSERT INTO auth_bootstrap VALUES('owner',?)",id);
+  });
+ }
+ const account=id=>get('SELECT * FROM auth_accounts WHERE user_id=?',id);
+ const publicUser=u=>{const a=account(u.id);return{id:u.id,nickname:u.nickname,configured:!!u.pin_hash,loginEnabled:!!a,admin:a?.role==='admin',mustChangePassword:!!a?.must_change};};
+ function throttle(key,maximum=10){const bucket=digest(key),time=now();run('DELETE FROM auth_throttles WHERE expires<=?',time);run('INSERT INTO auth_throttles VALUES(?,1,?) ON CONFLICT(bucket) DO UPDATE SET attempts=attempts+1',bucket,time+15*60000);if(get('SELECT attempts FROM auth_throttles WHERE bucket=?',bucket).attempts>maximum)fail('시도가 많아요. 15분 뒤에 다시 시도해주세요.',429);}
+ const clearLimit=key=>run('DELETE FROM auth_throttles WHERE bucket=?',digest(key));
+ function check(u,value){throttle('confirm:'+u.id);if(typeof value!=='string'||value.length>256||!u.pin_hash||!same(secretHash(value,u.salt),u.pin_hash))fail('비밀번호 또는 기존 관리 PIN을 확인해주세요.',403);clearLimit('confirm:'+u.id);}
+ function resolve(secret){if(!secret)return null;const hashed=digest(secret),session=get('SELECT u.* FROM users u JOIN auth_sessions s ON s.user_id=u.id WHERE s.token_hash=? AND s.expires>?',hashed,now());if(session)return session;const legacy=get('SELECT * FROM users WHERE token_hash=?',hashed);if(legacy&&account(legacy.id)){atomic(db,()=>{run('INSERT OR IGNORE INTO auth_sessions VALUES(?,?,?)',hashed,legacy.id,now()+(account(legacy.id).role==='admin'?8*3600:30*86400)*1000);run('UPDATE users SET token_hash=NULL WHERE id=?',legacy.id);});}return legacy;}
+ function revoke(userId){run('DELETE FROM auth_sessions WHERE user_id=?',userId);run('UPDATE users SET token_hash=NULL WHERE id=?',userId);}
+ function issue(userId,{revokeAll=false}={}){if(revokeAll)revoke(userId);const secret=random(),ttl=account(userId)?.role==='admin'?8*3600:30*86400;run('DELETE FROM auth_sessions WHERE expires<=?',now());run('INSERT INTO auth_sessions VALUES(?,?,?)',digest(secret),userId,now()+ttl*1000);return{secret,maxAge:ttl,user:publicUser(get('SELECT * FROM users WHERE id=?',userId))};}
+ function available(name,userId){const key=loginKey(name),claimed=get('SELECT user_id FROM auth_accounts WHERE login_key=?',key);if(key===reservedAdminKey||key===loginKey(bootstrap?.nickname))fail('관리자용으로 예약된 닉네임이에요. 다른 닉네임을 선택해주세요.',409);if(claimed&&claimed.user_id!==userId)fail('이미 사용 중인 닉네임이에요. 기존 프로필로 로그인하거나 다른 닉네임을 선택해주세요.',409);
+  // Legacy names stay reserved: a visitor cannot claim somebody else's old nickname.
+  const legacy=all('SELECT id,nickname FROM users WHERE pin_hash IS NOT NULL AND id NOT IN(SELECT user_id FROM auth_accounts)');if(legacy.some(row=>row.id!==userId&&loginKey(row.nickname)===key))fail('기존 프로필에 사용된 닉네임이에요. 원래 브라우저나 복구 코드로 불러온 뒤 설정해주세요. 같은 이름의 프로필이 여러 개면 새 닉네임을 선택해주세요.',409);return key;
+ }
+ function register(u,data){if(u.pin_hash)fail('이미 연결된 프로필이에요. 설정에서 비밀번호를 변경하거나 로그아웃해주세요.',409);const name=nickname(data.nickname),password=validPassword(data.password??data.pin),recovery=random(16),salt=random(16);
+  return atomic(db,()=>{const key=available(name,u.id);run('UPDATE users SET nickname=?,pin_hash=?,salt=?,recovery_hash=? WHERE id=?',name,secretHash(password,salt),salt,digest(recovery),u.id);run("INSERT INTO auth_accounts VALUES(?,?,'user',0)",u.id,key);return{...issue(u.id,{revokeAll:true}),recovery};});
+ }
+ function upgrade(u,data){check(u,data.currentPassword);if(account(u.id))fail('이미 닉네임 로그인을 사용하고 있어요. 비밀번호 변경을 이용해주세요.');const name=nickname(data.nickname),password=validPassword(data.password),salt=random(16),recovery=random(16);return atomic(db,()=>{const key=available(name,u.id);run('UPDATE users SET nickname=?,pin_hash=?,salt=?,recovery_hash=? WHERE id=?',name,secretHash(password,salt),salt,digest(recovery),u.id);run("INSERT INTO auth_accounts VALUES(?,?,'user',0)",u.id,key);return{...issue(u.id,{revokeAll:true}),recovery};});}
+ const dummySalt=random(16),dummyHash=secretHash(random(),dummySalt);
+ function login(data,ip){const key=loginKey(data.nickname).slice(0,128);throttle('login-ip:'+ip,40);throttle('login-name:'+key,10);const u=get('SELECT u.* FROM users u JOIN auth_accounts a ON a.user_id=u.id WHERE a.login_key=?',key);const value=typeof data.password==='string'&&data.password.length<=256?data.password:'';const valid=same(secretHash(value,u?.salt||dummySalt),u?.pin_hash||dummyHash);if(!u||!valid)fail('닉네임 또는 비밀번호를 확인해주세요. 기존 PIN 프로필은 복구 메뉴를 이용해주세요.',403);clearLimit('login-name:'+key);clearLimit('login-ip:'+ip);return issue(u.id);}
+ function password(u,data){check(u,data.currentPassword);if(!account(u.id))fail('먼저 기존 프로필을 닉네임 로그인으로 전환해주세요.');const value=validPassword(data.password);if(same(secretHash(value,u.salt),u.pin_hash))fail('현재 비밀번호와 다른 비밀번호를 입력해주세요.');const salt=random(16),recovery=random(16);return atomic(db,()=>{run('UPDATE users SET pin_hash=?,salt=?,recovery_hash=? WHERE id=?',secretHash(value,salt),salt,digest(recovery),u.id);run('UPDATE auth_accounts SET must_change=0 WHERE user_id=?',u.id);return{...issue(u.id,{revokeAll:true}),recovery};});}
+ function rotateRecovery(u,data){check(u,data.password);const recovery=random(16);return atomic(db,()=>{run('UPDATE users SET recovery_hash=? WHERE id=?',digest(recovery),u.id);return{...issue(u.id,{revokeAll:true}),recovery};});}
+ function recover(data,ip){throttle('recovery-ip:'+ip,10);const code=typeof data.recovery==='string'?data.recovery.trim():'';const u=/^[a-f0-9]{32}$/.test(code)?get('SELECT * FROM users WHERE recovery_hash=?',digest(code)):null;if(!u)fail('복구 코드와 비밀번호 또는 기존 PIN을 확인해주세요.',403);check(u,data.password??data.pin);return issue(u.id,{revokeAll:true});}
+ function logout(u,secret){if(secret){run('DELETE FROM auth_sessions WHERE token_hash=?',digest(secret));run('UPDATE users SET token_hash=NULL WHERE id=? AND token_hash=?',u.id,digest(secret));}return{ok:true};}
+ function rename(u,data){check(u,data.password??data.pin);const name=nickname(data.nickname);if(account(u.id)?.role==='admin')fail('관리자 닉네임은 이 화면에서 변경할 수 없어요.');return atomic(db,()=>{const key=available(name,u.id);run('UPDATE users SET nickname=? WHERE id=?',name,u.id);run('UPDATE auth_accounts SET login_key=? WHERE user_id=?',key,u.id);return{user:publicUser(get('SELECT * FROM users WHERE id=?',u.id))};});}
+ function requireAdmin(u){const a=account(u.id);if(a?.role!=='admin')fail('관리자 로그인이 필요해요.',403);if(a.must_change)fail('관리자 임시 비밀번호를 먼저 변경해주세요.',403);}
+ function records(u,params){requireAdmin(u);const q=String(params.get('q')||'').trim().slice(0,60),content=String(params.get('content')||'').slice(0,30),page=Math.max(1,Math.min(100000,Math.floor(Number(params.get('page'))||1)));const where=[],args=[];if(q){where.push("u.nickname LIKE ? ESCAPE '\\'");args.push('%'+q.replace(/[\\%_]/g,'\\$&')+'%');}if(content){where.push('r.content=?');args.push(content);}const filter=where.length?'WHERE '+where.join(' AND '):'';const total=get('SELECT COUNT(*) AS n FROM records r JOIN users u ON u.id=r.user_id '+filter,...args).n;const rows=all('SELECT r.id,r.content,r.display,r.unit,r.mode,r.world,r.local,r.country,r.region,r.district,r.created,u.nickname FROM records r JOIN users u ON u.id=r.user_id '+filter+' ORDER BY r.created DESC,r.id DESC LIMIT 25 OFFSET ?',...args,(page-1)*25);return{records:rows,total,page,pages:Math.max(1,Math.ceil(total/25))};}
+ function deleteRecord(u,id,data){requireAdmin(u);check(u,data.password);const reason=String(data.reason||'').trim();if(reason.length<2||reason.length>200)fail('삭제 사유를 2~200자로 입력해주세요.');return atomic(db,()=>{const record=get('SELECT id,user_id,content,display FROM records WHERE id=?',id);if(!record)fail('이미 삭제되었거나 없는 기록이에요.',404);run('INSERT INTO moderation_audit VALUES(?,?,?,?,?,?,?,?)',random(12),u.id,record.user_id,id,record.content,record.display,reason,now());run('DELETE FROM records WHERE id=?',id);run('DELETE FROM moderation_audit WHERE created<?',now()-90*86400000);return{ok:true};});}
+ function audit(u,params){requireAdmin(u);run('DELETE FROM moderation_audit WHERE created<?',now()-90*86400000);const page=Math.max(1,Math.min(100000,Math.floor(Number(params.get('page'))||1)));return{events:all('SELECT id,record_id,content,display,reason,created FROM moderation_audit ORDER BY created DESC,id DESC LIMIT 25 OFFSET ?',(page-1)*25),page,total:get('SELECT COUNT(*) AS n FROM moderation_audit').n};}
+ return{publicUser,check,resolve,issue,register,upgrade,login,password,rotateRecovery,recover,logout,rename,records,deleteRecord,audit,throttle};
+}
